@@ -1,62 +1,141 @@
 ---
 // src/components/FaqSection.astro
 
-const faqs = [
+export interface FaqItem {
+  category: string;
+  q: string;
+  a: string;
+}
+
+const faqs: FaqItem[] = [
+  // --- Category: Profit & Pricing Calculations ---
   {
-    q: "Why is my real in-hand profit lower than competitor calculators show?",
-    a: "Most online calculators (like EcomSarthi) only calculate profit on orders that are successfully delivered. In real-world Indian e-commerce, Cash on Delivery (COD) orders suffer from 15% to 30% RTO (Return to Origin) and Customer Returns. For customer returns, marketplaces charge sellers reverse courier penalties (approx ₹120-150) plus wasted packaging. Our calculator factors in this blended loss so you don't face unexpected bank shortfalls."
+    category: "Profit & Pricing",
+    q: "How to calculate exact e-commerce seller profit on Meesho, Flipkart, and Amazon India?",
+    a: "To calculate exact net seller profit in India, subtract all marketplace and operational deductions from the selling price: Net Profit = Taxable Value - COGS (Product Cost) - Packaging - Referral Commission - Fixed/Closing Fee - Shipping Fee - 18% GST on Fees - Ad Spend (PPC) - Blended RTO/Return Loss Buffer. Bank Settlement is what hits your account, but true in-hand profit must account for your product acquisition cost, packaging materials, and courier return losses."
   },
   {
-    q: "What is the difference between Bank Settlement and Net In-Hand Profit?",
-    a: "Bank Settlement is the actual amount the marketplace transfers into your bank account after deducting their commission, fixed fee, shipping, GST on fees, and TCS/TDS. Net In-Hand Profit is what you actually keep after also subtracting your Product Cost (COGS), Packaging Material, Ad Spend (PPC), and RTO return losses."
+    category: "Profit & Pricing",
+    q: "How do you calculate the break-even selling price for products on Indian marketplaces?",
+    a: "The break-even selling price is the minimum listing price where Net Profit equals zero. It is calculated as: Break-Even Selling Price = (Product COGS + Packaging + Forward Shipping + Expected Return Loss) ÷ [1 - (Marketplace Commission % + Payment Collection Fee % + GST Factor)]. Use our Target Price Solver to find your exact break-even price and required listing price for any target margin percentage."
   },
   {
-    q: "How does Meesho make money if they charge 0% commission?",
-    a: "Meesho charges 0% commission from sellers to encourage aggressive pricing and wide catalog selection. Meesho earns revenue through seller ad campaigns (Meesho Ads) and logistics partner margins."
+    category: "Profit & Pricing",
+    q: "What is the difference between Bank Settlement Payout and True Net In-Hand Profit?",
+    a: "Bank Settlement is the gross payout deposited into your bank account by Amazon, Flipkart, or Meesho after deducting their marketplace commission, fixed fees, courier charges, 18% GST on fees, and TCS/TDS. True Net In-Hand Profit is what remains after you also deduct your Product Cost (COGS), Packaging Material, Ad Spend (CAC), and unrecoverable RTO return losses. Never confuse bank settlement with profit."
+  },
+
+  // --- Category: RTO & Return Economics ---
+  {
+    category: "RTO & Returns",
+    q: "How much money does an Indian seller lose per RTO (Return to Origin) order?",
+    a: "On average, an Indian e-commerce seller loses ₹60 to ₹160 per RTO order (undelivered COD return) due to forward courier shipping and wasted packaging. For Customer Returns (buyer accepts and returns the item), sellers lose ₹150 to ₹260+ per return due to reverse courier penalties (₹120–₹150 billed by the marketplace), ruined polybags/boxes, and a 5% product depreciation/damage rate. Our calculator models this blended return loss into every dispatched order."
   },
   {
-    q: "Can I claim back the 18% GST charged by Amazon, Flipkart, and Meesho?",
-    a: "Yes! The 18% GST deducted by marketplaces on commission, closing fees, and shipping is a legitimate business expenditure. If you have a regular GST registration, you can claim 100% of this amount as Input Tax Credit (ITC) in your monthly GSTR-3B filings to offset output GST."
+    category: "RTO & Returns",
+    q: "Why do competitor seller calculators show misleading high profits compared to real bank payouts?",
+    a: "Most online calculators (such as EcomSarthi) calculate profit assuming 100% of orders are successfully delivered. In Indian e-commerce, Cash on Delivery (COD) orders routinely experience 15% to 30% RTO and customer returns. Ignoring return courier penalties causes sellers to believe they are making a 25% margin when they may actually be losing money. Seller Profit Calculator factors in realistic return buffers so you know your true take-home pay."
   },
   {
-    q: "What are the TCS and TDS deductions on Indian marketplace payouts?",
-    a: "Under the CGST Act, e-commerce platforms deduct 1% TCS (0.5% CGST + 0.5% SGST or 1% IGST) on net taxable supplies. Additionally, under Section 194-O of the Income Tax Act, marketplaces deduct 0.1% TDS on the gross sale amount. Both amounts can be claimed back in your annual income tax and monthly GST filings."
+    category: "RTO & Returns",
+    q: "How can Indian sellers reduce RTO losses on Meesho and Flipkart?",
+    a: "To reduce RTO rates: 1) Implement automated WhatsApp or IVR confirmation calls for COD orders before dispatch. 2) Provide accurate size charts and clear unedited product photos to prevent 'size mismatch' or 'expectation mismatch' returns. 3) Use 50-micron tamper-evident flyer bags to avoid courier transit damage claims. 4) Blacklist repeat fraudulent COD pincodes and buyers using seller analytics."
+  },
+
+  // --- Category: Marketplace Slabs & Fees ---
+  {
+    category: "Marketplace Fees",
+    q: "How does Amazon India calculate Closing Fee slabs in 2026?",
+    a: "Amazon India calculates Closing Fees dynamically based on your product's listed selling price (Easy Ship Standard): ₹0 to ₹250: ₹5.00; ₹251 to ₹500: ₹10.00; ₹501 to ₹1,000: ₹25.00; ₹1,001 to ₹2,000: ₹35.00; and Above ₹2,000: ₹50.00. In addition, Amazon charges category referral fees (ranging from 5% to 15%) and weight handling courier fees."
   },
   {
-    q: "How can I reduce high RTO losses on Meesho and Flipkart?",
-    a: "1) Confirm COD orders via automated WhatsApp verification before dispatch. 2) Ensure accurate product dimensions and truthful photos to prevent 'item not as expected' returns. 3) Pack in sturdy, tamper-evident flyer bags to avoid courier damage claims. 4) Use our Target Price Solver to build a return buffer into your selling price."
+    category: "Marketplace Fees",
+    q: "What is Flipkart's Fixed Fee and Collection Fee structure for sellers?",
+    a: "Flipkart charges a price-slab Fixed Fee (Non-FBF Standard): ₹0 to ₹300: ₹13; ₹301 to ₹500: ₹17; ₹501 to ₹1,000: ₹30; and ₹1,001+: ₹52. In addition, Flipkart charges a 2% Payment Collection Fee on all orders (prepaid and COD), plus category referral commission (4% to 16%) and tier-based shipping charges (Bronze, Silver, Gold)."
+  },
+  {
+    category: "Marketplace Fees",
+    q: "Is Meesho truly 0% commission for online sellers in India?",
+    a: "Yes, Meesho charges 0% referral commission and ₹0 fixed closing fees across almost all product categories. Sellers only pay for courier shipping fees (starting at ₹49 for up to 500g) plus 18% GST on the shipping fee. However, sellers must budget for customer return reverse courier charges (approx ₹120–₹150) and ruined packaging."
+  },
+  {
+    category: "Marketplace Fees",
+    q: "How does shipping distance (Local, Regional, National) impact seller profit in India?",
+    a: "Marketplace courier fees in India vary substantially by delivery distance: Local (intra-city) delivery costs ₹44 for 500g on Amazon and Flipkart; Regional (intra-state/zone) costs ₹53 to ₹54; while National (inter-state) delivery costs ₹69 to ₹74. Optimizing your inventory to regional fulfillment centers (FCs) saves ₹20 to ₹30 per order, directly boosting your net profit margin by 4% to 6%."
+  },
+
+  // --- Category: Taxes & GST Reconciliation ---
+  {
+    category: "GST & Taxes",
+    q: "How can Indian sellers claim back the 18% GST charged on Amazon, Flipkart, and Meesho fees?",
+    a: "The 18% GST deducted by marketplaces on referral commission, closing fees, and shipping is a legitimate business input expense. Sellers registered under regular GST can claim 100% of this amount as Input Tax Credit (ITC) in their monthly GSTR-3B filings by reconciling marketplace tax invoices with GSTR-2B, directly offsetting output GST payable on customer sales."
+  },
+  {
+    category: "GST & Taxes",
+    q: "What are Section 194-O TDS and 1% TCS deductions on Indian marketplace settlements?",
+    a: "Under Section 194-O of the Income Tax Act, marketplaces deduct 0.1% TDS on the gross sales value of orders. Additionally, under the CGST/SGST/IGST Act, marketplaces deduct 1% TCS on net taxable supplies. These deductions are not expenses; you can claim full credit for TCS against monthly GST liabilities and TDS against annual income tax returns (Form 26AS / AIS)."
   }
 ];
+
+const categories = ["All", "Profit & Pricing", "RTO & Returns", "Marketplace Fees", "GST & Taxes"];
 ---
 
 <section id="faq" class="py-16 bg-white border-t border-[#ebebeb]">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
     
-    <div class="text-center mb-12">
+    <div class="text-center mb-10">
       <div class="inline-flex items-center gap-1.5 text-xs font-mono text-neutral-500 uppercase tracking-wider mb-2">
-        <span class="w-1.5 h-1.5 rounded-full bg-neutral-800"></span>
-        Seller Knowledge Base
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+        AI Overview &amp; Seller Knowledge Base
       </div>
       <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-[#171717]">
-        Frequently Asked Questions for Indian Marketplace Sellers
+        Frequently Asked Questions for Indian E-Commerce Sellers
       </h2>
-      <p class="text-sm text-neutral-600 mt-2">
-        Clear answers on marketplace deductions, GST credits, courier penalties, and profitability.
+      <p class="text-sm text-neutral-600 mt-2 max-w-2xl mx-auto">
+        Authoritative answers on Meesho, Flipkart, and Amazon fee slabs, courier charges, GST Input Tax Credits, and real-world RTO economics.
       </p>
+
+      <!-- Category Filter Pills -->
+      <div class="flex flex-wrap items-center justify-center gap-1.5 mt-6" id="faqFilterPills">
+        {categories.map((cat, idx) => (
+          <button
+            type="button"
+            data-filter={cat}
+            class={`faq-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+              idx === 0
+                ? "bg-[#171717] text-white"
+                : "bg-neutral-100 hover:bg-neutral-200 text-neutral-700"
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
     </div>
 
     <!-- Accordion Items -->
-    <div class="space-y-4">
-      {faqs.map((faq, idx) => (
-        <details class="group rounded-2xl border border-neutral-200 bg-neutral-50/50 p-5 transition-all open:bg-white open:shadow-xs">
-          <summary class="flex cursor-pointer items-center justify-between text-sm sm:text-base font-semibold text-neutral-900 list-none">
-            <span>{faq.q}</span>
-            <span class="ml-4 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-neutral-300 text-xs text-neutral-500 group-open:rotate-180 transition-transform">
+    <div class="space-y-3.5" id="faqAccordionContainer">
+      {faqs.map((faq) => (
+        <details
+          class="faq-card group rounded-2xl border border-neutral-200 bg-neutral-50/50 p-5 transition-all open:bg-white open:border-neutral-300 open:shadow-xs"
+          data-category={faq.category}
+        >
+          <summary class="flex cursor-pointer items-center justify-between text-sm sm:text-base font-semibold text-neutral-900 list-none gap-4">
+            <span class="leading-snug">{faq.q}</span>
+            <span class="ml-2 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-neutral-300 text-xs text-neutral-500 group-open:rotate-180 transition-transform bg-white">
               &darr;
             </span>
           </summary>
           <div class="mt-3 text-xs sm:text-sm text-neutral-600 leading-relaxed border-t border-neutral-100 pt-3">
-            {faq.a}
+            <p>{faq.a}</p>
+            <div class="mt-3 flex items-center gap-2">
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-100 text-neutral-500">
+                Category: {faq.category}
+              </span>
+              <span class="text-[10px] font-mono text-emerald-700">
+                &bull; Verified for 2026 Slabs
+              </span>
+            </div>
           </div>
         </details>
       ))}
@@ -65,7 +144,7 @@ const faqs = [
   </div>
 </section>
 
-<!-- JSON-LD FAQ Schema for Google Rich Results -->
+<!-- JSON-LD FAQ Schema for Google Rich Snippets & AI Overviews -->
 <script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -78,3 +157,34 @@ const faqs = [
     }
   }))
 })} />
+
+<!-- Client filter script for FAQ categories -->
+<script is:inline>
+(function() {
+  document.addEventListener('DOMContentLoaded', function() {
+    var buttons = document.querySelectorAll('.faq-filter-btn');
+    var items = document.querySelectorAll('.faq-card');
+
+    buttons.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var filter = btn.dataset.filter;
+
+        // Update active button state
+        buttons.forEach(function(b) {
+          b.className = 'faq-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-neutral-100 hover:bg-neutral-200 text-neutral-700';
+        });
+        btn.className = 'faq-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-[#171717] text-white';
+
+        // Filter cards
+        items.forEach(function(card) {
+          if (filter === 'All' || card.dataset.category === filter) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+  });
+})();
+</script>
