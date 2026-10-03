@@ -1,6 +1,7 @@
 ---
 // src/components/Header.astro
 import LanguagePicker from './LanguagePicker.astro';
+import ThemeToggle from './ThemeToggle.astro';
 import { useTranslations } from '../i18n/utils';
 import type { SupportedLanguage } from '../i18n/ui';
 
@@ -13,37 +14,38 @@ const t = useTranslations(lang);
 const homeHref = lang === 'en' ? '/' : `/${lang}/`;
 ---
 
-<header class="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md border-b border-[#ebebeb] transition-all">
+<header class="sticky top-0 z-50 w-full bg-white/90 dark:bg-black/90 backdrop-blur-md border-b border-[#ebebeb] dark:border-[#262626] transition-all">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
     <!-- Brand / Logo -->
     <a href={homeHref} class="flex items-center gap-2.5 group">
-      <div class="w-8 h-8 rounded-lg bg-[#171717] flex items-center justify-center text-white font-bold text-sm shadow-sm group-hover:scale-105 transition-transform">
+      <div class="w-8 h-8 rounded-lg bg-[#171717] dark:bg-white flex items-center justify-center text-white dark:text-black font-bold text-sm shadow-sm group-hover:scale-105 transition-all">
         ₹
       </div>
       <div>
-        <span class="font-semibold text-base tracking-tight text-[#171717]">{t("site.name")}</span>
-        <span class="hidden sm:inline-block ml-2 text-[11px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-neutral-100 text-neutral-600 border border-neutral-200">
+        <span class="font-semibold text-base tracking-tight text-[#171717] dark:text-white">{t("site.name")}</span>
+        <span class="hidden sm:inline-block ml-2 text-[11px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-800">
           India 2026 Slabs
         </span>
       </div>
     </a>
 
     <!-- Navigation / Quick Anchor Links -->
-    <nav class="hidden md:flex items-center gap-5 text-sm text-[#4d4d4d]">
-      <a href="#calculator" class="hover:text-[#171717] transition-colors font-medium">{t("nav.calculator")}</a>
-      <a href="#comparison" class="hover:text-[#171717] transition-colors font-medium">{t("nav.comparison")}</a>
-      <a href="#reverse-solver" class="hover:text-[#171717] transition-colors font-medium">{t("nav.solver")}</a>
-      <a href="#fee-guide" class="hover:text-[#171717] transition-colors font-medium">{t("nav.guide")}</a>
-      <a href="#faq" class="hover:text-[#171717] transition-colors font-medium">{t("nav.faq")}</a>
+    <nav class="hidden md:flex items-center gap-5 text-sm text-[#4d4d4d] dark:text-neutral-400">
+      <a href="#calculator" class="hover:text-[#171717] dark:hover:text-white transition-colors font-medium">{t("nav.calculator")}</a>
+      <a href="#comparison" class="hover:text-[#171717] dark:hover:text-white transition-colors font-medium">{t("nav.comparison")}</a>
+      <a href="#reverse-solver" class="hover:text-[#171717] dark:hover:text-white transition-colors font-medium">{t("nav.solver")}</a>
+      <a href="#fee-guide" class="hover:text-[#171717] dark:hover:text-white transition-colors font-medium">{t("nav.guide")}</a>
+      <a href="#faq" class="hover:text-[#171717] dark:hover:text-white transition-colors font-medium">{t("nav.faq")}</a>
     </nav>
 
-    <!-- Right Side Language Selector & CTA -->
-    <div class="flex items-center gap-2.5 sm:gap-3">
+    <!-- Right Side Language Selector, Dark Mode Toggle & CTA -->
+    <div class="flex items-center gap-2 sm:gap-2.5">
       <LanguagePicker currentLang={lang} />
+      <ThemeToggle />
       
       <a
         href="#calculator"
-        class="hidden sm:inline-flex items-center justify-center h-9 px-4 rounded-full bg-[#171717] hover:bg-[#262626] text-white text-xs font-medium transition-colors shadow-sm"
+        class="hidden sm:inline-flex items-center justify-center h-9 px-4 rounded-full bg-[#171717] hover:bg-[#262626] dark:bg-white dark:hover:bg-neutral-200 text-white dark:text-black text-xs font-medium transition-colors shadow-sm"
       >
         {t("nav.cta")}
       </a>

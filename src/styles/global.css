@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   :root {
     --canvas: #fafafa;
@@ -13,6 +15,17 @@
     --brand-amazon: #f59e0b;
     --brand-flipkart: #2563eb;
     --brand-meesho: #db2777;
+  }
+
+  .dark {
+    --canvas: #000000;
+    --canvas-elevated: #0a0a0a;
+    --ink: #ededed;
+    --body: #a1a1a1;
+    --mute: #737373;
+    --faint: #525252;
+    --hairline: #262626;
+    --hairline-soft: #171717;
   }
 
   body {
@@ -35,8 +48,8 @@
 
 /* Custom subtle card styles per DESIGN.md */
 .card-ver {
-  background: #ffffff;
-  border: 1px solid #ebebeb;
+  background: var(--canvas-elevated);
+  border: 1px solid var(--hairline);
   border-radius: 12px;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
 }
@@ -47,4 +60,13 @@
 .card-ver-hover:hover {
   border-color: #d4d4d4;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.dark .card-ver {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
+}
+
+.dark .card-ver-hover:hover {
+  border-color: #404040;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
 }

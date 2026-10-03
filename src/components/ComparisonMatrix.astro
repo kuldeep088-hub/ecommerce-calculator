@@ -11,72 +11,72 @@ const { lang = 'en' } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<section id="comparison" class="py-12 bg-neutral-100/50 border-y border-[#ebebeb]">
+<section id="comparison" class="py-12 bg-neutral-100/50 dark:bg-[#050505] border-y border-[#ebebeb] dark:border-[#262626]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
       <div>
-        <div class="inline-flex items-center gap-1.5 text-xs font-mono text-neutral-500 uppercase tracking-wider mb-1.5">
+        <div class="inline-flex items-center gap-1.5 text-xs font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-1.5">
           <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
           {t("cmp.badge")}
         </div>
-        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-[#171717]">
+        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-[#171717] dark:text-white">
           {t("cmp.title")}
         </h2>
-        <p class="text-sm text-neutral-600 mt-1">
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
           {t("cmp.sub")}
         </p>
       </div>
 
       <div class="flex items-center gap-2">
-        <span class="text-xs font-mono text-neutral-500">Auto-synced with calculator</span>
+        <span class="text-xs font-mono text-neutral-500 dark:text-neutral-400">Auto-synced with calculator</span>
       </div>
     </div>
 
     <!-- Comparison Table Card -->
-    <div class="bg-white border border-[#ebebeb] rounded-2xl overflow-hidden shadow-xs">
+    <div class="bg-white dark:bg-[#0a0a0a] border border-[#ebebeb] dark:border-[#262626] rounded-2xl overflow-hidden shadow-xs">
       <div class="overflow-x-auto">
         <table class="w-full text-left text-xs sm:text-sm">
           
           <!-- Head -->
           <thead>
-            <tr class="border-b border-neutral-200 bg-neutral-50/70 font-semibold text-neutral-700">
+            <tr class="border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/70 dark:bg-[#111111] font-semibold text-neutral-700 dark:text-neutral-300">
               <th class="p-4 sm:p-5 w-1/4">Metric / Fee Breakdown</th>
               
               <!-- Meesho -->
-              <th class="p-4 sm:p-5 w-1/4 border-l border-neutral-200">
+              <th class="p-4 sm:p-5 w-1/4 border-l border-neutral-200 dark:border-neutral-800">
                 <div class="flex items-center justify-between">
                   <div class="flex items-center gap-2">
                     <span class="w-2.5 h-2.5 rounded-full bg-pink-500"></span>
-                    <span class="font-bold text-neutral-900">Meesho</span>
+                    <span class="font-bold text-neutral-900 dark:text-white">Meesho</span>
                   </div>
-                  <span id="badgeWinnerMeesho" class="hidden text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold">
+                  <span id="badgeWinnerMeesho" class="hidden text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 border border-emerald-300/50 dark:border-emerald-800/50 font-bold">
                     WINNER 🏆
                   </span>
                 </div>
               </th>
 
               <!-- Flipkart -->
-              <th class="p-4 sm:p-5 w-1/4 border-l border-neutral-200">
+              <th class="p-4 sm:p-5 w-1/4 border-l border-neutral-200 dark:border-neutral-800">
                 <div class="flex items-center justify-between">
                   <div class="flex items-center gap-2">
                     <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
-                    <span class="font-bold text-neutral-900">Flipkart</span>
+                    <span class="font-bold text-neutral-900 dark:text-white">Flipkart</span>
                   </div>
-                  <span id="badgeWinnerFlipkart" class="hidden text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold">
+                  <span id="badgeWinnerFlipkart" class="hidden text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 border border-emerald-300/50 dark:border-emerald-800/50 font-bold">
                     WINNER 🏆
                   </span>
                 </div>
               </th>
 
               <!-- Amazon -->
-              <th class="p-4 sm:p-5 w-1/4 border-l border-neutral-200">
+              <th class="p-4 sm:p-5 w-1/4 border-l border-neutral-200 dark:border-neutral-800">
                 <div class="flex items-center justify-between">
                   <div class="flex items-center gap-2">
                     <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
-                    <span class="font-bold text-neutral-900">Amazon India</span>
+                    <span class="font-bold text-neutral-900 dark:text-white">Amazon India</span>
                   </div>
-                  <span id="badgeWinnerAmazon" class="hidden text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold">
+                  <span id="badgeWinnerAmazon" class="hidden text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 border border-emerald-300/50 dark:border-emerald-800/50 font-bold">
                     WINNER 🏆
                   </span>
                 </div>
@@ -86,66 +86,66 @@ const t = useTranslations(lang);
           </thead>
 
           <!-- Body -->
-          <tbody class="divide-y divide-neutral-100 font-mono">
+          <tbody class="divide-y divide-neutral-100 dark:divide-neutral-800/80 font-mono">
             
-            <tr class="hover:bg-neutral-50/50">
-              <td class="p-4 font-sans text-neutral-600 font-medium">Referral Commission</td>
-              <td class="p-4 border-l border-neutral-100 text-emerald-700 font-semibold" id="cmpCommMeesho">0% (₹0.00)</td>
-              <td class="p-4 border-l border-neutral-100 text-neutral-800" id="cmpCommFlipkart">15.0% (₹80.22)</td>
-              <td class="p-4 border-l border-neutral-100 text-neutral-800" id="cmpCommAmazon">13.5% (₹72.20)</td>
+            <tr class="hover:bg-neutral-50/50 dark:hover:bg-neutral-900/40">
+              <td class="p-4 font-sans text-neutral-600 dark:text-neutral-400 font-medium">Referral Commission</td>
+              <td class="p-4 border-l border-neutral-100 dark:border-neutral-800/80 text-emerald-700 dark:text-emerald-400 font-semibold" id="cmpCommMeesho">0% (₹0.00)</td>
+              <td class="p-4 border-l border-neutral-100 dark:border-neutral-800/80 text-neutral-800 dark:text-neutral-200" id="cmpCommFlipkart">15.0% (₹80.22)</td>
+              <td class="p-4 border-l border-neutral-100 dark:border-neutral-800/80 text-neutral-800 dark:text-neutral-200" id="cmpCommAmazon">13.5% (₹72.20)</td>
             </tr>
 
-            <tr class="hover:bg-neutral-50/50">
-              <td class="p-4 font-sans text-neutral-600">Closing / Fixed Fee</td>
-              <td class="p-4 border-l border-neutral-100 text-neutral-700" id="cmpFixedMeesho">₹0.00</td>
-              <td class="p-4 border-l border-neutral-100 text-neutral-700" id="cmpFixedFlipkart">₹30.00</td>
-              <td class="p-4 border-l border-neutral-100 text-neutral-700" id="cmpFixedAmazon">₹25.00</td>
+            <tr class="hover:bg-neutral-50/50 dark:hover:bg-neutral-900/40">
+              <td class="p-4 font-sans text-neutral-600 dark:text-neutral-400">Closing / Fixed Fee</td>
+              <td class="p-4 border-l border-neutral-100 dark:border-neutral-800/80 text-neutral-700 dark:text-neutral-300" id="cmpFixedMeesho">₹0.00</td>
+              <td class="p-4 border-l border-neutral-100 dark:border-neutral-800/80 text-neutral-700 dark:text-neutral-300" id="cmpFixedFlipkart">₹30.00</td>
+              <td class="p-4 border-l border-neutral-100 dark:border-neutral-800/80 text-neutral-700 dark:text-neutral-300" id="cmpFixedAmazon">₹25.00</td>
             </tr>
 
-            <tr class="hover:bg-neutral-50/50">
-              <td class="p-4 font-sans text-neutral-600">Payment Collection Fee (2%)</td>
-              <td class="p-4 border-l border-neutral-100 text-neutral-700" id="cmpCollectMeesho">₹0.00</td>
-              <td class="p-4 border-l border-neutral-100 text-neutral-700" id="cmpCollectFlipkart">₹11.98</td>
-              <td class="p-4 border-l border-neutral-100 text-neutral-700" id="cmpCollectAmazon">₹11.98</td>
+            <tr class="hover:bg-neutral-50/50 dark:hover:bg-neutral-900/40">
+              <td class="p-4 font-sans text-neutral-600 dark:text-neutral-400">Payment Collection Fee (2%)</td>
+              <td class="p-4 border-l border-neutral-100 dark:border-neutral-800/80 text-neutral-700 dark:text-neutral-300" id="cmpCollectMeesho">₹0.00</td>
+              <td class="p-4 border-l border-neutral-100 dark:border-neutral-800/80 text-neutral-700 dark:text-neutral-300" id="cmpCollectFlipkart">₹11.98</td>
+              <td class="p-4 border-l border-neutral-100 dark:border-neutral-800/80 text-neutral-700 dark:text-neutral-300" id="cmpCollectAmazon">₹11.98</td>
             </tr>
 
-            <tr class="hover:bg-neutral-50/50">
-              <td class="p-4 font-sans text-neutral-600">Forward Shipping Fee</td>
-              <td class="p-4 border-l border-neutral-100 text-neutral-700" id="cmpShipMeesho">₹49.00</td>
-              <td class="p-4 border-l border-neutral-100 text-neutral-700" id="cmpShipFlipkart">₹69.00</td>
-              <td class="p-4 border-l border-neutral-100 text-neutral-700" id="cmpShipAmazon">₹74.00</td>
+            <tr class="hover:bg-neutral-50/50 dark:hover:bg-neutral-900/40">
+              <td class="p-4 font-sans text-neutral-600 dark:text-neutral-400">Forward Shipping Fee</td>
+              <td class="p-4 border-l border-neutral-100 dark:border-neutral-800/80 text-neutral-700 dark:text-neutral-300" id="cmpShipMeesho">₹49.00</td>
+              <td class="p-4 border-l border-neutral-100 dark:border-neutral-800/80 text-neutral-700 dark:text-neutral-300" id="cmpShipFlipkart">₹69.00</td>
+              <td class="p-4 border-l border-neutral-100 dark:border-neutral-800/80 text-neutral-700 dark:text-neutral-300" id="cmpShipAmazon">₹74.00</td>
             </tr>
 
-            <tr class="hover:bg-neutral-50/50">
-              <td class="p-4 font-sans text-neutral-600">GST on Marketplace Fees (18%)</td>
-              <td class="p-4 border-l border-neutral-100 text-rose-600" id="cmpGstMeesho">₹8.82</td>
-              <td class="p-4 border-l border-neutral-100 text-rose-600" id="cmpGstFlipkart">₹34.42</td>
-              <td class="p-4 border-l border-neutral-100 text-rose-600" id="cmpGstAmazon">₹32.97</td>
+            <tr class="hover:bg-neutral-50/50 dark:hover:bg-neutral-900/40">
+              <td class="p-4 font-sans text-neutral-600 dark:text-neutral-400">GST on Marketplace Fees (18%)</td>
+              <td class="p-4 border-l border-neutral-100 dark:border-neutral-800/80 text-rose-600 dark:text-rose-400" id="cmpGstMeesho">₹8.82</td>
+              <td class="p-4 border-l border-neutral-100 dark:border-neutral-800/80 text-rose-600 dark:text-rose-400" id="cmpGstFlipkart">₹34.42</td>
+              <td class="p-4 border-l border-neutral-100 dark:border-neutral-800/80 text-rose-600 dark:text-rose-400" id="cmpGstAmazon">₹32.97</td>
             </tr>
 
-            <tr class="bg-neutral-50/60 font-semibold">
-              <td class="p-4 font-sans text-neutral-900">Total Deductions</td>
-              <td class="p-4 border-l border-neutral-200 text-neutral-900" id="cmpTotalDeductMeesho">₹63.70</td>
-              <td class="p-4 border-l border-neutral-200 text-neutral-900" id="cmpTotalDeductFlipkart">₹231.50</td>
-              <td class="p-4 border-l border-neutral-200 text-neutral-900" id="cmpTotalDeductAmazon">₹222.03</td>
+            <tr class="bg-neutral-50/60 dark:bg-neutral-900/80 font-semibold">
+              <td class="p-4 font-sans text-neutral-900 dark:text-white">Total Deductions</td>
+              <td class="p-4 border-l border-neutral-200 dark:border-neutral-800 text-neutral-900 dark:text-white" id="cmpTotalDeductMeesho">₹63.70</td>
+              <td class="p-4 border-l border-neutral-200 dark:border-neutral-800 text-neutral-900 dark:text-white" id="cmpTotalDeductFlipkart">₹231.50</td>
+              <td class="p-4 border-l border-neutral-200 dark:border-neutral-800 text-neutral-900 dark:text-white" id="cmpTotalDeductAmazon">₹222.03</td>
             </tr>
 
-            <tr class="bg-blue-50/30">
-              <td class="p-4 font-sans text-blue-900 font-semibold">Bank Settlement Payout</td>
-              <td class="p-4 border-l border-neutral-100 font-bold text-blue-700" id="cmpBankMeesho">₹535.30</td>
-              <td class="p-4 border-l border-neutral-100 font-bold text-blue-700" id="cmpBankFlipkart">₹367.50</td>
-              <td class="p-4 border-l border-neutral-100 font-bold text-blue-700" id="cmpBankAmazon">₹376.97</td>
+            <tr class="bg-blue-50/30 dark:bg-blue-950/30">
+              <td class="p-4 font-sans text-blue-900 dark:text-blue-300 font-semibold">Bank Settlement Payout</td>
+              <td class="p-4 border-l border-neutral-100 dark:border-neutral-800/80 font-bold text-blue-700 dark:text-blue-400" id="cmpBankMeesho">₹535.30</td>
+              <td class="p-4 border-l border-neutral-100 dark:border-neutral-800/80 font-bold text-blue-700 dark:text-blue-400" id="cmpBankFlipkart">₹367.50</td>
+              <td class="p-4 border-l border-neutral-100 dark:border-neutral-800/80 font-bold text-blue-700 dark:text-blue-400" id="cmpBankAmazon">₹376.97</td>
             </tr>
 
-            <tr class="hover:bg-neutral-50/50">
-              <td class="p-4 font-sans text-neutral-600">Expected Return Loss Buffer</td>
-              <td class="p-4 border-l border-neutral-100 text-amber-700" id="cmpReturnMeesho">- ₹39.80</td>
-              <td class="p-4 border-l border-neutral-100 text-amber-700" id="cmpReturnFlipkart">- ₹52.40</td>
-              <td class="p-4 border-l border-neutral-100 text-amber-700" id="cmpReturnAmazon">- ₹54.20</td>
+            <tr class="hover:bg-neutral-50/50 dark:hover:bg-neutral-900/40">
+              <td class="p-4 font-sans text-neutral-600 dark:text-neutral-400">Expected Return Loss Buffer</td>
+              <td class="p-4 border-l border-neutral-100 dark:border-neutral-800/80 text-amber-700 dark:text-amber-400" id="cmpReturnMeesho">- ₹39.80</td>
+              <td class="p-4 border-l border-neutral-100 dark:border-neutral-800/80 text-amber-700 dark:text-amber-400" id="cmpReturnFlipkart">- ₹52.40</td>
+              <td class="p-4 border-l border-neutral-100 dark:border-neutral-800/80 text-amber-700 dark:text-amber-400" id="cmpReturnAmazon">- ₹54.20</td>
             </tr>
 
             <!-- Final Profit Row -->
-            <tr class="bg-neutral-900 text-white font-bold text-sm sm:text-base">
+            <tr class="bg-neutral-900 dark:bg-[#141414] text-white font-bold text-sm sm:text-base border-t border-transparent dark:border-neutral-800">
               <td class="p-4 sm:p-5 font-sans">
                 True In-Hand Net Profit
                 <span class="block text-[11px] font-normal text-neutral-400 font-sans">After COGS &amp; Return loss</span>
@@ -156,11 +156,11 @@ const t = useTranslations(lang);
             </tr>
 
             <!-- Net Margin % Row -->
-            <tr class="bg-neutral-800 text-neutral-300 text-xs sm:text-sm">
+            <tr class="bg-neutral-800 dark:bg-[#0f0f0f] text-neutral-300 dark:text-neutral-400 text-xs sm:text-sm">
               <td class="p-3.5 sm:p-4 font-sans text-neutral-400 font-medium">Net Profit Margin %</td>
-              <td class="p-3.5 sm:p-4 border-l border-neutral-700 font-bold text-white" id="cmpMarginMeesho">43.5%</td>
-              <td class="p-3.5 sm:p-4 border-l border-neutral-700 font-bold text-white" id="cmpMarginFlipkart">13.4%</td>
-              <td class="p-3.5 sm:p-4 border-l border-neutral-700 font-bold text-white" id="cmpMarginAmazon">14.7%</td>
+              <td class="p-3.5 sm:p-4 border-l border-neutral-700 dark:border-neutral-800 font-bold text-white" id="cmpMarginMeesho">43.5%</td>
+              <td class="p-3.5 sm:p-4 border-l border-neutral-700 dark:border-neutral-800 font-bold text-white" id="cmpMarginFlipkart">13.4%</td>
+              <td class="p-3.5 sm:p-4 border-l border-neutral-700 dark:border-neutral-800 font-bold text-white" id="cmpMarginAmazon">14.7%</td>
             </tr>
 
           </tbody>

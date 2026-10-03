@@ -90,18 +90,18 @@ const t = useTranslations(lang);
 const categories = ["All", "Profit & Pricing", "RTO & Returns", "Marketplace Fees", "GST & Taxes"];
 ---
 
-<section id="faq" class="py-16 bg-white border-t border-[#ebebeb]">
+<section id="faq" class="py-16 bg-white dark:bg-[#000000] border-t border-[#ebebeb] dark:border-[#262626]">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <div class="text-center mb-10">
-      <div class="inline-flex items-center gap-1.5 text-xs font-mono text-neutral-500 uppercase tracking-wider mb-2">
+      <div class="inline-flex items-center gap-1.5 text-xs font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-2">
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
         {t("faq.badge")}
       </div>
-      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-[#171717]">
+      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-[#171717] dark:text-white">
         {t("faq.title")}
       </h2>
-      <p class="text-sm text-neutral-600 mt-2 max-w-2xl mx-auto">
+      <p class="text-sm text-neutral-600 dark:text-neutral-400 mt-2 max-w-2xl mx-auto">
         {t("faq.sub")}
       </p>
 
@@ -111,10 +111,10 @@ const categories = ["All", "Profit & Pricing", "RTO & Returns", "Marketplace Fee
           <button
             type="button"
             data-filter={cat}
-            class={`faq-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+            class={`faq-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all border ${
               idx === 0
-                ? "bg-[#171717] text-white"
-                : "bg-neutral-100 hover:bg-neutral-200 text-neutral-700"
+                ? "bg-[#171717] dark:bg-white text-white dark:text-black border-transparent"
+                : "bg-neutral-100 dark:bg-[#141414] hover:bg-neutral-200 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-300 border-neutral-200/50 dark:border-neutral-800"
             }`}
           >
             {cat}
@@ -127,22 +127,22 @@ const categories = ["All", "Profit & Pricing", "RTO & Returns", "Marketplace Fee
     <div class="space-y-3.5" id="faqAccordionContainer">
       {faqs.map((faq) => (
         <details
-          class="faq-card group rounded-2xl border border-neutral-200 bg-neutral-50/50 p-5 transition-all open:bg-white open:border-neutral-300 open:shadow-xs"
+          class="faq-card group rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-[#0a0a0a] p-5 transition-all open:bg-white dark:open:bg-[#111111] open:border-neutral-300 dark:open:border-neutral-700 open:shadow-xs"
           data-category={faq.category}
         >
-          <summary class="flex cursor-pointer items-center justify-between text-sm sm:text-base font-semibold text-neutral-900 list-none gap-4">
+          <summary class="flex cursor-pointer items-center justify-between text-sm sm:text-base font-semibold text-neutral-900 dark:text-white list-none gap-4">
             <span class="leading-snug">{faq.q}</span>
-            <span class="ml-2 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-neutral-300 text-xs text-neutral-500 group-open:rotate-180 transition-transform bg-white">
+            <span class="ml-2 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-neutral-300 dark:border-neutral-700 text-xs text-neutral-500 dark:text-neutral-400 group-open:rotate-180 transition-transform bg-white dark:bg-[#1a1a1a]">
               &darr;
             </span>
           </summary>
-          <div class="mt-3 text-xs sm:text-sm text-neutral-600 leading-relaxed border-t border-neutral-100 pt-3">
+          <div class="mt-3 text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed border-t border-neutral-100 dark:border-neutral-800 pt-3">
             <p>{faq.a}</p>
             <div class="mt-3 flex items-center gap-2">
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-100 text-neutral-500">
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400">
                 Category: {faq.category}
               </span>
-              <span class="text-[10px] font-mono text-emerald-700">
+              <span class="text-[10px] font-mono text-emerald-700 dark:text-emerald-400">
                 &bull; Verified for 2026 Slabs
               </span>
             </div>
@@ -181,9 +181,9 @@ const categories = ["All", "Profit & Pricing", "RTO & Returns", "Marketplace Fee
 
         // Update active button state
         buttons.forEach(function(b) {
-          b.className = 'faq-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-neutral-100 hover:bg-neutral-200 text-neutral-700';
+          b.className = 'faq-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all border bg-neutral-100 dark:bg-[#141414] hover:bg-neutral-200 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-300 border-neutral-200/50 dark:border-neutral-800';
         });
-        btn.className = 'faq-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all bg-[#171717] text-white';
+        btn.className = 'faq-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all border bg-[#171717] dark:bg-white text-white dark:text-black border-transparent';
 
         // Filter cards
         items.forEach(function(card) {

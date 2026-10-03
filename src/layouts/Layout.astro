@@ -74,8 +74,23 @@ const hreflangs = getHreflangList(domain);
       },
       "description": description
     })} />
+
+    <!-- Dark Mode Init Script (Prevents FOUC) -->
+    <script is:inline>
+      (function() {
+        try {
+          const storedTheme = localStorage.getItem('theme');
+          const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (storedTheme === 'dark' || (!storedTheme && supportDarkMode)) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (_) {}
+      })();
+    </script>
   </head>
-  <body class="min-h-screen flex flex-col bg-[#fafafa] text-[#171717] antialiased selection:bg-neutral-900 selection:text-white">
+  <body class="min-h-screen flex flex-col bg-[#fafafa] dark:bg-[#000000] text-[#171717] dark:text-[#ededed] antialiased selection:bg-neutral-900 selection:text-white dark:selection:bg-neutral-100 dark:selection:text-black transition-colors duration-150">
     <Header lang={lang} />
     <main class="flex-1">
       <slot />
