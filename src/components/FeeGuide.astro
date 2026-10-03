@@ -1,0 +1,189 @@
+---
+// src/components/FeeGuide.astro
+---
+
+<section id="fee-guide" class="py-16 bg-neutral-50/50 border-t border-[#ebebeb]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="max-w-3xl mb-12">
+      <div class="inline-flex items-center gap-1.5 text-xs font-mono text-neutral-500 uppercase tracking-wider mb-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-neutral-800"></span>
+        Reference Documentation
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-[#171717]">
+        Indian Marketplace Fee Structures Explained (2026 Slabs)
+      </h2>
+      <p class="text-sm text-neutral-600 mt-2">
+        Understand how Amazon, Flipkart, and Meesho calculate commissions, closing fees, courier weight slabs, and government deductions.
+      </p>
+    </div>
+
+    <!-- 3-Column Marketplace Breakdown Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      
+      <!-- Amazon India Card -->
+      <div class="card-ver p-6 bg-white border border-[#ebebeb] flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-bold text-lg text-neutral-900">Amazon India</span>
+            <span class="text-xs font-mono px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200">Easy Ship &amp; FBA</span>
+          </div>
+
+          <h3 class="text-xs font-semibold uppercase tracking-wider text-neutral-700 mb-2">Closing Fee Slabs</h3>
+          <div class="rounded-xl border border-neutral-100 overflow-hidden text-xs mb-4">
+            <table class="w-full text-left">
+              <tbody class="divide-y divide-neutral-100 font-mono">
+                <tr class="bg-neutral-50/50">
+                  <td class="p-2 text-neutral-600 font-sans">₹0 &ndash; ₹250</td>
+                  <td class="p-2 font-bold text-right text-neutral-900">₹5.00</td>
+                </tr>
+                <tr>
+                  <td class="p-2 text-neutral-600 font-sans">₹251 &ndash; ₹500</td>
+                  <td class="p-2 font-bold text-right text-neutral-900">₹10.00</td>
+                </tr>
+                <tr class="bg-neutral-50/50">
+                  <td class="p-2 text-neutral-600 font-sans">₹501 &ndash; ₹1,000</td>
+                  <td class="p-2 font-bold text-right text-neutral-900">₹25.00</td>
+                </tr>
+                <tr>
+                  <td class="p-2 text-neutral-600 font-sans">₹1,001 &ndash; ₹2,000</td>
+                  <td class="p-2 font-bold text-right text-neutral-900">₹35.00</td>
+                </tr>
+                <tr class="bg-neutral-50/50">
+                  <td class="p-2 text-neutral-600 font-sans">₹2,001+</td>
+                  <td class="p-2 font-bold text-right text-neutral-900">₹50.00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="text-xs text-neutral-500 leading-relaxed">
+            Amazon also charges category referral fees (5% to 15%) and weight handling fees starting at ₹44 (Local), ₹53 (Regional), and ₹74 (National) for the first 500g.
+          </p>
+        </div>
+      </div>
+
+      <!-- Flipkart Card -->
+      <div class="card-ver p-6 bg-white border border-[#ebebeb] flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-bold text-lg text-neutral-900">Flipkart</span>
+            <span class="text-xs font-mono px-2 py-0.5 rounded-full bg-blue-50 text-blue-800 border border-blue-200">Non-FBF &amp; FBF</span>
+          </div>
+
+          <h3 class="text-xs font-semibold uppercase tracking-wider text-neutral-700 mb-2">Fixed Fee Slabs</h3>
+          <div class="rounded-xl border border-neutral-100 overflow-hidden text-xs mb-4">
+            <table class="w-full text-left">
+              <tbody class="divide-y divide-neutral-100 font-mono">
+                <tr class="bg-neutral-50/50">
+                  <td class="p-2 text-neutral-600 font-sans">₹0 &ndash; ₹300</td>
+                  <td class="p-2 font-bold text-right text-neutral-900">₹13.00</td>
+                </tr>
+                <tr>
+                  <td class="p-2 text-neutral-600 font-sans">₹301 &ndash; ₹500</td>
+                  <td class="p-2 font-bold text-right text-neutral-900">₹17.00</td>
+                </tr>
+                <tr class="bg-neutral-50/50">
+                  <td class="p-2 text-neutral-600 font-sans">₹501 &ndash; ₹1,000</td>
+                  <td class="p-2 font-bold text-right text-neutral-900">₹30.00</td>
+                </tr>
+                <tr>
+                  <td class="p-2 text-neutral-600 font-sans">₹1,001+</td>
+                  <td class="p-2 font-bold text-right text-neutral-900">₹52.00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="text-xs text-neutral-500 leading-relaxed">
+            Flipkart charges a 2% collection fee on order payments. Shipping fees depend on seller tier (Bronze, Silver, Gold) and distance (Local ₹44, Regional ₹54, National ₹69).
+          </p>
+        </div>
+      </div>
+
+      <!-- Meesho Card -->
+      <div class="card-ver p-6 bg-white border border-[#ebebeb] flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-bold text-lg text-neutral-900">Meesho</span>
+            <span class="text-xs font-mono px-2 py-0.5 rounded-full bg-pink-50 text-pink-800 border border-pink-200">Zero Commission</span>
+          </div>
+
+          <h3 class="text-xs font-semibold uppercase tracking-wider text-neutral-700 mb-2">Shipping Weight Slabs</h3>
+          <div class="rounded-xl border border-neutral-100 overflow-hidden text-xs mb-4">
+            <table class="w-full text-left">
+              <tbody class="divide-y divide-neutral-100 font-mono">
+                <tr class="bg-neutral-50/50">
+                  <td class="p-2 text-neutral-600 font-sans">0 &ndash; 500g</td>
+                  <td class="p-2 font-bold text-right text-neutral-900">₹49.00</td>
+                </tr>
+                <tr>
+                  <td class="p-2 text-neutral-600 font-sans">501g &ndash; 1,000g</td>
+                  <td class="p-2 font-bold text-right text-neutral-900">₹85.00</td>
+                </tr>
+                <tr class="bg-neutral-50/50">
+                  <td class="p-2 text-neutral-600 font-sans">1,001g &ndash; 1,500g</td>
+                  <td class="p-2 font-bold text-right text-neutral-900">₹125.00</td>
+                </tr>
+                <tr>
+                  <td class="p-2 text-neutral-600 font-sans">Each addl 500g</td>
+                  <td class="p-2 font-bold text-right text-neutral-900">+ ₹40.00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="text-xs text-neutral-500 leading-relaxed">
+            Meesho has 0% commission and ₹0 fixed closing fees. However, sellers must budget for customer return reverse courier penalties (approx ₹120-150) and ruined packaging.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- GST & ITC Knowledge Box -->
+    <div class="card-ver p-6 sm:p-8 bg-white border border-[#ebebeb]">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+            Important Tax Tip
+          </span>
+          <h3 class="text-xl font-semibold text-neutral-900 mt-2">
+            Claiming GST Input Tax Credit (ITC) on Marketplace Fees
+          </h3>
+          <p class="text-sm text-neutral-600 mt-2 leading-relaxed">
+            Did you know? The 18% GST deducted by Amazon, Flipkart, and Meesho on their commission, closing fees, and shipping is <strong>100% claimable as Input Tax Credit (ITC)</strong> on your monthly GSTR-3B filings!
+          </p>
+          <ul class="text-xs text-neutral-600 space-y-2 mt-4">
+            <li class="flex items-center gap-2">
+              <span class="text-emerald-500 font-bold">&check;</span> Download monthly Tax Invoices from Seller Central / Seller Hub.
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-emerald-500 font-bold">&check;</span> Match GSTR-2B with the GST charged on seller commission.
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-emerald-500 font-bold">&check;</span> Offset against output GST payable on customer sales.
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-neutral-50 border border-neutral-200 rounded-xl p-5 text-xs text-neutral-700 space-y-3 font-mono">
+          <div class="text-neutral-500 font-sans uppercase font-semibold text-[11px]">Example Payout vs Tax Reconciliation</div>
+          <div class="flex justify-between border-b border-neutral-200 pb-2">
+            <span>Marketplace Fee Before Tax:</span>
+            <span>₹100.00</span>
+          </div>
+          <div class="flex justify-between border-b border-neutral-200 pb-2 text-rose-600">
+            <span>18% GST Deducted from Payout:</span>
+            <span>- ₹18.00</span>
+          </div>
+          <div class="flex justify-between text-emerald-700 font-bold">
+            <span>ITC Cash Refund / Offset in GSTR-3B:</span>
+            <span>+ ₹18.00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

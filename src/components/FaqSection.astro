@@ -1,0 +1,80 @@
+---
+// src/components/FaqSection.astro
+
+const faqs = [
+  {
+    q: "Why is my real in-hand profit lower than competitor calculators show?",
+    a: "Most online calculators (like EcomSarthi) only calculate profit on orders that are successfully delivered. In real-world Indian e-commerce, Cash on Delivery (COD) orders suffer from 15% to 30% RTO (Return to Origin) and Customer Returns. For customer returns, marketplaces charge sellers reverse courier penalties (approx ₹120-150) plus wasted packaging. Our calculator factors in this blended loss so you don't face unexpected bank shortfalls."
+  },
+  {
+    q: "What is the difference between Bank Settlement and Net In-Hand Profit?",
+    a: "Bank Settlement is the actual amount the marketplace transfers into your bank account after deducting their commission, fixed fee, shipping, GST on fees, and TCS/TDS. Net In-Hand Profit is what you actually keep after also subtracting your Product Cost (COGS), Packaging Material, Ad Spend (PPC), and RTO return losses."
+  },
+  {
+    q: "How does Meesho make money if they charge 0% commission?",
+    a: "Meesho charges 0% commission from sellers to encourage aggressive pricing and wide catalog selection. Meesho earns revenue through seller ad campaigns (Meesho Ads) and logistics partner margins."
+  },
+  {
+    q: "Can I claim back the 18% GST charged by Amazon, Flipkart, and Meesho?",
+    a: "Yes! The 18% GST deducted by marketplaces on commission, closing fees, and shipping is a legitimate business expenditure. If you have a regular GST registration, you can claim 100% of this amount as Input Tax Credit (ITC) in your monthly GSTR-3B filings to offset output GST."
+  },
+  {
+    q: "What are the TCS and TDS deductions on Indian marketplace payouts?",
+    a: "Under the CGST Act, e-commerce platforms deduct 1% TCS (0.5% CGST + 0.5% SGST or 1% IGST) on net taxable supplies. Additionally, under Section 194-O of the Income Tax Act, marketplaces deduct 0.1% TDS on the gross sale amount. Both amounts can be claimed back in your annual income tax and monthly GST filings."
+  },
+  {
+    q: "How can I reduce high RTO losses on Meesho and Flipkart?",
+    a: "1) Confirm COD orders via automated WhatsApp verification before dispatch. 2) Ensure accurate product dimensions and truthful photos to prevent 'item not as expected' returns. 3) Pack in sturdy, tamper-evident flyer bags to avoid courier damage claims. 4) Use our Target Price Solver to build a return buffer into your selling price."
+  }
+];
+---
+
+<section id="faq" class="py-16 bg-white border-t border-[#ebebeb]">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-1.5 text-xs font-mono text-neutral-500 uppercase tracking-wider mb-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-neutral-800"></span>
+        Seller Knowledge Base
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-[#171717]">
+        Frequently Asked Questions for Indian Marketplace Sellers
+      </h2>
+      <p class="text-sm text-neutral-600 mt-2">
+        Clear answers on marketplace deductions, GST credits, courier penalties, and profitability.
+      </p>
+    </div>
+
+    <!-- Accordion Items -->
+    <div class="space-y-4">
+      {faqs.map((faq, idx) => (
+        <details class="group rounded-2xl border border-neutral-200 bg-neutral-50/50 p-5 transition-all open:bg-white open:shadow-xs">
+          <summary class="flex cursor-pointer items-center justify-between text-sm sm:text-base font-semibold text-neutral-900 list-none">
+            <span>{faq.q}</span>
+            <span class="ml-4 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-neutral-300 text-xs text-neutral-500 group-open:rotate-180 transition-transform">
+              &darr;
+            </span>
+          </summary>
+          <div class="mt-3 text-xs sm:text-sm text-neutral-600 leading-relaxed border-t border-neutral-100 pt-3">
+            {faq.a}
+          </div>
+        </details>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<!-- JSON-LD FAQ Schema for Google Rich Results -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((f) => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": f.a
+    }
+  }))
+})} />

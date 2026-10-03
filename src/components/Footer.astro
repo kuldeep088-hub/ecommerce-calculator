@@ -1,0 +1,76 @@
+---
+// src/components/Footer.astro
+---
+
+<footer class="bg-white border-t border-[#ebebeb] py-12 text-xs text-neutral-500">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+      
+      <!-- Col 1: Brand & Domain -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2">
+          <div class="w-6 h-6 rounded bg-[#171717] flex items-center justify-center text-white font-bold text-xs">
+            ₹
+          </div>
+          <span class="font-semibold text-sm text-[#171717]">Seller Profit Calculator</span>
+        </div>
+        <p class="text-neutral-500 leading-relaxed">
+          The high-precision profit and fee calculator built specifically for Indian e-commerce sellers on Meesho, Flipkart, and Amazon.
+        </p>
+        <div class="font-mono text-[11px] text-neutral-400">
+          Domain: freesellerprofitcalculator.com
+        </div>
+      </div>
+
+      <!-- Col 2: Marketplace Calculators -->
+      <div>
+        <h4 class="font-semibold text-neutral-900 mb-3 uppercase tracking-wider text-[11px]">
+          Marketplace Calculators
+        </h4>
+        <ul class="space-y-2">
+          <li><a href="#calculator" class="hover:text-neutral-900 transition">Meesho Profit Calculator (0% Fee)</a></li>
+          <li><a href="#calculator" class="hover:text-neutral-900 transition">Flipkart Fee Calculator (2026 Slabs)</a></li>
+          <li><a href="#calculator" class="hover:text-neutral-900 transition">Amazon Easy Ship &amp; FBA Calculator</a></li>
+          <li><a href="#calculator" class="hover:text-neutral-900 transition">Snapdeal Value Seller Calculator</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Profit Tools -->
+      <div>
+        <h4 class="font-semibold text-neutral-900 mb-3 uppercase tracking-wider text-[11px]">
+          Seller Tools
+        </h4>
+        <ul class="space-y-2">
+          <li><a href="#comparison" class="hover:text-neutral-900 transition">Side-by-Side Comparison Matrix</a></li>
+          <li><a href="#reverse-solver" class="hover:text-neutral-900 transition">Target Price &amp; Margin Solver</a></li>
+          <li><a href="#calculator" class="hover:text-neutral-900 transition">RTO &amp; Customer Return Simulator</a></li>
+          <li><a href="#fee-guide" class="hover:text-neutral-900 transition">GST Input Tax Credit (ITC) Guide</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Legal & Disclaimer -->
+      <div>
+        <h4 class="font-semibold text-neutral-900 mb-3 uppercase tracking-wider text-[11px]">
+          Disclaimer
+        </h4>
+        <p class="text-[11px] text-neutral-400 leading-relaxed">
+          This calculator is an independent utility tool. Amazon, Flipkart, Meesho, and Snapdeal are registered trademarks of their respective owners. Fee slabs and rate cards are updated regularly according to publicly available marketplace policies.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="border-t border-neutral-100 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-neutral-400 text-[11px]">
+      <div>
+        &copy; 2026 freesellerprofitcalculator.com &bull; All rights reserved.
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="#calculator" class="hover:text-neutral-600 transition">Privacy Policy</a>
+        <a href="#calculator" class="hover:text-neutral-600 transition">Terms of Service</a>
+        <a href="#calculator" class="hover:text-neutral-600 transition">Back to Top &uarr;</a>
+      </div>
+    </div>
+
+  </div>
+</footer>

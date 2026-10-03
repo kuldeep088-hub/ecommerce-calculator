@@ -1,0 +1,10 @@
+# Build output
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Logs & temp files
+*.log
+.DS_Store

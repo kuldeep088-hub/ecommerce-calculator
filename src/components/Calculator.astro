@@ -1,0 +1,1037 @@
+---
+import { CATEGORIES } from '../data/categories';
+import { MARKETPLACES } from '../data/marketplaces';
+---
+
+<section id="calculator" class="pt-8 pb-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Hero Header -->
+    <div class="text-center max-w-3xl mx-auto mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 text-xs font-mono text-neutral-600 mb-4">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+        Zero Signup &bull; Real 2026 Commission &amp; GST Slabs &bull; Instant Calculation
+      </div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[#171717] leading-[1.15]">
+        Indian Marketplace Seller Profit &amp; Fee Calculator
+      </h1>
+      <p class="mt-4 text-base sm:text-lg text-[#737373] max-w-2xl mx-auto">
+        Know your exact net in-hand payout, marketplace commission fees, shipping charges, GST deductions, and <strong class="text-[#171717] font-medium">realistic RTO / return losses</strong> before you list.
+      </p>
+
+      <!-- Quick Preset Chips -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mt-6">
+        <span class="text-xs text-neutral-400 font-mono">Quick test presets:</span>
+        <button type="button" class="preset-btn px-2.5 py-1 text-xs rounded-full bg-white border border-[#ebebeb] hover:border-neutral-400 text-neutral-700 transition" data-price="499" data-cogs="180" data-cat="fashion" data-wt="350">
+          👕 T-Shirt (₹499)
+        </button>
+        <button type="button" class="preset-btn px-2.5 py-1 text-xs rounded-full bg-white border border-[#ebebeb] hover:border-neutral-400 text-neutral-700 transition" data-price="299" data-cogs="80" data-cat="electronics_accessories" data-wt="150">
+          📱 Mobile Case (₹299)
+        </button>
+        <button type="button" class="preset-btn px-2.5 py-1 text-xs rounded-full bg-white border border-[#ebebeb] hover:border-neutral-400 text-neutral-700 transition" data-price="899" data-cogs="340" data-cat="home_kitchen" data-wt="650">
+          🍳 Kitchen Tool (₹899)
+        </button>
+        <button type="button" class="preset-btn px-2.5 py-1 text-xs rounded-full bg-white border border-[#ebebeb] hover:border-neutral-400 text-neutral-700 transition" data-price="1499" data-cogs="600" data-cat="footwear" data-wt="850">
+          👟 Shoes (₹1,499)
+        </button>
+      </div>
+    </div>
+
+    <!-- Marketplace Navigation Tabs -->
+    <div class="flex items-center justify-center mb-8">
+      <div class="inline-flex p-1.5 rounded-2xl bg-neutral-100 border border-neutral-200 max-w-full overflow-x-auto" id="marketplaceTabs">
+        <button
+          type="button"
+          data-mp="meesho"
+          class="mp-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all flex items-center gap-2 bg-white text-[#171717] shadow-sm border border-neutral-200/60"
+        >
+          <span class="w-2.5 h-2.5 rounded-full bg-pink-500"></span>
+          <span>Meesho</span>
+          <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-pink-50 text-pink-700 border border-pink-200">0% Fee</span>
+        </button>
+
+        <button
+          type="button"
+          data-mp="flipkart"
+          class="mp-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all flex items-center gap-2 text-neutral-600 hover:text-neutral-900"
+        >
+          <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+          <span>Flipkart</span>
+          <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">4-16%</span>
+        </button>
+
+        <button
+          type="button"
+          data-mp="amazon"
+          class="mp-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all flex items-center gap-2 text-neutral-600 hover:text-neutral-900"
+        >
+          <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+          <span>Amazon</span>
+          <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200">5-15%</span>
+        </button>
+
+        <button
+          type="button"
+          data-mp="snapdeal"
+          class="mp-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all flex items-center gap-2 text-neutral-600 hover:text-neutral-900"
+        >
+          <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+          <span>Snapdeal</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Two-Column Layout: Inputs on Left, Results Dashboard on Right -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- LEFT COLUMN: Inputs Card (5 Cols on LG) -->
+      <div class="lg:col-span-5 bg-white border border-[#ebebeb] rounded-2xl p-6 sm:p-7 shadow-xs">
+        
+        <div class="flex items-center justify-between border-b border-neutral-100 pb-4 mb-6">
+          <div>
+            <h2 class="text-base font-semibold text-[#171717] flex items-center gap-2" id="calcCardTitle">
+              Meesho Profit Inputs
+            </h2>
+            <p class="text-xs text-neutral-500 mt-0.5" id="calcCardSubtitle">
+              Zero referral commission model with weight-slab courier rates.
+            </p>
+          </div>
+          <button type="button" id="resetBtn" class="text-xs text-neutral-400 hover:text-neutral-800 transition font-mono flex items-center gap-1">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+            Reset
+          </button>
+        </div>
+
+        <form id="calcForm" class="space-y-5" onsubmit="return false;">
+          
+          <!-- SELLING PRICE (HERO INPUT WITH AUTO-PASTE HANDLING) -->
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <label for="inputSellingPrice" class="text-xs font-semibold uppercase tracking-wider text-neutral-700 flex items-center gap-1.5">
+                Selling Price (MRP / Listed Price)
+                <span class="text-rose-500">*</span>
+              </label>
+              <span class="text-[11px] text-neutral-400 font-mono">Includes Product GST</span>
+            </div>
+            <div class="relative">
+              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-neutral-400 font-semibold text-base">
+                ₹
+              </div>
+              <input
+                type="text"
+                id="inputSellingPrice"
+                inputmode="decimal"
+                value="599"
+                placeholder="e.g. 599"
+                class="w-full pl-8 pr-4 py-3 bg-neutral-50/70 border border-neutral-200 focus:bg-white focus:border-[#171717] focus:ring-1 focus:ring-[#171717] rounded-xl text-lg font-mono font-semibold text-neutral-900 transition outline-none"
+              />
+            </div>
+            <p class="text-[11px] text-neutral-500 mt-1">Paste any price format (e.g. <span class="font-mono">₹599.00</span> or <span class="font-mono">1,250</span>) &mdash; calculated instantly.</p>
+          </div>
+
+          <!-- COST OF GOODS SOLD (COGS) -->
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <label for="inputCogs" class="text-xs font-semibold uppercase tracking-wider text-neutral-700">
+                Product Cost (COGS)
+              </label>
+              <span class="text-[11px] text-neutral-400 font-mono">Purchase / Manufacturing</span>
+            </div>
+            <div class="relative">
+              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-neutral-400 font-semibold text-sm">
+                ₹
+              </div>
+              <input
+                type="text"
+                id="inputCogs"
+                inputmode="decimal"
+                value="220"
+                placeholder="220"
+                class="w-full pl-8 pr-4 py-2.5 bg-neutral-50/70 border border-neutral-200 focus:bg-white focus:border-[#171717] focus:ring-1 focus:ring-[#171717] rounded-xl text-sm font-mono text-neutral-900 transition outline-none"
+              />
+            </div>
+          </div>
+
+          <!-- PRODUCT CATEGORY & PRODUCT GST -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="selectCategory" class="block text-xs font-semibold uppercase tracking-wider text-neutral-700 mb-1.5">
+                Category
+              </label>
+              <select
+                id="selectCategory"
+                class="w-full px-3 py-2.5 bg-neutral-50/70 border border-neutral-200 focus:bg-white focus:border-[#171717] focus:ring-1 focus:ring-[#171717] rounded-xl text-xs sm:text-sm text-neutral-800 transition outline-none"
+              >
+                {CATEGORIES.map((cat) => (
+                  <option value={cat.id}>{cat.name}</option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label for="inputProductGst" class="block text-xs font-semibold uppercase tracking-wider text-neutral-700 mb-1.5">
+                Product GST Rate
+              </label>
+              <div class="relative">
+                <select
+                  id="inputProductGst"
+                  class="w-full px-3 py-2.5 bg-neutral-50/70 border border-neutral-200 focus:bg-white focus:border-[#171717] focus:ring-1 focus:ring-[#171717] rounded-xl text-xs sm:text-sm font-mono text-neutral-800 transition outline-none"
+                >
+                  <option value="0">0% (Books / Exempt)</option>
+                  <option value="3">3% (Jewellery)</option>
+                  <option value="5">5% (Grocery / Apparel &lt; 1k)</option>
+                  <option value="12" selected>12% (Apparel / Footwear)</option>
+                  <option value="18">18% (Electronics / Home / Standard)</option>
+                  <option value="28">28% (Luxury items)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- SHIPPING WEIGHT & SHIPPING ZONE -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <label for="inputWeight" class="text-xs font-semibold uppercase tracking-wider text-neutral-700">
+                  Weight (Grams)
+                </label>
+                <span id="weightDisplay" class="text-xs font-mono font-medium text-neutral-600">500g</span>
+              </div>
+              <input
+                type="number"
+                id="inputWeight"
+                value="500"
+                min="50"
+                step="50"
+                class="w-full px-3 py-2 bg-neutral-50/70 border border-neutral-200 focus:bg-white focus:border-[#171717] focus:ring-1 focus:ring-[#171717] rounded-xl text-sm font-mono text-neutral-900 transition outline-none"
+              />
+            </div>
+
+            <div>
+              <label for="selectShippingZone" class="block text-xs font-semibold uppercase tracking-wider text-neutral-700 mb-1.5">
+                Delivery Distance
+              </label>
+              <select
+                id="selectShippingZone"
+                class="w-full px-3 py-2 bg-neutral-50/70 border border-neutral-200 focus:bg-white focus:border-[#171717] focus:ring-1 focus:ring-[#171717] rounded-xl text-xs sm:text-sm text-neutral-800 transition outline-none"
+              >
+                <option value="local">Local (Within City)</option>
+                <option value="regional">Regional (Within Zone)</option>
+                <option value="national" selected>National (Inter-State Average)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- PACKAGING COST & AD SPEND PER UNIT -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="inputPackagingCost" class="block text-xs font-semibold uppercase tracking-wider text-neutral-700 mb-1.5">
+                Packaging Material
+              </label>
+              <div class="relative">
+                <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-neutral-400 font-mono text-xs">
+                  ₹
+                </div>
+                <input
+                  type="number"
+                  id="inputPackagingCost"
+                  value="15"
+                  min="0"
+                  class="w-full pl-7 pr-3 py-2 bg-neutral-50/70 border border-neutral-200 focus:bg-white focus:border-[#171717] rounded-xl text-xs sm:text-sm font-mono text-neutral-900 transition outline-none"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label for="inputAdSpend" class="block text-xs font-semibold uppercase tracking-wider text-neutral-700 mb-1.5">
+                Ad Spend / CAC (Optional)
+              </label>
+              <div class="relative">
+                <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-neutral-400 font-mono text-xs">
+                  ₹
+                </div>
+                <input
+                  type="number"
+                  id="inputAdSpend"
+                  value="0"
+                  min="0"
+                  placeholder="0"
+                  class="w-full pl-7 pr-3 py-2 bg-neutral-50/70 border border-neutral-200 focus:bg-white focus:border-[#171717] rounded-xl text-xs sm:text-sm font-mono text-neutral-900 transition outline-none"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- ADVANCED ACCORDION 1: RTO & CUSTOMER RETURN LOSS SIMULATOR -->
+          <div class="border border-neutral-200 rounded-xl overflow-hidden bg-neutral-50/50">
+            <button
+              type="button"
+              id="returnToggleBtn"
+              class="w-full px-4 py-3 flex items-center justify-between text-left text-xs font-semibold uppercase tracking-wider text-neutral-800 hover:bg-neutral-100/70 transition"
+            >
+              <span class="flex items-center gap-1.5 text-neutral-900">
+                <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                RTO &amp; Customer Return Loss Simulator
+              </span>
+              <span class="text-[11px] font-mono text-amber-700 bg-amber-100/60 px-2 py-0.5 rounded">
+                Crucial for India
+              </span>
+            </button>
+
+            <div id="returnSettingsPanel" class="p-4 border-t border-neutral-200 bg-white space-y-4">
+              <p class="text-xs text-neutral-500 leading-relaxed">
+                Indian e-commerce sees 15%&ndash;30% return rates on COD orders. Competitor calculators ignore this and show misleading high profits. Model your real blended loss below:
+              </p>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <div class="flex justify-between items-center mb-1">
+                    <label for="inputRtoRate" class="text-[11px] font-medium text-neutral-700">Expected RTO %</label>
+                    <span id="rtoRateDisplay" class="text-[11px] font-mono font-semibold text-neutral-800">18%</span>
+                  </div>
+                  <input
+                    type="range"
+                    id="inputRtoRate"
+                    min="0"
+                    max="50"
+                    value="18"
+                    class="w-full accent-[#171717] cursor-pointer"
+                  />
+                  <span class="text-[10px] text-neutral-400">Undelivered courier return</span>
+                </div>
+
+                <div>
+                  <div class="flex justify-between items-center mb-1">
+                    <label for="inputCustomerReturnRate" class="text-[11px] font-medium text-neutral-700">Customer Return %</label>
+                    <span id="customerReturnRateDisplay" class="text-[11px] font-mono font-semibold text-neutral-800">10%</span>
+                  </div>
+                  <input
+                    type="range"
+                    id="inputCustomerReturnRate"
+                    min="0"
+                    max="40"
+                    value="10"
+                    class="w-full accent-[#171717] cursor-pointer"
+                  />
+                  <span class="text-[10px] text-neutral-400">Delivered &amp; returned by buyer</span>
+                </div>
+              </div>
+
+              <div>
+                <label for="inputReturnReverseCost" class="block text-[11px] font-medium text-neutral-700 mb-1">
+                  Customer Return Courier Penalty (₹)
+                </label>
+                <input
+                  type="number"
+                  id="inputReturnReverseCost"
+                  value="130"
+                  class="w-full px-3 py-1.5 bg-neutral-50 border border-neutral-200 rounded-lg text-xs font-mono text-neutral-900"
+                />
+                <span class="text-[10px] text-neutral-400">Reverse courier charges billed to seller upon customer return</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ADVANCED ACCORDION 2: CUSTOM FEE OVERRIDES -->
+          <div class="border border-neutral-200 rounded-xl overflow-hidden bg-neutral-50/50">
+            <button
+              type="button"
+              id="feeOverridesToggleBtn"
+              class="w-full px-4 py-3 flex items-center justify-between text-left text-xs font-semibold uppercase tracking-wider text-neutral-800 hover:bg-neutral-100/70 transition"
+            >
+              <span>Custom Fee Overrides (Optional)</span>
+              <span class="text-neutral-400 text-xs font-mono">+ Customize</span>
+            </button>
+
+            <div id="feeOverridesPanel" class="p-4 border-t border-neutral-200 bg-white space-y-3 hidden">
+              <div class="grid grid-cols-3 gap-2">
+                <div>
+                  <label for="customCommInput" class="block text-[10px] font-medium text-neutral-600 mb-1">Commission %</label>
+                  <input type="number" id="customCommInput" placeholder="Auto" class="w-full px-2 py-1.5 border border-neutral-200 rounded text-xs font-mono" />
+                </div>
+                <div>
+                  <label for="customFixedFeeInput" class="block text-[10px] font-medium text-neutral-600 mb-1">Fixed Fee ₹</label>
+                  <input type="number" id="customFixedFeeInput" placeholder="Auto" class="w-full px-2 py-1.5 border border-neutral-200 rounded text-xs font-mono" />
+                </div>
+                <div>
+                  <label for="customShippingInput" class="block text-[10px] font-medium text-neutral-600 mb-1">Shipping ₹</label>
+                  <input type="number" id="customShippingInput" placeholder="Auto" class="w-full px-2 py-1.5 border border-neutral-200 rounded text-xs font-mono" />
+                </div>
+              </div>
+              <p class="text-[10px] text-neutral-400">Leave blank to use standard 2026 marketplace slab rates automatically.</p>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- RIGHT COLUMN: Results Dashboard (7 Cols on LG) -->
+      <div class="lg:col-span-7 space-y-6">
+        
+        <!-- TOP SUMMARY KPI CARDS -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          
+          <!-- KPI 1: BLENDED NET PROFIT (HERO NUMBER) -->
+          <div class="card-ver p-5 relative overflow-hidden bg-white border-2 border-neutral-900 shadow-sm">
+            <div class="flex items-center justify-between">
+              <span class="text-[11px] font-mono uppercase tracking-wider text-neutral-500 font-semibold">
+                Real In-Hand Profit
+              </span>
+              <span id="blendedMarginBadge" class="text-[11px] font-mono font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+                +24.5%
+              </span>
+            </div>
+            <div class="mt-3 flex items-baseline gap-1.5">
+              <span id="blendedProfitValue" class="text-3xl sm:text-4xl font-mono font-bold tracking-tight text-emerald-600">
+                ₹147.20
+              </span>
+            </div>
+            <p class="text-[11px] text-neutral-500 mt-2 flex items-center gap-1">
+              <svg class="w-3.5 h-3.5 text-neutral-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              Blended profit per dispatched order (with RTO)
+            </p>
+          </div>
+
+          <!-- KPI 2: BANK SETTLEMENT -->
+          <div class="card-ver p-5 bg-white border border-[#ebebeb]">
+            <div class="flex items-center justify-between">
+              <span class="text-[11px] font-mono uppercase tracking-wider text-neutral-500 font-semibold">
+                Bank Settlement
+              </span>
+              <span class="text-[10px] font-mono text-neutral-400">Per Delivered</span>
+            </div>
+            <div class="mt-3">
+              <span id="bankSettlementValue" class="text-2xl sm:text-3xl font-mono font-semibold tracking-tight text-neutral-900">
+                ₹482.00
+              </span>
+            </div>
+            <p class="text-[11px] text-neutral-500 mt-2">
+              Credited to bank before COGS &amp; packaging
+            </p>
+          </div>
+
+          <!-- KPI 3: DELIVERED ONLY PROFIT -->
+          <div class="card-ver p-5 bg-white border border-[#ebebeb]">
+            <div class="flex items-center justify-between">
+              <span class="text-[11px] font-mono uppercase tracking-wider text-neutral-500 font-semibold">
+                Delivered Profit
+              </span>
+              <span id="deliveredMarginBadge" class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-neutral-100 text-neutral-600">
+                31.2%
+              </span>
+            </div>
+            <div class="mt-3">
+              <span id="deliveredProfitValue" class="text-2xl sm:text-3xl font-mono font-semibold tracking-tight text-neutral-800">
+                ₹187.00
+              </span>
+            </div>
+            <p class="text-[11px] text-neutral-500 mt-2">
+              If order is 100% delivered without return
+            </p>
+          </div>
+
+        </div>
+
+        <!-- WATERFALL MARGIN BREAKDOWN BAR -->
+        <div class="card-ver p-5 sm:p-6 bg-white border border-[#ebebeb]">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-xs font-semibold uppercase tracking-wider text-neutral-700">
+              Where Every ₹100 of Your Selling Price Goes
+            </h3>
+            <span class="text-xs font-mono text-neutral-500">Unit Economics Waterfall</span>
+          </div>
+
+          <!-- Visual Progress Stack -->
+          <div class="w-full h-5 rounded-lg overflow-hidden flex bg-neutral-100 text-[10px] font-mono font-bold text-white shadow-inner mb-4" id="waterfallBar">
+            <div id="barCogs" class="bg-neutral-800 flex items-center justify-center transition-all overflow-hidden" title="COGS" style="width: 36%;"></div>
+            <div id="barFee" class="bg-blue-600 flex items-center justify-center transition-all overflow-hidden" title="Marketplace Fees" style="width: 14%;"></div>
+            <div id="barShipping" class="bg-amber-500 flex items-center justify-center transition-all overflow-hidden" title="Shipping" style="width: 12%;"></div>
+            <div id="barTax" class="bg-purple-600 flex items-center justify-center transition-all overflow-hidden" title="Taxes & GST" style="width: 10%;"></div>
+            <div id="barReturn" class="bg-rose-500 flex items-center justify-center transition-all overflow-hidden" title="RTO Loss Reserve" style="width: 8%;"></div>
+            <div id="barProfit" class="bg-emerald-500 flex items-center justify-center transition-all overflow-hidden" title="Net In-Hand Profit" style="width: 20%;"></div>
+          </div>
+
+          <!-- Legend -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-neutral-800 shrink-0"></span>
+              <span class="text-neutral-600">Product COGS:</span>
+              <strong id="legendCogs" class="font-mono text-neutral-900 ml-auto">36%</strong>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-blue-600 shrink-0"></span>
+              <span class="text-neutral-600">Commission &amp; Fees:</span>
+              <strong id="legendFee" class="font-mono text-neutral-900 ml-auto">14%</strong>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0"></span>
+              <span class="text-neutral-600">Courier Shipping:</span>
+              <strong id="legendShipping" class="font-mono text-neutral-900 ml-auto">12%</strong>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-purple-600 shrink-0"></span>
+              <span class="text-neutral-600">GST &amp; Taxes:</span>
+              <strong id="legendTax" class="font-mono text-neutral-900 ml-auto">10%</strong>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-rose-500 shrink-0"></span>
+              <span class="text-neutral-600">RTO / Return Loss:</span>
+              <strong id="legendReturn" class="font-mono text-neutral-900 ml-auto">8%</strong>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0"></span>
+              <span class="text-neutral-600">Net Take-Home:</span>
+              <strong id="legendProfit" class="font-mono text-emerald-700 ml-auto">20%</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- DETAILED TABULAR BREAKDOWN ACCORDION/CARD -->
+        <div class="card-ver bg-white border border-[#ebebeb] overflow-hidden">
+          <div class="px-5 py-4 border-b border-neutral-100 flex items-center justify-between">
+            <h3 class="text-sm font-semibold text-[#171717] flex items-center gap-2">
+              Detailed Line-by-Line Breakdown
+              <span id="activeMpLabel" class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-neutral-100 text-neutral-600 border border-neutral-200">
+                Meesho
+              </span>
+            </h3>
+            <span class="text-xs font-mono text-neutral-400">All figures in ₹ INR</span>
+          </div>
+
+          <div class="divide-y divide-neutral-100 text-xs sm:text-sm">
+            
+            <div class="px-5 py-2.5 flex items-center justify-between hover:bg-neutral-50/50">
+              <span class="text-neutral-600">Selling Price (Customer Pays)</span>
+              <span id="dtSellingPrice" class="font-mono font-medium text-neutral-900">₹599.00</span>
+            </div>
+
+            <div class="px-5 py-2.5 flex items-center justify-between hover:bg-neutral-50/50">
+              <div class="flex items-center gap-1.5">
+                <span class="text-neutral-600">Taxable Value (Base Price)</span>
+                <span id="dtTaxableGstBadge" class="text-[10px] font-mono px-1 rounded bg-neutral-100 text-neutral-500">Excl. 12% GST</span>
+              </div>
+              <span id="dtTaxableValue" class="font-mono text-neutral-700">₹534.82</span>
+            </div>
+
+            <div class="px-5 py-2.5 flex items-center justify-between hover:bg-neutral-50/50">
+              <span class="text-neutral-600">Product GST (Collected for Govt.)</span>
+              <span id="dtProductGst" class="font-mono text-neutral-600">₹64.18</span>
+            </div>
+
+            <div class="px-5 py-2.5 flex items-center justify-between bg-neutral-50/30">
+              <div class="flex items-center gap-1.5">
+                <span class="text-neutral-700 font-medium">Marketplace Commission</span>
+                <span id="dtCommissionRate" class="text-[10px] font-mono px-1 rounded bg-pink-50 text-pink-700">0%</span>
+              </div>
+              <span id="dtCommissionFee" class="font-mono font-medium text-neutral-900">₹0.00</span>
+            </div>
+
+            <div class="px-5 py-2.5 flex items-center justify-between hover:bg-neutral-50/50">
+              <span class="text-neutral-600">Fixed Closing Fee</span>
+              <span id="dtFixedFee" class="font-mono text-neutral-700">₹0.00</span>
+            </div>
+
+            <div class="px-5 py-2.5 flex items-center justify-between hover:bg-neutral-50/50">
+              <span class="text-neutral-600">Payment Gateway / Collection Fee</span>
+              <span id="dtCollectionFee" class="font-mono text-neutral-700">₹0.00</span>
+            </div>
+
+            <div class="px-5 py-2.5 flex items-center justify-between hover:bg-neutral-50/50">
+              <div class="flex items-center gap-1.5">
+                <span class="text-neutral-600">Forward Courier Shipping</span>
+                <span id="dtShippingWeightBadge" class="text-[10px] font-mono px-1 rounded bg-neutral-100 text-neutral-500">500g</span>
+              </div>
+              <span id="dtShippingFee" class="font-mono text-neutral-700">₹49.00</span>
+            </div>
+
+            <div class="px-5 py-2.5 flex items-center justify-between hover:bg-neutral-50/50">
+              <span class="text-neutral-600">GST on Marketplace Fees (18% &mdash; Claimable ITC)</span>
+              <span id="dtGstOnFees" class="font-mono text-rose-600">₹8.82</span>
+            </div>
+
+            <div class="px-5 py-2.5 flex items-center justify-between hover:bg-neutral-50/50">
+              <span class="text-neutral-600">TCS (1%) + Section 194-O TDS (0.1%)</span>
+              <span id="dtTcsTds" class="font-mono text-neutral-600">₹5.88</span>
+            </div>
+
+            <div class="px-5 py-3 flex items-center justify-between bg-neutral-100/60 font-semibold">
+              <span class="text-neutral-900">Total Marketplace Deductions</span>
+              <span id="dtTotalDeductions" class="font-mono text-rose-700 font-bold">₹63.70</span>
+            </div>
+
+            <div class="px-5 py-3 flex items-center justify-between bg-blue-50/40">
+              <span class="text-blue-900 font-semibold">Expected Bank Settlement Payout</span>
+              <span id="dtBankSettlement" class="font-mono font-bold text-blue-700 text-base">₹535.30</span>
+            </div>
+
+            <div class="px-5 py-2.5 flex items-center justify-between hover:bg-neutral-50/50 text-neutral-600">
+              <span>Less: Product Purchase Cost (COGS)</span>
+              <span id="dtCogs" class="font-mono text-neutral-800">- ₹220.00</span>
+            </div>
+
+            <div class="px-5 py-2.5 flex items-center justify-between hover:bg-neutral-50/50 text-neutral-600">
+              <span>Less: Packaging &amp; Ad Spend</span>
+              <span id="dtPkgAds" class="font-mono text-neutral-800">- ₹15.00</span>
+            </div>
+
+            <div class="px-5 py-2.5 flex items-center justify-between bg-amber-50/40 text-amber-900">
+              <span>Less: Expected RTO &amp; Customer Return Loss Buffer</span>
+              <span id="dtReturnLossBuffer" class="font-mono font-medium text-amber-800">- ₹39.80</span>
+            </div>
+
+            <div class="px-5 py-3.5 flex items-center justify-between bg-[#171717] text-white rounded-b-xl">
+              <div class="flex flex-col">
+                <span class="font-semibold text-sm">True Net In-Hand Profit</span>
+                <span class="text-[11px] text-neutral-400 font-mono">Actual take-home per dispatched order</span>
+              </div>
+              <span id="dtFinalProfit" class="font-mono text-xl sm:text-2xl font-bold text-emerald-400">
+                ₹260.50
+              </span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ACTION TOOLBAR: COPY SUMMARY, EXPORT, SHARE -->
+        <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+          <div class="flex items-center gap-2">
+            <button
+              type="button"
+              id="copySummaryBtn"
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-[#ebebeb] hover:border-neutral-400 text-xs font-medium text-neutral-800 transition shadow-2xs active:scale-95"
+            >
+              <svg class="w-3.5 h-3.5 text-neutral-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+              Copy Summary
+            </button>
+
+            <button
+              type="button"
+              onclick="window.print()"
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-[#ebebeb] hover:border-neutral-400 text-xs font-medium text-neutral-800 transition shadow-2xs"
+            >
+              <svg class="w-3.5 h-3.5 text-neutral-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+              Print / Save PDF
+            </button>
+          </div>
+
+          <div id="toastMessage" class="hidden text-xs font-mono font-medium px-3 py-1.5 rounded-full bg-neutral-900 text-white animate-fade-in">
+            ✓ Copied to clipboard!
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- CLIENT SCRIPT FOR INSTANT REACTIVE AUTO-CALCULATION & SMART PASTE -->
+<script is:inline>
+(function() {
+  // Category rates map
+  var CATEGORIES_DATA = {
+    fashion: { meesho: 0, flipkart: 15.0, amazon: 13.5, snapdeal: 5.0, defaultGst: 12 },
+    footwear: { meesho: 0, flipkart: 14.0, amazon: 12.0, snapdeal: 6.0, defaultGst: 12 },
+    electronics_accessories: { meesho: 0, flipkart: 12.5, amazon: 14.0, snapdeal: 8.0, defaultGst: 18 },
+    home_kitchen: { meesho: 0, flipkart: 11.0, amazon: 10.5, snapdeal: 7.0, defaultGst: 18 },
+    beauty_grooming: { meesho: 0, flipkart: 9.0, amazon: 8.5, snapdeal: 6.0, defaultGst: 18 },
+    jewellery_fashion: { meesho: 0, flipkart: 16.0, amazon: 15.0, snapdeal: 8.0, defaultGst: 3 },
+    grocery_fmcg: { meesho: 0, flipkart: 6.5, amazon: 6.0, snapdeal: 4.0, defaultGst: 5 },
+    toys_baby: { meesho: 0, flipkart: 10.5, amazon: 9.5, snapdeal: 6.0, defaultGst: 12 },
+    books: { meesho: 0, flipkart: 9.0, amazon: 8.0, snapdeal: 5.0, defaultGst: 0 },
+    custom: { meesho: 0, flipkart: 10.0, amazon: 10.0, snapdeal: 5.0, defaultGst: 18 }
+  };
+
+  var currentMarketplace = 'meesho';
+
+  // Helper functions
+  function getAmazonClosingFee(price) {
+    if (price <= 250) return 5;
+    if (price <= 500) return 10;
+    if (price <= 1000) return 25;
+    if (price <= 2000) return 35;
+    return 50;
+  }
+
+  function getFlipkartFixedFee(price) {
+    if (price <= 300) return 13;
+    if (price <= 500) return 17;
+    if (price <= 1000) return 30;
+    return 52;
+  }
+
+  function getShippingFee(mp, weightGrams, zone) {
+    if (mp === 'meesho') {
+      if (weightGrams <= 500) return 49;
+      if (weightGrams <= 1000) return 85;
+      if (weightGrams <= 1500) return 125;
+      var extra = Math.ceil((weightGrams - 1500) / 500);
+      return 125 + extra * 40;
+    }
+    if (mp === 'amazon') {
+      var base = zone === 'local' ? 44 : zone === 'regional' ? 53 : 74;
+      var addl = zone === 'local' ? 25 : zone === 'regional' ? 30 : 36;
+      if (weightGrams <= 500) return base;
+      var extra = Math.ceil((weightGrams - 500) / 500);
+      return base + extra * addl;
+    }
+    if (mp === 'flipkart') {
+      var base = zone === 'local' ? 44 : zone === 'regional' ? 54 : 69;
+      var addl = zone === 'local' ? 22 : zone === 'regional' ? 26 : 32;
+      if (weightGrams <= 500) return base;
+      var extra = Math.ceil((weightGrams - 500) / 500);
+      return base + extra * addl;
+    }
+    return 55 + Math.ceil(Math.max(0, weightGrams - 500) / 500) * 35;
+  }
+
+  // Parse cleaned numeric float
+  function parseVal(el) {
+    if (!el) return 0;
+    var raw = el.value.toString().replace(/[₹,\s]/g, '');
+    var val = parseFloat(raw);
+    return isNaN(val) ? 0 : val;
+  }
+
+  function formatCurrency(val) {
+    return '₹' + (val || 0).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  // Main Calculation Routine
+  function calculate() {
+    var sp = parseVal(document.getElementById('inputSellingPrice'));
+    var cogs = parseVal(document.getElementById('inputCogs'));
+    var category = document.getElementById('selectCategory').value;
+    var gstRate = parseVal(document.getElementById('inputProductGst'));
+    var weight = parseVal(document.getElementById('inputWeight')) || 500;
+    var zone = document.getElementById('selectShippingZone').value;
+    var pkg = parseVal(document.getElementById('inputPackagingCost'));
+    var ads = parseVal(document.getElementById('inputAdSpend'));
+    var rtoRate = parseVal(document.getElementById('inputRtoRate')) || 0;
+    var returnRate = parseVal(document.getElementById('inputCustomerReturnRate')) || 0;
+    var returnReverseCost = parseVal(document.getElementById('inputReturnReverseCost')) || 130;
+
+    // Overrides
+    var customComm = document.getElementById('customCommInput').value;
+    var customFixed = document.getElementById('customFixedFeeInput').value;
+    var customShip = document.getElementById('customShippingInput').value;
+
+    // 1. Taxable Value & Product GST
+    var taxable = sp > 0 ? sp / (1 + gstRate / 100) : 0;
+    var productGst = sp - taxable;
+
+    // 2. Commission
+    var catInfo = CATEGORIES_DATA[category] || CATEGORIES_DATA['fashion'];
+    var commRate = customComm !== '' ? parseFloat(customComm) : (catInfo[currentMarketplace] !== undefined ? catInfo[currentMarketplace] : 10);
+    var commAmount = taxable * (commRate / 100);
+
+    // 3. Fixed Fee
+    var fixedFee = 0;
+    if (customFixed !== '') {
+      fixedFee = parseFloat(customFixed);
+    } else {
+      if (currentMarketplace === 'amazon') fixedFee = getAmazonClosingFee(sp);
+      else if (currentMarketplace === 'flipkart') fixedFee = getFlipkartFixedFee(sp);
+      else if (currentMarketplace === 'meesho') fixedFee = 0;
+      else fixedFee = 10;
+    }
+
+    // 4. Collection Fee (2% for Flipkart/Amazon, 0 for Meesho)
+    var collectionFee = (currentMarketplace === 'flipkart' || currentMarketplace === 'amazon') ? (sp * 0.02) : 0;
+
+    // 5. Shipping
+    var shippingFee = customShip !== '' ? parseFloat(customShip) : getShippingFee(currentMarketplace, weight, zone);
+
+    // 6. Subtotal marketplace fees & 18% GST on fees
+    var feesExGst = commAmount + fixedFee + collectionFee + shippingFee;
+    var gstOnFees = feesExGst * 0.18;
+
+    // 7. TCS & TDS (1% + 0.1% = 1.1% on taxable)
+    var tcsTds = taxable * 0.011;
+
+    // 8. Total Marketplace Deduction & Bank Settlement
+    var totalDeductions = feesExGst + gstOnFees + tcsTds;
+    var bankSettlement = Math.max(0, sp - totalDeductions);
+
+    // 9. Pure Delivered Profit
+    var deliveredProfit = taxable - cogs - feesExGst - pkg - ads;
+    var deliveredMargin = sp > 0 ? (deliveredProfit / sp) * 100 : 0;
+
+    // 10. RTO & Customer Return Loss Simulator
+    var rtoCourierLoss = currentMarketplace === 'meesho' ? 0 : shippingFee;
+    var rtoPackagingLoss = pkg + 10;
+    var rtoLossPerOrder = rtoCourierLoss + rtoPackagingLoss;
+
+    var custReturnCourierLoss = returnReverseCost;
+    var custReturnDamageLoss = pkg + 15 + cogs * 0.05;
+    var custReturnLossPerOrder = custReturnCourierLoss + custReturnDamageLoss;
+
+    var deliveredRate = Math.max(0, 100 - rtoRate - returnRate) / 100;
+    var rtoFraction = rtoRate / 100;
+    var returnFraction = returnRate / 100;
+
+    var returnLossBuffer = (rtoLossPerOrder * rtoFraction) + (custReturnLossPerOrder * returnFraction);
+    var blendedProfit = (deliveredProfit * deliveredRate) - returnLossBuffer;
+    var blendedMargin = sp > 0 ? (blendedProfit / sp) * 100 : 0;
+
+    // Update UI Displays
+    document.getElementById('weightDisplay').textContent = weight + 'g';
+    document.getElementById('rtoRateDisplay').textContent = rtoRate + '%';
+    document.getElementById('customerReturnRateDisplay').textContent = returnRate + '%';
+
+    // Hero KPI Cards
+    var bpValEl = document.getElementById('blendedProfitValue');
+    bpValEl.textContent = formatCurrency(blendedProfit);
+    if (blendedProfit >= 0) {
+      bpValEl.className = 'text-3xl sm:text-4xl font-mono font-bold tracking-tight text-emerald-600';
+    } else {
+      bpValEl.className = 'text-3xl sm:text-4xl font-mono font-bold tracking-tight text-rose-600';
+    }
+
+    var bpMarginEl = document.getElementById('blendedMarginBadge');
+    bpMarginEl.textContent = (blendedMargin >= 0 ? '+' : '') + blendedMargin.toFixed(1) + '%';
+    bpMarginEl.className = blendedMargin >= 0 
+      ? 'text-[11px] font-mono font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200'
+      : 'text-[11px] font-mono font-bold px-2 py-0.5 rounded-full bg-rose-50 text-rose-700 border border-rose-200';
+
+    document.getElementById('bankSettlementValue').textContent = formatCurrency(bankSettlement);
+    document.getElementById('deliveredProfitValue').textContent = formatCurrency(deliveredProfit);
+    document.getElementById('deliveredMarginBadge').textContent = deliveredMargin.toFixed(1) + '% margin';
+
+    // Waterfall Bar Percentages
+    var cogsPct = sp > 0 ? Math.min(100, Math.max(0, (cogs / sp) * 100)) : 0;
+    var feePct = sp > 0 ? Math.min(100, Math.max(0, ((commAmount + fixedFee + collectionFee) / sp) * 100)) : 0;
+    var shipPct = sp > 0 ? Math.min(100, Math.max(0, (shippingFee / sp) * 100)) : 0;
+    var taxPct = sp > 0 ? Math.min(100, Math.max(0, ((productGst + gstOnFees) / sp) * 100)) : 0;
+    var returnPct = sp > 0 ? Math.min(100, Math.max(0, (returnLossBuffer / sp) * 100)) : 0;
+    var profitPct = sp > 0 ? Math.max(0, blendedMargin) : 0;
+
+    document.getElementById('barCogs').style.width = cogsPct + '%';
+    document.getElementById('barFee').style.width = feePct + '%';
+    document.getElementById('barShipping').style.width = shipPct + '%';
+    document.getElementById('barTax').style.width = taxPct + '%';
+    document.getElementById('barReturn').style.width = returnPct + '%';
+    document.getElementById('barProfit').style.width = profitPct + '%';
+
+    document.getElementById('legendCogs').textContent = cogsPct.toFixed(1) + '%';
+    document.getElementById('legendFee').textContent = feePct.toFixed(1) + '%';
+    document.getElementById('legendShipping').textContent = shipPct.toFixed(1) + '%';
+    document.getElementById('legendTax').textContent = taxPct.toFixed(1) + '%';
+    document.getElementById('legendReturn').textContent = returnPct.toFixed(1) + '%';
+    document.getElementById('legendProfit').textContent = blendedMargin.toFixed(1) + '%';
+
+    // Detailed Line-by-Line Table
+    document.getElementById('dtSellingPrice').textContent = formatCurrency(sp);
+    document.getElementById('dtTaxableValue').textContent = formatCurrency(taxable);
+    document.getElementById('dtTaxableGstBadge').textContent = 'Excl. ' + gstRate + '% GST';
+    document.getElementById('dtProductGst').textContent = formatCurrency(productGst);
+    document.getElementById('dtCommissionRate').textContent = commRate + '%';
+    document.getElementById('dtCommissionFee').textContent = formatCurrency(commAmount);
+    document.getElementById('dtFixedFee').textContent = formatCurrency(fixedFee);
+    document.getElementById('dtCollectionFee').textContent = formatCurrency(collectionFee);
+    document.getElementById('dtShippingFee').textContent = formatCurrency(shippingFee);
+    document.getElementById('dtShippingWeightBadge').textContent = weight + 'g';
+    document.getElementById('dtGstOnFees').textContent = formatCurrency(gstOnFees);
+    document.getElementById('dtTcsTds').textContent = formatCurrency(tcsTds);
+    document.getElementById('dtTotalDeductions').textContent = formatCurrency(totalDeductions);
+    document.getElementById('dtBankSettlement').textContent = formatCurrency(bankSettlement);
+    document.getElementById('dtCogs').textContent = '- ' + formatCurrency(cogs);
+    document.getElementById('dtPkgAds').textContent = '- ' + formatCurrency(pkg + ads);
+    document.getElementById('dtReturnLossBuffer').textContent = '- ' + formatCurrency(returnLossBuffer);
+    
+    var finalProfitEl = document.getElementById('dtFinalProfit');
+    finalProfitEl.textContent = formatCurrency(blendedProfit);
+    if (blendedProfit >= 0) {
+      finalProfitEl.className = 'font-mono text-xl sm:text-2xl font-bold text-emerald-400';
+    } else {
+      finalProfitEl.className = 'font-mono text-xl sm:text-2xl font-bold text-rose-400';
+    }
+
+    // Trigger update on Comparison Matrix if present
+    if (window.updateComparisonMatrix) {
+      window.updateComparisonMatrix({
+        sellingPrice: sp,
+        costOfGoods: cogs,
+        category: category,
+        productGstRate: gstRate,
+        weightGrams: weight,
+        shippingZone: zone,
+        packagingCost: pkg,
+        adSpend: ads,
+        rtoRate: rtoRate,
+        customerReturnRate: returnRate,
+        customerReturnReverseCost: returnReverseCost
+      });
+    }
+  }
+
+  // Set Marketplace Tab
+  function setMarketplace(mp) {
+    currentMarketplace = mp;
+    document.querySelectorAll('.mp-tab').forEach(function(btn) {
+      if (btn.dataset.mp === mp) {
+        btn.className = 'mp-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all flex items-center gap-2 bg-white text-[#171717] shadow-sm border border-neutral-200/60';
+      } else {
+        btn.className = 'mp-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all flex items-center gap-2 text-neutral-600 hover:text-neutral-900';
+      }
+    });
+
+    var mpNames = { meesho: 'Meesho', flipkart: 'Flipkart', amazon: 'Amazon India', snapdeal: 'Snapdeal' };
+    var mpSubtitles = {
+      meesho: 'Zero referral commission model with weight-slab courier rates.',
+      flipkart: 'Category referral commission + Fixed slab fees + Collection fees.',
+      amazon: 'Amazon Easy Ship model with dynamic closing fee slabs.',
+      snapdeal: 'Value commerce commission structure.'
+    };
+
+    var titleEl = document.getElementById('calcCardTitle');
+    var subtitleEl = document.getElementById('calcCardSubtitle');
+    var badgeEl = document.getElementById('activeMpLabel');
+
+    if (titleEl) titleEl.textContent = (mpNames[mp] || mp) + ' Profit Inputs';
+    if (subtitleEl) subtitleEl.textContent = mpSubtitles[mp] || '';
+    if (badgeEl) badgeEl.textContent = mpNames[mp] || mp;
+
+    calculate();
+  }
+
+  // Setup Event Listeners
+  document.addEventListener('DOMContentLoaded', function() {
+    var priceInput = document.getElementById('inputSellingPrice');
+
+    // Smart Paste Listener
+    if (priceInput) {
+      priceInput.addEventListener('paste', function(e) {
+        var pastedText = (e.clipboardData || window.clipboardData).getData('text');
+        // Clean out currency symbols and commas
+        var cleaned = pastedText.replace(/[₹,\s]/g, '');
+        var num = parseFloat(cleaned);
+        if (!isNaN(num)) {
+          e.preventDefault();
+          priceInput.value = num;
+          calculate();
+        }
+      });
+    }
+
+    // Attach input listeners
+    var inputs = [
+      'inputSellingPrice', 'inputCogs', 'selectCategory', 'inputProductGst',
+      'inputWeight', 'selectShippingZone', 'inputPackagingCost', 'inputAdSpend',
+      'inputRtoRate', 'inputCustomerReturnRate', 'inputReturnReverseCost',
+      'customCommInput', 'customFixedFeeInput', 'customShippingInput'
+    ];
+
+    inputs.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('input', calculate);
+        el.addEventListener('change', calculate);
+      }
+    });
+
+    // Auto-update default GST when Category changes
+    var catSelect = document.getElementById('selectCategory');
+    if (catSelect) {
+      catSelect.addEventListener('change', function() {
+        var catId = catSelect.value;
+        if (CATEGORIES_DATA[catId]) {
+          document.getElementById('inputProductGst').value = CATEGORIES_DATA[catId].defaultGst;
+        }
+        calculate();
+      });
+    }
+
+    // Tab buttons
+    document.querySelectorAll('.mp-tab').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        setMarketplace(btn.dataset.mp);
+      });
+    });
+
+    // Preset buttons
+    document.querySelectorAll('.preset-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.getElementById('inputSellingPrice').value = btn.dataset.price;
+        document.getElementById('inputCogs').value = btn.dataset.cogs;
+        document.getElementById('selectCategory').value = btn.dataset.cat;
+        document.getElementById('inputWeight').value = btn.dataset.wt;
+        if (CATEGORIES_DATA[btn.dataset.cat]) {
+          document.getElementById('inputProductGst').value = CATEGORIES_DATA[btn.dataset.cat].defaultGst;
+        }
+        calculate();
+      });
+    });
+
+    // Accordion Toggles
+    var returnToggle = document.getElementById('returnToggleBtn');
+    var returnPanel = document.getElementById('returnSettingsPanel');
+    if (returnToggle && returnPanel) {
+      returnToggle.addEventListener('click', function() {
+        returnPanel.classList.toggle('hidden');
+      });
+    }
+
+    var feeToggle = document.getElementById('feeOverridesToggleBtn');
+    var feePanel = document.getElementById('feeOverridesPanel');
+    if (feeToggle && feePanel) {
+      feeToggle.addEventListener('click', function() {
+        feePanel.classList.toggle('hidden');
+      });
+    }
+
+    // Reset button
+    var resetBtn = document.getElementById('resetBtn');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', function() {
+        document.getElementById('inputSellingPrice').value = '599';
+        document.getElementById('inputCogs').value = '220';
+        document.getElementById('selectCategory').value = 'fashion';
+        document.getElementById('inputProductGst').value = '12';
+        document.getElementById('inputWeight').value = '500';
+        document.getElementById('selectShippingZone').value = 'national';
+        document.getElementById('inputPackagingCost').value = '15';
+        document.getElementById('inputAdSpend').value = '0';
+        document.getElementById('inputRtoRate').value = '18';
+        document.getElementById('inputCustomerReturnRate').value = '10';
+        document.getElementById('inputReturnReverseCost').value = '130';
+        document.getElementById('customCommInput').value = '';
+        document.getElementById('customFixedFeeInput').value = '';
+        document.getElementById('customShippingInput').value = '';
+        calculate();
+      });
+    }
+
+    // Copy Summary Button
+    var copyBtn = document.getElementById('copySummaryBtn');
+    var toast = document.getElementById('toastMessage');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', function() {
+        var sp = document.getElementById('inputSellingPrice').value;
+        var profit = document.getElementById('blendedProfitValue').textContent.trim();
+        var margin = document.getElementById('blendedMarginBadge').textContent.trim();
+        var settlement = document.getElementById('bankSettlementValue').textContent.trim();
+
+        var summaryText = [
+          '📊 Seller Profit Calculation (' + currentMarketplace.toUpperCase() + ')',
+          '• Selling Price: ₹' + sp,
+          '• Bank Settlement: ' + settlement,
+          '• Real In-Hand Profit: ' + profit + ' (' + margin + ' margin)',
+          '• Calculated on: https://freesellerprofitcalculator.com'
+        ].join('\n');
+
+        navigator.clipboard.writeText(summaryText).then(function() {
+          if (toast) {
+            toast.classList.remove('hidden');
+            setTimeout(function() { toast.classList.add('hidden'); }, 2500);
+          }
+        });
+      });
+    }
+
+    // Initial Run
+    calculate();
+  });
+})();
+</script>
