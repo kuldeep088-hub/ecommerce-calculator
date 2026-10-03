@@ -35,8 +35,8 @@ const homeHref = lang === 'en' ? '/' : `/${lang}/`;
       <a href="#faq" class="hover:text-[#171717] dark:hover:text-white transition-colors font-medium">{t("nav.faq")}</a>
     </nav>
 
-    <!-- Right Side Language Selector, Dark Mode Toggle & CTA -->
-    <div class="flex items-center gap-2 sm:gap-2.5">
+    <!-- Right Side Controls & Mobile Menu Toggle -->
+    <div class="flex items-center gap-1.5 sm:gap-2.5">
       <LanguagePicker currentLang={lang} />
       <ThemeToggle />
       
@@ -46,6 +46,94 @@ const homeHref = lang === 'en' ? '/' : `/${lang}/`;
       >
         {t("nav.cta")}
       </a>
+
+      <!-- Mobile Hamburger Button -->
+      <button
+        type="button"
+        id="mobileMenuBtn"
+        class="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#111111] text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition"
+        aria-label="Toggle mobile menu"
+        aria-expanded="false"
+      >
+        <svg id="menuIconOpen" class="w-4 h-4 block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <svg id="menuIconClose" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Collapsible Mobile Navigation Drawer -->
+  <div id="mobileMenu" class="hidden md:hidden border-t border-[#ebebeb] dark:border-[#262626] bg-white/95 dark:bg-black/95 backdrop-blur-md px-4 py-4 space-y-2">
+    <a href="#calculator" class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-xl text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition">
+      <span>{t("nav.calculator")}</span>
+      <span class="text-xs text-neutral-400">&rarr;</span>
+    </a>
+    <a href="#comparison" class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-xl text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition">
+      <span>{t("nav.comparison")}</span>
+      <span class="text-xs text-neutral-400">&rarr;</span>
+    </a>
+    <a href="#reverse-solver" class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-xl text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition">
+      <span>{t("nav.solver")}</span>
+      <span class="text-xs text-neutral-400">&rarr;</span>
+    </a>
+    <a href="#fee-guide" class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-xl text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition">
+      <span>{t("nav.guide")}</span>
+      <span class="text-xs text-neutral-400">&rarr;</span>
+    </a>
+    <a href="#faq" class="mobile-nav-link flex items-center justify-between py-2.5 px-3 rounded-xl text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition">
+      <span>{t("nav.faq")}</span>
+      <span class="text-xs text-neutral-400">&rarr;</span>
+    </a>
+    <div class="pt-2">
+      <a
+        href="#calculator"
+        class="mobile-nav-link flex items-center justify-center h-10 w-full rounded-xl bg-[#171717] hover:bg-[#262626] dark:bg-white dark:hover:bg-neutral-200 text-white dark:text-black text-xs font-semibold transition"
+      >
+        {t("nav.cta")}
+      </a>
     </div>
   </div>
 </header>
+
+<script>
+  function setupMobileMenu() {
+    const btn = document.getElementById('mobileMenuBtn');
+    const menu = document.getElementById('mobileMenu');
+    const iconOpen = document.getElementById('menuIconOpen');
+    const iconClose = document.getElementById('menuIconClose');
+
+    if (!btn || !menu) return;
+
+    btn.addEventListener('click', () => {
+      const isOpen = !menu.classList.contains('hidden');
+      if (isOpen) {
+        menu.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+        iconOpen?.classList.remove('hidden');
+        iconClose?.classList.add('hidden');
+      } else {
+        menu.classList.remove('hidden');
+        btn.setAttribute('aria-expanded', 'true');
+        iconOpen?.classList.add('hidden');
+        iconClose?.classList.remove('hidden');
+      }
+    });
+
+    // Close when clicking any nav link
+    const links = menu.querySelectorAll('.mobile-nav-link');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.add('hidden');
+        btn.setAttribute('aria-expanded', 'false');
+        iconOpen?.classList.remove('hidden');
+        iconClose?.classList.add('hidden');
+      });
+    });
+  }
+
+  setupMobileMenu();
+  document.addEventListener('astro:after-swap', setupMobileMenu);
+</script>

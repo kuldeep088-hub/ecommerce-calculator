@@ -32,12 +32,29 @@
     background-color: var(--canvas);
     color: var(--ink);
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-tap-highlight-color: transparent;
   }
 
   /* Smooth scroll and modern scrollbar */
   html {
     scroll-behavior: smooth;
   }
+
+  /* Prevent iOS Safari auto-zoom on inputs */
+  @media screen and (max-width: 768px) {
+    input, select, textarea {
+      font-size: 16px !important;
+    }
+  }
+}
+
+/* Hide scrollbar for clean horizontal swipe containers */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* Custom utility for financial numbers */
