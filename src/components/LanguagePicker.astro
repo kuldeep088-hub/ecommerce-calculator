@@ -19,7 +19,7 @@ const currentLang = Astro.props.currentLang || langFromUrl;
   </div>
   <select
     id="languageSelect"
-    class="pl-7 pr-6 py-1.5 bg-neutral-100/80 dark:bg-[#111111] hover:bg-neutral-200/70 dark:hover:bg-neutral-800 border border-neutral-200/80 dark:border-neutral-800 rounded-full text-xs font-mono font-medium text-neutral-800 dark:text-neutral-200 transition cursor-pointer outline-none appearance-none"
+    class="pl-7 pr-6 py-1.5 bg-white/80 dark:bg-[#111111] hover:bg-neutral-100 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-800 rounded-full text-xs font-mono font-medium text-neutral-700 dark:text-neutral-300 transition cursor-pointer outline-none appearance-none shadow-2xs"
   >
     {Object.entries(languages).map(([code, name]) => (
       <option value={code === "en" ? "/" : `/${code}/`} selected={code === currentLang} class="bg-white dark:bg-[#111111] text-neutral-900 dark:text-neutral-100">

@@ -90,10 +90,10 @@ const t = useTranslations(lang);
 const categories = ["All", "Profit & Pricing", "RTO & Returns", "Marketplace Fees", "GST & Taxes"];
 ---
 
-<section id="faq" class="py-16 bg-white dark:bg-[#000000] border-t border-[#ebebeb] dark:border-[#262626]">
+<section id="faq" class="py-14 bg-white dark:bg-[#000000] border-t border-neutral-200/70 dark:border-neutral-800/80">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
     
-    <div class="text-center mb-10">
+    <div class="text-center mb-8">
       <div class="inline-flex items-center gap-1.5 text-xs font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-2">
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
         {t("faq.badge")}
@@ -106,15 +106,15 @@ const categories = ["All", "Profit & Pricing", "RTO & Returns", "Marketplace Fee
       </p>
 
       <!-- Category Filter Pills -->
-      <div class="flex flex-wrap items-center justify-center gap-1.5 mt-6" id="faqFilterPills">
+      <div class="flex flex-wrap items-center justify-center gap-1.5 mt-5" id="faqFilterPills">
         {categories.map((cat, idx) => (
           <button
             type="button"
             data-filter={cat}
-            class={`faq-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all border ${
+            class={`faq-filter-btn px-3 py-1 rounded-full text-xs font-medium transition-all border ${
               idx === 0
-                ? "bg-[#171717] dark:bg-white text-white dark:text-black border-transparent"
-                : "bg-neutral-100 dark:bg-[#141414] hover:bg-neutral-200 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-300 border-neutral-200/50 dark:border-neutral-800"
+                ? "bg-neutral-900 dark:bg-white text-white dark:text-black border-transparent shadow-2xs"
+                : "bg-transparent hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border border-neutral-200/80 dark:border-neutral-800"
             }`}
           >
             {cat}
@@ -124,10 +124,10 @@ const categories = ["All", "Profit & Pricing", "RTO & Returns", "Marketplace Fee
     </div>
 
     <!-- Accordion Items -->
-    <div class="space-y-3.5" id="faqAccordionContainer">
+    <div class="space-y-3" id="faqAccordionContainer">
       {faqs.map((faq) => (
         <details
-          class="faq-card group rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-[#0a0a0a] p-5 transition-all open:bg-white dark:open:bg-[#111111] open:border-neutral-300 dark:open:border-neutral-700 open:shadow-xs"
+          class="faq-card group rounded-xl border border-neutral-200/80 dark:border-neutral-800 bg-white dark:bg-[#0a0a0a] p-4 sm:p-5 transition-all shadow-subtle open:border-neutral-300 dark:open:border-neutral-700"
           data-category={faq.category}
         >
           <summary class="flex cursor-pointer items-center justify-between text-sm sm:text-base font-semibold text-neutral-900 dark:text-white list-none gap-4">

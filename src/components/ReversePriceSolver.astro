@@ -30,8 +30,8 @@ const t = useTranslations(lang);
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
       
       <!-- Inputs (5 Cols) -->
-      <div class="lg:col-span-5 bg-neutral-50/70 dark:bg-[#0a0a0a] border border-[#ebebeb] dark:border-[#262626] rounded-2xl p-4 sm:p-7">
-        <h3 class="text-sm font-semibold text-[#171717] dark:text-white mb-4">Your Cost &amp; Profit Goal</h3>
+      <div class="lg:col-span-5 bg-white dark:bg-[#0a0a0a] border border-neutral-200/80 dark:border-neutral-800 rounded-2xl p-4 sm:p-6 shadow-subtle">
+        <h3 class="text-sm font-semibold text-neutral-900 dark:text-white mb-4">Your Cost &amp; Profit Goal</h3>
         
         <form id="solverForm" class="space-y-4" onsubmit="return false;">
           
@@ -126,21 +126,21 @@ const t = useTranslations(lang);
       <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4">
         
         <!-- Meesho Target Price -->
-        <div class="card-ver p-5 bg-white dark:bg-[#0a0a0a] border border-[#ebebeb] dark:border-[#262626] flex flex-col justify-between">
+        <div class="card-ver p-4 sm:p-5 bg-white dark:bg-[#0a0a0a] border border-neutral-200/80 dark:border-neutral-800 shadow-subtle flex flex-col justify-between">
           <div>
             <div class="flex items-center gap-2 mb-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-pink-500"></span>
-              <span class="font-bold text-sm text-neutral-900 dark:text-white">Meesho</span>
+              <span class="w-2 h-2 rounded-full bg-pink-500"></span>
+              <span class="font-semibold text-sm text-neutral-900 dark:text-white">Meesho</span>
             </div>
             <span class="text-xs text-neutral-500 dark:text-neutral-400">Required Selling Price</span>
-            <div class="text-3xl font-mono font-bold text-neutral-900 dark:text-white mt-2" id="solvPriceMeesho">
+            <div class="text-2xl sm:text-3xl font-mono font-bold text-neutral-900 dark:text-white mt-1.5" id="solvPriceMeesho">
               ₹449
             </div>
           </div>
-          <div class="mt-4 pt-3 border-t border-neutral-100 dark:border-neutral-800 text-xs text-neutral-500 dark:text-neutral-400 space-y-1">
+          <div class="mt-4 pt-3 border-t border-neutral-100 dark:border-neutral-800/80 text-xs text-neutral-500 dark:text-neutral-400 space-y-1">
             <div class="flex justify-between">
               <span>Commission:</span>
-              <strong class="font-mono text-emerald-600 dark:text-emerald-400">0%</strong>
+              <strong class="font-mono text-emerald-600 dark:text-emerald-400 font-semibold">0%</strong>
             </div>
             <div class="flex justify-between">
               <span>Courier &amp; RTO buffer:</span>
@@ -150,18 +150,18 @@ const t = useTranslations(lang);
         </div>
 
         <!-- Flipkart Target Price -->
-        <div class="card-ver p-5 bg-white dark:bg-[#0a0a0a] border border-[#ebebeb] dark:border-[#262626] flex flex-col justify-between">
+        <div class="card-ver p-4 sm:p-5 bg-white dark:bg-[#0a0a0a] border border-neutral-200/80 dark:border-neutral-800 shadow-subtle flex flex-col justify-between">
           <div>
             <div class="flex items-center gap-2 mb-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
-              <span class="font-bold text-sm text-neutral-900 dark:text-white">Flipkart</span>
+              <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+              <span class="font-semibold text-sm text-neutral-900 dark:text-white">Flipkart</span>
             </div>
             <span class="text-xs text-neutral-500 dark:text-neutral-400">Required Selling Price</span>
-            <div class="text-3xl font-mono font-bold text-neutral-900 dark:text-white mt-2" id="solvPriceFlipkart">
+            <div class="text-2xl sm:text-3xl font-mono font-bold text-neutral-900 dark:text-white mt-1.5" id="solvPriceFlipkart">
               ₹589
             </div>
           </div>
-          <div class="mt-4 pt-3 border-t border-neutral-100 dark:border-neutral-800 text-xs text-neutral-500 dark:text-neutral-400 space-y-1">
+          <div class="mt-4 pt-3 border-t border-neutral-100 dark:border-neutral-800/80 text-xs text-neutral-500 dark:text-neutral-400 space-y-1">
             <div class="flex justify-between">
               <span>Commission:</span>
               <span class="font-mono text-neutral-700 dark:text-neutral-300" id="solvCommFlipkart">15.0%</span>
@@ -174,18 +174,18 @@ const t = useTranslations(lang);
         </div>
 
         <!-- Amazon Target Price -->
-        <div class="card-ver p-5 bg-white dark:bg-[#0a0a0a] border border-[#ebebeb] dark:border-[#262626] flex flex-col justify-between">
+        <div class="card-ver p-4 sm:p-5 bg-white dark:bg-[#0a0a0a] border border-neutral-200/80 dark:border-neutral-800 shadow-subtle flex flex-col justify-between">
           <div>
             <div class="flex items-center gap-2 mb-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
-              <span class="font-bold text-sm text-neutral-900 dark:text-white">Amazon</span>
+              <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+              <span class="font-semibold text-sm text-neutral-900 dark:text-white">Amazon</span>
             </div>
             <span class="text-xs text-neutral-500 dark:text-neutral-400">Required Selling Price</span>
-            <div class="text-3xl font-mono font-bold text-neutral-900 dark:text-white mt-2" id="solvPriceAmazon">
+            <div class="text-2xl sm:text-3xl font-mono font-bold text-neutral-900 dark:text-white mt-1.5" id="solvPriceAmazon">
               ₹599
             </div>
           </div>
-          <div class="mt-4 pt-3 border-t border-neutral-100 dark:border-neutral-800 text-xs text-neutral-500 dark:text-neutral-400 space-y-1">
+          <div class="mt-4 pt-3 border-t border-neutral-100 dark:border-neutral-800/80 text-xs text-neutral-500 dark:text-neutral-400 space-y-1">
             <div class="flex justify-between">
               <span>Commission:</span>
               <span class="font-mono text-neutral-700 dark:text-neutral-300" id="solvCommAmazon">13.5%</span>
