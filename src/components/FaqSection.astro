@@ -77,6 +77,16 @@ const faqs: FaqItem[] = [
   }
 ];
 
+import { useTranslations } from '../i18n/utils';
+import type { SupportedLanguage } from '../i18n/ui';
+
+interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang);
+
 const categories = ["All", "Profit & Pricing", "RTO & Returns", "Marketplace Fees", "GST & Taxes"];
 ---
 
@@ -86,13 +96,13 @@ const categories = ["All", "Profit & Pricing", "RTO & Returns", "Marketplace Fee
     <div class="text-center mb-10">
       <div class="inline-flex items-center gap-1.5 text-xs font-mono text-neutral-500 uppercase tracking-wider mb-2">
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-        AI Overview &amp; Seller Knowledge Base
+        {t("faq.badge")}
       </div>
       <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-[#171717]">
-        Frequently Asked Questions for Indian E-Commerce Sellers
+        {t("faq.title")}
       </h2>
       <p class="text-sm text-neutral-600 mt-2 max-w-2xl mx-auto">
-        Authoritative answers on Meesho, Flipkart, and Amazon fee slabs, courier charges, GST Input Tax Credits, and real-world RTO economics.
+        {t("faq.sub")}
       </p>
 
       <!-- Category Filter Pills -->

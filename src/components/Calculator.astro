@@ -1,6 +1,15 @@
 ---
 import { CATEGORIES } from '../data/categories';
 import { MARKETPLACES } from '../data/marketplaces';
+import { useTranslations } from '../i18n/utils';
+import type { SupportedLanguage } from '../i18n/ui';
+
+interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <section id="calculator" class="pt-8 pb-16">
@@ -10,29 +19,29 @@ import { MARKETPLACES } from '../data/marketplaces';
     <div class="text-center max-w-3xl mx-auto mb-10">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 border border-neutral-200 text-xs font-mono text-neutral-600 mb-4">
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-        Zero Signup &bull; Real 2026 Commission &amp; GST Slabs &bull; Instant Calculation
+        {t("hero.badge")}
       </div>
       <h1 class="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[#171717] leading-[1.15]">
-        Indian Marketplace Seller Profit &amp; Fee Calculator
+        {t("hero.title")}
       </h1>
       <p class="mt-4 text-base sm:text-lg text-[#737373] max-w-2xl mx-auto">
-        Know your exact net in-hand payout, marketplace commission fees, shipping charges, GST deductions, and <strong class="text-[#171717] font-medium">realistic RTO / return losses</strong> before you list.
+        {t("hero.subtitle")}
       </p>
 
       <!-- Quick Preset Chips -->
       <div class="flex flex-wrap items-center justify-center gap-2 mt-6">
-        <span class="text-xs text-neutral-400 font-mono">Quick test presets:</span>
+        <span class="text-xs text-neutral-400 font-mono">{t("hero.presets")}</span>
         <button type="button" class="preset-btn px-2.5 py-1 text-xs rounded-full bg-white border border-[#ebebeb] hover:border-neutral-400 text-neutral-700 transition" data-price="499" data-cogs="180" data-cat="fashion" data-wt="350">
-          👕 T-Shirt (₹499)
+          {t("hero.tshirt")}
         </button>
         <button type="button" class="preset-btn px-2.5 py-1 text-xs rounded-full bg-white border border-[#ebebeb] hover:border-neutral-400 text-neutral-700 transition" data-price="299" data-cogs="80" data-cat="electronics_accessories" data-wt="150">
-          📱 Mobile Case (₹299)
+          {t("hero.case")}
         </button>
         <button type="button" class="preset-btn px-2.5 py-1 text-xs rounded-full bg-white border border-[#ebebeb] hover:border-neutral-400 text-neutral-700 transition" data-price="899" data-cogs="340" data-cat="home_kitchen" data-wt="650">
-          🍳 Kitchen Tool (₹899)
+          {t("hero.kitchen")}
         </button>
         <button type="button" class="preset-btn px-2.5 py-1 text-xs rounded-full bg-white border border-[#ebebeb] hover:border-neutral-400 text-neutral-700 transition" data-price="1499" data-cogs="600" data-cat="footwear" data-wt="850">
-          👟 Shoes (₹1,499)
+          {t("hero.shoes")}
         </button>
       </div>
     </div>

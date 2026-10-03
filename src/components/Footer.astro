@@ -1,5 +1,14 @@
 ---
 // src/components/Footer.astro
+import { languages, type SupportedLanguage } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <footer class="bg-white border-t border-[#ebebeb] py-12 text-xs text-neutral-500">
@@ -13,7 +22,7 @@
           <div class="w-6 h-6 rounded bg-[#171717] flex items-center justify-center text-white font-bold text-xs">
             ₹
           </div>
-          <span class="font-semibold text-sm text-[#171717]">Seller Profit Calculator</span>
+          <span class="font-semibold text-sm text-[#171717]">{t("site.name")}</span>
         </div>
         <p class="text-neutral-500 leading-relaxed">
           The high-precision profit and fee calculator built specifically for Indian e-commerce sellers on Meesho, Flipkart, and Amazon.
@@ -49,14 +58,25 @@
         </ul>
       </div>
 
-      <!-- Col 4: Legal & Disclaimer -->
+      <!-- Col 4: International Languages -->
       <div>
         <h4 class="font-semibold text-neutral-900 mb-3 uppercase tracking-wider text-[11px]">
-          Disclaimer
+          Supported Languages
         </h4>
-        <p class="text-[11px] text-neutral-400 leading-relaxed">
-          This calculator is an independent utility tool. Amazon, Flipkart, Meesho, and Snapdeal are registered trademarks of their respective owners. Fee slabs and rate cards are updated regularly according to publicly available marketplace policies.
-        </p>
+        <div class="flex flex-wrap gap-1.5">
+          {Object.entries(languages).map(([code, name]) => (
+            <a
+              href={code === "en" ? "/" : `/${code}/`}
+              class={`px-2 py-1 rounded text-[11px] font-mono border transition ${
+                code === lang
+                  ? "bg-neutral-900 text-white border-neutral-900"
+                  : "bg-neutral-50 hover:bg-neutral-100 text-neutral-600 border-neutral-200"
+              }`}
+            >
+              {name}
+            </a>
+          ))}
+        </div>
       </div>
 
     </div>

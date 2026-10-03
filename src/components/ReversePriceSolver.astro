@@ -1,5 +1,14 @@
 ---
 import { CATEGORIES } from '../data/categories';
+import { useTranslations } from '../i18n/utils';
+import type { SupportedLanguage } from '../i18n/ui';
+
+interface Props {
+  lang?: SupportedLanguage;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <section id="reverse-solver" class="py-12 bg-white">
@@ -8,13 +17,13 @@ import { CATEGORIES } from '../data/categories';
     <div class="max-w-3xl mb-8">
       <div class="inline-flex items-center gap-1.5 text-xs font-mono text-neutral-500 uppercase tracking-wider mb-1.5">
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-        Reverse Margin Engine
+        {t("solver.badge")}
       </div>
       <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-[#171717]">
-        Target Profit &amp; Selling Price Solver
+        {t("solver.title")}
       </h2>
       <p class="text-sm text-neutral-600 mt-1">
-        Don’t guess your pricing. Enter your product cost and desired in-hand profit &mdash; we calculate the exact listing price required on each marketplace.
+        {t("solver.sub")}
       </p>
     </div>
 

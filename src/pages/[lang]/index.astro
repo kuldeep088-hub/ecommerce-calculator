@@ -1,0 +1,37 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Calculator from '../../components/Calculator.astro';
+import ComparisonMatrix from '../../components/ComparisonMatrix.astro';
+import ReversePriceSolver from '../../components/ReversePriceSolver.astro';
+import FeeGuide from '../../components/FeeGuide.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { useTranslations } from '../../i18n/utils';
+import type { SupportedLanguage } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'es' } },
+    { params: { lang: 'ja' } },
+    { params: { lang: 'fr' } },
+    { params: { lang: 'de' } },
+    { params: { lang: 'pt' } },
+    { params: { lang: 'ko' } },
+    { params: { lang: 'it' } },
+  ];
+}
+
+const { lang } = Astro.params as { lang: SupportedLanguage };
+const t = useTranslations(lang);
+---
+
+<Layout
+  lang={lang}
+  title={t("site.title")}
+  description={t("site.desc")}
+>
+  <Calculator lang={lang} />
+  <ComparisonMatrix lang={lang} />
+  <ReversePriceSolver lang={lang} />
+  <FeeGuide lang={lang} />
+  <FaqSection lang={lang} />
+</Layout>
