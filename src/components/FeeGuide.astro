@@ -2,38 +2,38 @@
 // src/components/FeeGuide.astro
 ---
 
-<section id="fee-guide" class="py-14 bg-neutral-50/40 dark:bg-[#050505] border-t border-neutral-200/70 dark:border-neutral-800/80">
+<section id="fee-guide" class="py-12 sm:py-16 bg-transparent border-t border-black/[0.05] dark:border-white/[0.06]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
-    <div class="max-w-3xl mb-10">
-      <div class="inline-flex items-center gap-1.5 text-xs font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-2">
+    <div class="max-w-3xl mb-8">
+      <div class="inline-flex items-center gap-1.5 text-xs font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-1.5">
         <span class="w-1.5 h-1.5 rounded-full bg-neutral-800 dark:bg-neutral-200"></span>
         Reference Documentation
       </div>
-      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-[#171717] dark:text-white">
+      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-neutral-900 dark:text-white">
         Indian Marketplace Fee Structures Explained (2026 Slabs)
       </h2>
-      <p class="text-sm text-neutral-600 dark:text-neutral-400 mt-2">
+      <p class="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 mt-1">
         Understand how Amazon, Flipkart, and Meesho calculate commissions, closing fees, courier weight slabs, and government deductions.
       </p>
     </div>
 
     <!-- 3-Column Marketplace Breakdown Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
       
       <!-- Amazon India Card -->
-      <div class="card-ver p-5 bg-white dark:bg-[#0a0a0a] border border-neutral-200/80 dark:border-neutral-800 shadow-subtle flex flex-col justify-between">
+      <div class="card-ver p-5 bg-white dark:bg-[#0b0b0b] border border-black/[0.06] dark:border-white/[0.08] flex flex-col justify-between">
         <div>
           <div class="flex items-center justify-between mb-4">
             <span class="font-bold text-base text-neutral-900 dark:text-white">Amazon India</span>
-            <span class="text-xs font-mono px-2 py-0.5 rounded-full bg-amber-50 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-900/50">Easy Ship &amp; FBA</span>
+            <span class="text-xs font-mono px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">Easy Ship &amp; FBA</span>
           </div>
 
           <h3 class="text-xs font-semibold uppercase tracking-wider text-neutral-700 dark:text-neutral-300 mb-2">Closing Fee Slabs</h3>
-          <div class="rounded-xl border border-neutral-100 dark:border-neutral-800 overflow-hidden text-xs mb-4">
+          <div class="rounded-xl border border-black/[0.05] dark:border-white/[0.06] overflow-hidden text-xs mb-4">
             <table class="w-full text-left">
-              <tbody class="divide-y divide-neutral-100 dark:divide-neutral-800 font-mono">
-                <tr class="bg-neutral-50/50 dark:bg-[#111111]/50">
+              <tbody class="divide-y divide-black/[0.04] dark:divide-white/[0.04] font-mono">
+                <tr class="bg-neutral-50/50 dark:bg-neutral-900/30">
                   <td class="p-2 text-neutral-600 dark:text-neutral-400 font-sans">₹0 &ndash; ₹250</td>
                   <td class="p-2 font-bold text-right text-neutral-900 dark:text-white">₹5.00</td>
                 </tr>
@@ -41,7 +41,7 @@
                   <td class="p-2 text-neutral-600 dark:text-neutral-400 font-sans">₹251 &ndash; ₹500</td>
                   <td class="p-2 font-bold text-right text-neutral-900 dark:text-white">₹10.00</td>
                 </tr>
-                <tr class="bg-neutral-50/50 dark:bg-[#111111]/50">
+                <tr class="bg-neutral-50/50 dark:bg-neutral-900/30">
                   <td class="p-2 text-neutral-600 dark:text-neutral-400 font-sans">₹501 &ndash; ₹1,000</td>
                   <td class="p-2 font-bold text-right text-neutral-900 dark:text-white">₹25.00</td>
                 </tr>
@@ -49,7 +49,7 @@
                   <td class="p-2 text-neutral-600 dark:text-neutral-400 font-sans">₹1,001 &ndash; ₹2,000</td>
                   <td class="p-2 font-bold text-right text-neutral-900 dark:text-white">₹35.00</td>
                 </tr>
-                <tr class="bg-neutral-50/50 dark:bg-[#111111]/50">
+                <tr class="bg-neutral-50/50 dark:bg-neutral-900/30">
                   <td class="p-2 text-neutral-600 dark:text-neutral-400 font-sans">₹2,001+</td>
                   <td class="p-2 font-bold text-right text-neutral-900 dark:text-white">₹50.00</td>
                 </tr>
@@ -64,18 +64,18 @@
       </div>
 
       <!-- Flipkart Card -->
-      <div class="card-ver p-5 bg-white dark:bg-[#0a0a0a] border border-neutral-200/80 dark:border-neutral-800 shadow-subtle flex flex-col justify-between">
+      <div class="card-ver p-5 bg-white dark:bg-[#0b0b0b] border border-black/[0.06] dark:border-white/[0.08] flex flex-col justify-between">
         <div>
           <div class="flex items-center justify-between mb-4">
             <span class="font-bold text-base text-neutral-900 dark:text-white">Flipkart</span>
-            <span class="text-xs font-mono px-2 py-0.5 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-800 dark:text-blue-300 border border-blue-200 dark:border-blue-900/50">Non-FBF &amp; FBF</span>
+            <span class="text-xs font-mono px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-800 dark:text-blue-300 border border-blue-500/20">Non-FBF &amp; FBF</span>
           </div>
 
           <h3 class="text-xs font-semibold uppercase tracking-wider text-neutral-700 dark:text-neutral-300 mb-2">Fixed Fee Slabs</h3>
-          <div class="rounded-xl border border-neutral-100 dark:border-neutral-800 overflow-hidden text-xs mb-4">
+          <div class="rounded-xl border border-black/[0.05] dark:border-white/[0.06] overflow-hidden text-xs mb-4">
             <table class="w-full text-left">
-              <tbody class="divide-y divide-neutral-100 dark:divide-neutral-800 font-mono">
-                <tr class="bg-neutral-50/50 dark:bg-[#111111]/50">
+              <tbody class="divide-y divide-black/[0.04] dark:divide-white/[0.04] font-mono">
+                <tr class="bg-neutral-50/50 dark:bg-neutral-900/30">
                   <td class="p-2 text-neutral-600 dark:text-neutral-400 font-sans">₹0 &ndash; ₹300</td>
                   <td class="p-2 font-bold text-right text-neutral-900 dark:text-white">₹13.00</td>
                 </tr>
@@ -83,7 +83,7 @@
                   <td class="p-2 text-neutral-600 dark:text-neutral-400 font-sans">₹301 &ndash; ₹500</td>
                   <td class="p-2 font-bold text-right text-neutral-900 dark:text-white">₹17.00</td>
                 </tr>
-                <tr class="bg-neutral-50/50 dark:bg-[#111111]/50">
+                <tr class="bg-neutral-50/50 dark:bg-neutral-900/30">
                   <td class="p-2 text-neutral-600 dark:text-neutral-400 font-sans">₹501 &ndash; ₹1,000</td>
                   <td class="p-2 font-bold text-right text-neutral-900 dark:text-white">₹30.00</td>
                 </tr>
@@ -102,18 +102,18 @@
       </div>
 
       <!-- Meesho Card -->
-      <div class="card-ver p-5 bg-white dark:bg-[#0a0a0a] border border-neutral-200/80 dark:border-neutral-800 shadow-subtle flex flex-col justify-between">
+      <div class="card-ver p-5 bg-white dark:bg-[#0b0b0b] border border-black/[0.06] dark:border-white/[0.08] flex flex-col justify-between">
         <div>
           <div class="flex items-center justify-between mb-4">
             <span class="font-bold text-base text-neutral-900 dark:text-white">Meesho</span>
-            <span class="text-xs font-mono px-2 py-0.5 rounded-full bg-pink-50 dark:bg-pink-950/60 text-pink-800 dark:text-pink-300 border border-pink-200 dark:border-pink-900/50">Zero Commission</span>
+            <span class="text-xs font-mono px-2 py-0.5 rounded-full bg-pink-500/10 text-pink-800 dark:text-pink-300 border border-pink-500/20">Zero Commission</span>
           </div>
 
           <h3 class="text-xs font-semibold uppercase tracking-wider text-neutral-700 dark:text-neutral-300 mb-2">Shipping Weight Slabs</h3>
-          <div class="rounded-xl border border-neutral-100 dark:border-neutral-800 overflow-hidden text-xs mb-4">
+          <div class="rounded-xl border border-black/[0.05] dark:border-white/[0.06] overflow-hidden text-xs mb-4">
             <table class="w-full text-left">
-              <tbody class="divide-y divide-neutral-100 dark:divide-neutral-800 font-mono">
-                <tr class="bg-neutral-50/50 dark:bg-[#111111]/50">
+              <tbody class="divide-y divide-black/[0.04] dark:divide-white/[0.04] font-mono">
+                <tr class="bg-neutral-50/50 dark:bg-neutral-900/30">
                   <td class="p-2 text-neutral-600 dark:text-neutral-400 font-sans">0 &ndash; 500g</td>
                   <td class="p-2 font-bold text-right text-neutral-900 dark:text-white">₹49.00</td>
                 </tr>
@@ -121,7 +121,7 @@
                   <td class="p-2 text-neutral-600 dark:text-neutral-400 font-sans">501g &ndash; 1,000g</td>
                   <td class="p-2 font-bold text-right text-neutral-900 dark:text-white">₹85.00</td>
                 </tr>
-                <tr class="bg-neutral-50/50 dark:bg-[#111111]/50">
+                <tr class="bg-neutral-50/50 dark:bg-neutral-900/30">
                   <td class="p-2 text-neutral-600 dark:text-neutral-400 font-sans">1,001g &ndash; 1,500g</td>
                   <td class="p-2 font-bold text-right text-neutral-900 dark:text-white">₹125.00</td>
                 </tr>
@@ -142,16 +142,16 @@
     </div>
 
     <!-- GST & ITC Knowledge Box -->
-    <div class="card-ver p-5 sm:p-7 bg-white dark:bg-[#0a0a0a] border border-neutral-200/80 dark:border-neutral-800 shadow-subtle">
+    <div class="card-ver p-5 sm:p-7 bg-white dark:bg-[#0b0b0b] border border-black/[0.06] dark:border-white/[0.08]">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <div>
-          <span class="text-xs font-mono uppercase tracking-wider text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-800/50">
+          <span class="text-xs font-mono uppercase tracking-wider text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
             Important Tax Tip
           </span>
           <h3 class="text-xl font-semibold text-neutral-900 dark:text-white mt-2">
             Claiming GST Input Tax Credit (ITC) on Marketplace Fees
           </h3>
-          <p class="text-sm text-neutral-600 dark:text-neutral-400 mt-2 leading-relaxed">
+          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mt-2 leading-relaxed">
             Did you know? The 18% GST deducted by Amazon, Flipkart, and Meesho on their commission, closing fees, and shipping is <strong>100% claimable as Input Tax Credit (ITC)</strong> on your monthly GSTR-3B filings!
           </p>
           <ul class="text-xs text-neutral-600 dark:text-neutral-400 space-y-2 mt-4">
@@ -167,13 +167,13 @@
           </ul>
         </div>
 
-        <div class="bg-neutral-50 dark:bg-[#111111] border border-neutral-200 dark:border-neutral-800 rounded-xl p-5 text-xs text-neutral-700 dark:text-neutral-300 space-y-3 font-mono">
+        <div class="bg-neutral-50/70 dark:bg-neutral-900/40 border border-black/[0.05] dark:border-white/[0.06] rounded-xl p-5 text-xs text-neutral-700 dark:text-neutral-300 space-y-3 font-mono">
           <div class="text-neutral-500 dark:text-neutral-400 font-sans uppercase font-semibold text-[11px]">Example Payout vs Tax Reconciliation</div>
-          <div class="flex justify-between border-b border-neutral-200 dark:border-neutral-800 pb-2">
+          <div class="flex justify-between border-b border-black/[0.05] dark:border-white/[0.06] pb-2">
             <span>Marketplace Fee Before Tax:</span>
             <span class="text-neutral-900 dark:text-white">₹100.00</span>
           </div>
-          <div class="flex justify-between border-b border-neutral-200 dark:border-neutral-800 pb-2 text-rose-600 dark:text-rose-400">
+          <div class="flex justify-between border-b border-black/[0.05] dark:border-white/[0.06] pb-2 text-rose-600 dark:text-rose-400">
             <span>18% GST Deducted from Payout:</span>
             <span>- ₹18.00</span>
           </div>

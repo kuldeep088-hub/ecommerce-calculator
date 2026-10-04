@@ -11,18 +11,18 @@ const { lang = 'en' } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<section id="reverse-solver" class="py-12 bg-white dark:bg-[#000000]">
+<section id="reverse-solver" class="py-12 sm:py-16 bg-transparent border-t border-black/[0.05] dark:border-white/[0.06]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
-    <div class="max-w-3xl mb-8">
+    <div class="max-w-3xl mb-7">
       <div class="inline-flex items-center gap-1.5 text-xs font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-1.5">
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
         {t("solver.badge")}
       </div>
-      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-[#171717] dark:text-white">
+      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-neutral-900 dark:text-white">
         {t("solver.title")}
       </h2>
-      <p class="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
+      <p class="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 mt-1">
         {t("solver.sub")}
       </p>
     </div>
@@ -30,35 +30,35 @@ const t = useTranslations(lang);
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
       
       <!-- Inputs (5 Cols) -->
-      <div class="lg:col-span-5 bg-white dark:bg-[#0a0a0a] border border-neutral-200/80 dark:border-neutral-800 rounded-2xl p-4 sm:p-6 shadow-subtle">
-        <h3 class="text-sm font-semibold text-neutral-900 dark:text-white mb-4">Your Cost &amp; Profit Goal</h3>
+      <div class="lg:col-span-5 card-ver p-4 sm:p-6 bg-white dark:bg-[#0b0b0b] border border-black/[0.06] dark:border-white/[0.08]">
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-neutral-900 dark:text-white mb-4">Your Cost &amp; Profit Goal</h3>
         
         <form id="solverForm" class="space-y-4" onsubmit="return false;">
           
           <div>
-            <label for="solvCogs" class="block text-xs font-semibold uppercase tracking-wider text-neutral-700 dark:text-neutral-300 mb-1">
+            <label for="solvCogs" class="block text-[11px] font-medium uppercase tracking-wider text-neutral-600 dark:text-neutral-400 mb-1">
               Product Cost (COGS)
             </label>
-            <div class="relative">
-              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-neutral-400 dark:text-neutral-500 font-semibold text-sm">₹</div>
+            <div class="relative rounded-xl border border-black/[0.07] dark:border-white/[0.08] bg-white dark:bg-neutral-900/50 focus-within:border-black dark:focus-within:border-white focus-within:ring-1 focus-within:ring-black/5 dark:focus-within:ring-white/10 transition-all">
+              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-neutral-400 dark:text-neutral-500 font-medium text-sm">₹</div>
               <input
                 type="number"
                 id="solvCogs"
                 value="250"
                 min="0"
-                class="w-full pl-8 pr-4 py-2.5 bg-white dark:bg-[#141414] border border-neutral-200 dark:border-neutral-800 rounded-xl text-sm font-mono text-neutral-900 dark:text-white outline-none focus:border-neutral-900 dark:focus:border-white"
+                class="w-full pl-8 pr-4 py-2.5 bg-transparent rounded-xl text-sm font-mono text-neutral-900 dark:text-white outline-none min-h-[42px]"
               />
             </div>
           </div>
 
           <div class="grid grid-cols-2 gap-3">
             <div>
-              <label for="solvTargetMode" class="block text-xs font-semibold uppercase tracking-wider text-neutral-700 dark:text-neutral-300 mb-1">
+              <label for="solvTargetMode" class="block text-[11px] font-medium uppercase tracking-wider text-neutral-600 dark:text-neutral-400 mb-1">
                 Goal Type
               </label>
               <select
                 id="solvTargetMode"
-                class="w-full px-3 py-2.5 bg-white dark:bg-[#141414] border border-neutral-200 dark:border-neutral-800 rounded-xl text-xs sm:text-sm text-neutral-800 dark:text-neutral-200 outline-none"
+                class="w-full px-3 py-2.5 bg-white dark:bg-neutral-900/50 border border-black/[0.07] dark:border-white/[0.08] focus:border-black dark:focus:border-white focus:ring-1 focus:ring-black/5 dark:focus:ring-white/10 rounded-xl text-xs sm:text-sm text-neutral-800 dark:text-neutral-200 outline-none cursor-pointer min-h-[42px]"
               >
                 <option value="fixed" class="bg-white dark:bg-[#141414] text-neutral-900 dark:text-neutral-100">Fixed ₹ Profit</option>
                 <option value="margin" class="bg-white dark:bg-[#141414] text-neutral-900 dark:text-neutral-100">Margin % of Price</option>
@@ -66,27 +66,29 @@ const t = useTranslations(lang);
             </div>
 
             <div>
-              <label for="solvTargetVal" class="block text-xs font-semibold uppercase tracking-wider text-neutral-700 dark:text-neutral-300 mb-1" id="solvTargetValLabel">
+              <label for="solvTargetVal" class="block text-[11px] font-medium uppercase tracking-wider text-neutral-600 dark:text-neutral-400 mb-1" id="solvTargetValLabel">
                 Desired Profit (₹)
               </label>
-              <input
-                type="number"
-                id="solvTargetVal"
-                value="100"
-                min="1"
-                class="w-full px-3 py-2.5 bg-white dark:bg-[#141414] border border-neutral-200 dark:border-neutral-800 rounded-xl text-sm font-mono text-neutral-900 dark:text-white outline-none"
-              />
+              <div class="rounded-xl border border-black/[0.07] dark:border-white/[0.08] bg-white dark:bg-neutral-900/50 focus-within:border-black dark:focus-within:border-white focus-within:ring-1 focus-within:ring-black/5 dark:focus-within:ring-white/10 transition-all">
+                <input
+                  type="number"
+                  id="solvTargetVal"
+                  value="100"
+                  min="1"
+                  class="w-full px-3 py-2.5 bg-transparent rounded-xl text-sm font-mono text-neutral-900 dark:text-white outline-none min-h-[42px]"
+                />
+              </div>
             </div>
           </div>
 
           <div class="grid grid-cols-2 gap-3">
             <div>
-              <label for="solvCategory" class="block text-xs font-semibold uppercase tracking-wider text-neutral-700 dark:text-neutral-300 mb-1">
+              <label for="solvCategory" class="block text-[11px] font-medium uppercase tracking-wider text-neutral-600 dark:text-neutral-400 mb-1">
                 Category
               </label>
               <select
                 id="solvCategory"
-                class="w-full px-3 py-2 bg-white dark:bg-[#141414] border border-neutral-200 dark:border-neutral-800 rounded-xl text-xs text-neutral-800 dark:text-neutral-200 outline-none"
+                class="w-full px-3 py-2.5 bg-white dark:bg-neutral-900/50 border border-black/[0.07] dark:border-white/[0.08] focus:border-black dark:focus:border-white focus:ring-1 focus:ring-black/5 dark:focus:ring-white/10 rounded-xl text-xs sm:text-sm text-neutral-800 dark:text-neutral-200 outline-none cursor-pointer min-h-[42px]"
               >
                 {CATEGORIES.map((c) => (
                   <option value={c.id} class="bg-white dark:bg-[#141414] text-neutral-900 dark:text-neutral-100">{c.name}</option>
@@ -95,16 +97,18 @@ const t = useTranslations(lang);
             </div>
 
             <div>
-              <label for="solvWeight" class="block text-xs font-semibold uppercase tracking-wider text-neutral-700 dark:text-neutral-300 mb-1">
+              <label for="solvWeight" class="block text-[11px] font-medium uppercase tracking-wider text-neutral-600 dark:text-neutral-400 mb-1">
                 Weight (g)
               </label>
-              <input
-                type="number"
-                id="solvWeight"
-                value="500"
-                step="50"
-                class="w-full px-3 py-2 bg-white dark:bg-[#141414] border border-neutral-200 dark:border-neutral-800 rounded-xl text-xs font-mono text-neutral-900 dark:text-white outline-none"
-              />
+              <div class="rounded-xl border border-black/[0.07] dark:border-white/[0.08] bg-white dark:bg-neutral-900/50 focus-within:border-black dark:focus-within:border-white focus-within:ring-1 focus-within:ring-black/5 dark:focus-within:ring-white/10 transition-all">
+                <input
+                  type="number"
+                  id="solvWeight"
+                  value="500"
+                  step="50"
+                  class="w-full px-3 py-2.5 bg-transparent rounded-xl text-xs sm:text-sm font-mono text-neutral-900 dark:text-white outline-none min-h-[42px]"
+                />
+              </div>
             </div>
           </div>
 
@@ -112,7 +116,7 @@ const t = useTranslations(lang);
             <button
               type="button"
               id="solvCalculateBtn"
-              class="w-full py-3 bg-[#171717] hover:bg-[#262626] dark:bg-white dark:hover:bg-neutral-200 text-white dark:text-black rounded-xl text-sm font-semibold transition active:scale-98 shadow-sm flex items-center justify-center gap-2"
+              class="w-full py-3 bg-neutral-900 hover:bg-neutral-800 dark:bg-white dark:hover:bg-neutral-100 text-white dark:text-black rounded-xl text-xs sm:text-sm font-semibold transition active:scale-98 shadow-xs flex items-center justify-center gap-2 cursor-pointer min-h-[44px]"
             >
               <span>Solve Minimum Selling Prices</span>
               <span>&rarr;</span>
@@ -123,10 +127,10 @@ const t = useTranslations(lang);
       </div>
 
       <!-- Results Cards (7 Cols) -->
-      <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-3.5">
         
         <!-- Meesho Target Price -->
-        <div class="card-ver p-4 sm:p-5 bg-white dark:bg-[#0a0a0a] border border-neutral-200/80 dark:border-neutral-800 shadow-subtle flex flex-col justify-between">
+        <div class="card-ver p-4 sm:p-5 bg-white dark:bg-[#0b0b0b] border border-black/[0.06] dark:border-white/[0.08] flex flex-col justify-between">
           <div>
             <div class="flex items-center gap-2 mb-2">
               <span class="w-2 h-2 rounded-full bg-pink-500"></span>
@@ -137,7 +141,7 @@ const t = useTranslations(lang);
               ₹449
             </div>
           </div>
-          <div class="mt-4 pt-3 border-t border-neutral-100 dark:border-neutral-800/80 text-xs text-neutral-500 dark:text-neutral-400 space-y-1">
+          <div class="mt-4 pt-3 border-t border-black/[0.05] dark:border-white/[0.06] text-xs text-neutral-500 dark:text-neutral-400 space-y-1">
             <div class="flex justify-between">
               <span>Commission:</span>
               <strong class="font-mono text-emerald-600 dark:text-emerald-400 font-semibold">0%</strong>
@@ -150,7 +154,7 @@ const t = useTranslations(lang);
         </div>
 
         <!-- Flipkart Target Price -->
-        <div class="card-ver p-4 sm:p-5 bg-white dark:bg-[#0a0a0a] border border-neutral-200/80 dark:border-neutral-800 shadow-subtle flex flex-col justify-between">
+        <div class="card-ver p-4 sm:p-5 bg-white dark:bg-[#0b0b0b] border border-black/[0.06] dark:border-white/[0.08] flex flex-col justify-between">
           <div>
             <div class="flex items-center gap-2 mb-2">
               <span class="w-2 h-2 rounded-full bg-blue-600"></span>
@@ -161,7 +165,7 @@ const t = useTranslations(lang);
               ₹589
             </div>
           </div>
-          <div class="mt-4 pt-3 border-t border-neutral-100 dark:border-neutral-800/80 text-xs text-neutral-500 dark:text-neutral-400 space-y-1">
+          <div class="mt-4 pt-3 border-t border-black/[0.05] dark:border-white/[0.06] text-xs text-neutral-500 dark:text-neutral-400 space-y-1">
             <div class="flex justify-between">
               <span>Commission:</span>
               <span class="font-mono text-neutral-700 dark:text-neutral-300" id="solvCommFlipkart">15.0%</span>
@@ -174,7 +178,7 @@ const t = useTranslations(lang);
         </div>
 
         <!-- Amazon Target Price -->
-        <div class="card-ver p-4 sm:p-5 bg-white dark:bg-[#0a0a0a] border border-neutral-200/80 dark:border-neutral-800 shadow-subtle flex flex-col justify-between">
+        <div class="card-ver p-4 sm:p-5 bg-white dark:bg-[#0b0b0b] border border-black/[0.06] dark:border-white/[0.08] flex flex-col justify-between">
           <div>
             <div class="flex items-center gap-2 mb-2">
               <span class="w-2 h-2 rounded-full bg-amber-500"></span>
@@ -185,7 +189,7 @@ const t = useTranslations(lang);
               ₹599
             </div>
           </div>
-          <div class="mt-4 pt-3 border-t border-neutral-100 dark:border-neutral-800/80 text-xs text-neutral-500 dark:text-neutral-400 space-y-1">
+          <div class="mt-4 pt-3 border-t border-black/[0.05] dark:border-white/[0.06] text-xs text-neutral-500 dark:text-neutral-400 space-y-1">
             <div class="flex justify-between">
               <span>Commission:</span>
               <span class="font-mono text-neutral-700 dark:text-neutral-300" id="solvCommAmazon">13.5%</span>

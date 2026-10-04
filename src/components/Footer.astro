@@ -11,7 +11,7 @@ const { lang = 'en' } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<footer class="bg-white dark:bg-[#050505] border-t border-neutral-200/70 dark:border-neutral-800/80 py-12 text-xs text-neutral-500 dark:text-neutral-400">
+<footer class="bg-transparent border-t border-black/[0.05] dark:border-white/[0.06] py-12 text-xs text-neutral-500 dark:text-neutral-400">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
@@ -19,12 +19,12 @@ const t = useTranslations(lang);
       <!-- Col 1: Brand & Domain -->
       <div class="space-y-3">
         <div class="flex items-center gap-2">
-          <div class="w-6 h-6 rounded bg-[#171717] dark:bg-white flex items-center justify-center text-white dark:text-black font-bold text-xs">
+          <div class="w-6 h-6 rounded-md bg-neutral-900 dark:bg-white flex items-center justify-center text-white dark:text-black font-bold text-xs shadow-2xs">
             ₹
           </div>
-          <span class="font-semibold text-sm text-[#171717] dark:text-white">{t("site.name")}</span>
+          <span class="font-semibold text-sm text-neutral-900 dark:text-white">{t("site.name")}</span>
         </div>
-        <p class="text-neutral-500 dark:text-neutral-400 leading-relaxed">
+        <p class="text-neutral-500 dark:text-neutral-400 leading-relaxed text-xs">
           The high-precision profit and fee calculator built specifically for Indian e-commerce sellers on Meesho, Flipkart, and Amazon.
         </p>
       </div>
@@ -35,10 +35,10 @@ const t = useTranslations(lang);
           Marketplace Calculators
         </h4>
         <ul class="space-y-2">
-          <li><a href="#calculator" class="hover:text-neutral-900 dark:hover:text-white transition">Meesho Profit Calculator (0% Fee)</a></li>
-          <li><a href="#calculator" class="hover:text-neutral-900 dark:hover:text-white transition">Flipkart Fee Calculator (2026 Slabs)</a></li>
-          <li><a href="#calculator" class="hover:text-neutral-900 dark:hover:text-white transition">Amazon Easy Ship &amp; FBA Calculator</a></li>
-          <li><a href="#calculator" class="hover:text-neutral-900 dark:hover:text-white transition">Snapdeal Value Seller Calculator</a></li>
+          <li><a href="#calculator" class="hover:text-black dark:hover:text-white transition">Meesho Profit Calculator (0% Fee)</a></li>
+          <li><a href="#calculator" class="hover:text-black dark:hover:text-white transition">Flipkart Fee Calculator (2026 Slabs)</a></li>
+          <li><a href="#calculator" class="hover:text-black dark:hover:text-white transition">Amazon Easy Ship &amp; FBA Calculator</a></li>
+          <li><a href="#calculator" class="hover:text-black dark:hover:text-white transition">Snapdeal Value Seller Calculator</a></li>
         </ul>
       </div>
 
@@ -48,10 +48,10 @@ const t = useTranslations(lang);
           Seller Tools
         </h4>
         <ul class="space-y-2">
-          <li><a href="#comparison" class="hover:text-neutral-900 dark:hover:text-white transition">Side-by-Side Comparison Matrix</a></li>
-          <li><a href="#reverse-solver" class="hover:text-neutral-900 dark:hover:text-white transition">Target Price &amp; Margin Solver</a></li>
-          <li><a href="#calculator" class="hover:text-neutral-900 dark:hover:text-white transition">RTO &amp; Customer Return Simulator</a></li>
-          <li><a href="#fee-guide" class="hover:text-neutral-900 dark:hover:text-white transition">GST Input Tax Credit (ITC) Guide</a></li>
+          <li><a href="#comparison" class="hover:text-black dark:hover:text-white transition">Side-by-Side Comparison Matrix</a></li>
+          <li><a href="#reverse-solver" class="hover:text-black dark:hover:text-white transition">Target Price &amp; Margin Solver</a></li>
+          <li><a href="#calculator" class="hover:text-black dark:hover:text-white transition">RTO &amp; Customer Return Simulator</a></li>
+          <li><a href="#fee-guide" class="hover:text-black dark:hover:text-white transition">GST Input Tax Credit (ITC) Guide</a></li>
         </ul>
       </div>
 
@@ -64,10 +64,10 @@ const t = useTranslations(lang);
           {Object.entries(languages).map(([code, name]) => (
             <a
               href={code === "en" ? "/" : `/${code}/`}
-              class={`px-2 py-1 rounded text-[11px] font-mono border transition ${
+              class={`px-2 py-0.5 rounded-md text-[11px] font-mono border transition ${
                 code === lang
-                  ? "bg-neutral-900 dark:bg-white text-white dark:text-black border-neutral-900 dark:border-white"
-                  : "bg-neutral-50 dark:bg-[#111111] hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border-neutral-200 dark:border-neutral-800"
+                  ? "bg-neutral-900 dark:bg-white text-white dark:text-black border-transparent shadow-2xs"
+                  : "bg-white/60 dark:bg-neutral-900/50 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border-black/[0.06] dark:border-white/[0.08]"
               }`}
             >
               {name}

@@ -26,7 +26,7 @@ const hreflangs = getHreflangList(domain);
 <html lang={lang} class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
@@ -90,9 +90,9 @@ const hreflangs = getHreflangList(domain);
       })();
     </script>
   </head>
-  <body class="min-h-screen flex flex-col bg-[#fafafa] dark:bg-[#000000] text-[#171717] dark:text-[#ededed] antialiased selection:bg-neutral-900 selection:text-white dark:selection:bg-neutral-100 dark:selection:text-black transition-colors duration-150">
+  <body class="min-h-screen flex flex-col bg-[#fafafa] dark:bg-[#000000] text-[#171717] dark:text-[#ededed] antialiased selection:bg-neutral-900 selection:text-white dark:selection:bg-neutral-100 dark:selection:text-black transition-colors duration-150 overflow-x-hidden">
     <Header lang={lang} />
-    <main class="flex-1">
+    <main class="flex-1 pb-20 lg:pb-0">
       <slot />
     </main>
     <Footer lang={lang} />

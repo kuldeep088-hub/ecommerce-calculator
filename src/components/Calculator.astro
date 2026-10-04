@@ -12,31 +12,31 @@ const { lang = 'en' } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<section id="calculator" class="pt-5 sm:pt-6 pb-20 lg:pb-16">
+<section id="calculator" class="pt-4 sm:pt-6 pb-16 lg:pb-20">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <!-- Hero Header -->
-    <div class="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
-      <h1 class="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-[#171717] dark:text-white leading-[1.2]">
+    <div class="text-center max-w-3xl mx-auto mb-5 sm:mb-7">
+      <h1 class="text-2xl sm:text-3xl lg:text-[2.25rem] font-semibold tracking-[-0.03em] text-neutral-900 dark:text-white leading-tight">
         {t("hero.title")}
       </h1>
-      <p class="mt-2 text-xs sm:text-sm text-[#737373] dark:text-neutral-400 max-w-xl mx-auto">
+      <p class="mt-1.5 text-xs sm:text-[13px] text-neutral-500 dark:text-neutral-400 max-w-lg mx-auto leading-relaxed">
         {t("hero.subtitle")}
       </p>
 
       <!-- Quick Preset Chips -->
-      <div class="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 mt-4">
+      <div class="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 mt-3.5">
         <span class="text-[11px] text-neutral-400 dark:text-neutral-500 font-mono">{t("hero.presets")}</span>
-        <button type="button" class="preset-btn px-2.5 py-1 text-xs rounded-full bg-white dark:bg-[#121212] border border-neutral-200/80 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 text-neutral-600 dark:text-neutral-300 transition shadow-2xs" data-price="499" data-cogs="180" data-cat="fashion" data-wt="350">
+        <button type="button" class="preset-btn px-2.5 py-1 text-xs rounded-full bg-white/80 dark:bg-neutral-900/70 border border-black/[0.06] dark:border-white/[0.08] hover:border-black/20 dark:hover:border-white/20 text-neutral-600 dark:text-neutral-300 transition-all shadow-2xs hover:scale-[1.02] active:scale-[0.98]" data-price="499" data-cogs="180" data-cat="fashion" data-wt="350">
           {t("hero.tshirt")}
         </button>
-        <button type="button" class="preset-btn px-2.5 py-1 text-xs rounded-full bg-white dark:bg-[#121212] border border-neutral-200/80 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 text-neutral-600 dark:text-neutral-300 transition shadow-2xs" data-price="299" data-cogs="80" data-cat="electronics_accessories" data-wt="150">
+        <button type="button" class="preset-btn px-2.5 py-1 text-xs rounded-full bg-white/80 dark:bg-neutral-900/70 border border-black/[0.06] dark:border-white/[0.08] hover:border-black/20 dark:hover:border-white/20 text-neutral-600 dark:text-neutral-300 transition-all shadow-2xs hover:scale-[1.02] active:scale-[0.98]" data-price="299" data-cogs="80" data-cat="electronics_accessories" data-wt="150">
           {t("hero.case")}
         </button>
-        <button type="button" class="preset-btn px-2.5 py-1 text-xs rounded-full bg-white dark:bg-[#121212] border border-neutral-200/80 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 text-neutral-600 dark:text-neutral-300 transition shadow-2xs" data-price="899" data-cogs="340" data-cat="home_kitchen" data-wt="650">
+        <button type="button" class="preset-btn px-2.5 py-1 text-xs rounded-full bg-white/80 dark:bg-neutral-900/70 border border-black/[0.06] dark:border-white/[0.08] hover:border-black/20 dark:hover:border-white/20 text-neutral-600 dark:text-neutral-300 transition-all shadow-2xs hover:scale-[1.02] active:scale-[0.98]" data-price="899" data-cogs="340" data-cat="home_kitchen" data-wt="650">
           {t("hero.kitchen")}
         </button>
-        <button type="button" class="preset-btn px-2.5 py-1 text-xs rounded-full bg-white dark:bg-[#121212] border border-neutral-200/80 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-600 text-neutral-600 dark:text-neutral-300 transition shadow-2xs" data-price="1499" data-cogs="600" data-cat="footwear" data-wt="850">
+        <button type="button" class="preset-btn px-2.5 py-1 text-xs rounded-full bg-white/80 dark:bg-neutral-900/70 border border-black/[0.06] dark:border-white/[0.08] hover:border-black/20 dark:hover:border-white/20 text-neutral-600 dark:text-neutral-300 transition-all shadow-2xs hover:scale-[1.02] active:scale-[0.98]" data-price="1499" data-cogs="600" data-cat="footwear" data-wt="850">
           {t("hero.shoes")}
         </button>
       </div>
@@ -44,11 +44,11 @@ const t = useTranslations(lang);
 
     <!-- Marketplace Navigation Tabs -->
     <div class="flex items-center justify-center mb-6 sm:mb-8 px-1">
-      <div class="inline-flex p-1 rounded-xl bg-neutral-100/90 dark:bg-[#111111] border border-neutral-200/80 dark:border-neutral-800/80 max-w-full overflow-x-auto no-scrollbar scroll-smooth whitespace-nowrap" id="marketplaceTabs">
+      <div class="inline-flex p-1 rounded-xl bg-neutral-100/80 dark:bg-neutral-900/70 border border-black/[0.04] dark:border-white/[0.06] max-w-full overflow-x-auto no-scrollbar scroll-smooth whitespace-nowrap" id="marketplaceTabs">
         <button
           type="button"
           data-mp="meesho"
-          class="mp-tab shrink-0 px-3.5 py-2 min-h-[40px] rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center gap-2 bg-white dark:bg-[#1f1f1f] text-neutral-900 dark:text-white shadow-2xs border border-neutral-200/80 dark:border-neutral-700"
+          class="mp-tab shrink-0 px-3.5 py-1.5 min-h-[38px] rounded-lg text-xs sm:text-[13px] font-medium transition-all flex items-center gap-2 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white shadow-2xs border border-black/[0.05] dark:border-white/[0.08]"
         >
           <span class="w-2 h-2 rounded-full bg-pink-500"></span>
           <span>Meesho</span>
@@ -58,7 +58,7 @@ const t = useTranslations(lang);
         <button
           type="button"
           data-mp="flipkart"
-          class="mp-tab shrink-0 px-3.5 py-2 min-h-[40px] rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center gap-2 text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+          class="mp-tab shrink-0 px-3.5 py-1.5 min-h-[38px] rounded-lg text-xs sm:text-[13px] font-medium transition-all flex items-center gap-2 text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
         >
           <span class="w-2 h-2 rounded-full bg-blue-600"></span>
           <span>Flipkart</span>
@@ -68,7 +68,7 @@ const t = useTranslations(lang);
         <button
           type="button"
           data-mp="amazon"
-          class="mp-tab shrink-0 px-3.5 py-2 min-h-[40px] rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center gap-2 text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+          class="mp-tab shrink-0 px-3.5 py-1.5 min-h-[38px] rounded-lg text-xs sm:text-[13px] font-medium transition-all flex items-center gap-2 text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
         >
           <span class="w-2 h-2 rounded-full bg-amber-500"></span>
           <span>Amazon</span>
@@ -78,7 +78,7 @@ const t = useTranslations(lang);
         <button
           type="button"
           data-mp="snapdeal"
-          class="mp-tab shrink-0 px-3.5 py-2 min-h-[40px] rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center gap-2 text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+          class="mp-tab shrink-0 px-3.5 py-1.5 min-h-[38px] rounded-lg text-xs sm:text-[13px] font-medium transition-all flex items-center gap-2 text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
         >
           <span class="w-2 h-2 rounded-full bg-red-500"></span>
           <span>Snapdeal</span>
@@ -86,13 +86,38 @@ const t = useTranslations(lang);
       </div>
     </div>
 
+    <!-- SIMPLE 3-STEP GUIDE FOR NEW USERS -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6 sm:mb-8">
+      <div class="p-3.5 rounded-xl bg-white dark:bg-[#0b0b0b] border border-black/[0.06] dark:border-white/[0.08] flex items-start gap-3">
+        <span class="w-6 h-6 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 font-mono text-xs font-bold flex items-center justify-center shrink-0">1</span>
+        <div>
+          <div class="text-xs font-semibold text-neutral-900 dark:text-white">Enter Your Prices</div>
+          <div class="text-[11px] text-neutral-500 dark:text-neutral-400 mt-0.5">Input your selling price and what you paid for the product.</div>
+        </div>
+      </div>
+      <div class="p-3.5 rounded-xl bg-white dark:bg-[#0b0b0b] border border-black/[0.06] dark:border-white/[0.08] flex items-start gap-3">
+        <span class="w-6 h-6 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 font-mono text-xs font-bold flex items-center justify-center shrink-0">2</span>
+        <div>
+          <div class="text-xs font-semibold text-neutral-900 dark:text-white">Pick Platform &amp; Category</div>
+          <div class="text-[11px] text-neutral-500 dark:text-neutral-400 mt-0.5">Switch between Meesho, Flipkart, and Amazon with exact 2026 fee slabs.</div>
+        </div>
+      </div>
+      <div class="p-3.5 rounded-xl bg-white dark:bg-[#0b0b0b] border border-black/[0.06] dark:border-white/[0.08] flex items-start gap-3">
+        <span class="w-6 h-6 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 font-mono text-xs font-bold flex items-center justify-center shrink-0">3</span>
+        <div>
+          <div class="text-xs font-semibold text-neutral-900 dark:text-white">See Real In-Hand Profit</div>
+          <div class="text-[11px] text-neutral-500 dark:text-neutral-400 mt-0.5">Get your true take-home earnings after courier, tax, and return losses.</div>
+        </div>
+      </div>
+    </div>
+
     <!-- Main Two-Column Layout: Inputs on Left, Results Dashboard on Right -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
       
       <!-- LEFT COLUMN: Inputs Card (5 Cols on LG) -->
-      <div class="lg:col-span-5 bg-white dark:bg-[#0a0a0a] border border-neutral-200/80 dark:border-neutral-800/80 rounded-2xl p-4 sm:p-6 shadow-subtle">
+      <div class="lg:col-span-5 card-ver p-4 sm:p-6 bg-white dark:bg-[#0b0b0b] border border-black/[0.06] dark:border-white/[0.08] shadow-[0_2px_12px_-4px_rgba(0,0,0,0.03),0_1px_2px_rgba(0,0,0,0.02)]">
         
-        <div class="flex items-center justify-between border-b border-neutral-100 dark:border-neutral-800/80 pb-3.5 mb-5">
+        <div class="flex items-center justify-between border-b border-black/[0.05] dark:border-white/[0.06] pb-3.5 mb-5">
           <div>
             <h2 class="text-sm font-semibold text-neutral-900 dark:text-white tracking-tight flex items-center gap-2" id="calcCardTitle">
               Meesho Profit Inputs
@@ -101,7 +126,7 @@ const t = useTranslations(lang);
               Zero referral commission model with weight-slab courier rates.
             </p>
           </div>
-          <button type="button" id="resetBtn" class="text-xs text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 transition font-mono flex items-center gap-1.5 py-1 px-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800">
+          <button type="button" id="resetBtn" class="text-xs text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 transition font-mono flex items-center gap-1.5 py-1 px-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800/60 cursor-pointer">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
             <span>Reset</span>
           </button>
@@ -118,8 +143,8 @@ const t = useTranslations(lang);
               </label>
               <span class="text-[10px] text-neutral-400 font-mono">Includes GST</span>
             </div>
-            <div class="relative">
-              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-neutral-400 font-medium text-base">
+            <div class="relative rounded-xl border border-black/[0.08] dark:border-white/[0.1] bg-neutral-50/50 dark:bg-neutral-900/40 focus-within:border-black dark:focus-within:border-white focus-within:bg-white dark:focus-within:bg-black focus-within:ring-2 focus-within:ring-black/5 dark:focus-within:ring-white/10 transition-all shadow-2xs">
+              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-neutral-400 dark:text-neutral-500 font-medium text-base">
                 ₹
               </div>
               <input
@@ -128,7 +153,7 @@ const t = useTranslations(lang);
                 inputmode="decimal"
                 value="599"
                 placeholder="e.g. 599"
-                class="w-full pl-8 pr-4 py-2.5 bg-white dark:bg-[#121212] border border-neutral-200/90 dark:border-neutral-800 focus:border-neutral-900 dark:focus:border-white focus:ring-1 focus:ring-neutral-900/10 dark:focus:ring-white/10 rounded-xl text-base sm:text-lg font-mono font-semibold text-neutral-900 dark:text-white transition outline-none shadow-2xs"
+                class="w-full pl-8 pr-4 py-2.5 bg-transparent rounded-xl text-base sm:text-lg font-mono font-semibold text-neutral-900 dark:text-white outline-none"
               />
             </div>
             <p class="text-[11px] text-neutral-400 dark:text-neutral-500 mt-1">Accepts any format (e.g. <span class="font-mono">₹599.00</span> or <span class="font-mono">1,250</span>) &mdash; auto calculated.</p>
@@ -142,7 +167,7 @@ const t = useTranslations(lang);
               </label>
               <span class="text-[10px] text-neutral-400 font-mono">Purchase / Mfg</span>
             </div>
-            <div class="relative">
+            <div class="relative rounded-xl border border-black/[0.07] dark:border-white/[0.08] bg-white dark:bg-neutral-900/50 focus-within:border-black dark:focus-within:border-white focus-within:ring-1 focus-within:ring-black/5 dark:focus-within:ring-white/10 transition-all">
               <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-neutral-400 font-medium text-sm">
                 ₹
               </div>
@@ -152,7 +177,7 @@ const t = useTranslations(lang);
                 inputmode="decimal"
                 value="220"
                 placeholder="220"
-                class="w-full pl-8 pr-4 py-2 bg-white dark:bg-[#121212] border border-neutral-200/90 dark:border-neutral-800 focus:border-neutral-900 dark:focus:border-white focus:ring-1 focus:ring-neutral-900/10 dark:focus:ring-white/10 rounded-xl text-sm font-mono text-neutral-900 dark:text-white transition outline-none"
+                class="w-full pl-8 pr-4 py-2 bg-transparent rounded-xl text-sm font-mono text-neutral-900 dark:text-white outline-none"
               />
             </div>
           </div>
@@ -165,7 +190,7 @@ const t = useTranslations(lang);
               </label>
               <select
                 id="selectCategory"
-                class="w-full px-3 py-2 bg-white dark:bg-[#121212] border border-neutral-200/90 dark:border-neutral-800 focus:border-neutral-900 dark:focus:border-white focus:ring-1 focus:ring-neutral-900/10 dark:focus:ring-white/10 rounded-xl text-xs sm:text-sm text-neutral-800 dark:text-neutral-200 transition outline-none"
+                class="w-full px-3 py-2 bg-white dark:bg-neutral-900/50 border border-black/[0.07] dark:border-white/[0.08] focus:border-black dark:focus:border-white focus:ring-1 focus:ring-black/5 dark:focus:ring-white/10 rounded-xl text-xs sm:text-sm text-neutral-800 dark:text-neutral-200 transition outline-none cursor-pointer"
               >
                 {CATEGORIES.map((cat) => (
                   <option value={cat.id} class="bg-white dark:bg-[#141414] text-neutral-900 dark:text-neutral-100">{cat.name}</option>
@@ -180,7 +205,7 @@ const t = useTranslations(lang);
               <div class="relative">
                 <select
                   id="inputProductGst"
-                  class="w-full px-3 py-2 bg-white dark:bg-[#121212] border border-neutral-200/90 dark:border-neutral-800 focus:border-neutral-900 dark:focus:border-white focus:ring-1 focus:ring-neutral-900/10 dark:focus:ring-white/10 rounded-xl text-xs sm:text-sm font-mono text-neutral-800 dark:text-neutral-200 transition outline-none"
+                  class="w-full px-3 py-2 bg-white dark:bg-neutral-900/50 border border-black/[0.07] dark:border-white/[0.08] focus:border-black dark:focus:border-white focus:ring-1 focus:ring-black/5 dark:focus:ring-white/10 rounded-xl text-xs sm:text-sm font-mono text-neutral-800 dark:text-neutral-200 transition outline-none cursor-pointer"
                 >
                   <option value="0" class="bg-white dark:bg-[#141414] text-neutral-900 dark:text-neutral-100">0% (Books / Exempt)</option>
                   <option value="3" class="bg-white dark:bg-[#141414] text-neutral-900 dark:text-neutral-100">3% (Jewellery)</option>
@@ -208,7 +233,7 @@ const t = useTranslations(lang);
                 value="500"
                 min="50"
                 step="50"
-                class="w-full px-3 py-2 bg-white dark:bg-[#121212] border border-neutral-200/90 dark:border-neutral-800 focus:border-neutral-900 dark:focus:border-white focus:ring-1 focus:ring-neutral-900/10 dark:focus:ring-white/10 rounded-xl text-sm font-mono text-neutral-900 dark:text-white transition outline-none"
+                class="w-full px-3 py-2 bg-white dark:bg-neutral-900/50 border border-black/[0.07] dark:border-white/[0.08] focus:border-black dark:focus:border-white focus:ring-1 focus:ring-black/5 dark:focus:ring-white/10 rounded-xl text-sm font-mono text-neutral-900 dark:text-white transition outline-none"
               />
             </div>
 
@@ -218,7 +243,7 @@ const t = useTranslations(lang);
               </label>
               <select
                 id="selectShippingZone"
-                class="w-full px-3 py-2 bg-white dark:bg-[#121212] border border-neutral-200/90 dark:border-neutral-800 focus:border-neutral-900 dark:focus:border-white focus:ring-1 focus:ring-neutral-900/10 dark:focus:ring-white/10 rounded-xl text-xs sm:text-sm text-neutral-800 dark:text-neutral-200 transition outline-none"
+                class="w-full px-3 py-2 bg-white dark:bg-neutral-900/50 border border-black/[0.07] dark:border-white/[0.08] focus:border-black dark:focus:border-white focus:ring-1 focus:ring-black/5 dark:focus:ring-white/10 rounded-xl text-xs sm:text-sm text-neutral-800 dark:text-neutral-200 transition outline-none cursor-pointer"
               >
                 <option value="local" class="bg-white dark:bg-[#141414] text-neutral-900 dark:text-neutral-100">Local (City)</option>
                 <option value="regional" class="bg-white dark:bg-[#141414] text-neutral-900 dark:text-neutral-100">Regional (Zone)</option>
@@ -233,7 +258,7 @@ const t = useTranslations(lang);
               <label for="inputPackagingCost" class="block text-[11px] font-medium uppercase tracking-wider text-neutral-600 dark:text-neutral-400 mb-1.5">
                 Packaging Material
               </label>
-              <div class="relative">
+              <div class="relative rounded-xl border border-black/[0.07] dark:border-white/[0.08] bg-white dark:bg-neutral-900/50 focus-within:border-black dark:focus-within:border-white focus-within:ring-1 focus-within:ring-black/5 dark:focus-within:ring-white/10 transition-all">
                 <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-neutral-400 font-mono text-xs">
                   ₹
                 </div>
@@ -242,7 +267,7 @@ const t = useTranslations(lang);
                   id="inputPackagingCost"
                   value="15"
                   min="0"
-                  class="w-full pl-7 pr-3 py-2 bg-white dark:bg-[#121212] border border-neutral-200/90 dark:border-neutral-800 focus:border-neutral-900 dark:focus:border-white focus:ring-1 focus:ring-neutral-900/10 dark:focus:ring-white/10 rounded-xl text-xs sm:text-sm font-mono text-neutral-900 dark:text-white transition outline-none"
+                  class="w-full pl-7 pr-3 py-2 bg-transparent rounded-xl text-xs sm:text-sm font-mono text-neutral-900 dark:text-white outline-none"
                 />
               </div>
             </div>
@@ -251,7 +276,7 @@ const t = useTranslations(lang);
               <label for="inputAdSpend" class="block text-[11px] font-medium uppercase tracking-wider text-neutral-600 dark:text-neutral-400 mb-1.5">
                 Ad Spend / CAC (Optional)
               </label>
-              <div class="relative">
+              <div class="relative rounded-xl border border-black/[0.07] dark:border-white/[0.08] bg-white dark:bg-neutral-900/50 focus-within:border-black dark:focus-within:border-white focus-within:ring-1 focus-within:ring-black/5 dark:focus-within:ring-white/10 transition-all">
                 <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-neutral-400 font-mono text-xs">
                   ₹
                 </div>
@@ -261,18 +286,18 @@ const t = useTranslations(lang);
                   value="0"
                   min="0"
                   placeholder="0"
-                  class="w-full pl-7 pr-3 py-2 bg-white dark:bg-[#121212] border border-neutral-200/90 dark:border-neutral-800 focus:border-neutral-900 dark:focus:border-white focus:ring-1 focus:ring-neutral-900/10 dark:focus:ring-white/10 rounded-xl text-xs sm:text-sm font-mono text-neutral-900 dark:text-white transition outline-none"
+                  class="w-full pl-7 pr-3 py-2 bg-transparent rounded-xl text-xs sm:text-sm font-mono text-neutral-900 dark:text-white outline-none"
                 />
               </div>
             </div>
           </div>
 
           <!-- ADVANCED ACCORDION 1: RTO & CUSTOMER RETURN LOSS SIMULATOR -->
-          <div class="border border-neutral-200/80 dark:border-neutral-800/80 rounded-xl overflow-hidden bg-neutral-50/30 dark:bg-[#111111]/30">
+          <div class="border border-black/[0.06] dark:border-white/[0.07] rounded-xl overflow-hidden bg-transparent">
             <button
               type="button"
               id="returnToggleBtn"
-              class="w-full px-3.5 py-2.5 flex items-center justify-between text-left text-xs font-medium text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800/40 transition"
+              class="w-full px-3.5 py-2.5 flex items-center justify-between text-left text-xs font-medium text-neutral-700 dark:text-neutral-300 hover:bg-black/[0.02] dark:hover:bg-white/[0.03] transition cursor-pointer"
             >
               <span class="flex items-center gap-2">
                 <svg class="w-3.5 h-3.5 text-neutral-400 dark:text-neutral-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
@@ -284,7 +309,7 @@ const t = useTranslations(lang);
               </span>
             </button>
 
-            <div id="returnSettingsPanel" class="p-3.5 border-t border-neutral-200/80 dark:border-neutral-800/80 bg-white dark:bg-[#0f0f0f] space-y-3 hidden">
+            <div id="returnSettingsPanel" class="p-3.5 border-t border-black/[0.05] dark:border-white/[0.06] bg-neutral-50/50 dark:bg-neutral-900/30 space-y-3 hidden">
               <p class="text-[11px] text-neutral-500 dark:text-neutral-400 leading-normal">
                 Models unrecoverable forward &amp; reverse courier charges on COD returns into your blended profit.
               </p>
@@ -331,18 +356,18 @@ const t = useTranslations(lang);
                   type="number"
                   id="inputReturnReverseCost"
                   value="130"
-                  class="w-full px-2.5 py-1.5 bg-neutral-50 dark:bg-[#141414] border border-neutral-200 dark:border-neutral-800 rounded-lg text-xs font-mono text-neutral-900 dark:text-white"
+                  class="w-full px-2.5 py-1.5 bg-white dark:bg-neutral-900/60 border border-black/[0.07] dark:border-white/[0.08] rounded-lg text-xs font-mono text-neutral-900 dark:text-white"
                 />
               </div>
             </div>
           </div>
 
           <!-- ADVANCED ACCORDION 2: CUSTOM FEE OVERRIDES -->
-          <div class="border border-neutral-200/80 dark:border-neutral-800/80 rounded-xl overflow-hidden bg-neutral-50/30 dark:bg-[#111111]/30">
+          <div class="border border-black/[0.06] dark:border-white/[0.07] rounded-xl overflow-hidden bg-transparent">
             <button
               type="button"
               id="feeOverridesToggleBtn"
-              class="w-full px-3.5 py-2.5 flex items-center justify-between text-left text-xs font-medium text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800/40 transition"
+              class="w-full px-3.5 py-2.5 flex items-center justify-between text-left text-xs font-medium text-neutral-700 dark:text-neutral-300 hover:bg-black/[0.02] dark:hover:bg-white/[0.03] transition cursor-pointer"
             >
               <span class="flex items-center gap-2">
                 <svg class="w-3.5 h-3.5 text-neutral-400 dark:text-neutral-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
@@ -351,19 +376,19 @@ const t = useTranslations(lang);
               <span class="text-neutral-400 dark:text-neutral-500 text-[11px] font-mono">+ Customize</span>
             </button>
 
-            <div id="feeOverridesPanel" class="p-3.5 border-t border-neutral-200/80 dark:border-neutral-800/80 bg-white dark:bg-[#0f0f0f] space-y-2.5 hidden">
+            <div id="feeOverridesPanel" class="p-3.5 border-t border-black/[0.05] dark:border-white/[0.06] bg-neutral-50/50 dark:bg-neutral-900/30 space-y-2.5 hidden">
               <div class="grid grid-cols-3 gap-2">
                 <div>
                   <label for="customCommInput" class="block text-[10px] font-medium text-neutral-500 dark:text-neutral-400 mb-1">Commission %</label>
-                  <input type="number" id="customCommInput" placeholder="Auto" class="w-full px-2 py-1.5 bg-white dark:bg-[#141414] border border-neutral-200 dark:border-neutral-800 text-neutral-900 dark:text-white rounded-lg text-xs font-mono" />
+                  <input type="number" id="customCommInput" placeholder="Auto" class="w-full px-2 py-1.5 bg-white dark:bg-neutral-900/60 border border-black/[0.07] dark:border-white/[0.08] text-neutral-900 dark:text-white rounded-lg text-xs font-mono" />
                 </div>
                 <div>
                   <label for="customFixedFeeInput" class="block text-[10px] font-medium text-neutral-500 dark:text-neutral-400 mb-1">Fixed Fee ₹</label>
-                  <input type="number" id="customFixedFeeInput" placeholder="Auto" class="w-full px-2 py-1.5 bg-white dark:bg-[#141414] border border-neutral-200 dark:border-neutral-800 text-neutral-900 dark:text-white rounded-lg text-xs font-mono" />
+                  <input type="number" id="customFixedFeeInput" placeholder="Auto" class="w-full px-2 py-1.5 bg-white dark:bg-neutral-900/60 border border-black/[0.07] dark:border-white/[0.08] text-neutral-900 dark:text-white rounded-lg text-xs font-mono" />
                 </div>
                 <div>
                   <label for="customShippingInput" class="block text-[10px] font-medium text-neutral-500 dark:text-neutral-400 mb-1">Shipping ₹</label>
-                  <input type="number" id="customShippingInput" placeholder="Auto" class="w-full px-2 py-1.5 bg-white dark:bg-[#141414] border border-neutral-200 dark:border-neutral-800 text-neutral-900 dark:text-white rounded-lg text-xs font-mono" />
+                  <input type="number" id="customShippingInput" placeholder="Auto" class="w-full px-2 py-1.5 bg-white dark:bg-neutral-900/60 border border-black/[0.07] dark:border-white/[0.08] text-neutral-900 dark:text-white rounded-lg text-xs font-mono" />
                 </div>
               </div>
               <p class="text-[10px] text-neutral-400">Leave blank to use standard 2026 marketplace slab rates automatically.</p>
@@ -377,103 +402,102 @@ const t = useTranslations(lang);
       <div id="resultsDashboard" class="lg:col-span-7 space-y-4 sm:space-y-5 scroll-mt-20">
         
         <!-- TOP SUMMARY KPI CARDS -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-3.5">
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3.5">
           
           <!-- KPI 1: BLENDED NET PROFIT (HERO NUMBER) -->
-          <div class="card-ver p-4 sm:p-5 relative bg-white dark:bg-[#0a0a0a] border border-emerald-500/30 dark:border-emerald-500/25 shadow-subtle">
+          <div class="col-span-2 sm:col-span-1 p-4 sm:p-5 relative rounded-2xl bg-gradient-to-b from-emerald-500/[0.04] to-transparent dark:from-emerald-500/[0.06] dark:to-transparent border border-emerald-500/25 dark:border-emerald-500/30 shadow-[0_2px_12px_-2px_rgba(16,185,129,0.08)]">
             <div class="flex items-center justify-between">
-              <span class="text-[11px] font-mono uppercase tracking-wider text-neutral-500 dark:text-neutral-400 font-medium">
+              <span class="text-[11px] font-mono uppercase tracking-wider text-emerald-800/80 dark:text-emerald-300/80 font-medium">
                 Real In-Hand Profit
               </span>
-              <span id="blendedMarginBadge" class="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200/70 dark:border-emerald-800/50">
+              <span id="blendedMarginBadge" class="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/20">
                 +24.5%
               </span>
             </div>
-            <div class="mt-2.5 flex items-baseline gap-1.5">
-              <span id="blendedProfitValue" class="text-2xl sm:text-3xl font-mono font-bold tracking-tight text-emerald-600 dark:text-emerald-400">
+            <div class="mt-2 sm:mt-2.5 flex items-baseline gap-1.5">
+              <span id="blendedProfitValue" class="text-3xl sm:text-3xl font-mono font-bold tracking-tight text-emerald-600 dark:text-emerald-400">
                 ₹147.20
               </span>
             </div>
-            <p class="text-[11px] text-neutral-400 dark:text-neutral-500 mt-1.5 flex items-center gap-1">
+            <p class="text-[11px] text-neutral-400 dark:text-neutral-500 mt-1 sm:mt-1.5 flex items-center gap-1">
               <svg class="w-3.5 h-3.5 text-neutral-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-              Per dispatched unit (with RTO)
+              What you actually keep per order (after returns)
             </p>
           </div>
 
           <!-- KPI 2: BANK SETTLEMENT -->
-          <div class="card-ver p-4 sm:p-5 bg-white dark:bg-[#0a0a0a] border border-neutral-200/80 dark:border-neutral-800 shadow-subtle">
+          <div class="col-span-1 card-ver p-3.5 sm:p-5 bg-white dark:bg-[#0b0b0b] border border-black/[0.06] dark:border-white/[0.08]">
             <div class="flex items-center justify-between">
-              <span class="text-[11px] font-mono uppercase tracking-wider text-neutral-500 dark:text-neutral-400 font-medium">
+              <span class="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-neutral-500 dark:text-neutral-400 font-medium">
                 Bank Settlement
               </span>
-              <span class="text-[10px] font-mono text-neutral-400">Per Delivered</span>
             </div>
-            <div class="mt-2.5">
-              <span id="bankSettlementValue" class="text-2xl sm:text-3xl font-mono font-semibold tracking-tight text-neutral-900 dark:text-white">
+            <div class="mt-2 sm:mt-2.5">
+              <span id="bankSettlementValue" class="text-xl sm:text-3xl font-mono font-semibold tracking-tight text-neutral-900 dark:text-white">
                 ₹482.00
               </span>
             </div>
-            <p class="text-[11px] text-neutral-400 dark:text-neutral-500 mt-1.5">
-              Payout before COGS &amp; packaging
+            <p class="text-[10px] sm:text-[11px] text-neutral-400 dark:text-neutral-500 mt-1 sm:mt-1.5">
+              Deposited to your bank account
             </p>
           </div>
 
           <!-- KPI 3: DELIVERED ONLY PROFIT -->
-          <div class="card-ver p-4 sm:p-5 bg-white dark:bg-[#0a0a0a] border border-neutral-200/80 dark:border-neutral-800 shadow-subtle">
+          <div class="col-span-1 card-ver p-3.5 sm:p-5 bg-white dark:bg-[#0b0b0b] border border-black/[0.06] dark:border-white/[0.08]">
             <div class="flex items-center justify-between">
-              <span class="text-[11px] font-mono uppercase tracking-wider text-neutral-500 dark:text-neutral-400 font-medium">
+              <span class="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-neutral-500 dark:text-neutral-400 font-medium">
                 Delivered Profit
               </span>
-              <span id="deliveredMarginBadge" class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-800">
+              <span id="deliveredMarginBadge" class="text-[10px] font-mono px-1.5 py-0.5 rounded-md bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border border-black/[0.04] dark:border-white/[0.06]">
                 31.2%
               </span>
             </div>
-            <div class="mt-2.5">
-              <span id="deliveredProfitValue" class="text-2xl sm:text-3xl font-mono font-semibold tracking-tight text-neutral-800 dark:text-neutral-200">
+            <div class="mt-2 sm:mt-2.5">
+              <span id="deliveredProfitValue" class="text-xl sm:text-3xl font-mono font-semibold tracking-tight text-neutral-800 dark:text-neutral-200">
                 ₹187.00
               </span>
             </div>
-            <p class="text-[11px] text-neutral-400 dark:text-neutral-500 mt-1.5">
-              If order is delivered without return
+            <p class="text-[10px] sm:text-[11px] text-neutral-400 dark:text-neutral-500 mt-1 sm:mt-1.5">
+              Profit when order is kept
             </p>
           </div>
 
         </div>
 
         <!-- WATERFALL MARGIN BREAKDOWN BAR -->
-        <div class="card-ver p-4 sm:p-5 bg-white dark:bg-[#0a0a0a] border border-neutral-200/80 dark:border-neutral-800 shadow-subtle">
+        <div class="card-ver p-4 sm:p-5 bg-white dark:bg-[#0b0b0b] border border-black/[0.06] dark:border-white/[0.08]">
           <div class="flex items-center justify-between mb-2.5">
             <h3 class="text-[11px] font-mono uppercase tracking-wider text-neutral-500 dark:text-neutral-400 font-medium">
-              Where Selling Price Goes
+              Where Your Selling Price Goes
             </h3>
-            <span class="text-[10px] font-mono text-neutral-400">Unit Economics Waterfall</span>
+            <span class="text-[10px] font-mono text-neutral-400">Breakdown per ₹100</span>
           </div>
 
           <!-- Visual Progress Stack -->
           <div class="w-full h-2 rounded-full overflow-hidden flex bg-neutral-100 dark:bg-neutral-800 mb-3" id="waterfallBar">
-            <div id="barCogs" class="bg-neutral-700 dark:bg-neutral-500 transition-all" title="COGS" style="width: 36%;"></div>
+            <div id="barCogs" class="bg-neutral-700 dark:bg-neutral-500 transition-all" title="Product Cost" style="width: 36%;"></div>
             <div id="barFee" class="bg-blue-600 transition-all" title="Marketplace Fees" style="width: 14%;"></div>
-            <div id="barShipping" class="bg-amber-500 transition-all" title="Shipping" style="width: 12%;"></div>
+            <div id="barShipping" class="bg-amber-500 transition-all" title="Courier Shipping" style="width: 12%;"></div>
             <div id="barTax" class="bg-purple-600 transition-all" title="Taxes & GST" style="width: 10%;"></div>
-            <div id="barReturn" class="bg-rose-500 transition-all" title="RTO Loss Reserve" style="width: 8%;"></div>
-            <div id="barProfit" class="bg-emerald-500 transition-all" title="Net In-Hand Profit" style="width: 20%;"></div>
+            <div id="barReturn" class="bg-rose-500 transition-all" title="Return Loss Buffer" style="width: 8%;"></div>
+            <div id="barProfit" class="bg-emerald-500 transition-all" title="Real In-Hand Profit" style="width: 20%;"></div>
           </div>
 
           <!-- Legend -->
           <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-1.5 text-xs">
             <div class="flex items-center gap-1.5">
               <span class="w-2 h-2 rounded-full bg-neutral-700 dark:bg-neutral-400 shrink-0"></span>
-              <span class="text-neutral-500 dark:text-neutral-400 text-[11px]">COGS:</span>
+              <span class="text-neutral-500 dark:text-neutral-400 text-[11px]">Product Cost:</span>
               <strong id="legendCogs" class="font-mono text-neutral-800 dark:text-neutral-200 ml-auto text-[11px]">36%</strong>
             </div>
             <div class="flex items-center gap-1.5">
               <span class="w-2 h-2 rounded-full bg-blue-600 shrink-0"></span>
-              <span class="text-neutral-500 dark:text-neutral-400 text-[11px]">Fees:</span>
+              <span class="text-neutral-500 dark:text-neutral-400 text-[11px]">Platform Fees:</span>
               <strong id="legendFee" class="font-mono text-neutral-800 dark:text-neutral-200 ml-auto text-[11px]">14%</strong>
             </div>
             <div class="flex items-center gap-1.5">
               <span class="w-2 h-2 rounded-full bg-amber-500 shrink-0"></span>
-              <span class="text-neutral-500 dark:text-neutral-400 text-[11px]">Shipping:</span>
+              <span class="text-neutral-500 dark:text-neutral-400 text-[11px]">Courier:</span>
               <strong id="legendShipping" class="font-mono text-neutral-800 dark:text-neutral-200 ml-auto text-[11px]">12%</strong>
             </div>
             <div class="flex items-center gap-1.5">
@@ -483,114 +507,156 @@ const t = useTranslations(lang);
             </div>
             <div class="flex items-center gap-1.5">
               <span class="w-2 h-2 rounded-full bg-rose-500 shrink-0"></span>
-              <span class="text-neutral-500 dark:text-neutral-400 text-[11px]">Returns:</span>
+              <span class="text-neutral-500 dark:text-neutral-400 text-[11px]">Return Buffer:</span>
               <strong id="legendReturn" class="font-mono text-neutral-800 dark:text-neutral-200 ml-auto text-[11px]">8%</strong>
             </div>
             <div class="flex items-center gap-1.5">
               <span class="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span>
-              <span class="text-neutral-500 dark:text-neutral-400 text-[11px]">Net Profit:</span>
+              <span class="text-neutral-500 dark:text-neutral-400 text-[11px]">Your Profit:</span>
               <strong id="legendProfit" class="font-mono text-emerald-600 dark:text-emerald-400 ml-auto text-[11px]">20%</strong>
             </div>
           </div>
         </div>
 
         <!-- DETAILED TABULAR BREAKDOWN CARD -->
-        <div class="card-ver bg-white dark:bg-[#0a0a0a] border border-neutral-200/80 dark:border-neutral-800 shadow-subtle overflow-hidden">
-          <div class="px-4 sm:px-5 py-3 border-b border-neutral-100 dark:border-neutral-800/80 flex items-center justify-between">
+        <div class="card-ver bg-white dark:bg-[#0b0b0b] border border-black/[0.06] dark:border-white/[0.08] overflow-hidden">
+          <div class="px-4 sm:px-5 py-3 border-b border-black/[0.05] dark:border-white/[0.06] flex items-center justify-between">
             <h3 class="text-xs font-semibold text-neutral-900 dark:text-white flex items-center gap-2">
-              <span>Detailed Breakdown</span>
-              <span id="activeMpLabel" class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-800">
+              <span>Detailed Fee Breakdown</span>
+              <span id="activeMpLabel" class="text-[10px] font-mono px-1.5 py-0.5 rounded-md bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 border border-black/[0.04] dark:border-white/[0.06]">
                 Meesho
               </span>
             </h3>
             <span class="text-[11px] font-mono text-neutral-400">Figures in ₹ INR</span>
           </div>
 
-          <div class="divide-y divide-neutral-100 dark:divide-neutral-800/60 text-xs sm:text-sm">
+          <div class="divide-y divide-black/[0.04] dark:divide-white/[0.04] text-xs sm:text-[13px]">
             
-            <div class="px-4 sm:px-5 py-2.5 flex items-center justify-between hover:bg-neutral-50/50 dark:hover:bg-neutral-900/40">
-              <span class="text-neutral-600 dark:text-neutral-400">Selling Price (Customer Pays)</span>
+            <div class="px-4 sm:px-5 py-2.5 flex items-center justify-between hover:bg-black/[0.015] dark:hover:bg-white/[0.02]">
+              <div>
+                <span class="text-neutral-700 dark:text-neutral-300 font-medium">Selling Price</span>
+                <span class="block text-[10px] text-neutral-400">Total amount customer pays on app</span>
+              </div>
               <span id="dtSellingPrice" class="font-mono font-medium text-neutral-900 dark:text-white">₹599.00</span>
             </div>
 
-            <div class="px-4 sm:px-5 py-2 flex items-center justify-between hover:bg-neutral-50/50 dark:hover:bg-neutral-900/40">
-              <div class="flex items-center gap-1.5">
-                <span class="text-neutral-500 dark:text-neutral-400">Taxable Base Price</span>
-                <span id="dtTaxableGstBadge" class="text-[10px] font-mono px-1 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400">Excl. 12% GST</span>
+            <div class="px-4 sm:px-5 py-2 flex items-center justify-between hover:bg-black/[0.015] dark:hover:bg-white/[0.02]">
+              <div>
+                <div class="flex items-center gap-1.5">
+                  <span class="text-neutral-600 dark:text-neutral-400">Base Price (Without Tax)</span>
+                  <span id="dtTaxableGstBadge" class="text-[10px] font-mono px-1 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400">Excl. 12% GST</span>
+                </div>
+                <span class="block text-[10px] text-neutral-400">Net price before product GST</span>
               </div>
               <span id="dtTaxableValue" class="font-mono text-neutral-600 dark:text-neutral-400">₹534.82</span>
             </div>
 
-            <div class="px-4 sm:px-5 py-2 flex items-center justify-between hover:bg-neutral-50/50 dark:hover:bg-neutral-900/40">
-              <span class="text-neutral-500 dark:text-neutral-400">Product GST (Collected for Govt.)</span>
+            <div class="px-4 sm:px-5 py-2 flex items-center justify-between hover:bg-black/[0.015] dark:hover:bg-white/[0.02]">
+              <div>
+                <span class="text-neutral-600 dark:text-neutral-400">Product GST</span>
+                <span class="block text-[10px] text-neutral-400">Collected from buyer, paid to government</span>
+              </div>
               <span id="dtProductGst" class="font-mono text-neutral-500 dark:text-neutral-400">₹64.18</span>
             </div>
 
-            <div class="px-4 sm:px-5 py-2 flex items-center justify-between hover:bg-neutral-50/50 dark:hover:bg-neutral-900/40">
-              <div class="flex items-center gap-1.5">
-                <span class="text-neutral-600 dark:text-neutral-400">Marketplace Commission</span>
-                <span id="dtCommissionRate" class="text-[10px] font-mono px-1 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400">0%</span>
+            <div class="px-4 sm:px-5 py-2 flex items-center justify-between hover:bg-black/[0.015] dark:hover:bg-white/[0.02]">
+              <div>
+                <div class="flex items-center gap-1.5">
+                  <span class="text-neutral-700 dark:text-neutral-300 font-medium">Marketplace Commission</span>
+                  <span id="dtCommissionRate" class="text-[10px] font-mono px-1 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400">0%</span>
+                </div>
+                <span class="block text-[10px] text-neutral-400">Platform fee based on category</span>
               </div>
               <span id="dtCommissionFee" class="font-mono text-neutral-800 dark:text-neutral-200">₹0.00</span>
             </div>
 
-            <div class="px-4 sm:px-5 py-2 flex items-center justify-between hover:bg-neutral-50/50 dark:hover:bg-neutral-900/40">
-              <span class="text-neutral-500 dark:text-neutral-400">Fixed Closing Fee</span>
+            <div class="px-4 sm:px-5 py-2 flex items-center justify-between hover:bg-black/[0.015] dark:hover:bg-white/[0.02]">
+              <div>
+                <span class="text-neutral-600 dark:text-neutral-400">Fixed Closing Fee</span>
+                <span class="block text-[10px] text-neutral-400">Flat order fee based on price slab</span>
+              </div>
               <span id="dtFixedFee" class="font-mono text-neutral-600 dark:text-neutral-400">₹0.00</span>
             </div>
 
-            <div class="px-4 sm:px-5 py-2 flex items-center justify-between hover:bg-neutral-50/50 dark:hover:bg-neutral-900/40">
-              <span class="text-neutral-500 dark:text-neutral-400">Payment Gateway / Collection Fee</span>
+            <div class="px-4 sm:px-5 py-2 flex items-center justify-between hover:bg-black/[0.015] dark:hover:bg-white/[0.02]">
+              <div>
+                <span class="text-neutral-600 dark:text-neutral-400">Payment Collection Fee</span>
+                <span class="block text-[10px] text-neutral-400">Payment gateway processing fee</span>
+              </div>
               <span id="dtCollectionFee" class="font-mono text-neutral-600 dark:text-neutral-400">₹0.00</span>
             </div>
 
-            <div class="px-4 sm:px-5 py-2 flex items-center justify-between hover:bg-neutral-50/50 dark:hover:bg-neutral-900/40">
-              <div class="flex items-center gap-1.5">
-                <span class="text-neutral-600 dark:text-neutral-400">Courier Shipping</span>
-                <span id="dtShippingWeightBadge" class="text-[10px] font-mono px-1 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400">500g</span>
+            <div class="px-4 sm:px-5 py-2 flex items-center justify-between hover:bg-black/[0.015] dark:hover:bg-white/[0.02]">
+              <div>
+                <div class="flex items-center gap-1.5">
+                  <span class="text-neutral-700 dark:text-neutral-300 font-medium">Courier Shipping Fee</span>
+                  <span id="dtShippingWeightBadge" class="text-[10px] font-mono px-1 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400">500g</span>
+                </div>
+                <span class="block text-[10px] text-neutral-400">Delivery charge based on weight and distance</span>
               </div>
               <span id="dtShippingFee" class="font-mono text-neutral-800 dark:text-neutral-200">₹49.00</span>
             </div>
 
-            <div class="px-4 sm:px-5 py-2 flex items-center justify-between hover:bg-neutral-50/50 dark:hover:bg-neutral-900/40">
-              <span class="text-neutral-500 dark:text-neutral-400">GST on Fees (18% &mdash; ITC claimable)</span>
+            <div class="px-4 sm:px-5 py-2 flex items-center justify-between hover:bg-black/[0.015] dark:hover:bg-white/[0.02]">
+              <div>
+                <span class="text-neutral-600 dark:text-neutral-400">GST on Marketplace Fees (18%)</span>
+                <span class="block text-[10px] text-emerald-600 dark:text-emerald-400">100% claimable back as Input Tax Credit (ITC)</span>
+              </div>
               <span id="dtGstOnFees" class="font-mono text-neutral-600 dark:text-neutral-400">₹8.82</span>
             </div>
 
-            <div class="px-4 sm:px-5 py-2 flex items-center justify-between hover:bg-neutral-50/50 dark:hover:bg-neutral-900/40">
-              <span class="text-neutral-500 dark:text-neutral-400">TCS (1%) + Section 194-O TDS (0.1%)</span>
+            <div class="px-4 sm:px-5 py-2 flex items-center justify-between hover:bg-black/[0.015] dark:hover:bg-white/[0.02]">
+              <div>
+                <span class="text-neutral-600 dark:text-neutral-400">TCS (1%) + Section 194-O TDS (0.1%)</span>
+                <span class="block text-[10px] text-neutral-400">Withheld by platform &amp; credited to your PAN/GST</span>
+              </div>
               <span id="dtTcsTds" class="font-mono text-neutral-600 dark:text-neutral-400">₹5.88</span>
             </div>
 
-            <div class="px-4 sm:px-5 py-2.5 flex items-center justify-between bg-neutral-50/60 dark:bg-[#111111] font-medium text-neutral-800 dark:text-neutral-200">
-              <span class="font-medium text-xs sm:text-sm">Total Marketplace Deductions</span>
+            <div class="px-4 sm:px-5 py-2.5 flex items-center justify-between bg-neutral-50/70 dark:bg-neutral-900/40 font-medium text-neutral-800 dark:text-neutral-200">
+              <div>
+                <span class="font-medium text-xs sm:text-[13px]">Total Platform Deductions</span>
+                <span class="block text-[10px] text-neutral-400 font-normal">All commissions, courier, and fee taxes combined</span>
+              </div>
               <span id="dtTotalDeductions" class="font-mono text-rose-600 dark:text-rose-400 font-semibold">₹63.70</span>
             </div>
 
-            <div class="px-4 sm:px-5 py-2.5 flex items-center justify-between bg-neutral-50/40 dark:bg-[#121212] border-y border-neutral-200/60 dark:border-neutral-800/80">
-              <span class="font-medium text-xs sm:text-sm text-neutral-900 dark:text-white">Bank Settlement Payout</span>
+            <div class="px-4 sm:px-5 py-2.5 flex items-center justify-between bg-neutral-50/50 dark:bg-neutral-900/60 border-y border-black/[0.04] dark:border-white/[0.06]">
+              <div>
+                <span class="font-semibold text-xs sm:text-[13px] text-neutral-900 dark:text-white">Bank Settlement Payout</span>
+                <span class="block text-[10px] text-neutral-500 dark:text-neutral-400 font-normal">Amount credited directly to your bank account</span>
+              </div>
               <span id="dtBankSettlement" class="font-mono font-bold text-neutral-900 dark:text-white text-sm sm:text-base">₹535.30</span>
             </div>
 
-            <div class="px-4 sm:px-5 py-2 flex items-center justify-between hover:bg-neutral-50/50 dark:hover:bg-neutral-900/40 text-neutral-600 dark:text-neutral-400">
-              <span>Less: Product Purchase Cost (COGS)</span>
+            <div class="px-4 sm:px-5 py-2 flex items-center justify-between hover:bg-black/[0.015] dark:hover:bg-white/[0.02] text-neutral-600 dark:text-neutral-400">
+              <div>
+                <span>Less: Product Purchase Cost (COGS)</span>
+                <span class="block text-[10px] text-neutral-400">What you paid to make or buy the product</span>
+              </div>
               <span id="dtCogs" class="font-mono text-neutral-700 dark:text-neutral-300">- ₹220.00</span>
             </div>
 
-            <div class="px-4 sm:px-5 py-2 flex items-center justify-between hover:bg-neutral-50/50 dark:hover:bg-neutral-900/40 text-neutral-600 dark:text-neutral-400">
-              <span>Less: Packaging &amp; Ad Spend</span>
+            <div class="px-4 sm:px-5 py-2 flex items-center justify-between hover:bg-black/[0.015] dark:hover:bg-white/[0.02] text-neutral-600 dark:text-neutral-400">
+              <div>
+                <span>Less: Packaging &amp; Ad Spend</span>
+                <span class="block text-[10px] text-neutral-400">Box, courier bag, tape, and advertising</span>
+              </div>
               <span id="dtPkgAds" class="font-mono text-neutral-700 dark:text-neutral-300">- ₹15.00</span>
             </div>
 
-            <div class="px-4 sm:px-5 py-2 flex items-center justify-between hover:bg-neutral-50/50 dark:hover:bg-neutral-900/40 text-neutral-600 dark:text-neutral-400">
-              <span>Less: RTO &amp; Customer Return Buffer</span>
+            <div class="px-4 sm:px-5 py-2 flex items-center justify-between hover:bg-black/[0.015] dark:hover:bg-white/[0.02] text-neutral-600 dark:text-neutral-400">
+              <div>
+                <span>Less: Return &amp; RTO Loss Buffer</span>
+                <span class="block text-[10px] text-neutral-400">Average courier loss reserve for returned orders</span>
+              </div>
               <span id="dtReturnLossBuffer" class="font-mono text-neutral-700 dark:text-neutral-300">- ₹39.80</span>
             </div>
 
-            <div class="px-4 sm:px-5 py-3.5 flex items-center justify-between bg-[#111111] dark:bg-[#141414] text-white rounded-b-xl">
+            <div class="px-4 sm:px-5 py-3.5 flex items-center justify-between bg-neutral-900 dark:bg-black text-white rounded-b-xl border-t border-black/10 dark:border-white/10">
               <div class="flex flex-col">
                 <span class="font-semibold text-xs sm:text-sm text-neutral-100">True Net In-Hand Profit</span>
-                <span class="text-[10px] text-neutral-400 font-mono">Real take-home per dispatched unit</span>
+                <span class="text-[10px] text-neutral-400 font-mono">Actual money in your pocket per dispatched order</span>
               </div>
               <span id="dtFinalProfit" class="font-mono text-lg sm:text-2xl font-bold text-emerald-400">
                 ₹260.50
@@ -601,12 +667,12 @@ const t = useTranslations(lang);
         </div>
 
         <!-- ACTION TOOLBAR: COPY SUMMARY, EXPORT, SHARE -->
-        <div class="flex flex-wrap items-center justify-between gap-3 pt-1">
+        <div class="flex flex-wrap items-center justify-between gap-2.5 pt-1">
           <div class="flex items-center gap-2">
             <button
               type="button"
               id="copySummaryBtn"
-              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white dark:bg-[#111111] border border-neutral-200/80 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-800 text-xs font-medium text-neutral-700 dark:text-neutral-300 transition shadow-2xs active:scale-95"
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white dark:bg-neutral-900 border border-black/[0.08] dark:border-white/[0.08] hover:border-black/20 dark:hover:border-white/20 text-xs font-medium text-neutral-700 dark:text-neutral-300 transition shadow-2xs active:scale-95 cursor-pointer"
             >
               <svg class="w-3.5 h-3.5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
               <span>Copy Summary</span>
@@ -614,8 +680,17 @@ const t = useTranslations(lang);
 
             <button
               type="button"
+              id="whatsappShareBtn"
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/15 border border-emerald-500/20 text-xs font-medium text-emerald-700 dark:text-emerald-400 transition shadow-2xs active:scale-95 cursor-pointer"
+            >
+              <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+              <span>WhatsApp</span>
+            </button>
+
+            <button
+              type="button"
               onclick="window.print()"
-              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white dark:bg-[#111111] border border-neutral-200/80 dark:border-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-800 text-xs font-medium text-neutral-700 dark:text-neutral-300 transition shadow-2xs"
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white dark:bg-neutral-900 border border-black/[0.08] dark:border-white/[0.08] hover:border-black/20 dark:hover:border-white/20 text-xs font-medium text-neutral-700 dark:text-neutral-300 transition shadow-2xs cursor-pointer"
             >
               <svg class="w-3.5 h-3.5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
               <span>Print / PDF</span>
@@ -623,7 +698,7 @@ const t = useTranslations(lang);
           </div>
 
           <div id="toastMessage" class="hidden text-xs font-mono font-medium px-3 py-1 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-black animate-fade-in">
-            ✓ Copied to clipboard!
+            Copied to clipboard!
           </div>
         </div>
 
@@ -634,29 +709,40 @@ const t = useTranslations(lang);
   </div>
 
   <!-- STICKY MOBILE LIVE SUMMARY BAR (visible on screens < 1024px) -->
-  <div id="stickyMobileBar" class="fixed bottom-0 inset-x-0 z-40 lg:hidden bg-white/95 dark:bg-[#0f0f0f]/95 backdrop-blur-md border-t border-neutral-200 dark:border-neutral-800 px-4 py-3 shadow-[0_-4px_20px_rgba(0,0,0,0.08)]">
+  <div id="stickyMobileBar" class="fixed bottom-0 inset-x-0 z-40 lg:hidden bg-white/95 dark:bg-[#0b0b0b]/95 backdrop-blur-md border-t border-black/[0.06] dark:border-white/[0.08] px-4 py-2.5 safe-bottom shadow-[0_-4px_24px_rgba(0,0,0,0.06)]">
     <div class="max-w-7xl mx-auto flex items-center justify-between gap-3">
       <div class="flex flex-col">
         <span class="text-[10px] font-mono uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
           Real In-Hand Profit
         </span>
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-1.5 sm:gap-2">
           <span id="mobileProfitValue" class="text-xl font-mono font-bold text-emerald-600 dark:text-emerald-400">
             ₹147.20
           </span>
-          <span id="mobileMarginBadge" class="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/50">
+          <span id="mobileMarginBadge" class="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/20">
             +24.5%
           </span>
         </div>
       </div>
 
-      <a
-        href="#resultsDashboard"
-        class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-neutral-900 hover:bg-neutral-800 dark:bg-white dark:hover:bg-neutral-100 text-white dark:text-neutral-900 text-xs font-semibold shadow-xs transition active:scale-95 shrink-0"
-      >
-        <span>View Breakdown</span>
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-      </a>
+      <div class="flex items-center gap-2">
+        <button
+          type="button"
+          id="mobileWhatsappBtn"
+          aria-label="Share on WhatsApp"
+          class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 transition active:scale-95 shrink-0 cursor-pointer"
+        >
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        </button>
+
+        <a
+          href="#resultsDashboard"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-neutral-900 hover:bg-neutral-800 dark:bg-white dark:hover:bg-neutral-100 text-white dark:text-neutral-900 text-xs font-semibold shadow-xs transition active:scale-95 shrink-0"
+        >
+          <span>Breakdown</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -922,9 +1008,9 @@ const t = useTranslations(lang);
     currentMarketplace = mp;
     document.querySelectorAll('.mp-tab').forEach(function(btn) {
       if (btn.dataset.mp === mp) {
-        btn.className = 'mp-tab shrink-0 px-3.5 py-2 min-h-[40px] rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center gap-2 bg-white dark:bg-[#1f1f1f] text-neutral-900 dark:text-white shadow-2xs border border-neutral-200/80 dark:border-neutral-700';
+        btn.className = 'mp-tab shrink-0 px-3.5 py-1.5 min-h-[38px] rounded-lg text-xs sm:text-[13px] font-medium transition-all flex items-center gap-2 bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white shadow-2xs border border-black/[0.05] dark:border-white/[0.08]';
       } else {
-        btn.className = 'mp-tab shrink-0 px-3.5 py-2 min-h-[40px] rounded-lg text-xs sm:text-sm font-medium transition-all flex items-center gap-2 text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white';
+        btn.className = 'mp-tab shrink-0 px-3.5 py-1.5 min-h-[38px] rounded-lg text-xs sm:text-[13px] font-medium transition-all flex items-center gap-2 text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white';
       }
     });
 
@@ -1054,24 +1140,28 @@ const t = useTranslations(lang);
       });
     }
 
+    // Get Calculation Summary Text
+    function getSummaryText() {
+      var sp = document.getElementById('inputSellingPrice').value;
+      var profit = document.getElementById('blendedProfitValue').textContent.trim();
+      var margin = document.getElementById('blendedMarginBadge').textContent.trim();
+      var settlement = document.getElementById('bankSettlementValue').textContent.trim();
+
+      return [
+        'Seller Profit Calculation (' + currentMarketplace.toUpperCase() + ')',
+        '- Selling Price: ₹' + sp,
+        '- Bank Settlement: ' + settlement,
+        '- Real In-Hand Profit: ' + profit + ' (' + margin + ' margin)',
+        '- Calculated on: https://freesellerprofitcalculator.com'
+      ].join('\n');
+    }
+
     // Copy Summary Button
     var copyBtn = document.getElementById('copySummaryBtn');
     var toast = document.getElementById('toastMessage');
     if (copyBtn) {
       copyBtn.addEventListener('click', function() {
-        var sp = document.getElementById('inputSellingPrice').value;
-        var profit = document.getElementById('blendedProfitValue').textContent.trim();
-        var margin = document.getElementById('blendedMarginBadge').textContent.trim();
-        var settlement = document.getElementById('bankSettlementValue').textContent.trim();
-
-        var summaryText = [
-          '📊 Seller Profit Calculation (' + currentMarketplace.toUpperCase() + ')',
-          '• Selling Price: ₹' + sp,
-          '• Bank Settlement: ' + settlement,
-          '• Real In-Hand Profit: ' + profit + ' (' + margin + ' margin)',
-          '• Calculated on: https://freesellerprofitcalculator.com'
-        ].join('\n');
-
+        var summaryText = getSummaryText();
         navigator.clipboard.writeText(summaryText).then(function() {
           if (toast) {
             toast.classList.remove('hidden');
@@ -1080,6 +1170,18 @@ const t = useTranslations(lang);
         });
       });
     }
+
+    // WhatsApp Share Handlers
+    function shareViaWhatsapp() {
+      var text = encodeURIComponent(getSummaryText());
+      window.open('https://api.whatsapp.com/send?text=' + text, '_blank');
+    }
+
+    var waBtn = document.getElementById('whatsappShareBtn');
+    if (waBtn) waBtn.addEventListener('click', shareViaWhatsapp);
+
+    var mobileWaBtn = document.getElementById('mobileWhatsappBtn');
+    if (mobileWaBtn) mobileWaBtn.addEventListener('click', shareViaWhatsapp);
 
     // Initial Run
     calculate();

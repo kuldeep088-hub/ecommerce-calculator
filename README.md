@@ -1,4 +1,4 @@
-# Seller Profit Calculator 🇮🇳
+# Seller Profit Calculator
 
 An e-commerce seller profit & fee calculator website for Indian marketplaces (**Meesho, Flipkart, and Amazon India**). Built with **Astro**, **Tailwind CSS v4**, and the Vercel-inspired **Geist** design system.
 
@@ -6,7 +6,7 @@ Live Domain: [freesellerprofitcalculator.com](https://freesellerprofitcalculator
 
 ---
 
-## ⚡ Key Features
+## Key Features
 
 - **Instant Price Calculation & Smart Paste:** Paste or type selling prices (e.g. `₹599.00` or `1,250`) &mdash; all deductions and charts update with zero delay.
 - **Accurate 2026 Indian Marketplace Slabs:**
@@ -23,7 +23,7 @@ Live Domain: [freesellerprofitcalculator.com](https://freesellerprofitcalculator
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Framework:** [Astro](https://astro.build/)
 - **Styling:** [Tailwind CSS v4](https://tailwindcss.com/) via `@tailwindcss/vite`
@@ -32,7 +32,7 @@ Live Domain: [freesellerprofitcalculator.com](https://freesellerprofitcalculator
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -66,6 +66,6 @@ npm run preview
 
 ---
 
-## 📄 License
+## License
 
 MIT

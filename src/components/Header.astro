@@ -14,35 +14,35 @@ const t = useTranslations(lang);
 const homeHref = lang === 'en' ? '/' : `/${lang}/`;
 ---
 
-<header class="sticky top-0 z-50 w-full bg-white/90 dark:bg-black/90 backdrop-blur-md border-b border-[#ebebeb] dark:border-[#262626] transition-all">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+<header class="sticky top-0 z-50 w-full bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-black/[0.05] dark:border-white/[0.07] transition-all">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-15 flex items-center justify-between">
     <!-- Brand / Logo -->
     <a href={homeHref} class="flex items-center gap-2.5 group">
-      <div class="w-8 h-8 rounded-lg bg-[#171717] dark:bg-white flex items-center justify-center text-white dark:text-black font-bold text-sm shadow-sm group-hover:scale-105 transition-all">
+      <div class="w-7.5 h-7.5 rounded-lg bg-neutral-900 dark:bg-white flex items-center justify-center text-white dark:text-black font-bold text-xs shadow-2xs group-hover:scale-105 transition-all">
         ₹
       </div>
       <div>
-        <span class="font-semibold text-base tracking-tight text-[#171717] dark:text-white">{t("site.name")}</span>
+        <span class="font-semibold text-sm sm:text-base tracking-tight text-neutral-900 dark:text-white">{t("site.name")}</span>
       </div>
     </a>
 
     <!-- Navigation / Quick Anchor Links -->
-    <nav class="hidden md:flex items-center gap-5 text-sm text-[#4d4d4d] dark:text-neutral-400">
-      <a href="#calculator" class="hover:text-[#171717] dark:hover:text-white transition-colors font-medium">{t("nav.calculator")}</a>
-      <a href="#comparison" class="hover:text-[#171717] dark:hover:text-white transition-colors font-medium">{t("nav.comparison")}</a>
-      <a href="#reverse-solver" class="hover:text-[#171717] dark:hover:text-white transition-colors font-medium">{t("nav.solver")}</a>
-      <a href="#fee-guide" class="hover:text-[#171717] dark:hover:text-white transition-colors font-medium">{t("nav.guide")}</a>
-      <a href="#faq" class="hover:text-[#171717] dark:hover:text-white transition-colors font-medium">{t("nav.faq")}</a>
+    <nav class="hidden md:flex items-center gap-6 text-[13px] text-neutral-600 dark:text-neutral-400">
+      <a href="#calculator" class="hover:text-black dark:hover:text-white transition-colors font-medium">{t("nav.calculator")}</a>
+      <a href="#comparison" class="hover:text-black dark:hover:text-white transition-colors font-medium">{t("nav.comparison")}</a>
+      <a href="#reverse-solver" class="hover:text-black dark:hover:text-white transition-colors font-medium">{t("nav.solver")}</a>
+      <a href="#fee-guide" class="hover:text-black dark:hover:text-white transition-colors font-medium">{t("nav.guide")}</a>
+      <a href="#faq" class="hover:text-black dark:hover:text-white transition-colors font-medium">{t("nav.faq")}</a>
     </nav>
 
     <!-- Right Side Controls & Mobile Menu Toggle -->
-    <div class="flex items-center gap-1.5 sm:gap-2.5">
+    <div class="flex items-center gap-1.5 sm:gap-2">
       <LanguagePicker currentLang={lang} />
       <ThemeToggle />
       
       <a
         href="#calculator"
-        class="hidden sm:inline-flex items-center justify-center h-9 px-4 rounded-full bg-[#171717] hover:bg-[#262626] dark:bg-white dark:hover:bg-neutral-200 text-white dark:text-black text-xs font-medium transition-colors shadow-sm"
+        class="hidden sm:inline-flex items-center justify-center h-8 px-3.5 rounded-full bg-neutral-900 hover:bg-neutral-800 dark:bg-white dark:hover:bg-neutral-100 text-white dark:text-black text-xs font-medium transition-colors shadow-2xs"
       >
         {t("nav.cta")}
       </a>
@@ -51,7 +51,7 @@ const homeHref = lang === 'en' ? '/' : `/${lang}/`;
       <button
         type="button"
         id="mobileMenuBtn"
-        class="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#111111] text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition"
+        class="md:hidden inline-flex items-center justify-center w-8.5 h-8.5 rounded-lg border border-black/[0.08] dark:border-white/[0.08] bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition cursor-pointer"
         aria-label="Toggle mobile menu"
         aria-expanded="false"
       >
