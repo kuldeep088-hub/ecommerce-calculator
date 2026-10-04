@@ -167,7 +167,7 @@ const categories = ["All", "Profit & Pricing", "RTO & Returns", "Marketplace Fee
 <!-- Client filter script for FAQ categories -->
 <script is:inline>
 (function() {
-  document.addEventListener('DOMContentLoaded', function() {
+  function initFaq() {
     var buttons = document.querySelectorAll('.faq-filter-btn');
     var items = document.querySelectorAll('.faq-card');
 
@@ -191,6 +191,12 @@ const categories = ["All", "Profit & Pricing", "RTO & Returns", "Marketplace Fee
         });
       });
     });
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFaq);
+  } else {
+    initFaq();
+  }
 })();
 </script>

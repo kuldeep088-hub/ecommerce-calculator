@@ -36,13 +36,19 @@ const currentLang = Astro.props.currentLang || langFromUrl;
 
 <script is:inline>
 (function() {
-  document.addEventListener('DOMContentLoaded', function() {
+  function initLangPicker() {
     var select = document.getElementById('languageSelect');
     if (select) {
       select.addEventListener('change', function(e) {
         window.location.href = e.target.value;
       });
     }
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLangPicker);
+  } else {
+    initLangPicker();
+  }
 })();
 </script>

@@ -1016,8 +1016,11 @@ const t = useTranslations(lang);
     calculate();
   }
 
+  // Expose for cross-component synchronization
+  window.triggerCalculatorUpdate = calculate;
+
   // Setup Event Listeners
-  document.addEventListener('DOMContentLoaded', function() {
+  function initCalculator() {
     var priceInput = document.getElementById('inputSellingPrice');
 
     // Smart Paste Listener
@@ -1154,6 +1157,12 @@ const t = useTranslations(lang);
 
     // Initial Run
     calculate();
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCalculator);
+  } else {
+    initCalculator();
+  }
 })();
 </script>

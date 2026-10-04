@@ -331,9 +331,25 @@ const t = useTranslations(lang);
 
     // Winner badge logic
     var highest = Math.max(results.meesho.netProfit, results.flipkart.netProfit, results.amazon.netProfit);
-    document.getElementById('badgeWinnerMeesho').classList.toggle('hidden', results.meesho.netProfit !== highest);
-    document.getElementById('badgeWinnerFlipkart').classList.toggle('hidden', results.flipkart.netProfit !== highest);
-    document.getElementById('badgeWinnerAmazon').classList.toggle('hidden', results.amazon.netProfit !== highest);
+    var badgeMeesho = document.getElementById('badgeWinnerMeesho');
+    var badgeFlipkart = document.getElementById('badgeWinnerFlipkart');
+    var badgeAmazon = document.getElementById('badgeWinnerAmazon');
+    if (badgeMeesho) badgeMeesho.classList.toggle('hidden', results.meesho.netProfit !== highest);
+    if (badgeFlipkart) badgeFlipkart.classList.toggle('hidden', results.flipkart.netProfit !== highest);
+    if (badgeAmazon) badgeAmazon.classList.toggle('hidden', results.amazon.netProfit !== highest);
   };
+
+  // Ensure matrix syncs on initial load
+  function syncMatrix() {
+    if (window.triggerCalculatorUpdate) {
+      window.triggerCalculatorUpdate();
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', syncMatrix);
+  } else {
+    syncMatrix();
+  }
 })();
 </script>

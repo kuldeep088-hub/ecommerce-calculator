@@ -210,32 +210,69 @@ const t = useTranslations(lang);
 
 <script is:inline>
 (function() {
-  function solveForMp(mp, cogs, targetVal, targetMode, cat) {
-    // Binary search for required price
+  var CATS = {
+    fashion: { meesho: 0, flipkart: 15.0, amazon: 13.5 },
+    footwear: { meesho: 0, flipkart: 14.0, amazon: 12.0 },
+    electronics_accessories: { meesho: 0, flipkart: 12.5, amazon: 14.0 },
+    home_kitchen: { meesho: 0, flipkart: 11.0, amazon: 10.5 },
+    beauty_grooming: { meesho: 0, flipkart: 9.0, amazon: 8.5 },
+    jewellery_fashion: { meesho: 0, flipkart: 16.0, amazon: 15.0 },
+    grocery_fmcg: { meesho: 0, flipkart: 6.5, amazon: 6.0 },
+    toys_baby: { meesho: 0, flipkart: 10.5, amazon: 9.5 },
+    books: { meesho: 0, flipkart: 9.0, amazon: 8.0 },
+    custom: { meesho: 0, flipkart: 10.0, amazon: 10.0 }
+  };
+
+  function getShipRate(mp, weight) {
+    if (mp === 'meesho') {
+      if (weight <= 500) return 49;
+      if (weight <= 1000) return 85;
+      if (weight <= 1500) return 125;
+      return 125 + Math.ceil((weight - 1500) / 500) * 40;
+    }
+    if (mp === 'flipkart') {
+      return weight <= 500 ? 69 : 69 + Math.ceil((weight - 500) / 500) * 32;
+    }
+    if (mp === 'amazon') {
+      return weight <= 500 ? 74 : 74 + Math.ceil((weight - 500) / 500) * 36;
+    }
+    return 60;
+  }
+
+  function solveForMp(mp, cogs, targetVal, targetMode, cat, weight) {
+    var catInfo = CATS[cat] || CATS['fashion'];
+    var commRate = catInfo[mp] !== undefined ? catInfo[mp] : 10;
+    var ship = getShipRate(mp, weight);
+
     var low = Math.max(1, cogs);
     var high = low * 8 + 1500;
     var best = high;
+    var bestTotalFees = 0;
 
-    var commRate = mp === 'meesho' ? 0 : mp === 'flipkart' ? 15 : 13.5;
-    var ship = mp === 'meesho' ? 49 : mp === 'flipkart' ? 69 : 74;
-
-    for (var i = 0; i < 30; i++) {
+    for (var i = 0; i < 35; i++) {
       var mid = (low + high) / 2;
       var taxable = mid / 1.12; // 12% standard
       var comm = taxable * (commRate / 100);
-      var fixed = mp === 'amazon' ? (mid <= 500 ? 10 : mid <= 1000 ? 25 : 35) : mp === 'flipkart' ? (mid <= 500 ? 17 : 30) : 0;
-      var collect = mp === 'meesho' ? 0 : mid * 0.02;
+      var fixed = 0;
+      if (mp === 'amazon') {
+        fixed = mid <= 250 ? 5 : mid <= 500 ? 10 : mid <= 1000 ? 25 : mid <= 2000 ? 35 : 50;
+      } else if (mp === 'flipkart') {
+        fixed = mid <= 300 ? 13 : mid <= 500 ? 17 : mid <= 1000 ? 30 : 52;
+      }
+      var collect = (mp === 'flipkart' || mp === 'amazon') ? (mid * 0.02) : 0;
       var feesExGst = comm + fixed + collect + ship;
       var gstOnFees = feesExGst * 0.18;
       var tcsTds = taxable * 0.011;
       var delivProfit = taxable - cogs - feesExGst - 15;
       
-      // Estimated blended profit with 20% total return
+      // Estimated blended profit with 20% return buffer
       var blendedProfit = (delivProfit * 0.8) - 40;
-      var currentMetric = targetMode === 'fixed' ? blendedProfit : (blendedProfit / mid) * 100;
+      var currentMetric = targetMode === 'fixed' ? blendedProfit : (mid > 0 ? (blendedProfit / mid) * 100 : 0);
 
-      if (Math.abs(currentMetric - targetVal) < 1) {
-        return Math.round(mid);
+      bestTotalFees = feesExGst + gstOnFees + tcsTds;
+
+      if (Math.abs(currentMetric - targetVal) < 0.5) {
+        return { price: Math.round(mid), commRate: commRate, totalFees: Math.round(bestTotalFees) };
       }
 
       if (currentMetric < targetVal) {
@@ -245,7 +282,7 @@ const t = useTranslations(lang);
         best = mid;
       }
     }
-    return Math.round(best);
+    return { price: Math.round(best), commRate: commRate, totalFees: Math.round(bestTotalFees) };
   }
 
   function runSolver() {
@@ -253,17 +290,31 @@ const t = useTranslations(lang);
     var targetMode = document.getElementById('solvTargetMode').value;
     var targetVal = parseFloat(document.getElementById('solvTargetVal').value) || 100;
     var cat = document.getElementById('solvCategory').value;
+    var weight = parseFloat(document.getElementById('solvWeight').value) || 500;
 
-    var pMeesho = solveForMp('meesho', cogs, targetVal, targetMode, cat);
-    var pFlipkart = solveForMp('flipkart', cogs, targetVal, targetMode, cat);
-    var pAmazon = solveForMp('amazon', cogs, targetVal, targetMode, cat);
+    var resMeesho = solveForMp('meesho', cogs, targetVal, targetMode, cat, weight);
+    var resFlipkart = solveForMp('flipkart', cogs, targetVal, targetMode, cat, weight);
+    var resAmazon = solveForMp('amazon', cogs, targetVal, targetMode, cat, weight);
 
-    document.getElementById('solvPriceMeesho').textContent = '₹' + pMeesho;
-    document.getElementById('solvPriceFlipkart').textContent = '₹' + pFlipkart;
-    document.getElementById('solvPriceAmazon').textContent = '₹' + pAmazon;
+    document.getElementById('solvPriceMeesho').textContent = '₹' + resMeesho.price;
+    document.getElementById('solvPriceFlipkart').textContent = '₹' + resFlipkart.price;
+    document.getElementById('solvPriceAmazon').textContent = '₹' + resAmazon.price;
+
+    var commFkEl = document.getElementById('solvCommFlipkart');
+    if (commFkEl) commFkEl.textContent = resFlipkart.commRate.toFixed(1) + '%';
+    var bufFkEl = document.getElementById('solvBufferFlipkart');
+    if (bufFkEl) bufFkEl.textContent = '₹' + resFlipkart.totalFees;
+
+    var commAzEl = document.getElementById('solvCommAmazon');
+    if (commAzEl) commAzEl.textContent = resAmazon.commRate.toFixed(1) + '%';
+    var bufAzEl = document.getElementById('solvBufferAmazon');
+    if (bufAzEl) bufAzEl.textContent = '₹' + resAmazon.totalFees;
+
+    var bufMsEl = document.getElementById('solvBufferMeesho');
+    if (bufMsEl) bufMsEl.textContent = '₹' + resMeesho.totalFees;
   }
 
-  document.addEventListener('DOMContentLoaded', function() {
+  function initSolver() {
     var btn = document.getElementById('solvCalculateBtn');
     if (btn) btn.addEventListener('click', runSolver);
 
@@ -288,10 +339,17 @@ const t = useTranslations(lang);
       var el = document.getElementById(id);
       if (el) {
         el.addEventListener('input', runSolver);
+        el.addEventListener('change', runSolver);
       }
     });
 
     runSolver();
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSolver);
+  } else {
+    initSolver();
+  }
 })();
 </script>
