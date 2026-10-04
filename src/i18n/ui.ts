@@ -29,11 +29,10 @@ export const ui = {
     "hero.badge": "Zero Signup • Real 2026 Commission & GST Slabs • Instant Calculation",
     "hero.title": "Indian Marketplace Seller Profit & Fee Calculator",
     "hero.subtitle": "Find out exactly how much money you keep after marketplace commissions, courier shipping, GST, and return losses.",
-    "hero.presets": "Quick test presets:",
-    "hero.tshirt": "T-Shirt (₹499)",
-    "hero.case": "Mobile Case (₹299)",
-    "hero.kitchen": "Kitchen Tool (₹899)",
-    "hero.shoes": "Shoes (₹1,499)",
+
+
+
+
     "inputs.title": "Profit Inputs",
     "inputs.sp": "Selling Price (MRP / Listed Price)",
     "inputs.sp_hint": "Paste any price format (e.g. ₹599.00 or 1,250) — calculated instantly.",
@@ -91,11 +90,10 @@ export const ui = {
     "hero.badge": "Sin Registro • Tarifas y Tramos GST 2026 • Cálculo Instantáneo",
     "hero.title": "Calculadora de Ganancias y Tarifas para Vendedores en India",
     "hero.subtitle": "Conozca su pago bancario neto exacto, comisiones, tarifas de mensajería, deducciones de GST y pérdidas realistas de devoluciones RTO antes de publicar.",
-    "hero.presets": "Preajustes de prueba rápida:",
-    "hero.tshirt": "Camiseta (₹499)",
-    "hero.case": "Funda Móvil (₹299)",
-    "hero.kitchen": "Utensilio Cocina (₹899)",
-    "hero.shoes": "Zapatos (₹1,499)",
+
+
+
+
     "inputs.title": "Datos de Ganancia",
     "inputs.sp": "Precio de Venta (PVP / Precio Listado)",
     "inputs.sp_hint": "Pegue cualquier formato de precio (ej. ₹599.00 o 1,250) — cálculo inmediato.",
@@ -153,11 +151,10 @@ export const ui = {
     "hero.badge": "登録不要 • 2026年最新手数料・GST対応 • 即座に自動計算",
     "hero.title": "インド主要ECモール セラー利益・手数料計算ツール",
     "hero.subtitle": "出品前に正確な手取り振込額、モール販売手数料、配送料金、GST控除、およびリアルなRTO返品損失を把握。",
-    "hero.presets": "クイックプリセット:",
-    "hero.tshirt": "Tシャツ (₹499)",
-    "hero.case": "スマホケース (₹299)",
-    "hero.kitchen": "調理器具 (₹899)",
-    "hero.shoes": "スニーカー (₹1,499)",
+
+
+
+
     "inputs.title": "利益計算入力項目",
     "inputs.sp": "販売価格（税込リスト価格）",
     "inputs.sp_hint": "「₹599」や「1,250」など金額を直接貼り付けると即座に計算されます。",
@@ -215,11 +212,10 @@ export const ui = {
     "hero.badge": "Sans Inscription • Barèmes 2026 & GST • Calcul Immédiat",
     "hero.title": "Calculateur de Frais et Profits pour Vendeurs E-commerce en Inde",
     "hero.subtitle": "Connaissez exactement vos versements bancaires, commissions, frais de port, déductions fiscales et pertes réelles de retour RTO avant de publier.",
-    "hero.presets": "Préréglages rapides:",
-    "hero.tshirt": "T-Shirt (₹499)",
-    "hero.case": "Coque Téléphone (₹299)",
-    "hero.kitchen": "Ustensile Cuisine (₹899)",
-    "hero.shoes": "Chaussures (₹1,499)",
+
+
+
+
     "inputs.title": "Données Financières",
     "inputs.sp": "Prix de Vente (Prix Listé)",
     "inputs.sp_hint": "Collez n'importe quel format (ex. ₹599.00 ou 1,250) — calcul instantané.",
@@ -277,11 +273,10 @@ export const ui = {
     "hero.badge": "Ohne Registrierung • 2026 Gebührentabellen & GST • Sofortige Berechnung",
     "hero.title": "Indischer Marktplatz-Gebühren & Gewinnrechner",
     "hero.subtitle": "Kennen Sie Ihre exakte Bankauszahlung, Provisionen, Versandgebühren, Steuerabzüge und realistischen RTO-Retourenverluste vor dem Einstellen.",
-    "hero.presets": "Schnelltests:",
-    "hero.tshirt": "T-Shirt (₹499)",
-    "hero.case": "Handyhülle (₹299)",
-    "hero.kitchen": "Küchengerät (₹899)",
-    "hero.shoes": "Schuhe (₹1,499)",
+
+
+
+
     "inputs.title": "Gewinn-Eingaben",
     "inputs.sp": "Verkaufspreis (Listenpreis inkl. GST)",
     "inputs.sp_hint": "Fügen Sie beliebige Preisformate ein (z. B. ₹599.00 oder 1,250) — sofort berechnet.",
@@ -339,11 +334,10 @@ export const ui = {
     "hero.badge": "Sem Cadastro • Tabelas 2026 e GST • Cálculo Imediato",
     "hero.title": "Calculadora de Taxas e Lucro para Vendedores na Índia",
     "hero.subtitle": "Saiba o valor líquido exato na conta, taxas de comissão, frete, impostos GST e perdas realistas de devolução RTO antes de anunciar.",
-    "hero.presets": "Testes rápidos:",
-    "hero.tshirt": "Camiseta (₹499)",
-    "hero.case": "Capinha de Celular (₹299)",
-    "hero.kitchen": "Utensílio de Cozinha (₹899)",
-    "hero.shoes": "Tênis (₹1,499)",
+
+
+
+
     "inputs.title": "Dados de Lucro",
     "inputs.sp": "Preço de Venda (Preço Anunciado)",
     "inputs.sp_hint": "Cole qualquer formato de preço (ex: ₹599.00 ou 1,250) — calculado na hora.",
@@ -401,11 +395,10 @@ export const ui = {
     "hero.badge": "회원가입 없음 • 2026년 최신 수수료 & GST 적용 • 실시간 자동 계산",
     "hero.title": "인도 이커머스 마켓플레이스 셀러 순이익 & 수수료 계산기",
     "hero.subtitle": "상품 등록 전 실제 은행 정산액, 플랫폼 판매 수수료, 택배 배송비, GST 공제 및 현실적인 RTO 반품 손실을 한눈에 파악하세요.",
-    "hero.presets": "빠른 예시 테스트:",
-    "hero.tshirt": "티셔츠 (₹499)",
-    "hero.case": "휴대폰 케이스 (₹299)",
-    "hero.kitchen": "주방용품 (₹899)",
-    "hero.shoes": "신발 (₹1,499)",
+
+
+
+
     "inputs.title": "수익 계산 입력 항목",
     "inputs.sp": "판매 가격 (소비자 표시 가격)",
     "inputs.sp_hint": "가격을 붙여넣으면(예: ₹599.00 또는 1,250) 즉시 자동으로 계산됩니다.",
@@ -463,11 +456,10 @@ export const ui = {
     "hero.badge": "Senza Registrazione • Tariffe e Scaglioni GST 2026 • Calcolo Istantaneo",
     "hero.title": "Calcolatore di Commissioni e Profitti per Venditori E-commerce in India",
     "hero.subtitle": "Scopri l'esatto bonifico bancario netto, le commissioni, i costi dei corrieri, le ritenute GST e le perdite reali da reso RTO prima di pubblicare il prodotto.",
-    "hero.presets": "Test rapidi preimpostati:",
-    "hero.tshirt": "T-Shirt (₹499)",
-    "hero.case": "Custodia Telefono (₹299)",
-    "hero.kitchen": "Utensile Cucina (₹899)",
-    "hero.shoes": "Scarpe (₹1,499)",
+
+
+
+
     "inputs.title": "Dati di Guadagno",
     "inputs.sp": "Prezzo di Vendita (Prezzo di Listino)",
     "inputs.sp_hint": "Incolla qualsiasi formato (es. ₹599.00 o 1,250) — calcolato istantaneamente.",

@@ -23,23 +23,6 @@ const t = useTranslations(lang);
       <p class="mt-1.5 text-xs sm:text-[13px] text-neutral-500 dark:text-neutral-400 max-w-lg mx-auto leading-relaxed">
         {t("hero.subtitle")}
       </p>
-
-      <!-- Quick Preset Chips -->
-      <div class="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 mt-3.5">
-        <span class="text-[11px] text-neutral-400 dark:text-neutral-500 font-mono">{t("hero.presets")}</span>
-        <button type="button" class="preset-btn px-2.5 py-1 text-xs rounded-full bg-white/80 dark:bg-neutral-900/70 border border-black/[0.06] dark:border-white/[0.08] hover:border-black/20 dark:hover:border-white/20 text-neutral-600 dark:text-neutral-300 transition-all shadow-2xs hover:scale-[1.02] active:scale-[0.98]" data-price="499" data-cogs="180" data-cat="fashion" data-wt="350">
-          {t("hero.tshirt")}
-        </button>
-        <button type="button" class="preset-btn px-2.5 py-1 text-xs rounded-full bg-white/80 dark:bg-neutral-900/70 border border-black/[0.06] dark:border-white/[0.08] hover:border-black/20 dark:hover:border-white/20 text-neutral-600 dark:text-neutral-300 transition-all shadow-2xs hover:scale-[1.02] active:scale-[0.98]" data-price="299" data-cogs="80" data-cat="electronics_accessories" data-wt="150">
-          {t("hero.case")}
-        </button>
-        <button type="button" class="preset-btn px-2.5 py-1 text-xs rounded-full bg-white/80 dark:bg-neutral-900/70 border border-black/[0.06] dark:border-white/[0.08] hover:border-black/20 dark:hover:border-white/20 text-neutral-600 dark:text-neutral-300 transition-all shadow-2xs hover:scale-[1.02] active:scale-[0.98]" data-price="899" data-cogs="340" data-cat="home_kitchen" data-wt="650">
-          {t("hero.kitchen")}
-        </button>
-        <button type="button" class="preset-btn px-2.5 py-1 text-xs rounded-full bg-white/80 dark:bg-neutral-900/70 border border-black/[0.06] dark:border-white/[0.08] hover:border-black/20 dark:hover:border-white/20 text-neutral-600 dark:text-neutral-300 transition-all shadow-2xs hover:scale-[1.02] active:scale-[0.98]" data-price="1499" data-cogs="600" data-cat="footwear" data-wt="850">
-          {t("hero.shoes")}
-        </button>
-      </div>
     </div>
 
     <!-- Marketplace Navigation Tabs -->
@@ -1084,20 +1067,6 @@ const t = useTranslations(lang);
     document.querySelectorAll('.mp-tab').forEach(function(btn) {
       btn.addEventListener('click', function() {
         setMarketplace(btn.dataset.mp);
-      });
-    });
-
-    // Preset buttons
-    document.querySelectorAll('.preset-btn').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        document.getElementById('inputSellingPrice').value = btn.dataset.price;
-        document.getElementById('inputCogs').value = btn.dataset.cogs;
-        document.getElementById('selectCategory').value = btn.dataset.cat;
-        document.getElementById('inputWeight').value = btn.dataset.wt;
-        if (CATEGORIES_DATA[btn.dataset.cat]) {
-          document.getElementById('inputProductGst').value = CATEGORIES_DATA[btn.dataset.cat].defaultGst;
-        }
-        calculate();
       });
     });
 
