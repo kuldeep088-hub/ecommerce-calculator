@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Calculator from '../components/Calculator.astro';
+import ComparisonMatrix from '../components/ComparisonMatrix.astro';
+import ReversePriceSolver from '../components/ReversePriceSolver.astro';
+import FeeGuide from '../components/FeeGuide.astro';
+import FaqSection from '../components/FaqSection.astro';
+---
+
+<Layout
+  title="Blinkit Seller & Brand Profit Calculator (2026) | Quick Commerce Margin Calculator"
+  description="Calculate brand net realization and profit margins for Blinkit. Model dark store take-rate commissions (15%-25%), inwarding handling fees, and spoilage buffers."
+  canonicalPath="/blinkit"
+  activePlatform="blinkit"
+>
+  <!-- Dedicated Platform Header Banner -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 pt-6">
+    <div class="bg-amber-50/60 border border-amber-200/80 rounded-2xl p-5 sm:p-6 mb-2">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2 mb-1.5">
+            <span class="text-xs font-mono font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-200">
+              10-Minute Quick Commerce
+            </span>
+            <span class="text-xs text-neutral-500 font-mono">Dark Store Model</span>
+          </div>
+          <h1 class="text-xl sm:text-2xl font-bold text-neutral-900 tracking-tight">
+            Blinkit Seller &amp; Brand Profit Calculator
+          </h1>
+          <p class="text-xs sm:text-sm text-neutral-600 mt-1 max-w-2xl leading-relaxed">
+            Blinkit operates on dark-store micro-fulfillment with a <strong>15%&ndash;25% platform margin take-rate</strong> plus inwarding and storage charges. Because deliveries happen in 10 minutes, courier RTO is virtually 0%.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 shrink-0 text-xs font-mono">
+          <div class="bg-white border border-amber-200 rounded-xl p-2.5 text-center">
+            <div class="text-[10px] text-neutral-500 uppercase font-sans">Platform Margin</div>
+            <div class="font-bold text-amber-700 text-sm mt-0.5">15% &ndash; 25%</div>
+          </div>
+          <div class="bg-white border border-amber-200 rounded-xl p-2.5 text-center">
+            <div class="text-[10px] text-neutral-500 uppercase font-sans">Handling &amp; Inward</div>
+            <div class="font-bold text-neutral-900 text-sm mt-0.5">₹15 &ndash; ₹25</div>
+          </div>
+          <div class="bg-white border border-amber-200 rounded-xl p-2.5 text-center col-span-2 sm:col-span-1">
+            <div class="text-[10px] text-neutral-500 uppercase font-sans">Courier RTO</div>
+            <div class="font-bold text-emerald-700 text-sm mt-0.5">&sim;0%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Calculator Preloaded with Blinkit -->
+  <Calculator
+    initialMarketplace="blinkit"
+    title="Calculate Blinkit Brand Payout & Net Margin"
+    subtitle="Model quick-commerce dark store take-rates, inwarding fees, 18% GST on service charges, and product realization."
+  />
+
+  <!-- Side-by-Side Comparison -->
+  <ComparisonMatrix />
+
+  <!-- Reverse Target Price Solver -->
+  <ReversePriceSolver />
+
+  <!-- Fee Guide -->
+  <FeeGuide />
+
+  <!-- FAQ -->
+  <FaqSection />
+</Layout>

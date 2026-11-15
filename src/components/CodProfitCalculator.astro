@@ -1,0 +1,297 @@
+---
+// src/components/CodProfitCalculator.astro
+---
+
+<section id="cod-profit-calculator" class="pt-6 sm:pt-10 pb-14 sm:pb-16">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    
+    <!-- Header -->
+    <div class="text-center max-w-xl mx-auto mb-6 sm:mb-8">
+      <div class="inline-flex items-center gap-2 mb-2">
+        <span class="text-xs font-mono font-bold px-2 py-0.5 rounded-full bg-blue-50 text-blue-800 border border-blue-200">
+          Cash On Delivery Economics
+        </span>
+      </div>
+      <h1 class="text-2xl sm:text-3xl font-semibold tracking-tight text-neutral-900">
+        COD Profit Calculator
+      </h1>
+      <p class="mt-1.5 text-xs sm:text-sm text-neutral-500">
+        Calculate your real in-hand earnings on Cash on Delivery orders after factoring in COD handling fees, courier charges, and doorstep delivery rejections.
+      </p>
+    </div>
+
+    <!-- Main Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      
+      <!-- Inputs (5 Cols) -->
+      <div class="lg:col-span-5 bg-white border border-neutral-200 rounded-2xl p-5 sm:p-6 shadow-xs">
+        <h2 class="text-sm font-semibold text-neutral-900 mb-4 pb-2 border-b border-neutral-100">
+          COD Order Parameters
+        </h2>
+
+        <form id="codForm" class="space-y-3.5" onsubmit="return false;">
+          
+          <div>
+            <label for="codPrice" class="block text-xs font-medium text-neutral-700 mb-1">
+              COD Selling Price (₹)
+            </label>
+            <div class="relative rounded-xl border border-neutral-200 bg-white focus-within:border-neutral-900 transition-all">
+              <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-neutral-400 font-semibold">₹</span>
+              <input
+                type="number"
+                id="codPrice"
+                value="799"
+                min="0"
+                class="w-full pl-8 pr-4 py-2.5 bg-transparent rounded-xl text-base font-mono font-semibold text-neutral-900 outline-none"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="codCogs" class="block text-xs font-medium text-neutral-700 mb-1">
+              Product Cost (COGS)
+            </label>
+            <div class="relative rounded-xl border border-neutral-200 bg-white focus-within:border-neutral-900 transition-all">
+              <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-neutral-400 font-semibold">₹</span>
+              <input
+                type="number"
+                id="codCogs"
+                value="280"
+                min="0"
+                class="w-full pl-8 pr-4 py-2 bg-transparent rounded-xl text-sm font-mono text-neutral-900 outline-none"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2.5">
+            <div>
+              <label for="codForwardShip" class="block text-xs font-medium text-neutral-700 mb-1">Forward Courier (₹)</label>
+              <input
+                type="number"
+                id="codForwardShip"
+                value="60"
+                min="0"
+                class="w-full px-3 py-2 bg-white border border-neutral-200 rounded-xl text-xs font-mono text-neutral-900 outline-none focus:border-neutral-900"
+              />
+            </div>
+            <div>
+              <label for="codCollectionFee" class="block text-xs font-medium text-neutral-700 mb-1">COD Handling Fee (₹)</label>
+              <input
+                type="number"
+                id="codCollectionFee"
+                value="40"
+                min="0"
+                class="w-full px-3 py-2 bg-white border border-neutral-200 rounded-xl text-xs font-mono text-neutral-900 outline-none focus:border-neutral-900"
+              />
+            </div>
+          </div>
+
+          <!-- RTO Rate Slider -->
+          <div>
+            <div class="flex justify-between text-xs text-neutral-700 mb-1">
+              <span>Expected Doorstep RTO %</span>
+              <span id="codRtoRateDisplay" class="font-mono font-bold text-rose-600">20%</span>
+            </div>
+            <input
+              type="range"
+              id="codRtoRate"
+              min="0"
+              max="50"
+              value="20"
+              class="w-full accent-rose-600 cursor-pointer h-1.5 bg-neutral-200 rounded-lg appearance-none"
+            />
+          </div>
+
+          <!-- Customer Return Rate Slider -->
+          <div>
+            <div class="flex justify-between text-xs text-neutral-700 mb-1">
+              <span>Customer Return % (Post-delivery)</span>
+              <span id="codReturnRateDisplay" class="font-mono font-bold text-amber-600">8%</span>
+            </div>
+            <input
+              type="range"
+              id="codReturnRate"
+              min="0"
+              max="40"
+              value="8"
+              class="w-full accent-amber-600 cursor-pointer h-1.5 bg-neutral-200 rounded-lg appearance-none"
+            />
+          </div>
+
+          <div class="grid grid-cols-2 gap-2.5">
+            <div>
+              <label for="codPackaging" class="block text-xs font-medium text-neutral-700 mb-1">Packaging (₹)</label>
+              <input
+                type="number"
+                id="codPackaging"
+                value="15"
+                min="0"
+                class="w-full px-3 py-1.5 bg-white border border-neutral-200 rounded-xl text-xs font-mono text-neutral-900"
+              />
+            </div>
+            <div>
+              <label for="codReverseCost" class="block text-xs font-medium text-neutral-700 mb-1">Reverse Return Penalty (₹)</label>
+              <input
+                type="number"
+                id="codReverseCost"
+                value="130"
+                min="0"
+                class="w-full px-3 py-1.5 bg-white border border-neutral-200 rounded-xl text-xs font-mono text-neutral-900"
+              />
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- Results (7 Cols) -->
+      <div class="lg:col-span-7 space-y-4">
+        
+        <!-- Hero Blended Profit Card -->
+        <div class="p-5 sm:p-6 rounded-2xl bg-white border-2 border-emerald-500/40 shadow-xs">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-medium uppercase tracking-wider text-emerald-800">
+              Blended Take-Home Profit (Per Dispatch)
+            </span>
+            <span id="codMarginBadge" class="text-xs font-mono font-bold px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200">
+              +33.2% Margin
+            </span>
+          </div>
+
+          <div class="mt-2.5 flex items-baseline gap-2">
+            <span id="codBlendedProfitVal" class="text-3xl sm:text-4xl font-mono font-bold tracking-tight text-emerald-600">
+              ₹265.40
+            </span>
+            <span class="text-xs text-neutral-400">real profit factoring RTO losses</span>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-neutral-100 grid grid-cols-2 gap-4 text-xs">
+            <div>
+              <span class="text-neutral-500 block">Delivered Order Profit:</span>
+              <strong id="codDeliveredProfitVal" class="font-mono text-neutral-900 font-semibold text-sm">₹386.00</strong>
+            </div>
+            <div>
+              <span class="text-neutral-500 block">RTO &amp; Return Buffer:</span>
+              <strong id="codBufferLossVal" class="font-mono text-rose-600 font-bold text-sm">- ₹30.60</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Breakdown Receipt -->
+        <div class="bg-white border border-neutral-200 rounded-2xl p-4 sm:p-5 shadow-xs">
+          <h3 class="text-xs font-semibold uppercase tracking-wider text-neutral-700 mb-3">
+            COD Expense &amp; Cash Flow Summary
+          </h3>
+
+          <div class="space-y-2 text-xs sm:text-[13px] divide-y divide-neutral-100">
+            <div class="flex items-center justify-between pb-2">
+              <span class="text-neutral-600">Customer Cash Paid at Doorstep</span>
+              <span id="recCodPrice" class="font-mono font-semibold text-neutral-900">₹799.00</span>
+            </div>
+            <div class="flex items-center justify-between py-2">
+              <span class="text-neutral-600">Forward Courier Shipping</span>
+              <span id="recForwardShip" class="font-mono text-neutral-700">- ₹60.00</span>
+            </div>
+            <div class="flex items-center justify-between py-2">
+              <span class="text-neutral-600">Courier COD Collection Charge</span>
+              <span id="recCodCharge" class="font-mono text-neutral-700">- ₹40.00</span>
+            </div>
+            <div class="flex items-center justify-between py-2">
+              <span class="text-neutral-600">18% GST on Courier &amp; COD Fees</span>
+              <span id="recCourierGst" class="font-mono text-neutral-600">- ₹18.00</span>
+            </div>
+            <div class="flex items-center justify-between py-2">
+              <span class="text-neutral-600">Product Manufacturing Cost (COGS)</span>
+              <span id="recCogs" class="font-mono text-neutral-700">- ₹280.00</span>
+            </div>
+            <div class="flex items-center justify-between py-2">
+              <span class="text-neutral-600">Packaging Materials</span>
+              <span id="recPackaging" class="font-mono text-neutral-700">- ₹15.00</span>
+            </div>
+            <div class="flex items-center justify-between pt-2.5 font-bold">
+              <span class="text-neutral-900">Net Take-Home Per Order</span>
+              <span id="recFinalProfit" class="font-mono text-base text-emerald-600">₹265.40</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script is:inline>
+(function() {
+  function formatCurrency(val) {
+    return '₹' + (val || 0).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  function calculateCod() {
+    var price = parseFloat(document.getElementById('codPrice').value) || 0;
+    var cogs = parseFloat(document.getElementById('codCogs').value) || 0;
+    var forwardShip = parseFloat(document.getElementById('codForwardShip').value) || 0;
+    var codFee = parseFloat(document.getElementById('codCollectionFee').value) || 0;
+    var packaging = parseFloat(document.getElementById('codPackaging').value) || 0;
+    var reverseCost = parseFloat(document.getElementById('codReverseCost').value) || 0;
+    var rtoRate = parseFloat(document.getElementById('codRtoRate').value) || 0;
+    var returnRate = parseFloat(document.getElementById('codReturnRate').value) || 0;
+
+    // Display rate sliders
+    document.getElementById('codRtoRateDisplay').textContent = rtoRate + '%';
+    document.getElementById('codReturnRateDisplay').textContent = returnRate + '%';
+
+    var courierTotal = forwardShip + codFee;
+    var courierGst = courierTotal * 0.18;
+    var totalCourierDeductions = courierTotal + courierGst;
+
+    // Pure delivered profit
+    var deliveredProfit = price - totalCourierDeductions - cogs - packaging;
+
+    // RTO and Customer Return loss buffers
+    var rtoLossPerUnit = forwardShip + packaging;
+    var returnLossPerUnit = reverseCost + packaging + (cogs * 0.05);
+
+    var deliveredFraction = Math.max(0, 100 - rtoRate - returnRate) / 100;
+    var rtoFraction = rtoRate / 100;
+    var returnFraction = returnRate / 100;
+
+    var returnBuffer = (rtoLossPerUnit * rtoFraction) + (returnLossPerUnit * returnFraction);
+    var blendedProfit = (deliveredProfit * deliveredFraction) - returnBuffer;
+    var margin = price > 0 ? (blendedProfit / price) * 100 : 0;
+
+    // Update UI
+    document.getElementById('codMarginBadge').textContent = (margin >= 0 ? '+' : '') + margin.toFixed(1) + '% Margin';
+    document.getElementById('codBlendedProfitVal').textContent = formatCurrency(blendedProfit);
+    document.getElementById('codDeliveredProfitVal').textContent = formatCurrency(deliveredProfit);
+    document.getElementById('codBufferLossVal').textContent = '- ' + formatCurrency(returnBuffer);
+
+    document.getElementById('recCodPrice').textContent = formatCurrency(price);
+    document.getElementById('recForwardShip').textContent = '- ' + formatCurrency(forwardShip);
+    document.getElementById('recCodCharge').textContent = '- ' + formatCurrency(codFee);
+    document.getElementById('recCourierGst').textContent = '- ' + formatCurrency(courierGst);
+    document.getElementById('recCogs').textContent = '- ' + formatCurrency(cogs);
+    document.getElementById('recPackaging').textContent = '- ' + formatCurrency(packaging);
+    document.getElementById('recFinalProfit').textContent = formatCurrency(blendedProfit);
+  }
+
+  function initCodCalc() {
+    var inputs = ['codPrice', 'codCogs', 'codForwardShip', 'codCollectionFee', 'codPackaging', 'codReverseCost', 'codRtoRate', 'codReturnRate'];
+    inputs.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('input', calculateCod);
+        el.addEventListener('change', calculateCod);
+      }
+    });
+    calculateCod();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCodCalc);
+  } else {
+    initCodCalc();
+  }
+})();
+</script>

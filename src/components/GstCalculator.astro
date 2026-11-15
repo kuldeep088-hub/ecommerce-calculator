@@ -1,0 +1,327 @@
+---
+// src/components/GstCalculator.astro
+---
+
+<section id="gst-calculator" class="pt-6 sm:pt-10 pb-14 sm:pb-16">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    
+    <!-- Header -->
+    <div class="text-center max-w-xl mx-auto mb-6 sm:mb-8">
+      <div class="inline-flex items-center gap-2 mb-2">
+        <span class="text-xs font-mono font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
+          Indian GST Slabs (2026)
+        </span>
+      </div>
+      <h1 class="text-2xl sm:text-3xl font-semibold tracking-tight text-neutral-900">
+        GST Calculator for E-Commerce Sellers
+      </h1>
+      <p class="mt-1.5 text-xs sm:text-sm text-neutral-500">
+        Calculate GST-inclusive product base prices, GST amounts, CGST/SGST/IGST splits, and Input Tax Credit (ITC).
+      </p>
+    </div>
+
+    <!-- Main Card Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      
+      <!-- LEFT: Inputs (5 Cols) -->
+      <div class="lg:col-span-5 bg-white border border-neutral-200 rounded-2xl p-5 sm:p-6 shadow-xs">
+        
+        <h2 class="text-sm font-semibold text-neutral-900 mb-4 pb-2 border-b border-neutral-100">
+          GST Calculation Settings
+        </h2>
+
+        <form id="gstForm" class="space-y-4" onsubmit="return false;">
+          
+          <!-- Mode Toggle: Inclusive vs Exclusive -->
+          <div>
+            <label class="block text-xs font-medium text-neutral-700 mb-1.5">Calculation Type</label>
+            <div class="grid grid-cols-2 gap-1.5 p-1 bg-neutral-100 rounded-xl border border-neutral-200">
+              <button
+                type="button"
+                id="gstModeInclusive"
+                class="gst-mode-btn py-2 px-3 rounded-lg text-xs font-semibold bg-white text-neutral-900 shadow-xs transition"
+              >
+                GST Inclusive (MRP)
+              </button>
+              <button
+                type="button"
+                id="gstModeExclusive"
+                class="gst-mode-btn py-2 px-3 rounded-lg text-xs font-medium text-neutral-600 hover:text-neutral-900 transition"
+              >
+                GST Exclusive (+ Tax)
+              </button>
+            </div>
+            <span class="text-[11px] text-neutral-400 mt-1 block" id="gstModeHint">
+              Extract base price &amp; GST from customer listed price.
+            </span>
+          </div>
+
+          <!-- Amount Input -->
+          <div>
+            <label for="gstAmountInput" class="block text-xs font-medium text-neutral-700 mb-1" id="gstAmountLabel">
+              Listed Selling Price / MRP
+            </label>
+            <div class="relative rounded-xl border border-neutral-200 bg-white focus-within:border-neutral-900 transition-all">
+              <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-neutral-400 font-semibold">
+                ₹
+              </span>
+              <input
+                type="number"
+                id="gstAmountInput"
+                value="999"
+                min="0"
+                step="any"
+                class="w-full pl-8 pr-4 py-2.5 bg-transparent rounded-xl text-base sm:text-lg font-mono font-semibold text-neutral-900 outline-none"
+              />
+            </div>
+          </div>
+
+          <!-- GST Rate Slabs -->
+          <div>
+            <label class="block text-xs font-medium text-neutral-700 mb-1.5">GST Rate Slab</label>
+            <div class="grid grid-cols-3 gap-1.5" id="gstRateButtons">
+              <button type="button" data-rate="0" class="gst-rate-btn py-1.5 rounded-lg border border-neutral-200 text-xs font-mono font-medium hover:bg-neutral-50 transition">0%</button>
+              <button type="button" data-rate="3" class="gst-rate-btn py-1.5 rounded-lg border border-neutral-200 text-xs font-mono font-medium hover:bg-neutral-50 transition">3%</button>
+              <button type="button" data-rate="5" class="gst-rate-btn py-1.5 rounded-lg border border-neutral-200 text-xs font-mono font-medium hover:bg-neutral-50 transition">5%</button>
+              <button type="button" data-rate="12" class="gst-rate-btn py-1.5 rounded-lg border border-neutral-200 text-xs font-mono font-medium hover:bg-neutral-50 transition">12%</button>
+              <button type="button" data-rate="18" class="gst-rate-btn py-1.5 rounded-lg border border-emerald-500 bg-emerald-50 text-emerald-800 font-mono font-bold transition shadow-xs">18%</button>
+              <button type="button" data-rate="28" class="gst-rate-btn py-1.5 rounded-lg border border-neutral-200 text-xs font-mono font-medium hover:bg-neutral-50 transition">28%</button>
+            </div>
+            <div class="mt-2">
+              <input
+                type="number"
+                id="gstCustomRate"
+                placeholder="Or custom GST % (e.g. 18)"
+                class="w-full px-3 py-1.5 bg-white border border-neutral-200 rounded-lg text-xs font-mono text-neutral-900 outline-none focus:border-neutral-900"
+              />
+            </div>
+          </div>
+
+          <!-- Transaction Type: Inter-State vs Intra-State -->
+          <div>
+            <label class="block text-xs font-medium text-neutral-700 mb-1.5">Supply Type</label>
+            <select
+              id="gstSupplyType"
+              class="w-full px-3 py-2 bg-white border border-neutral-200 rounded-xl text-xs sm:text-sm text-neutral-800 outline-none cursor-pointer"
+            >
+              <option value="inter">Inter-State (IGST - Different State)</option>
+              <option value="intra">Intra-State (CGST + SGST - Same State)</option>
+            </select>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- RIGHT: Results & Tax Breakdown (7 Cols) -->
+      <div class="lg:col-span-7 space-y-4">
+        
+        <!-- Hero GST Card -->
+        <div class="p-5 sm:p-6 rounded-2xl bg-white border-2 border-emerald-500/40 shadow-xs">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-medium uppercase tracking-wider text-emerald-800">
+              GST Tax Liability
+            </span>
+            <span id="gstRateBadge" class="text-xs font-mono font-bold px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200">
+              18% GST
+            </span>
+          </div>
+
+          <div class="mt-2.5 flex items-baseline gap-2">
+            <span id="gstTotalTaxValue" class="text-3xl sm:text-4xl font-mono font-bold tracking-tight text-emerald-600">
+              ₹152.39
+            </span>
+            <span class="text-xs text-neutral-400">total tax amount</span>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-neutral-100 grid grid-cols-2 gap-4 text-xs">
+            <div>
+              <span class="text-neutral-500 block">Base Price (Without Tax):</span>
+              <strong id="gstBasePriceValue" class="font-mono text-neutral-900 font-semibold text-sm">₹846.61</strong>
+            </div>
+            <div>
+              <span class="text-neutral-500 block">Gross Total (Final Price):</span>
+              <strong id="gstGrossPriceValue" class="font-mono text-neutral-900 font-semibold text-sm">₹999.00</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- CGST / SGST / IGST Breakdown Table -->
+        <div class="bg-white border border-neutral-200 rounded-2xl p-4 sm:p-5 shadow-xs">
+          <h3 class="text-xs font-semibold uppercase tracking-wider text-neutral-700 mb-3">
+            Tax Component Breakdown
+          </h3>
+
+          <div class="space-y-2 text-xs sm:text-[13px] divide-y divide-neutral-100">
+            <div class="flex items-center justify-between pb-2">
+              <span class="text-neutral-600">Net Taxable Value</span>
+              <span id="rowTaxableValue" class="font-mono font-semibold text-neutral-900">₹846.61</span>
+            </div>
+
+            <!-- Inter-State Row -->
+            <div id="rowIgst" class="flex items-center justify-between py-2">
+              <span class="text-neutral-600">Integrated GST (IGST)</span>
+              <span id="valIgst" class="font-mono font-semibold text-emerald-700">₹152.39</span>
+            </div>
+
+            <!-- Intra-State Rows -->
+            <div id="rowCgst" class="flex items-center justify-between py-2 hidden">
+              <span class="text-neutral-600">Central GST (CGST - <span id="rateCgst">9%</span>)</span>
+              <span id="valCgst" class="font-mono font-semibold text-emerald-700">₹76.20</span>
+            </div>
+            <div id="rowSgst" class="flex items-center justify-between py-2 hidden">
+              <span class="text-neutral-600">State GST (SGST - <span id="rateSgst">9%</span>)</span>
+              <span id="valSgst" class="font-mono font-semibold text-emerald-700">₹76.20</span>
+            </div>
+
+            <div class="flex items-center justify-between pt-2.5 font-bold">
+              <span class="text-neutral-900">Total Invoice Amount</span>
+              <span id="rowTotalAmount" class="font-mono text-base text-neutral-900">₹999.00</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- E-Commerce Input Tax Credit (ITC) Box -->
+        <div class="bg-emerald-50/50 border border-emerald-200/80 rounded-2xl p-4 sm:p-5 text-xs text-neutral-700">
+          <span class="font-semibold text-emerald-900 block mb-1">E-Commerce ITC Offset Tip</span>
+          <p class="leading-relaxed text-neutral-600">
+            When selling online, marketplaces charge 18% GST on their commissions and shipping fees. You can claim 100% of this GST back as <strong>Input Tax Credit (ITC)</strong> on your monthly GSTR-3B return to reduce your output tax liability.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script is:inline>
+(function() {
+  var isInclusive = true;
+  var currentRate = 18;
+
+  function formatCurrency(val) {
+    return '₹' + (val || 0).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  function calculateGst() {
+    var amount = parseFloat(document.getElementById('gstAmountInput').value) || 0;
+    var customRate = parseFloat(document.getElementById('gstCustomRate').value);
+    var rate = !isNaN(customRate) && customRate >= 0 ? customRate : currentRate;
+    var supplyType = document.getElementById('gstSupplyType').value;
+
+    var basePrice = 0;
+    var taxAmount = 0;
+    var grossTotal = 0;
+
+    if (isInclusive) {
+      basePrice = rate > 0 ? (amount / (1 + rate / 100)) : amount;
+      taxAmount = amount - basePrice;
+      grossTotal = amount;
+    } else {
+      basePrice = amount;
+      taxAmount = amount * (rate / 100);
+      grossTotal = basePrice + taxAmount;
+    }
+
+    // Update displays
+    document.getElementById('gstRateBadge').textContent = rate + '% GST';
+    document.getElementById('gstTotalTaxValue').textContent = formatCurrency(taxAmount);
+    document.getElementById('gstBasePriceValue').textContent = formatCurrency(basePrice);
+    document.getElementById('gstGrossPriceValue').textContent = formatCurrency(grossTotal);
+    document.getElementById('rowTaxableValue').textContent = formatCurrency(basePrice);
+    document.getElementById('rowTotalAmount').textContent = formatCurrency(grossTotal);
+
+    var igstRow = document.getElementById('rowIgst');
+    var cgstRow = document.getElementById('rowCgst');
+    var sgstRow = document.getElementById('rowSgst');
+
+    if (supplyType === 'inter') {
+      igstRow.classList.remove('hidden');
+      cgstRow.classList.add('hidden');
+      sgstRow.classList.add('hidden');
+      document.getElementById('valIgst').textContent = formatCurrency(taxAmount);
+    } else {
+      igstRow.classList.add('hidden');
+      cgstRow.classList.remove('hidden');
+      sgstRow.classList.remove('hidden');
+      var halfRate = rate / 2;
+      var halfTax = taxAmount / 2;
+      document.getElementById('rateCgst').textContent = halfRate + '%';
+      document.getElementById('rateSgst').textContent = halfRate + '%';
+      document.getElementById('valCgst').textContent = formatCurrency(halfTax);
+      document.getElementById('valSgst').textContent = formatCurrency(halfTax);
+    }
+  }
+
+  function initGstCalc() {
+    var btnInc = document.getElementById('gstModeInclusive');
+    var btnExc = document.getElementById('gstModeExclusive');
+    var hint = document.getElementById('gstModeHint');
+    var label = document.getElementById('gstAmountLabel');
+
+    if (btnInc && btnExc) {
+      btnInc.addEventListener('click', function() {
+        isInclusive = true;
+        btnInc.className = 'gst-mode-btn py-2 px-3 rounded-lg text-xs font-semibold bg-white text-neutral-900 shadow-xs transition';
+        btnExc.className = 'gst-mode-btn py-2 px-3 rounded-lg text-xs font-medium text-neutral-600 hover:text-neutral-900 transition';
+        if (hint) hint.textContent = 'Extract base price & GST from customer listed price.';
+        if (label) label.textContent = 'Listed Selling Price / MRP';
+        calculateGst();
+      });
+
+      btnExc.addEventListener('click', function() {
+        isInclusive = false;
+        btnExc.className = 'gst-mode-btn py-2 px-3 rounded-lg text-xs font-semibold bg-white text-neutral-900 shadow-xs transition';
+        btnInc.className = 'gst-mode-btn py-2 px-3 rounded-lg text-xs font-medium text-neutral-600 hover:text-neutral-900 transition';
+        if (hint) hint.textContent = 'Add GST on top of net manufacturing/base price.';
+        if (label) label.textContent = 'Net Base Price (Excluding Tax)';
+        calculateGst();
+      });
+    }
+
+    document.querySelectorAll('.gst-rate-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.gst-rate-btn').forEach(function(b) {
+          b.className = 'gst-rate-btn py-1.5 rounded-lg border border-neutral-200 text-xs font-mono font-medium hover:bg-neutral-50 transition';
+        });
+        btn.className = 'gst-rate-btn py-1.5 rounded-lg border border-emerald-500 bg-emerald-50 text-emerald-800 font-mono font-bold transition shadow-xs';
+        currentRate = parseFloat(btn.dataset.rate);
+        var customInput = document.getElementById('gstCustomRate');
+        if (customInput) customInput.value = '';
+        calculateGst();
+      });
+    });
+
+    var amountInput = document.getElementById('gstAmountInput');
+    if (amountInput) {
+      amountInput.addEventListener('input', calculateGst);
+    }
+
+    var customInput = document.getElementById('gstCustomRate');
+    if (customInput) {
+      customInput.addEventListener('input', function() {
+        if (customInput.value !== '') {
+          document.querySelectorAll('.gst-rate-btn').forEach(function(b) {
+            b.className = 'gst-rate-btn py-1.5 rounded-lg border border-neutral-200 text-xs font-mono font-medium hover:bg-neutral-50 transition';
+          });
+        }
+        calculateGst();
+      });
+    }
+
+    var supplySelect = document.getElementById('gstSupplyType');
+    if (supplySelect) {
+      supplySelect.addEventListener('change', calculateGst);
+    }
+
+    calculateGst();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initGstCalc);
+  } else {
+    initGstCalc();
+  }
+})();
+</script>

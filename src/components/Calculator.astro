@@ -3,7 +3,7 @@ import { CATEGORIES } from '../data/categories';
 import { MARKETPLACES } from '../data/marketplaces';
 
 interface Props {
-  initialMarketplace?: 'meesho' | 'flipkart' | 'amazon' | 'snapdeal';
+  initialMarketplace?: 'meesho' | 'flipkart' | 'amazon' | 'snapdeal' | 'myntra' | 'shopsy' | 'blinkit' | 'zepto';
   title?: string;
   subtitle?: string;
 }
@@ -30,11 +30,11 @@ const {
 
     <!-- Marketplace Tabs / Dedicated Page Links -->
     <div class="flex flex-col items-center justify-center mb-6 sm:mb-8">
-      <div class="inline-flex p-1 rounded-xl bg-neutral-100 border border-neutral-200" id="marketplaceTabs">
+      <div class="inline-flex p-1 rounded-xl bg-neutral-100 border border-neutral-200 overflow-x-auto max-w-full no-scrollbar" id="marketplaceTabs">
         <a
           href="/meesho"
           data-mp="meesho"
-          class={`mp-tab px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
+          class={`mp-tab whitespace-nowrap px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
             initialMarketplace === 'meesho'
               ? 'bg-white text-neutral-900 shadow-xs font-semibold'
               : 'text-neutral-600 hover:text-neutral-900'
@@ -45,7 +45,7 @@ const {
         <a
           href="/flipkart"
           data-mp="flipkart"
-          class={`mp-tab px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
+          class={`mp-tab whitespace-nowrap px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
             initialMarketplace === 'flipkart'
               ? 'bg-white text-neutral-900 shadow-xs font-semibold'
               : 'text-neutral-600 hover:text-neutral-900'
@@ -56,7 +56,7 @@ const {
         <a
           href="/amazon"
           data-mp="amazon"
-          class={`mp-tab px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
+          class={`mp-tab whitespace-nowrap px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
             initialMarketplace === 'amazon'
               ? 'bg-white text-neutral-900 shadow-xs font-semibold'
               : 'text-neutral-600 hover:text-neutral-900'
@@ -67,13 +67,57 @@ const {
         <a
           href="/snapdeal"
           data-mp="snapdeal"
-          class={`mp-tab px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
+          class={`mp-tab whitespace-nowrap px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
             initialMarketplace === 'snapdeal'
               ? 'bg-white text-neutral-900 shadow-xs font-semibold'
               : 'text-neutral-600 hover:text-neutral-900'
           }`}
         >
           Snapdeal
+        </a>
+        <a
+          href="/myntra"
+          data-mp="myntra"
+          class={`mp-tab whitespace-nowrap px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
+            initialMarketplace === 'myntra'
+              ? 'bg-white text-neutral-900 shadow-xs font-semibold'
+              : 'text-neutral-600 hover:text-neutral-900'
+          }`}
+        >
+          Myntra
+        </a>
+        <a
+          href="/shopsy"
+          data-mp="shopsy"
+          class={`mp-tab whitespace-nowrap px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
+            initialMarketplace === 'shopsy'
+              ? 'bg-white text-neutral-900 shadow-xs font-semibold'
+              : 'text-neutral-600 hover:text-neutral-900'
+          }`}
+        >
+          Shopsy
+        </a>
+        <a
+          href="/blinkit"
+          data-mp="blinkit"
+          class={`mp-tab whitespace-nowrap px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
+            initialMarketplace === 'blinkit'
+              ? 'bg-white text-neutral-900 shadow-xs font-semibold'
+              : 'text-neutral-600 hover:text-neutral-900'
+          }`}
+        >
+          Blinkit
+        </a>
+        <a
+          href="/zepto"
+          data-mp="zepto"
+          class={`mp-tab whitespace-nowrap px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
+            initialMarketplace === 'zepto'
+              ? 'bg-white text-neutral-900 shadow-xs font-semibold'
+              : 'text-neutral-600 hover:text-neutral-900'
+          }`}
+        >
+          Zepto
         </a>
       </div>
       <p class="mt-2 text-xs text-neutral-500 text-center" id="calcCardSubtitle">
@@ -489,16 +533,16 @@ const {
 (function() {
   // Category rates map
   var CATEGORIES_DATA = {
-    fashion: { meesho: 0, flipkart: 15.0, amazon: 13.5, snapdeal: 5.0, defaultGst: 12 },
-    footwear: { meesho: 0, flipkart: 14.0, amazon: 12.0, snapdeal: 6.0, defaultGst: 12 },
-    electronics_accessories: { meesho: 0, flipkart: 12.5, amazon: 14.0, snapdeal: 8.0, defaultGst: 18 },
-    home_kitchen: { meesho: 0, flipkart: 11.0, amazon: 10.5, snapdeal: 7.0, defaultGst: 18 },
-    beauty_grooming: { meesho: 0, flipkart: 9.0, amazon: 8.5, snapdeal: 6.0, defaultGst: 18 },
-    jewellery_fashion: { meesho: 0, flipkart: 16.0, amazon: 15.0, snapdeal: 8.0, defaultGst: 3 },
-    grocery_fmcg: { meesho: 0, flipkart: 6.5, amazon: 6.0, snapdeal: 4.0, defaultGst: 5 },
-    toys_baby: { meesho: 0, flipkart: 10.5, amazon: 9.5, snapdeal: 6.0, defaultGst: 12 },
-    books: { meesho: 0, flipkart: 9.0, amazon: 8.0, snapdeal: 5.0, defaultGst: 0 },
-    custom: { meesho: 0, flipkart: 10.0, amazon: 10.0, snapdeal: 5.0, defaultGst: 18 }
+    fashion: { meesho: 0, flipkart: 15.0, amazon: 13.5, snapdeal: 5.0, myntra: 18.0, shopsy: 0, blinkit: 18.0, zepto: 18.0, defaultGst: 12 },
+    footwear: { meesho: 0, flipkart: 14.0, amazon: 12.0, snapdeal: 6.0, myntra: 16.0, shopsy: 0, blinkit: 16.0, zepto: 16.0, defaultGst: 12 },
+    electronics_accessories: { meesho: 0, flipkart: 12.5, amazon: 14.0, snapdeal: 8.0, myntra: 15.0, shopsy: 5.0, blinkit: 16.0, zepto: 16.0, defaultGst: 18 },
+    home_kitchen: { meesho: 0, flipkart: 11.0, amazon: 10.5, snapdeal: 7.0, myntra: 14.0, shopsy: 4.0, blinkit: 18.0, zepto: 18.0, defaultGst: 18 },
+    beauty_grooming: { meesho: 0, flipkart: 9.0, amazon: 8.5, snapdeal: 6.0, myntra: 12.0, shopsy: 3.0, blinkit: 20.0, zepto: 20.0, defaultGst: 18 },
+    jewellery_fashion: { meesho: 0, flipkart: 16.0, amazon: 15.0, snapdeal: 8.0, myntra: 20.0, shopsy: 5.0, blinkit: 18.0, zepto: 18.0, defaultGst: 3 },
+    grocery_fmcg: { meesho: 0, flipkart: 6.5, amazon: 6.0, snapdeal: 4.0, myntra: 8.0, shopsy: 2.0, blinkit: 15.0, zepto: 15.0, defaultGst: 5 },
+    toys_baby: { meesho: 0, flipkart: 10.5, amazon: 9.5, snapdeal: 6.0, myntra: 14.0, shopsy: 4.0, blinkit: 18.0, zepto: 18.0, defaultGst: 12 },
+    books: { meesho: 0, flipkart: 9.0, amazon: 8.0, snapdeal: 5.0, myntra: 10.0, shopsy: 3.0, blinkit: 15.0, zepto: 15.0, defaultGst: 0 },
+    custom: { meesho: 0, flipkart: 10.0, amazon: 10.0, snapdeal: 5.0, myntra: 15.0, shopsy: 5.0, blinkit: 18.0, zepto: 18.0, defaultGst: 18 }
   };
 
   var calcSection = document.getElementById('calculator');
@@ -541,6 +585,19 @@ const {
       if (weightGrams <= 500) return base;
       var extra = Math.ceil((weightGrams - 500) / 500);
       return base + extra * addl;
+    }
+    if (mp === 'myntra') {
+      var base = 50;
+      if (weightGrams <= 500) return base;
+      return base + Math.ceil((weightGrams - 500) / 500) * 30;
+    }
+    if (mp === 'shopsy') {
+      var base = 45;
+      if (weightGrams <= 500) return base;
+      return base + Math.ceil((weightGrams - 500) / 500) * 32;
+    }
+    if (mp === 'blinkit' || mp === 'zepto') {
+      return 20;
     }
     return 55 + Math.ceil(Math.max(0, weightGrams - 500) / 500) * 35;
   }
@@ -593,11 +650,14 @@ const {
       if (currentMarketplace === 'amazon') fixedFee = getAmazonClosingFee(sp);
       else if (currentMarketplace === 'flipkart') fixedFee = getFlipkartFixedFee(sp);
       else if (currentMarketplace === 'meesho') fixedFee = 0;
+      else if (currentMarketplace === 'myntra') fixedFee = sp <= 500 ? 15 : sp <= 1000 ? 25 : 40;
+      else if (currentMarketplace === 'shopsy') fixedFee = sp <= 300 ? 0 : sp <= 500 ? 5 : 12;
+      else if (currentMarketplace === 'blinkit' || currentMarketplace === 'zepto') fixedFee = 15;
       else fixedFee = 10;
     }
 
-    // 4. Collection Fee (2% for Flipkart/Amazon, 0 for Meesho)
-    var collectionFee = (currentMarketplace === 'flipkart' || currentMarketplace === 'amazon') ? (sp * 0.02) : 0;
+    // 4. Collection Fee (2% for Flipkart/Amazon/Myntra, 0 for others)
+    var collectionFee = (currentMarketplace === 'flipkart' || currentMarketplace === 'amazon' || currentMarketplace === 'myntra') ? (sp * 0.02) : 0;
 
     // 5. Shipping
     var shippingFee = customShip !== '' ? parseFloat(customShip) : getShippingFee(currentMarketplace, weight, zone);
@@ -759,13 +819,48 @@ const {
       }
     });
 
-    var mpNames = { meesho: 'Meesho', flipkart: 'Flipkart', amazon: 'Amazon India', snapdeal: 'Snapdeal' };
+    var mpNames = {
+      meesho: 'Meesho',
+      flipkart: 'Flipkart',
+      amazon: 'Amazon India',
+      snapdeal: 'Snapdeal',
+      myntra: 'Myntra',
+      shopsy: 'Shopsy',
+      blinkit: 'Blinkit',
+      zepto: 'Zepto'
+    };
     var mpSubtitles = {
       meesho: 'Zero referral commission model with weight-slab courier rates.',
       flipkart: 'Category referral commission (4-16%) + Fixed slab fees + Collection fees.',
       amazon: 'Amazon Easy Ship model with dynamic closing fee slabs.',
-      snapdeal: 'Value commerce commission structure (0-10%).'
+      snapdeal: 'Value commerce commission structure (0-10%).',
+      myntra: 'Fashion & lifestyle referral fee (12-24%) + closing fee slabs.',
+      shopsy: 'Value-first platform with 0% budget commission & low fixed fees.',
+      blinkit: '10-minute quick commerce platform take-rate (15-25%) & dark store handling.',
+      zepto: 'Quick commerce micro-fulfillment margin cut (14-22%) & inwarding.'
     };
+
+    var mpDefaults = {
+      meesho: { rto: 20, ret: 10, retCost: 130 },
+      flipkart: { rto: 15, ret: 8, retCost: 130 },
+      amazon: { rto: 12, ret: 7, retCost: 130 },
+      snapdeal: { rto: 22, ret: 9, retCost: 130 },
+      myntra: { rto: 10, ret: 25, retCost: 150 },
+      shopsy: { rto: 24, ret: 10, retCost: 130 },
+      blinkit: { rto: 1, ret: 2, retCost: 30 },
+      zepto: { rto: 1, ret: 2, retCost: 30 }
+    };
+
+    if (mpDefaults[mp]) {
+      var rtoInput = document.getElementById('inputRtoRate');
+      var retInput = document.getElementById('inputCustomerReturnRate');
+      var retCostInput = document.getElementById('inputReturnReverseCost');
+      var rtoDisp = document.getElementById('rtoRateDisplay');
+      var retDisp = document.getElementById('customerReturnRateDisplay');
+      if (rtoInput) { rtoInput.value = mpDefaults[mp].rto; if (rtoDisp) rtoDisp.textContent = mpDefaults[mp].rto + '%'; }
+      if (retInput) { retInput.value = mpDefaults[mp].ret; if (retDisp) retDisp.textContent = mpDefaults[mp].ret + '%'; }
+      if (retCostInput) { retCostInput.value = mpDefaults[mp].retCost; }
+    }
 
     var titleEl = document.getElementById('calcCardTitle');
     var subtitleEl = document.getElementById('calcCardSubtitle');

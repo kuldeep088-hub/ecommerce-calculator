@@ -65,6 +65,58 @@ export const MARKETPLACES: Record<string, MarketplaceMeta> = {
     defaultRtoRate: 22,
     defaultReturnRate: 9,
   },
+  myntra: {
+    id: 'myntra',
+    name: 'Myntra',
+    tagline: 'India’s Premier Fashion & Lifestyle Marketplace',
+    badge: '12% – 24% Commission',
+    brandColor: '#e11d48', // rose-600
+    accentBg: '#fff1f2',
+    commissionSummary: '12% to 24% Category Commission on Fashion & Lifestyle',
+    closingFeeDescription: 'Slab-based Fixed Closing Fee (₹15 to ₹40)',
+    shippingModel: 'Fashion logistics & forward courier (₹50 base)',
+    defaultRtoRate: 12,
+    defaultReturnRate: 25, // Fashion returns are notably high in India
+  },
+  shopsy: {
+    id: 'shopsy',
+    name: 'Shopsy',
+    tagline: 'Flipkart Value Commerce for Bharat',
+    badge: '0% – 8% Commission',
+    brandColor: '#059669', // emerald-600
+    accentBg: '#ecfdf5',
+    commissionSummary: '0% on budget styles, 3% to 8% on others',
+    closingFeeDescription: '₹0 to ₹12 Budget Closing Fee',
+    shippingModel: 'Budget courier network (₹45 base)',
+    defaultRtoRate: 24,
+    defaultReturnRate: 10,
+  },
+  blinkit: {
+    id: 'blinkit',
+    name: 'Blinkit',
+    tagline: '10-Minute Quick Commerce Dark Store Network',
+    badge: '15% – 25% Platform Margin',
+    brandColor: '#f59e0b', // amber-500
+    accentBg: '#fffbeb',
+    commissionSummary: '15% to 25% Quick Commerce Take Rate / Trade Margin',
+    closingFeeDescription: 'Dark store handling & inwarding per SKU',
+    shippingModel: 'Mother Hub to Dark Store micro-fulfillment',
+    defaultRtoRate: 1, // Near zero RTO on 10-minute orders
+    defaultReturnRate: 2, // Minimal spoilage/damage return
+  },
+  zepto: {
+    id: 'zepto',
+    name: 'Zepto',
+    tagline: 'Instant Quick Commerce Fulfillment',
+    badge: '14% – 22% Platform Margin',
+    brandColor: '#7c3aed', // violet-600
+    accentBg: '#f5f3ff',
+    commissionSummary: '14% to 22% Margin cut on FMCG & Essentials',
+    closingFeeDescription: 'Inwarding, handling & micro-storage fee',
+    shippingModel: 'Dark store inventory routing',
+    defaultRtoRate: 1,
+    defaultReturnRate: 2,
+  },
 };
 
 /**
@@ -127,6 +179,23 @@ export function calculateShippingFee(
     if (weightGrams <= 500) return base;
     const extra500g = Math.ceil((weightGrams - 500) / 500);
     return base + extra500g * addl;
+  }
+
+  if (marketplace === 'myntra') {
+    let base = 50;
+    if (weightGrams <= 500) return base;
+    return base + Math.ceil((weightGrams - 500) / 500) * 30;
+  }
+
+  if (marketplace === 'shopsy') {
+    let base = 45;
+    if (weightGrams <= 500) return base;
+    return base + Math.ceil((weightGrams - 500) / 500) * 32;
+  }
+
+  if (marketplace === 'blinkit' || marketplace === 'zepto') {
+    // Quick commerce hub inwarding / handling fee per unit
+    return 20;
   }
 
   // Generic / Snapdeal fallback

@@ -1,0 +1,237 @@
+---
+// src/components/PrepaidVsCodCalculator.astro
+---
+
+<section id="prepaid-vs-cod" class="pt-6 sm:pt-10 pb-14 sm:pb-16">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    
+    <!-- Header -->
+    <div class="text-center max-w-xl mx-auto mb-6 sm:mb-8">
+      <div class="inline-flex items-center gap-2 mb-2">
+        <span class="text-xs font-mono font-bold px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-800 border border-indigo-200">
+          Payment Method Comparison
+        </span>
+      </div>
+      <h1 class="text-2xl sm:text-3xl font-semibold tracking-tight text-neutral-900">
+        Prepaid vs COD Profit Calculator
+      </h1>
+      <p class="mt-1.5 text-xs sm:text-sm text-neutral-500">
+        Simulate the exact same product sold via Online Prepaid (UPI/Card) versus Cash on Delivery. See your true profit difference and calculate safe prepaid discount amounts.
+      </p>
+    </div>
+
+    <!-- Product Baseline Inputs -->
+    <div class="bg-white border border-neutral-200 rounded-2xl p-5 mb-6 shadow-xs max-w-4xl mx-auto">
+      <h2 class="text-xs font-semibold uppercase tracking-wider text-neutral-700 mb-3">
+        Product &amp; Cost Baseline
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+        <div>
+          <label for="cmpPrice" class="block text-xs font-medium text-neutral-700 mb-1">Selling Price (₹)</label>
+          <input type="number" id="cmpPrice" value="899" min="0" class="w-full px-3 py-2 bg-white border border-neutral-200 rounded-xl text-sm font-mono text-neutral-900" />
+        </div>
+        <div>
+          <label for="cmpCogs" class="block text-xs font-medium text-neutral-700 mb-1">Product Cost / COGS (₹)</label>
+          <input type="number" id="cmpCogs" value="320" min="0" class="w-full px-3 py-2 bg-white border border-neutral-200 rounded-xl text-sm font-mono text-neutral-900" />
+        </div>
+        <div>
+          <label for="cmpForwardShip" class="block text-xs font-medium text-neutral-700 mb-1">Base Shipping (₹)</label>
+          <input type="number" id="cmpForwardShip" value="65" min="0" class="w-full px-3 py-2 bg-white border border-neutral-200 rounded-xl text-sm font-mono text-neutral-900" />
+        </div>
+        <div>
+          <label for="cmpPackaging" class="block text-xs font-medium text-neutral-700 mb-1">Packaging (₹)</label>
+          <input type="number" id="cmpPackaging" value="15" min="0" class="w-full px-3 py-2 bg-white border border-neutral-200 rounded-xl text-sm font-mono text-neutral-900" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Side-by-Side Comparison Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-6">
+      
+      <!-- LEFT: PREPAID -->
+      <div class="bg-white border-2 border-emerald-500/40 rounded-2xl p-5 sm:p-6 shadow-xs flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-bold text-base text-neutral-900">Prepaid (UPI / Card)</span>
+            <span class="text-xs font-mono font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
+              Low Risk
+            </span>
+          </div>
+
+          <div class="space-y-3 mb-4 text-xs">
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label for="pPgFeeRate" class="block text-neutral-600 mb-1">Payment Gateway %</label>
+                <input type="number" id="pPgFeeRate" value="2.0" step="0.1" class="w-full px-2.5 py-1.5 bg-neutral-50 border border-neutral-200 rounded-lg font-mono text-neutral-900" />
+              </div>
+              <div>
+                <label for="pRtoRate" class="block text-neutral-600 mb-1">Prepaid RTO Rate %</label>
+                <input type="number" id="pRtoRate" value="2.0" step="0.5" class="w-full px-2.5 py-1.5 bg-neutral-50 border border-neutral-200 rounded-lg font-mono text-neutral-900" />
+              </div>
+            </div>
+            <div class="text-[11px] text-neutral-500">
+              Zero courier COD collection fee. Minimal doorstep return rejections.
+            </div>
+          </div>
+
+          <!-- Prepaid Result -->
+          <div class="p-4 rounded-xl bg-emerald-50/60 border border-emerald-200 text-xs space-y-1.5">
+            <div class="flex justify-between text-neutral-600">
+              <span>PG Fee Deducted:</span>
+              <span id="pValPgFee" class="font-mono font-medium text-neutral-900">₹17.98</span>
+            </div>
+            <div class="flex justify-between text-neutral-600">
+              <span>RTO Loss Buffer:</span>
+              <span id="pValRtoBuffer" class="font-mono text-neutral-700">- ₹1.60</span>
+            </div>
+            <div class="flex justify-between pt-2 border-t border-emerald-200 font-bold text-sm">
+              <span class="text-emerald-950">Prepaid In-Hand Profit:</span>
+              <span id="pValNetProfit" class="font-mono text-emerald-700 text-base">₹479.42</span>
+            </div>
+            <div class="text-right text-[11px] font-mono text-emerald-800" id="pValMargin">
+              53.3% Margin
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: COD -->
+      <div class="bg-white border-2 border-rose-400/40 rounded-2xl p-5 sm:p-6 shadow-xs flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-bold text-base text-neutral-900">Cash on Delivery (COD)</span>
+            <span class="text-xs font-mono font-bold px-2 py-0.5 rounded-full bg-rose-50 text-rose-800 border border-rose-200">
+              High Return Risk
+            </span>
+          </div>
+
+          <div class="space-y-3 mb-4 text-xs">
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label for="cCodFee" class="block text-neutral-600 mb-1">COD Handling Fee (₹)</label>
+                <input type="number" id="cCodFee" value="45" class="w-full px-2.5 py-1.5 bg-neutral-50 border border-neutral-200 rounded-lg font-mono text-neutral-900" />
+              </div>
+              <div>
+                <label for="cRtoRate" class="block text-neutral-600 mb-1">COD RTO Rate %</label>
+                <input type="number" id="cRtoRate" value="22.0" step="0.5" class="w-full px-2.5 py-1.5 bg-neutral-50 border border-neutral-200 rounded-lg font-mono text-rose-700" />
+              </div>
+            </div>
+            <div class="text-[11px] text-neutral-500">
+              Subject to courier COD collection charges and high uncollected return loss.
+            </div>
+          </div>
+
+          <!-- COD Result -->
+          <div class="p-4 rounded-xl bg-rose-50/50 border border-rose-200 text-xs space-y-1.5">
+            <div class="flex justify-between text-neutral-600">
+              <span>COD Fee Deducted:</span>
+              <span id="cValCodFee" class="font-mono font-medium text-neutral-900">₹45.00</span>
+            </div>
+            <div class="flex justify-between text-neutral-600">
+              <span>RTO Loss Buffer:</span>
+              <span id="cValRtoBuffer" class="font-mono text-rose-600">- ₹17.60</span>
+            </div>
+            <div class="flex justify-between pt-2 border-t border-rose-200 font-bold text-sm">
+              <span class="text-rose-950">COD In-Hand Profit:</span>
+              <span id="cValNetProfit" class="font-mono text-rose-600 text-base">₹374.80</span>
+            </div>
+            <div class="text-right text-[11px] font-mono text-rose-700" id="cValMargin">
+              41.7% Margin
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Profit Advantage Banner -->
+    <div class="bg-indigo-50/60 border border-indigo-200 rounded-2xl p-5 max-w-4xl mx-auto shadow-xs text-xs">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div>
+          <span class="font-bold text-sm text-indigo-950 block">
+            Prepaid Advantage: You make <span id="advProfitVal" class="text-emerald-700 font-mono text-base font-extrabold">+₹104.62</span> more profit per order!
+          </span>
+          <p class="text-neutral-600 mt-1">
+            Eliminating COD collection fees and cutting RTO allows you to offer buyers an instant online discount while still earning more.
+          </p>
+        </div>
+        <div class="shrink-0 bg-white border border-indigo-200 rounded-xl p-3 text-center">
+          <div class="text-[10px] text-neutral-500 uppercase font-sans font-semibold">Recommended Prepaid Discount</div>
+          <div class="font-mono font-bold text-indigo-700 text-base mt-0.5" id="recDiscountVal">Up to ₹50 off</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script is:inline>
+(function() {
+  function formatCurrency(val) {
+    return '₹' + (val || 0).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  function calculatePrepaidVsCod() {
+    var price = parseFloat(document.getElementById('cmpPrice').value) || 0;
+    var cogs = parseFloat(document.getElementById('cmpCogs').value) || 0;
+    var forwardShip = parseFloat(document.getElementById('cmpForwardShip').value) || 0;
+    var packaging = parseFloat(document.getElementById('cmpPackaging').value) || 0;
+
+    var pgRate = parseFloat(document.getElementById('pPgFeeRate').value) || 0;
+    var pRtoRate = parseFloat(document.getElementById('pRtoRate').value) || 0;
+
+    var codFee = parseFloat(document.getElementById('cCodFee').value) || 0;
+    var cRtoRate = parseFloat(document.getElementById('cRtoRate').value) || 0;
+
+    // PREPAID Calculations
+    var pgFeeAmount = price * (pgRate / 100);
+    var pDeliveredProfit = price - cogs - forwardShip - packaging - pgFeeAmount;
+    var pRtoLoss = (forwardShip + packaging) * (pRtoRate / 100);
+    var pNetProfit = (pDeliveredProfit * (1 - pRtoRate / 100)) - pRtoLoss;
+    var pMargin = price > 0 ? (pNetProfit / price) * 100 : 0;
+
+    // COD Calculations
+    var cDeliveredProfit = price - cogs - forwardShip - codFee - packaging;
+    var cRtoLoss = (forwardShip + packaging) * (cRtoRate / 100);
+    var cNetProfit = (cDeliveredProfit * (1 - cRtoRate / 100)) - cRtoLoss;
+    var cMargin = price > 0 ? (cNetProfit / price) * 100 : 0;
+
+    var profitDiff = pNetProfit - cNetProfit;
+    var safeDiscount = Math.max(0, Math.floor(profitDiff * 0.7));
+
+    // Update Prepaid UI
+    document.getElementById('pValPgFee').textContent = formatCurrency(pgFeeAmount);
+    document.getElementById('pValRtoBuffer').textContent = '- ' + formatCurrency(pRtoLoss);
+    document.getElementById('pValNetProfit').textContent = formatCurrency(pNetProfit);
+    document.getElementById('pValMargin').textContent = pMargin.toFixed(1) + '% Margin';
+
+    // Update COD UI
+    document.getElementById('cValCodFee').textContent = formatCurrency(codFee);
+    document.getElementById('cValRtoBuffer').textContent = '- ' + formatCurrency(cRtoLoss);
+    document.getElementById('cValNetProfit').textContent = formatCurrency(cNetProfit);
+    document.getElementById('cValMargin').textContent = cMargin.toFixed(1) + '% Margin';
+
+    // Summary
+    document.getElementById('advProfitVal').textContent = '+ ' + formatCurrency(profitDiff);
+    document.getElementById('recDiscountVal').textContent = 'Up to ₹' + safeDiscount + ' off';
+  }
+
+  function initPvsC() {
+    var inputs = ['cmpPrice', 'cmpCogs', 'cmpForwardShip', 'cmpPackaging', 'pPgFeeRate', 'pRtoRate', 'cCodFee', 'cRtoRate'];
+    inputs.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('input', calculatePrepaidVsCod);
+        el.addEventListener('change', calculatePrepaidVsCod);
+      }
+    });
+    calculatePrepaidVsCod();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPvsC);
+  } else {
+    initPvsC();
+  }
+})();
+</script>
