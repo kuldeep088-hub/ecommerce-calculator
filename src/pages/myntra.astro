@@ -5,6 +5,25 @@ import ComparisonMatrix from '../components/ComparisonMatrix.astro';
 import ReversePriceSolver from '../components/ReversePriceSolver.astro';
 import FeeGuide from '../components/FeeGuide.astro';
 import FaqSection from '../components/FaqSection.astro';
+
+const myntraFaqs = [
+  {
+    q: "What commission rates does Myntra charge for fashion and lifestyle sellers in 2026?",
+    a: "Myntra charges category referral commissions ranging from 12% to 24% depending on apparel, footwear, accessories, or cosmetics. High-end branded apparel commands higher commission tiers compared to core unbranded basics."
+  },
+  {
+    q: "Why is return rate modeling especially critical on Myntra?",
+    a: "Fashion e-commerce in India experiences customer return rates of 25% to 35% due to sizing mismatches, try-and-buy habits, and color variations. Because sellers pay reverse logistics and repackaging on returns, failing to account for return buffers will quickly turn paper profits into bank account losses."
+  },
+  {
+    q: "What are the logistics and fulfillment options on Myntra (PPMP vs Omnichannel)?",
+    a: "Myntra operates PPMP (Partner Portal Marketplace Model) where sellers pack goods at their warehouse and Myntra Logistics collects them, as well as M-Direct and JIT (Just in Time) models. Each model has distinct SLA requirements and fulfillment fee schedules."
+  },
+  {
+    q: "How does Myntra calculate closing fees and payment processing fees?",
+    a: "Myntra charges a closing fee slab (typically ₹15 to ₹40 based on transaction value) plus a 2% payment collection charge across credit card, UPI, and COD transactions, along with standard 18% GST on all marketplace service fees."
+  }
+];
 ---
 
 <Layout
@@ -67,5 +86,9 @@ import FaqSection from '../components/FaqSection.astro';
   <FeeGuide />
 
   <!-- FAQ -->
-  <FaqSection />
+  <FaqSection
+    title="Myntra Seller Profit Calculator Frequently Asked Questions"
+    subtitle="Learn about fashion category commission slabs, high customer return rate buffers, and PPMP fulfillment fees."
+    faqs={myntraFaqs}
+  />
 </Layout>

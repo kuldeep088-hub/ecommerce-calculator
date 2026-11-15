@@ -1,6 +1,7 @@
 ---
 // src/pages/all-calculators.astro
 import Layout from '../layouts/Layout.astro';
+import FaqSection from '../components/FaqSection.astro';
 
 interface ToolItem {
   title: string;
@@ -225,5 +226,11 @@ const totalCalculators = CATEGORIES.reduce((acc, cat) => acc + cat.tools.length,
         </section>
       ))}
     </div>
+
+    <!-- SEO FAQ Section with JSON-LD Schema -->
+    <FaqSection
+      title="E-Commerce Seller Calculations Frequently Asked Questions"
+      subtitle="Everything you need to know about seller commissions, courier weight charges, return buffers, and GST reconciliation."
+    />
   </main>
 </Layout>

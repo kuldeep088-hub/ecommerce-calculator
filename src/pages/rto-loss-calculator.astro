@@ -2,6 +2,25 @@
 import Layout from '../layouts/Layout.astro';
 import RtoLossCalculator from '../components/RtoLossCalculator.astro';
 import FaqSection from '../components/FaqSection.astro';
+
+const rtoFaqs = [
+  {
+    q: "What is an RTO (Return to Origin) order and why is it expensive for sellers?",
+    a: "An RTO order occurs when a Cash on Delivery (COD) shipment cannot be delivered because the customer rejected the parcel, was unreachable, or provided an incorrect address. The seller loses both the forward courier shipping fee, packaging material cost, and in many cases reverse freight charges, without generating any revenue from the sale."
+  },
+  {
+    q: "How to calculate the exact financial loss per RTO parcel in India?",
+    a: "The true cost per RTO order is: RTO Loss = Forward Courier Fee + Reverse Courier Charge (if applicable) + Packaging Material + Product Transit Damage Depreciation. For a standard 500g parcel with forward freight of ₹60, reverse fee of ₹50, and ₹15 packaging, the seller loses ₹125 in hard cash per failed parcel."
+  },
+  {
+    q: "How does RTO percentage affect the required selling price and profit margin?",
+    a: "If a seller operates with a 20% RTO rate on COD orders, 1 out of every 5 shipped orders fails. The loss from that 1 failed order (e.g. ₹125) must be absorbed across the 4 successfully delivered orders (₹31.25 extra cost per successful delivery). Sellers must build this return buffer into their product price to avoid negative cash flow."
+  },
+  {
+    q: "What are the most effective strategies to reduce COD RTO rates below 10%?",
+    a: "Top RTO reduction strategies include: 1) Automated WhatsApp or IVR confirmation to verify buyer intent before dispatch. 2) Offering small discounts (₹20–₹30) to convert COD orders into prepaid via instant payment links. 3) Flagging high-RTO pincodes using logistics AI rules. 4) Ensuring dispatch within 24 hours to prevent buyer change-of-mind cancellations."
+  }
+];
 ---
 
 <Layout
@@ -11,5 +30,9 @@ import FaqSection from '../components/FaqSection.astro';
   activePlatform="tools"
 >
   <RtoLossCalculator />
-  <FaqSection />
+  <FaqSection
+    title="RTO Loss Calculator Frequently Asked Questions"
+    subtitle="Learn how to model courier return costs, calculate required selling markups, and protect profit margins."
+    faqs={rtoFaqs}
+  />
 </Layout>

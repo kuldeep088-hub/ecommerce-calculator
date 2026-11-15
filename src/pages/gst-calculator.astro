@@ -2,6 +2,25 @@
 import Layout from '../layouts/Layout.astro';
 import GstCalculator from '../components/GstCalculator.astro';
 import FaqSection from '../components/FaqSection.astro';
+
+const gstFaqs = [
+  {
+    q: "How is GST calculated on e-commerce retail prices in India?",
+    a: "Under Indian consumer law, retail prices (MRP) on e-commerce platforms must be inclusive of all taxes. To extract the taxable base value from an inclusive price: Taxable Base Value = MRP ÷ (1 + GST Rate ÷ 100). For example, for an item sold at ₹999 in the 18% GST slab: Taxable Value = ₹999 ÷ 1.18 = ₹846.61, and GST collected is ₹152.39."
+  },
+  {
+    q: "What is the difference between CGST, SGST, and IGST for marketplace sellers?",
+    a: "For Intra-State orders (customer and seller warehouse located in the same state), GST is split equally into CGST (Central GST) and SGST (State GST) — for example, 9% CGST + 9% SGST on an 18% slab. For Inter-State orders (shipping across state borders), the entire 18% tax is billed as IGST (Integrated GST)."
+  },
+  {
+    q: "Can e-commerce sellers claim Input Tax Credit (ITC) on Amazon and Flipkart fees?",
+    a: "Yes. Marketplaces charge 18% GST on all seller deductions, including category commissions, closing fees, shipping fees, and advertising. Registered sellers under regular GST can claim 100% of this amount as Input Tax Credit (ITC) in their monthly GSTR-3B filings by reconciling with GSTR-2B, directly offsetting output GST payable on customer sales."
+  },
+  {
+    q: "What are TCS and TDS deductions on marketplace sales and how to claim them?",
+    a: "Under Section 52 of the CGST Act, marketplaces deduct 1% TCS (Tax Collected at Source) on net taxable supplies. Under Section 194-O of the Income Tax Act, they deduct 0.1% TDS. These are not business expenses; you can claim full credit for TCS against monthly GST liabilities and TDS against annual income tax returns (Form 26AS / AIS)."
+  }
+];
 ---
 
 <Layout
@@ -11,5 +30,9 @@ import FaqSection from '../components/FaqSection.astro';
   activePlatform="tools"
 >
   <GstCalculator />
-  <FaqSection />
+  <FaqSection
+    title="GST Calculator Frequently Asked Questions"
+    subtitle="Expert answers on GST slabs, inclusive vs exclusive formulas, ITC claims, and marketplace tax compliance."
+    faqs={gstFaqs}
+  />
 </Layout>

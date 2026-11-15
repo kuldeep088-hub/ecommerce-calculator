@@ -5,6 +5,25 @@ import ComparisonMatrix from '../components/ComparisonMatrix.astro';
 import ReversePriceSolver from '../components/ReversePriceSolver.astro';
 import FeeGuide from '../components/FeeGuide.astro';
 import FaqSection from '../components/FaqSection.astro';
+
+const shopsyFaqs = [
+  {
+    q: "What is Shopsy and how do seller fees compare to Flipkart?",
+    a: "Shopsy is Flipkart's zero-commission, budget-focused social commerce platform designed for Tier 2 and Tier 3 Indian shoppers. On select budget categories under ₹150–₹250, Shopsy charges 0% commission to enable hyper-competitive retail pricing."
+  },
+  {
+    q: "Who handles logistics and delivery for Shopsy orders?",
+    a: "Shopsy utilizes Flipkart's robust eKart logistics network. Sellers print standard eKart shipping labels and dispatch orders just like standard Flipkart orders, with delivery fees billed based on parcel weight."
+  },
+  {
+    q: "Can an existing Flipkart seller list products on Shopsy automatically?",
+    a: "Yes! Any active Flipkart seller can opt-in to sell on Shopsy through their existing Flipkart Seller Hub. Listings, inventory, and warehouse dispatches are synchronized seamlessly across both platforms."
+  },
+  {
+    q: "What return policies apply to Shopsy budget orders in 2026?",
+    a: "Because Shopsy caters to budget consumers with high COD usage, sellers must monitor regional RTO rates carefully. Packaging lightweight products under 400g and maintaining accurate size guidelines are crucial to maintaining double-digit profit margins on Shopsy."
+  }
+];
 ---
 
 <Layout
@@ -67,5 +86,9 @@ import FaqSection from '../components/FaqSection.astro';
   <FeeGuide />
 
   <!-- FAQ -->
-  <FaqSection />
+  <FaqSection
+    title="Shopsy Seller Profit Calculator Frequently Asked Questions"
+    subtitle="Answers on Flipkart value commerce commissions, eKart shipping fees, and budget catalog profitability."
+    faqs={shopsyFaqs}
+  />
 </Layout>

@@ -5,6 +5,25 @@ import ComparisonMatrix from '../components/ComparisonMatrix.astro';
 import ReversePriceSolver from '../components/ReversePriceSolver.astro';
 import FeeGuide from '../components/FeeGuide.astro';
 import FaqSection from '../components/FaqSection.astro';
+
+const zeptoFaqs = [
+  {
+    q: "How does selling on Zepto Quick Commerce work in 2026?",
+    a: "Zepto operates a hyper-dense network of micro-warehouses (dark stores) across major Indian metros delivering in under 10 minutes. Brands supply pallets or master cartons to Zepto mother hubs, which distribute inventory to localized micro-dark stores."
+  },
+  {
+    q: "What are the typical fee and margin structures for Zepto sellers?",
+    a: "Zepto charges a trade margin of 18% to 28% off retail price, plus supply chain handling fees, in-app sponsored promotion costs, and slotting charges for premium visibility in quick-commerce categories."
+  },
+  {
+    q: "Why do quick-commerce platforms like Zepto have lower RTO rates than standard marketplaces?",
+    a: "Because Zepto orders are delivered within 10 minutes directly to customer doors, buyer cancellations and non-availability rejections are minimal (under 1%–2%). This eliminates the massive ₹100–₹160 courier RTO losses typical of traditional 3-day COD e-commerce."
+  },
+  {
+    q: "How does inventory restocking and expiry management operate on Zepto?",
+    a: "Brands must maintain high stock availability in Zepto fulfillment hubs to avoid out-of-stock penalties. Slow-moving products approaching expiry must be cleared through flash deals or retrieved via RTV (Return to Vendor) agreements."
+  }
+];
 ---
 
 <Layout
@@ -67,5 +86,9 @@ import FaqSection from '../components/FaqSection.astro';
   <FeeGuide />
 
   <!-- FAQ -->
-  <FaqSection />
+  <FaqSection
+    title="Zepto Seller & Brand Profit Calculator Frequently Asked Questions"
+    subtitle="Common questions on 10-minute delivery dark stores, trade margin cuts, and stock turnover."
+    faqs={zeptoFaqs}
+  />
 </Layout>

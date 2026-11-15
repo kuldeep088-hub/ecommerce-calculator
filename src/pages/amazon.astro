@@ -5,6 +5,25 @@ import ComparisonMatrix from '../components/ComparisonMatrix.astro';
 import ReversePriceSolver from '../components/ReversePriceSolver.astro';
 import FeeGuide from '../components/FeeGuide.astro';
 import FaqSection from '../components/FaqSection.astro';
+
+const amazonFaqs = [
+  {
+    q: "What fees does Amazon India deduct from seller payouts in 2026?",
+    a: "Amazon India deducts: 1) Category Referral Fee (5% to 15% based on product category), 2) Closing Fee (₹5 to ₹50 based on selling price slabs), 3) Weight Handling / Shipping Fee (Easy Ship starting at ₹44 for 500g local or FBA fulfillment fees), 4) 18% GST on all Amazon fees, and 5) 1% TCS and 0.1% Section 194-O TDS."
+  },
+  {
+    q: "What is the difference between Amazon Easy Ship, FBA, and Self-Ship (FBM)?",
+    a: "In Easy Ship, you pack the parcel at your warehouse and Amazon Logistics picks it up. In FBA (Fulfillment by Amazon), you store inventory in Amazon fulfillment centers, and Amazon handles picking, packing, fast Prime delivery, and customer service for an additional pick-and-pack fee. In Self-Ship (FBM), you use your own third-party couriers like Delhivery or Blue Dart."
+  },
+  {
+    q: "How does Amazon calculate dynamic Closing Fee slabs?",
+    a: "Under Amazon India's 2026 fee structure for Easy Ship Standard: orders up to ₹250 incur ₹5; ₹251 to ₹500 incur ₹10; ₹501 to ₹1,000 incur ₹25; ₹1,001 to ₹2,000 incur ₹35; and orders above ₹2,000 incur ₹50 closing fee (+18% GST)."
+  },
+  {
+    q: "How can sellers recover 18% GST deducted by Amazon on selling fees?",
+    a: "Amazon issues a monthly B2B GST tax invoice detailing all fees and GST charged. As a regular GST registered seller, this amount appears in your GSTR-2B and can be claimed 100% as Input Tax Credit (ITC) in your monthly GSTR-3B filing to reduce the GST payable on customer sales."
+  }
+];
 ---
 
 <Layout
@@ -67,5 +86,9 @@ import FaqSection from '../components/FaqSection.astro';
   <FeeGuide />
 
   <!-- FAQ -->
-  <FaqSection />
+  <FaqSection
+    title="Amazon Seller Profit Calculator Frequently Asked Questions"
+    subtitle="Learn how Amazon Easy Ship, FBA pick & pack, closing fee tiers, and GST ITC work in 2026."
+    faqs={amazonFaqs}
+  />
 </Layout>

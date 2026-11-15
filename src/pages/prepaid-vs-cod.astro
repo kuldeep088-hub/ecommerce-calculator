@@ -2,6 +2,25 @@
 import Layout from '../layouts/Layout.astro';
 import PrepaidVsCodCalculator from '../components/PrepaidVsCodCalculator.astro';
 import FaqSection from '../components/FaqSection.astro';
+
+const prepaidVsCodFaqs = [
+  {
+    q: "What is the real profit margin difference between Prepaid and Cash on Delivery orders?",
+    a: "Prepaid orders typically yield 8% to 15% higher net margins than COD orders. Prepaid orders have near-zero RTO (under 3%), zero courier cash handling charges, and instant cash flow. In contrast, COD orders incur ₹35–₹50 handling fees and suffer 15%–30% delivery failures that burn forward and reverse courier freight."
+  },
+  {
+    q: "How much prepaid discount can a seller safely offer to convert COD customers?",
+    a: "A seller can safely offer a prepaid discount equal to the amount saved on courier collection fees plus expected RTO losses. For example, if COD collection is ₹40 and expected RTO cost per order is ₹30, the seller saves ₹70 by converting to prepaid. Offering a ₹30 to ₹50 prepaid discount still leaves the seller ₹20 to ₹40 more profitable per order!"
+  },
+  {
+    q: "Why do Indian buyers prefer Cash on Delivery, and how can sellers build trust?",
+    a: "Indian shoppers choose COD due to trust concerns with unfamiliar brands, fear of defective or non-delivered items, and convenience. Sellers can increase prepaid conversions by displaying trust badges, verified customer photo reviews, Razorpay/Cashfree secure checkout logos, and prominent WhatsApp customer support numbers."
+  },
+  {
+    q: "How does cash flow delay on COD orders hurt scaling e-commerce businesses?",
+    a: "Prepaid orders remit funds to your payment gateway in T+1 or T+2 days, enabling rapid inventory restocking and daily ad spend funding. In contrast, COD couriers remit cash in weekly or bi-weekly cycles (T+7 to T+15 days), locking up working capital and restricting business growth."
+  }
+];
 ---
 
 <Layout
@@ -11,5 +30,9 @@ import FaqSection from '../components/FaqSection.astro';
   activePlatform="tools"
 >
   <PrepaidVsCodCalculator />
-  <FaqSection />
+  <FaqSection
+    title="Prepaid vs COD Calculator Frequently Asked Questions"
+    subtitle="Compare payment channel economics, calculate safe discount thresholds, and boost prepaid conversion."
+    faqs={prepaidVsCodFaqs}
+  />
 </Layout>

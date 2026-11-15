@@ -85,7 +85,8 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipText: 'FBA products get the Prime badge, which increases conversion rates by 3x and cuts customer return rejections compared to self-ship.',
     faqs: [
       { q: 'How does Amazon FBA calculate weight handling fees?', a: 'Amazon charges based on 500g increments. Local FBA starts at ₹35, Regional at ₹45, and National at ₹65 for the first 500g.' },
-      { q: 'Can sellers claim 18% GST on Amazon FBA fees?', a: 'Yes! All 18% GST charged by Amazon on FBA fees, closing charges, and referral commission is 100% claimable as Input Tax Credit (ITC) in GSTR-3B.' }
+      { q: 'Can sellers claim 18% GST on Amazon FBA fees?', a: 'Yes! All 18% GST charged by Amazon on FBA fees, closing charges, and referral commission is 100% claimable as Input Tax Credit (ITC) in GSTR-3B.' },
+      { q: 'Is Amazon FBA or Easy Ship more profitable for small sellers?', a: 'For lightweight products under 500g with fast turnover, FBA often yields higher sales volume due to Prime badges and lower return rates, compensating for storage fees. However, for slow-moving or bulky items, Easy Ship is usually more cost-effective as it avoids FBA monthly storage and removal penalties.' }
     ],
     calcType: 'amazon_fba'
   },
@@ -119,7 +120,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'FBM Best Practice:',
     tipText: 'FBM saves on Amazon storage fees for slow-moving or bulky products, but requires diligent shipping dispatch within 24 hours to maintain seller account health.',
     faqs: [
-      { q: 'What is the difference between Amazon FBA and FBM?', a: 'Under FBA, Amazon stores, packs, and ships your orders. Under FBM, you store inventory in your own warehouse and ship via your own couriers or Easy Ship.' }
+{ q: 'What is the difference between Amazon FBA and FBM?', a: 'Under FBA, Amazon stores, packs, and ships your orders. Under FBM, you store inventory in your own warehouse and ship via your own couriers or Easy Ship.' },
+      { q: "How does Amazon calculate closing fees for FBM sellers?", a: "Amazon charges dynamic closing fee slabs ranging from ₹5 (for items under ₹250) up to ₹50 (above ₹2,000) on FBM and self-ship orders, plus 18% GST." },
+      { q: "Can FBM sellers offer Cash on Delivery (COD)?", a: "Yes, through Amazon Easy Ship or integrated 3PL couriers like Delhivery or Shiprocket. However, sellers bear the full courier fee if a COD parcel is rejected at the doorstep (RTO)." }
     ],
     calcType: 'amazon_fbm'
   },
@@ -153,7 +156,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Fashion Marketplace Note:',
     tipText: 'AJIO buyers frequently order multiple sizes and return ill-fitting items. Budget at least 25% for reverse logistics and polybag repackaging.',
     faqs: [
-      { q: 'How much commission does AJIO charge?', a: 'AJIO commissions typically range from 18% to 28% for apparel, footwear, and fashion accessories.' }
+{ q: 'How much commission does AJIO charge?', a: 'AJIO commissions typically range from 18% to 28% for apparel, footwear, and fashion accessories.' },
+      { q: "What are average customer return rates on AJIO?", a: "Fashion apparel and footwear on AJIO typically experience 25% to 35% customer returns. Sellers should maintain at least a 15% to 20% return buffer in product pricing." },
+      { q: "Can sellers claim GST Input Tax Credit on AJIO commission?", a: "Yes! Reliance Retail issues monthly GST tax invoices with 18% GST on commissions and delivery fees which is 100% claimable as Input Tax Credit (ITC) in GSTR-3B." }
     ],
     calcType: 'ajio'
   },
@@ -185,7 +190,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'JioMart Hyperlocal Opportunity:',
     tipText: 'JioMart combines online orders with Reliance Retail store pickup and local delivery, reducing shipping transit times and courier damages.',
     faqs: [
-      { q: 'What is JioMart commission on FMCG and grocery?', a: 'JioMart charges lower commissions on grocery and staples (3% to 6%) and standard commissions on electronics and lifestyle (8% to 14%).' }
+{ q: 'What is JioMart commission on FMCG and grocery?', a: 'JioMart charges lower commissions on grocery and staples (3% to 6%) and standard commissions on electronics and lifestyle (8% to 14%).' },
+      { q: "What are JioMart seller payout settlement cycles?", a: "JioMart settlements are disbursed on a 7-day to 15-day cycle following confirmed delivery, net of platform referral fees, logistics charges, 0.5% TCS, and 0.1% TDS." },
+      { q: "Who handles delivery for JioMart orders?", a: "JioMart uses Reliance Logistics (Grab/Delhivery) for pickup and last-mile delivery, with shipping charges billed directly against seller settlement proceeds." }
     ],
     calcType: 'jiomart'
   },
@@ -220,7 +227,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'D2C Profit Rule:',
     tipText: 'Unlike Amazon where marketplace commissions are fixed at 15%, on Shopify your primary expense is Customer Acquisition Cost (CAC). Keep Ad Spend under 30% of order price.',
     faqs: [
-      { q: 'Does Shopify charge transaction fees in India?', a: 'Shopify charges 0.5% to 2% transaction fees unless using supported third-party gateways like Razorpay, Cashfree, or PayU.' }
+{ q: 'Does Shopify charge transaction fees in India?', a: 'Shopify charges 0.5% to 2% transaction fees unless using supported third-party gateways like Razorpay, Cashfree, or PayU.' },
+      { q: "What payment gateway fee is standard for Shopify stores in India?", a: "Indian payment gateways like Razorpay, Cashfree, and PayU charge 2.0% + 18% GST per domestic transaction, with zero setup and maintenance fees." },
+      { q: "How does Cash on Delivery (COD) impact Shopify D2C margins?", a: "COD orders on independent Shopify stores incur ₹35–₹50 courier handling fees and face 20%–35% RTO rejection rates, significantly eating into gross profits without pre-call verification." }
     ],
     calcType: 'shopify'
   },
@@ -254,7 +263,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Margin vs Markup:',
     tipText: 'Margin is profit divided by selling price. Markup is profit divided by cost. A 33% profit margin requires a 50% markup on your cost.',
     faqs: [
-      { q: 'What is a healthy profit margin for e-commerce in India?', a: 'A healthy net profit margin for Indian marketplace sellers is 15% to 25% after factoring in all returns, marketplace deductions, and shipping.' }
+{ q: 'What is a healthy profit margin for e-commerce in India?', a: 'A healthy net profit margin for Indian marketplace sellers is 15% to 25% after factoring in all returns, marketplace deductions, and shipping.' },
+      { q: "How do you calculate net profit margin percentage?", a: "Net Margin % = (Net Profit ÷ Total Revenue) × 100. For example, if you sell a product for ₹1,000 and keep ₹200 after all costs and marketplace deductions, your net margin is 20%." },
+      { q: "What is the difference between markup and profit margin?", a: "Margin is profit divided by selling price, while markup is profit divided by cost. A 50% markup on a ₹100 cost item gives a ₹150 selling price, which is a 33.3% margin." }
     ],
     calcType: 'profit_margin'
   },
@@ -282,7 +293,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Pricing Tip:',
     tipText: 'Always round up to psychological price points (e.g., ₹599 instead of ₹584) to maximize perceived customer value and profit margin.',
     faqs: [
-      { q: 'How do marketplace deductions affect my selling price?', a: 'Because marketplace commissions and payment fees are percentages of the final selling price, you must divide costs by (1 - total fee %) rather than just adding fees to cost.' }
+{ q: 'How do marketplace deductions affect my selling price?', a: 'Because marketplace commissions and payment fees are percentages of the final selling price, you must divide costs by (1 - total fee %) rather than just adding fees to cost.' },
+      { q: "What formula determines target selling price from desired margin?", a: "Selling Price = Total Unit Cost ÷ (1 - Desired Margin %). If total costs are ₹300 and you want a 25% margin: ₹300 ÷ (1 - 0.25) = ₹400 selling price." },
+      { q: "How do marketplace commissions impact required selling price?", a: "Marketplace deductions must be included in the denominator: Selling Price = (COGS + Shipping) ÷ [1 - (Commission % + Margin % + Tax Factor)]." }
     ],
     calcType: 'selling_price'
   },
@@ -312,7 +325,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Sourcing Insight:',
     tipText: 'Sellers often forget inward freight when importing or buying from wholesale hubs (Surat, Tirupur, Delhi). Landed cost must include door delivery to your warehouse.',
     faqs: [
-      { q: 'What is landed cost?', a: 'Landed cost is the total price of a product once it has arrived at your doorstep, including manufacture, customs, transport, and initial packaging.' }
+{ q: 'What is landed cost?', a: 'Landed cost is the total price of a product once it has arrived at your doorstep, including manufacture, customs, transport, and initial packaging.' },
+      { q: "What costs must be included in Cost of Goods Sold (COGS)?", a: "COGS includes raw material purchase, factory manufacturing labor, inbound freight, polybag/box packaging, barcode labeling, and uncredited GST paid on manufacturing materials." },
+      { q: "How do batch production sizes lower unit cost?", a: "Larger batch runs amortize setup fees, bulk material discounts, and freight costs across more units, lowering per-unit manufacturing costs." }
     ],
     calcType: 'product_cost'
   },
@@ -340,7 +355,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Markup Rule of Thumb:',
     tipText: 'A 100% markup (keystone pricing) doubles your cost and yields a 50% profit margin.',
     faqs: [
-      { q: 'How does markup differ from margin?', a: 'Markup expresses profit as a percentage of cost (Profit / Cost). Margin expresses profit as a percentage of selling price (Profit / Price).' }
+{ q: 'How does markup differ from margin?', a: 'Markup expresses profit as a percentage of cost (Profit / Cost). Margin expresses profit as a percentage of selling price (Profit / Price).' },
+      { q: "How do you calculate product markup percentage?", a: "Markup % = [(Selling Price - Unit Cost) ÷ Unit Cost] × 100. If an item costs ₹200 to produce and sells for ₹300, the markup is 50%." },
+      { q: "Why is markup always higher than profit margin?", a: "Because markup divides profit by cost (a smaller number), while margin divides profit by selling price (a larger number)." }
     ],
     calcType: 'markup'
   },
@@ -371,7 +388,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Cash Flow Focus:',
     tipText: 'Revenue is vanity, profit is sanity, but cash flow is reality. Keep overheads low during your first 6 months of online selling.',
     faqs: [
-      { q: 'What is net profit?', a: 'Net profit is the amount of money left over after paying all operating expenses, taxes, raw materials, and selling fees.' }
+{ q: 'What is net profit?', a: 'Net profit is the amount of money left over after paying all operating expenses, taxes, raw materials, and selling fees.' },
+      { q: "What expenses are deducted to find net profit?", a: "Net profit subtracts product cost (COGS), marketplace referral fees, closing fees, forward & reverse courier charges, ad spend (PPC), warehouse packaging, and overhead expenses from gross revenue." },
+      { q: "How is operating net profit different from bank settlement?", a: "Bank settlement is cash credited by platforms before your product production cost, packaging, and office overheads are accounted for." }
     ],
     calcType: 'net_profit'
   },
@@ -399,7 +418,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Gross Margin Benchmark:',
     tipText: 'E-commerce brands usually require at least a 60% gross margin to comfortably absorb marketplace commissions, courier shipping, and ad costs.',
     faqs: [
-      { q: 'What is the difference between gross profit and net profit?', a: 'Gross profit only deducts direct product cost (COGS). Net profit deducts all expenses including shipping, advertising, rent, and platform commissions.' }
+{ q: 'What is the difference between gross profit and net profit?', a: 'Gross profit only deducts direct product cost (COGS). Net profit deducts all expenses including shipping, advertising, rent, and platform commissions.' },
+      { q: "What is a healthy gross profit margin for online brands?", a: "A healthy gross margin in Indian e-commerce is 55% to 75% before marketplace fees, courier charges, and customer acquisition advertising." },
+      { q: "What formula calculates gross profit margin?", a: "Gross Profit Margin % = [(Gross Revenue - COGS) ÷ Gross Revenue] × 100." }
     ],
     calcType: 'gross_profit'
   },
@@ -427,7 +448,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Lowering Break-Even:',
     tipText: 'You can lower your break-even point by either raising selling price, negotiating lower courier shipping rates, or cutting recurring SaaS subscriptions.',
     faqs: [
-      { q: 'What is a contribution margin?', a: 'Contribution margin is the selling price minus variable costs per unit. It represents the money each sale contributes towards paying off your fixed monthly overheads.' }
+{ q: 'What is a contribution margin?', a: 'Contribution margin is the selling price minus variable costs per unit. It represents the money each sale contributes towards paying off your fixed monthly overheads.' },
+      { q: "How do you calculate break-even sales volume?", a: "Break-Even Units = Fixed Monthly Overheads ÷ (Selling Price - Variable Cost Per Unit). Once you reach this unit threshold, every additional sale yields pure profit." },
+      { q: "What are fixed vs variable costs in e-commerce?", a: "Fixed costs include warehouse rent, software subscriptions, and staff salaries. Variable costs include product COGS, polybag packaging, and courier delivery fees." }
     ],
     calcType: 'break_even'
   },
@@ -455,7 +478,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Velocity of Money:',
     tipText: 'A 30% ROI earned in 30 days is vastly more profitable than a 50% ROI that takes 6 months to sell through.',
     faqs: [
-      { q: 'What is a good ROI for e-commerce inventory?', a: 'A healthy inventory ROI for Indian sellers is 40% to 80% per cycle after accounting for damaged returns and courier deductions.' }
+{ q: 'What is a good ROI for e-commerce inventory?', a: 'A healthy inventory ROI for Indian sellers is 40% to 80% per cycle after accounting for damaged returns and courier deductions.' },
+      { q: "What is the formula for Return on Investment (ROI)?", a: "ROI % = (Net Profit ÷ Total Capital Invested) × 100. If you invest ₹10,000 in inventory and earn ₹14,000 back, your net profit is ₹4,000 and ROI is 40%." },
+      { q: "How does inventory turnover speed affect annualized ROI?", a: "A 20% ROI achieved 6 times a year (inventory turning every 60 days) yields an annualized return of 120% on your working capital." }
     ],
     calcType: 'roi'
   },
@@ -486,7 +511,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Wholesale Scale:',
     tipText: 'Wholesale trade has lower margins (25%-40%) than retail D2C (50%-70%), but features zero customer return headaches and instant bulk payment.',
     faqs: [
-      { q: 'How do you price wholesale products?', a: 'Standard wholesale pricing is typically 2x manufacturing cost, and retail price is 2x wholesale price.' }
+{ q: 'How do you price wholesale products?', a: 'Standard wholesale pricing is typically 2x manufacturing cost, and retail price is 2x wholesale price.' },
+      { q: "What discount margin do retail distributors typically expect?", a: "Retailers and distributors typically expect a 35% to 50% discount off MRP, meaning wholesale prices should generally be set at 50% to 65% of MRP." },
+      { q: "How do wholesale orders reduce return risk?", a: "B2B wholesale orders are non-returnable bulk sales with payment in advance or against credit terms, completely eliminating consumer COD RTO return burn." }
     ],
     calcType: 'wholesale'
   },
@@ -517,7 +544,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Dropshipping Warning:',
     tipText: 'Indian dropshipping fails when ad costs (CPA) exceed 35% of selling price and COD RTO rates exceed 25%. Always confirm orders via automated WhatsApp calls before dispatching.',
     faqs: [
-      { q: 'Is dropshipping profitable in India?', a: 'Yes, but only if you select products with at least 3x markup over supplier cost to absorb advertising CPA and COD courier return losses.' }
+{ q: 'Is dropshipping profitable in India?', a: 'Yes, but only if you select products with at least 3x markup over supplier cost to absorb advertising CPA and COD courier return losses.' },
+      { q: "Why do most Indian dropshippers lose money?", a: "High COD failure rates (30%+ RTO) and rising Meta ad acquisition costs (CPA ₹250–₹400) deplete margins if product pricing does not include an upfront RTO buffer." },
+      { q: "How can dropshippers minimize RTO delivery failures?", a: "Call every COD customer to confirm shipping address and PIN code before dispatch, and offer a ₹30–₹50 instant discount incentive for prepaid payment." }
     ],
     calcType: 'dropshipping'
   },
@@ -553,7 +582,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Return Reduction:',
     tipText: 'Over 60% of fashion returns are due to size mismatch. Providing an exact measurement chart with chest/waist centimeters cuts returns dramatically.',
     faqs: [
-      { q: 'Who pays for customer return shipping?', a: 'On marketplaces like Flipkart and Meesho, reverse shipping charges (₹120–₹160) are deducted directly from the seller payout unless a buyer fault claim is approved.' }
+{ q: 'Who pays for customer return shipping?', a: 'On marketplaces like Flipkart and Meesho, reverse shipping charges (₹120–₹160) are deducted directly from the seller payout unless a buyer fault claim is approved.' },
+      { q: "How much does a customer return cost an Indian seller?", a: "A typical customer return costs ₹150 to ₹250+ because platforms debit reverse courier fees (₹120–₹150), packaging materials are ruined, and 5% of goods suffer transit damage." },
+      { q: "Can sellers claim Safe-T reimbursements for damaged returns?", a: "Yes, on Amazon and Flipkart, sellers can file Safe-T claims with unboxing video evidence when customers return damaged, substituted, or empty packages." }
     ],
     calcType: 'return_loss'
   },
@@ -596,7 +627,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Volumetric Weight Alert:',
     tipText: 'If a light product (like a soft toy or shoes) is packed in an oversized box, couriers bill by volumetric weight! Use snugly fitted flyer bags whenever possible.',
     faqs: [
-      { q: 'How is volumetric weight calculated in India?', a: 'Standard Indian logistics divisor is 5000: Volumetric Weight in Kg = (Length × Width × Height in cm) / 5000.' }
+{ q: 'How is volumetric weight calculated in India?', a: 'Standard Indian logistics divisor is 5000: Volumetric Weight in Kg = (Length × Width × Height in cm) / 5000.' },
+      { q: "How do courier aggregators charge volumetric weight?", a: "Couriers calculate Volumetric Weight as (Length × Width × Height in cm) ÷ 5000. You are billed on whichever is higher between actual dead weight and volumetric weight." },
+      { q: "How can sellers reduce volumetric shipping charges?", a: "Use vacuum packing for apparel, custom-fit boxes for fragile goods, and eliminate empty void space inside polybags." }
     ],
     calcType: 'shipping_cost'
   },
@@ -628,7 +661,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Logistics Tip:',
     tipText: 'Reconcile your courier weight disputes weekly. Logistics companies frequently overcharge weights by 100g-300g due to automated scanning errors.',
     faqs: [
-      { q: 'What is a courier weight discrepancy?', a: 'When the courier scans your package heavier than your actual dispatch weight, deducting extra charges from your account.' }
+{ q: 'What is a courier weight discrepancy?', a: 'When the courier scans your package heavier than your actual dispatch weight, deducting extra charges from your account.' },
+      { q: "What surcharges are added to base courier rates in India?", a: "Courier bills typically include a base weight charge (500g slab), fuel surcharge (15%–25%), COD collection fee (₹35–₹50), and 18% GST on the total invoice." },
+      { q: "How are courier weight disputes handled?", a: "Audit your courier weight bills regularly using 3D automated dimension scanners or scale photos to dispute weight overcharging with courier aggregators." }
     ],
     calcType: 'courier_charges'
   },
@@ -658,7 +693,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Minimizing Reverse Freight:',
     tipText: 'Offer unhappy customers partial refunds or instant replacement instead of return pickups to avoid reverse logistics costs.',
     faqs: [
-      { q: 'Why is reverse shipping more expensive than forward shipping?', a: 'Couriers must make multiple door attempt visits to schedule customer pickups, resulting in higher operational overhead.' }
+{ q: 'Why is reverse shipping more expensive than forward shipping?', a: 'Couriers must make multiple door attempt visits to schedule customer pickups, resulting in higher operational overhead.' },
+      { q: "Why is reverse shipping billed higher than forward delivery?", a: "Reverse pickups require dedicated courier executive attempts at the buyer doorstep, package inspection, and transit back to seller warehouses without bulk route optimization." },
+      { q: "Is GST charged on reverse courier shipping?", a: "Yes, 18% GST applies to all reverse courier charges billed by platforms or 3PL logistics, which can be claimed as ITC." }
     ],
     calcType: 'reverse_shipping'
   },
@@ -686,7 +723,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Dispatch Delay Fix:',
     tipText: 'Buyers cancel most frequently when order tracking has no updates for 48 hours. Fast same-day dispatch cuts cancellations by over 60%.',
     faqs: [
-      { q: 'What happens when a buyer cancels in transit?', a: 'The courier halts delivery, marks the package as RTO, and returns it to your warehouse while billing you for forward freight.' }
+{ q: 'What happens when a buyer cancels in transit?', a: 'The courier halts delivery, marks the package as RTO, and returns it to your warehouse while billing you for forward freight.' },
+      { q: "Can sellers avoid losses on in-transit order cancellations?", a: "Once handed to the courier, logistics providers bill full forward freight even if the customer cancels while the parcel is in transit." },
+      { q: "What is the average pre-dispatch cancellation rate in India?", a: "Impulse COD buyers cancel between 3% to 8% of orders before dispatch, making fast 24-hour fulfillment essential." }
     ],
     calcType: 'cancellation_loss'
   },
@@ -718,7 +757,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'MRP Invoicing Rule:',
     tipText: 'Under Indian law, customer listed prices on websites must be MRP inclusive of all taxes. Your invoice must break down the taxable base and GST separately.',
     faqs: [
-      { q: 'How do you extract 18% GST from MRP?', a: 'Divide the MRP by 1.18 to find the base taxable price. The remaining difference is the 18% GST.' }
+{ q: 'How do you extract 18% GST from MRP?', a: 'Divide the MRP by 1.18 to find the base taxable price. The remaining difference is the 18% GST.' },
+      { q: "What is the reverse GST formula for MRP?", a: "Base Price = MRP ÷ (1 + GST Rate / 100). For an item sold at ₹1,180 with 18% GST: Base = ₹1,180 ÷ 1.18 = ₹1,000, and GST is ₹180." },
+      { q: "Is GST included in customer listing prices on marketplaces?", a: "Yes, in Indian e-commerce, consumer protection laws mandate that all listed selling prices and MRPs must be inclusive of all taxes." }
     ],
     calcType: 'gst_inc_exc'
   },
@@ -746,7 +787,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: '100% Claimable:',
     tipText: 'Do not count the 18% GST on marketplace fees as a permanent expense! You can claim it back in your monthly GSTR-3B filing to offset output tax.',
     faqs: [
-      { q: 'Where can I find the marketplace tax invoice?', a: 'In Amazon Seller Central under Reports > Tax Document Library, or in Flipkart Seller Hub under Reports > Invoices.' }
+{ q: 'Where can I find the marketplace tax invoice?', a: 'In Amazon Seller Central under Reports > Tax Document Library, or in Flipkart Seller Hub under Reports > Invoices.' },
+      { q: "How does 18% GST on platform fees affect bank payouts?", a: "Amazon and Flipkart deduct 18% GST on all commissions, closing fees, and courier charges before releasing your payout. You must claim this as ITC in GSTR-3B." },
+      { q: "Where can sellers download the monthly marketplace tax invoice?", a: "Download monthly GST tax invoices from Amazon Seller Central (Reports > Tax Document Library) or Flipkart Seller Hub (Reports > Invoices)." }
     ],
     calcType: 'gst_on_fees'
   },
@@ -774,7 +817,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Cash Savings:',
     tipText: 'Many sellers fail to reconcile GSTR-2B and end up paying full output GST in cash. Properly claiming marketplace ITC saves thousands of rupees monthly.',
     faqs: [
-      { q: 'What happens if ITC exceeds output GST?', a: 'If your Input Tax Credit exceeds output GST, the balance carries forward in your Electronic Credit Ledger to offset future sales taxes.' }
+{ q: 'What happens if ITC exceeds output GST?', a: 'If your Input Tax Credit exceeds output GST, the balance carries forward in your Electronic Credit Ledger to offset future sales taxes.' },
+      { q: "How does Input Tax Credit (ITC) save taxes for online sellers?", a: "ITC allows you to deduct GST paid on inventory purchases and marketplace fees from the GST collected from customers, paying only the net difference to the government." },
+      { q: "What happens if ITC exceeds output GST in a month?", a: "The excess ITC balance rolls forward indefinitely in your electronic credit ledger to offset future tax liabilities." }
     ],
     calcType: 'gst_profit'
   },
@@ -802,7 +847,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'GSTR-2B Matching:',
     tipText: 'Ensure all suppliers upload invoices on time. ITC can only be claimed if it appears in your auto-populated GSTR-2B statement.',
     faqs: [
-      { q: 'Can composition dealers claim ITC?', a: 'No. Businesses registered under the GST Composition Scheme cannot claim Input Tax Credit.' }
+{ q: 'Can composition dealers claim ITC?', a: 'No. Businesses registered under the GST Composition Scheme cannot claim Input Tax Credit.' },
+      { q: "Which e-commerce business expenses qualify for GST ITC?", a: "GST paid on raw materials, packaging boxes, courier charges, platform referral fees, warehouse rent, and advertising invoices can all be claimed as ITC." },
+      { q: "Can composition dealers claim Input Tax Credit?", a: "No, sellers registered under the GST Composition Scheme cannot collect tax or claim Input Tax Credit on input purchases." }
     ],
     calcType: 'itc'
   },
@@ -828,7 +875,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Claiming TCS Cash:',
     tipText: 'TCS is not an expense. You can accept the TCS return on the GST portal monthly, and the money gets credited directly into your Electronic Cash Ledger.',
     faqs: [
-      { q: 'How do I claim TCS back?', a: 'Log in to the GST Portal > Services > Returns > TDS and TCS credit received, file the return, and the amount moves to your cash ledger.' }
+{ q: 'How do I claim TCS back?', a: 'Log in to the GST Portal > Services > Returns > TDS and TCS credit received, file the return, and the amount moves to your cash ledger.' },
+      { q: "What is the current TCS rate for e-commerce operators in India?", a: "E-commerce operators deduct 0.5% (0.25% CGST + 0.25% SGST, or 0.5% IGST) Tax Collected at Source (TCS) under Section 52 on net taxable supplies." },
+      { q: "How do sellers claim back 0.5% TCS deducted by marketplaces?", a: "Accept the TCS credit ledger in your GST portal dashboard (Services > Returns > TDS and TCS Credit Received) to credit it into your cash ledger." }
     ],
     calcType: 'tcs'
   },
@@ -853,7 +902,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Form 26AS Match:',
     tipText: 'Marketplaces deposit TDS with your PAN every quarter. You can claim full credit or refund against income tax when filing your annual ITR-3 or ITR-4.',
     faqs: [
-      { q: 'What is Section 194-O?', a: 'Under the Income Tax Act, e-commerce operators must deduct 0.1% TDS on the gross sales value of goods facilitated through their platform.' }
+{ q: 'What is Section 194-O?', a: 'Under the Income Tax Act, e-commerce operators must deduct 0.1% TDS on the gross sales value of goods facilitated through their platform.' },
+      { q: "Who is exempt from Section 194-O TDS on marketplaces?", a: "Individual or HUF sellers whose gross sales through an e-commerce platform do not exceed ₹5,00,000 during the financial year and who provide their PAN/Aadhaar are exempt." },
+      { q: "Where does Section 194-O TDS reflect for tax filing?", a: "TDS deducted reflects in your Form 26AS and Annual Information Statement (AIS) and directly offsets your annual advance tax or income tax liability." }
     ],
     calcType: 'tds'
   },
@@ -887,7 +938,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Weight Slab Savings:',
     tipText: 'Keeping your packaging under 500g saves you ₹36 on National Easy Ship compared to 501g-1000g.',
     faqs: [
-      { q: 'What are Amazon closing fee slabs?', a: '₹0-250: ₹5; ₹251-500: ₹10; ₹501-1000: ₹25; ₹1001-2000: ₹35; Above ₹2000: ₹50.' }
+{ q: 'What are Amazon closing fee slabs?', a: '₹0-250: ₹5; ₹251-500: ₹10; ₹501-1000: ₹25; ₹1001-2000: ₹35; Above ₹2000: ₹50.' },
+      { q: "What are the total fees deducted by Amazon on an order?", a: "Amazon deducts: 1) Category Referral Fee (5%–15%), 2) Closing Fee Slab (₹5–₹50), 3) Easy Ship/FBA Shipping (₹44+), 4) 18% GST on all fees, and 5) 0.5% TCS + 0.1% TDS." },
+      { q: "How does Amazon Easy Ship weight slab billing work?", a: "Easy Ship charges based on 500g increments. Additional 500g steps incur ₹20 to ₹30 extra freight depending on distance (Local, Regional, or National)." }
     ],
     calcType: 'amz_fees'
   },
@@ -918,7 +971,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Flipkart Tiering:',
     tipText: 'Reaching Gold Tier on Flipkart reduces your shipping fees by ₹10-₹15 per order, directly boosting your profit margin.',
     faqs: [
-      { q: 'What is Flipkart collection fee?', a: 'Flipkart charges a flat 2% on order value for processing payments, applicable on both prepaid and COD orders.' }
+{ q: 'What is Flipkart collection fee?', a: 'Flipkart charges a flat 2% on order value for processing payments, applicable on both prepaid and COD orders.' },
+      { q: "What are the components of Flipkart seller fees?", a: "Flipkart charges Category Commission, Fixed Fee (based on price slab), Payment Collection Fee (2%), Shipping Fee, and 18% GST on the sum of all fees." },
+      { q: "What are Flipkart seller tiers (Bronze, Silver, Gold)?", a: "Flipkart rewards higher tier sellers with substantial shipping fee discounts (up to 15%–20% off courier rates) and faster settlement turnaround times." }
     ],
     calcType: 'fk_fees'
   },
@@ -947,7 +1002,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Return Strategy on Meesho:',
     tipText: 'Because Meesho charges 0% commission, your only true costs are courier shipping and customer return penalties (~₹120-150). Budget your prices accordingly.',
     faqs: [
-      { q: 'Is Meesho really 0% commission?', a: 'Yes, Meesho does not charge referral fees or closing fees. Sellers only pay for courier shipping plus 18% GST on shipping.' }
+{ q: 'Is Meesho really 0% commission?', a: 'Yes, Meesho does not charge referral fees or closing fees. Sellers only pay for courier shipping plus 18% GST on shipping.' },
+      { q: "Does Meesho really have zero hidden fees?", a: "Meesho charges 0% commission and ₹0 closing fees. The only deduction is the actual courier delivery charge (starting at ₹49 for 500g) plus 18% GST on courier." },
+      { q: "Why do some Meesho orders have negative payouts?", a: "If a low-priced item (e.g. ₹150) is returned by the customer, reverse shipping penalties can exceed the order value, resulting in a net negative deduction." }
     ],
     calcType: 'meesho_comm'
   },
@@ -975,7 +1032,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Price Threshold Commission Changes:',
     tipText: 'Some Amazon categories have stepped commission rates (e.g. 5.5% for items under ₹300, but 13% for items above ₹300). Check your exact price tier.',
     faqs: [
-      { q: 'What is an Amazon referral fee?', a: 'It is the percentage fee charged by Amazon on each item sold, varying by product category from 2% to 22%.' }
+{ q: 'What is an Amazon referral fee?', a: 'It is the percentage fee charged by Amazon on each item sold, varying by product category from 2% to 22%.' },
+      { q: "Do Amazon referral fees vary by product price?", a: "Yes, many categories on Amazon India have tiered referral rates (e.g., 5.5% for items under ₹500, increasing to 12% or 15% for items above ₹1,000)." },
+      { q: "Is Amazon referral fee calculated on MRP or selling price?", a: "Referral fee is calculated on the actual price paid by the customer, including any shipping charges billed to the buyer." }
     ],
     calcType: 'amz_referral'
   },
@@ -1002,7 +1061,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Pricing Edge Case:',
     tipText: 'Listing an item at ₹500 results in a ₹10 closing fee, but listing at ₹505 bumps the closing fee up to ₹25! Keep price thresholds in mind.',
     faqs: [
-      { q: 'What is a closing fee on Amazon?', a: 'A closing fee is a fixed fee per unit sold based on the product price band, charged on all completed orders.' }
+{ q: 'What is a closing fee on Amazon?', a: 'A closing fee is a fixed fee per unit sold based on the product price band, charged on all completed orders.' },
+      { q: "What are the 2026 Amazon closing fee tiers?", a: "Under ₹250: ₹5; ₹251–₹500: ₹10; ₹501–₹1,000: ₹25; ₹1,001–₹2,000: ₹35; Above ₹2,000: ₹50. FBA orders enjoy lower closing fees than Easy Ship." },
+      { q: "Is GST charged on Amazon closing fees?", a: "Yes, standard 18% GST is added to all closing fee charges and is 100% claimable as Input Tax Credit." }
     ],
     calcType: 'amz_closing'
   },
@@ -1041,7 +1102,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Regional Warehouse Optimization:',
     tipText: 'Stocking inventory in regional FCs turns National shipments (₹74) into Regional shipments (₹53), saving you ₹21 per order.',
     faqs: [
-      { q: 'What is the Amazon Easy Ship national rate?', a: 'The national standard rate for Easy Ship is ₹74 for the first 500g, plus ₹36 for each additional 500g up to 1kg.' }
+{ q: 'What is the Amazon Easy Ship national rate?', a: 'The national standard rate for Easy Ship is ₹74 for the first 500g, plus ₹36 for each additional 500g up to 1kg.' },
+      { q: "What is the difference between Local, Regional, and National Easy Ship?", a: "Local is within the same city (starting ₹44). Regional is within the same state/zone (starting ₹53). National is across states (starting ₹74 for the first 500g)." },
+      { q: "How does multi-FC placement reduce shipping costs?", a: "Storing inventory in regional fulfillment centers converts expensive National shipments into cheaper Local or Regional orders, saving ₹20–₹30 per unit." }
     ],
     calcType: 'amz_shipping'
   },
@@ -1069,7 +1132,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Flipkart Marketplace Advantage:',
     tipText: 'Flipkart has strong reach in Tier 2 and Tier 3 cities. Ensure category classification is accurate to avoid being charged higher general merchandise commission rates.',
     faqs: [
-      { q: 'What is Flipkart commission rate for footwear?', a: 'Flipkart charges approximately 13% to 15% commission on footwear depending on sub-category.' }
+{ q: 'What is Flipkart commission rate for footwear?', a: 'Flipkart charges approximately 13% to 15% commission on footwear depending on sub-category.' },
+      { q: "How is Flipkart commission calculated?", a: "Flipkart calculates commission as a percentage of the final selling price paid by the customer, then applies 18% GST on that commission amount." },
+      { q: "Where can sellers check current Flipkart category commission rates?", a: "Check current category rates in the Flipkart Seller Hub under Pricing and Commission Rate Cards." }
     ],
     calcType: 'fk_commission'
   },
@@ -1098,7 +1163,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Multi-Channel Strategy:',
     tipText: 'List high-ticket, brand-conscious items on Amazon and Flipkart, while listing competitive budget items on Meesho to benefit from 0% commission.',
     faqs: [
-      { q: 'Why do commissions differ across marketplaces?', a: 'Marketplaces price commissions based on their customer demographics, advertising spend, brand equity, and fulfillment network costs.' }
+{ q: 'Why do commissions differ across marketplaces?', a: 'Marketplaces price commissions based on their customer demographics, advertising spend, brand equity, and fulfillment network costs.' },
+      { q: "Which Indian marketplace offers the highest seller margins?", a: "Meesho offers 0% commission for budget value goods. Amazon and Flipkart have higher fees (12%–22% total) but offer 5x–10x higher customer volume and Prime/Plus badges." },
+      { q: "How do commission rates differ between fashion and electronics?", a: "Electronics typically carry low commissions (3%–8%) due to high ticket values, while fashion carries higher commissions (12%–24%) to offset high returns." }
     ],
     calcType: 'multi_comm'
   },
@@ -1131,7 +1198,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'ROAS Benchmark:',
     tipText: 'A high ROAS does not always mean high profit if your product margin is thin. Always compare your actual ROAS against your Break-Even ROAS.',
     faqs: [
-      { q: 'What is a good ROAS for e-commerce in India?', a: 'A good ROAS is typically between 3.5x and 5.0x for D2C brands, depending on product gross margin.' }
+{ q: 'What is a good ROAS for e-commerce in India?', a: 'A good ROAS is typically between 3.5x and 5.0x for D2C brands, depending on product gross margin.' },
+      { q: "How do you calculate ROAS multiplier?", a: "ROAS = Total Ad Revenue ÷ Total Ad Spend. A ₹50,000 revenue generated from ₹10,000 ad spend represents a 5.0x ROAS (or 500%)." },
+      { q: "What is the difference between ROAS and ROI?", a: "ROAS measures gross revenue generated per ad rupee spent. ROI measures net bottom-line profit generated against total capital invested including product COGS." }
     ],
     calcType: 'roas'
   },
@@ -1159,7 +1228,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'ACOS Target:',
     tipText: 'Your target ACOS should always be LOWER than your pre-ad profit margin. If your margin is 25%, an ACOS below 25% guarantees campaign profitability.',
     faqs: [
-      { q: 'How is ACOS related to ROAS?', a: 'ACOS and ROAS are mathematical inverses: ACOS = 1 / ROAS. For example, a 4.0x ROAS equals a 25% ACOS.' }
+{ q: 'How is ACOS related to ROAS?', a: 'ACOS and ROAS are mathematical inverses: ACOS = 1 / ROAS. For example, a 4.0x ROAS equals a 25% ACOS.' },
+      { q: "What is a healthy target ACOS on Amazon India?", a: "A healthy target ACOS is below your product profit margin. If your profit margin before ads is 25%, an ACOS under 20% ensures your campaigns remain profitable." },
+      { q: "How do you convert ACOS to ROAS?", a: "ROAS = 100 ÷ ACOS. For example, a 20% ACOS equals a 5.0x ROAS (100 ÷ 20)." }
     ],
     calcType: 'acos'
   },
@@ -1186,7 +1257,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Healthy TACOS Trend:',
     tipText: 'A healthy brand has a declining or flat TACOS over time (typically 8%-14%), showing that paid ads are driving organic keyword ranking and repeat sales.',
     faqs: [
-      { q: 'Why is TACOS better than ACOS?', a: 'ACOS only looks at direct ad sales. TACOS looks at overall business health, showing if PPC ads are fueling organic sales velocity.' }
+{ q: 'Why is TACOS better than ACOS?', a: 'ACOS only looks at direct ad sales. TACOS looks at overall business health, showing if PPC ads are fueling organic sales velocity.' },
+      { q: "What is the formula for TACOS?", a: "TACOS = (Total Ad Spend ÷ Total Organic + Ad Revenue) × 100. A TACOS between 8% and 15% indicates healthy organic momentum driven by advertising." },
+      { q: "Why is a declining TACOS a positive sign?", a: "A declining TACOS over time means your paid ads are driving organic keyword ranking and customer repeat purchases, growing total revenue faster than ad spend." }
     ],
     calcType: 'tacos'
   },
@@ -1215,7 +1288,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Stop Loss Rule:',
     tipText: 'If a campaign consistently runs below your Break-Even ROAS, you are subsidizing customer purchases out of pocket. Turn it off or optimize creatives.',
     faqs: [
-      { q: 'How do you calculate break-even ROAS?', a: 'Divide 100 by your profit margin percentage. For example, a 25% margin gives 100 / 25 = 4.0x break-even ROAS.' }
+{ q: 'How do you calculate break-even ROAS?', a: 'Divide 100 by your profit margin percentage. For example, a 25% margin gives 100 / 25 = 4.0x break-even ROAS.' },
+      { q: "What is Break-Even ROAS?", a: "Break-Even ROAS = 1 ÷ (Profit Margin % before ads). If your margin after product cost and fees is 25% (0.25), your Break-Even ROAS is 1 ÷ 0.25 = 4.0x." },
+      { q: "What happens if campaign ROAS is below break-even?", a: "If actual ROAS is below your break-even threshold, you are losing money on every ad-attributed sale." }
     ],
     calcType: 'be_roas'
   },
@@ -1242,7 +1317,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Funnel Optimization:',
     tipText: 'Improving your website conversion rate from 1.5% to 3.0% cuts your Cost Per Order in half without spending an extra rupee on ads.',
     faqs: [
-      { q: 'What is a good Cost Per Order in India?', a: 'For products priced under ₹1000, target a CPO below ₹200–₹250 to remain comfortably profitable.' }
+{ q: 'What is a good Cost Per Order in India?', a: 'For products priced under ₹1000, target a CPO below ₹200–₹250 to remain comfortably profitable.' },
+      { q: "What is a good Cost Per Order in India?", a: "A good CPO depends on product selling price and margin. For a ₹999 fashion item with a 40% margin, an ad CPO under ₹180 maintains strong profitability." },
+      { q: "How do you reduce Cost Per Order (CPO)?", a: "Lower CPO by optimizing product listing images, running negative keyword targeting in PPC, improving click-to-order conversion rates, and offering bundle discounts." }
     ],
     calcType: 'cpo'
   },
@@ -1272,7 +1349,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'LTV to CAC Ratio:',
     tipText: 'An LTV:CAC ratio of 3x or higher means your brand has strong organic retention and healthy unit economics.',
     faqs: [
-      { q: 'What is LTV:CAC ratio?', a: 'It compares the total revenue or gross profit a customer brings over their lifetime against the cost to acquire them.' }
+{ q: 'What is LTV:CAC ratio?', a: 'It compares the total revenue or gross profit a customer brings over their lifetime against the cost to acquire them.' },
+      { q: "What is a healthy LTV to CAC ratio for D2C brands?", a: "A 3:1 or higher LTV:CAC ratio is the gold standard for e-commerce, meaning a customer lifetime value is at least 3 times the cost to acquire them." },
+      { q: "What marketing overheads should be included in CAC?", a: "Include paid ad spend (Meta/Google), influencer marketing fees, agency management retainers, and marketing tool software subscriptions." }
     ],
     calcType: 'cac'
   },
@@ -1304,7 +1383,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Scale Profitably:',
     tipText: 'Scaling ad budgets often degrades ROAS. Use this calculator to monitor your net profit margin before increasing daily ad budgets.',
     faqs: [
-      { q: 'Why do high ROAS campaigns sometimes lose money?', a: 'If product COGS and courier shipping eat up 75% of revenue, even a 3x ROAS (which costs 33% of revenue) results in a net financial loss.' }
+{ q: 'Why do high ROAS campaigns sometimes lose money?', a: 'If product COGS and courier shipping eat up 75% of revenue, even a 3x ROAS (which costs 33% of revenue) results in a net financial loss.' },
+      { q: "How can ad campaigns with positive ROAS still generate losses?", a: "If your ROAS is 3.0x (33% ad cost) but your product COGS is 40% and marketplace fees are 30%, your total costs equal 103%, creating a net 3% loss on every order." },
+      { q: "What is Contribution Margin 3 (CM3) in ad profitability?", a: "CM3 is revenue minus product COGS, shipping, marketplace fees, and direct paid advertising expenses." }
     ],
     calcType: 'ad_profit'
   },
@@ -1339,7 +1420,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Settlement Reconciliation:',
     tipText: 'Match your bank statement credit transactions against marketplace payment settlement sheets every Tuesday and Thursday.',
     faqs: [
-      { q: 'When do marketplaces deposit seller settlements in India?', a: 'Amazon and Flipkart typically settle payments 7 to 10 days after order delivery, while Meesho settles on a 7-day cycle.' }
+{ q: 'When do marketplaces deposit seller settlements in India?', a: 'Amazon and Flipkart typically settle payments 7 to 10 days after order delivery, while Meesho settles on a 7-day cycle.' },
+      { q: "What deductions are subtracted before settlement reaches my bank?", a: "Platforms deduct: Referral Fee, Closing Fee, Shipping Charges, 18% GST on fees, customer return reversals, 0.5% TCS, and 0.1% TDS u/s 194-O." },
+      { q: "How often do Indian marketplaces disburse bank payouts?", a: "Settlements are disbursed weekly or bi-weekly (7–10 days post-delivery) directly into your linked current bank account." }
     ],
     calcType: 'settlement'
   },
@@ -1368,7 +1451,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Reserve Release:',
     tipText: 'Most platforms hold a 14-day rolling return reserve to cover customer refunds. This reserve is credited back once the return window closes.',
     faqs: [
-      { q: 'Why is my payout lower than expected?', a: 'Check for courier weight discrepancies, return reverse shipping deductions, and 18% GST on platform service fees.' }
+{ q: 'Why is my payout lower than expected?', a: 'Check for courier weight discrepancies, return reverse shipping deductions, and 18% GST on platform service fees.' },
+      { q: "Why do platforms withhold a returns reserve from payouts?", a: "Marketplaces retain a rolling reserve (typically 5%–15% for 7–14 days) to cover potential return refunds and RTO courier penalties during the return window." },
+      { q: "When is the marketplace reserve fund released?", a: "Reserve amounts are released into your subsequent settlement cycles once the customer return window (7 to 10 days) closes without dispute." }
     ],
     calcType: 'payout'
   },
@@ -1395,7 +1480,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Claim Window:',
     tipText: 'Amazon and Flipkart have a strict 30-to-45 day claim window for weight discrepancies and missing return inventory reimbursements. Reconcile promptly.',
     faqs: [
-      { q: 'How do I raise a ticket for missing payments?', a: 'File an SAFE-T claim on Amazon or a Seller Protection Fund (SPF) claim on Flipkart with proof of dispatch and invoice details.' }
+{ q: 'How do I raise a ticket for missing payments?', a: 'File an SAFE-T claim on Amazon or a Seller Protection Fund (SPF) claim on Flipkart with proof of dispatch and invoice details.' },
+      { q: "What are the most common settlement errors made by marketplaces?", a: "Overcharged volumetric weight slabs, courier return charges applied to delivered orders, missing Safe-T claim reimbursements, and duplicate fixed fee debits." },
+      { q: "How should sellers audit settlement statements?", a: "Reconcile order-level settlement CSVs against courier tracking delivery timestamps and marketplace tax invoice deductions monthly." }
     ],
     calcType: 'reconciliation'
   },
@@ -1429,7 +1516,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Financial Health:',
     tipText: 'Maintain at least 3 months of operating expenses in reserve to handle seasonal demand fluctuations and holiday working capital requirements.',
     faqs: [
-      { q: 'What is a good net profit margin for an Indian online seller?', a: 'After all marketplace fees, ad spend, and overhead, a healthy business earns between 12% and 20% net profit.' }
+{ q: 'What is a good net profit margin for an Indian online seller?', a: 'After all marketplace fees, ad spend, and overhead, a healthy business earns between 12% and 20% net profit.' },
+      { q: "What overhead costs should sellers include in monthly P&L?", a: "Include warehouse rent, packing tape & thermal label paper, utility bills, employee packing wages, accounting software subscriptions, and interest on working capital." },
+      { q: "What is a realistic net profit margin for an Indian marketplace seller?", a: "Top quartile marketplace sellers achieve 12% to 18% net profit margin after all platform deductions, returns, and taxes." }
     ],
     calcType: 'monthly_profit'
   },
@@ -1461,7 +1550,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Volume Efficiency:',
     tipText: 'Even with a 20% discount, bulk orders eliminate individual packing boxes, courier tracking fees, and return risks, yielding higher overall cash profit.',
     faqs: [
-      { q: 'How do you price bulk orders for corporate gifting?', a: 'Calculate your unit manufacturing cost, add freight, and target a minimum 25% gross profit margin on the total invoice.' }
+{ q: 'How do you price bulk orders for corporate gifting?', a: 'Calculate your unit manufacturing cost, add freight, and target a minimum 25% gross profit margin on the total invoice.' },
+      { q: "How do bulk B2B orders increase net profitability?", a: "Bulk orders consolidate shipping into single freight packages, eliminate individual polybag costs, reduce payment processing fees, and carry 0% RTO return risk." },
+      { q: "How should volume tiered discounts be structured?", a: "Offer 5% off for 50–100 units, 10% off for 100–500 units, and 15%–20% off for 500+ units, ensuring your manufacturing margin remains above 20%." }
     ],
     calcType: 'bulk_order'
   },
@@ -1490,7 +1581,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Aged Inventory Warning:',
     tipText: 'Inventory sitting unsold for over 90 days ties up working capital and incurs warehouse storage fees. Run flash sales or discount bundles to liquidate slow movers.',
     faqs: [
-      { q: 'What is dead stock in e-commerce?', a: 'Dead stock refers to products in your warehouse that have generated zero sales for 90 to 180 days.' }
+{ q: 'What is dead stock in e-commerce?', a: 'Dead stock refers to products in your warehouse that have generated zero sales for 90 to 180 days.' },
+      { q: "What is dead stock in e-commerce?", a: "Dead stock refers to inventory that has not generated a sale in over 90–120 days, tying up working capital and generating warehouse holding costs." },
+      { q: "How do holding costs erode inventory profit?", a: "Holding inventory beyond 90 days accumulates warehouse storage fees, ties up cash flow, increases risk of damage/expiry, and incurs cost of capital." }
     ],
     calcType: 'inventory_profit'
   },
@@ -1518,7 +1611,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Festive Season Buffer:',
     tipText: 'Double your safety stock 45 days before Diwali, Great Indian Festival, and Big Billion Days to prevent running out of stock during peak demand.',
     faqs: [
-      { q: 'What is lead time in inventory management?', a: 'Lead time is the total number of days between placing a purchase order with a supplier and having the goods ready on your warehouse shelves.' }
+{ q: 'What is lead time in inventory management?', a: 'Lead time is the total number of days between placing a purchase order with a supplier and having the goods ready on your warehouse shelves.' },
+      { q: "What is safety stock and why is it critical?", a: "Safety stock is buffer inventory held to prevent stockouts caused by sudden sales spikes (e.g. festive sales) or unexpected supplier manufacturing delays." },
+      { q: "What formula calculates Reorder Point (ROP)?", a: "Reorder Point = (Average Daily Sales Rate × Lead Time in Days) + Safety Stock." }
     ],
     calcType: 'inventory_reorder'
   },
@@ -1548,7 +1643,9 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     tipTitle: 'Never Price Below Floor:',
     tipText: 'Price wars often cause sellers to lower prices below floor cost, generating high sales volume while burning bank capital. Never list below your floor price.',
     faqs: [
-      { q: 'What is a floor price in e-commerce?', a: 'Floor price is the minimum viable selling price that covers all direct product, shipping, marketplace, and return costs with zero loss.' }
+{ q: 'What is a floor price in e-commerce?', a: 'Floor price is the minimum viable selling price that covers all direct product, shipping, marketplace, and return costs with zero loss.' },
+      { q: "How do you calculate minimum selling price (floor price)?", a: "Floor Price = (Direct Cost + Return Buffer) ÷ [1 - (Platform Fee Rate % + GST Factor)]. Selling below this price guarantees a financial loss on every dispatched order." },
+      { q: "Why must return buffers be factored into floor pricing?", a: "If you don't include return penalties in your floor price, every returned or RTO order directly consumes your operating profit." }
     ],
     calcType: 'min_price'
   }

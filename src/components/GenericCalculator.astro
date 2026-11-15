@@ -193,25 +193,46 @@ const { calculator } = Astro.props;
 
     </div>
 
-    <!-- FAQs Section -->
+    <!-- FAQs Section & JSON-LD FAQPage Schema for Google Rich Snippets -->
     {calculator.faqs && calculator.faqs.length > 0 && (
       <div class="mt-12 max-w-3xl mx-auto">
-        <h2 class="text-base sm:text-lg font-semibold text-neutral-900 mb-4 text-center">
-          Frequently Asked Questions
-        </h2>
+        <div class="text-center mb-6">
+          <h2 class="text-lg sm:text-xl font-semibold text-neutral-900 tracking-tight">
+            Frequently Asked Questions
+          </h2>
+          <p class="text-xs sm:text-sm text-neutral-500 mt-1">
+            Common questions on calculations, industry standards, and seller profit optimization.
+          </p>
+        </div>
         <div class="space-y-3">
           {calculator.faqs.map((faq) => (
-            <div class="bg-white border border-neutral-200 rounded-xl p-4 shadow-xs">
-              <h3 class="text-xs sm:text-sm font-semibold text-neutral-900 mb-1">
-                {faq.q}
-              </h3>
-              <p class="text-xs text-neutral-600 leading-relaxed">
-                {faq.a}
-              </p>
-            </div>
+            <details class="group bg-white border border-neutral-200 rounded-xl p-4 shadow-xs transition-all cursor-pointer" open>
+              <summary class="flex cursor-pointer items-center justify-between text-xs sm:text-sm font-semibold text-neutral-900 list-none gap-3 hover:text-black">
+                <span class="leading-snug">{faq.q}</span>
+                <span class="ml-2 flex h-4 w-4 shrink-0 items-center justify-center text-neutral-400 group-open:rotate-180 transition-transform">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </span>
+              </summary>
+              <div class="mt-2 text-xs sm:text-[13px] text-neutral-600 leading-relaxed pr-4">
+                <p>{faq.a}</p>
+              </div>
+            </details>
           ))}
         </div>
       </div>
+
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": calculator.faqs.map((faq) => ({
+          "@type": "Question",
+          "name": faq.q,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": `<p>${faq.a}</p>`
+          }
+        }))
+      })} />
     )}
 
   </div>

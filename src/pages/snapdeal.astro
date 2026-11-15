@@ -5,6 +5,25 @@ import ComparisonMatrix from '../components/ComparisonMatrix.astro';
 import ReversePriceSolver from '../components/ReversePriceSolver.astro';
 import FeeGuide from '../components/FeeGuide.astro';
 import FaqSection from '../components/FaqSection.astro';
+
+const snapdealFaqs = [
+  {
+    q: "What is Snapdeal's fee structure for marketplace sellers in 2026?",
+    a: "Snapdeal charges category marketing fees (commission) ranging between 6% and 18%, combined with fixed collection fees (typically ₹15 to ₹35 based on selling price) and courier freight fees managed via Snapdeal Logistics (SD Plus) or integrated 3PL couriers."
+  },
+  {
+    q: "How does Snapdeal's payment settlement cycle work?",
+    a: "Snapdeal settles payments to sellers within 7 to 10 days following confirmed customer delivery. Marketplace commissions, logistics fees, TCS (1%), and Section 194-O TDS (0.1%) are deducted prior to net bank deposit."
+  },
+  {
+    q: "What customer demographic buys on Snapdeal and how should products be priced?",
+    a: "Over 80% of Snapdeal customers reside in Tier 2, Tier 3, and rural Indian cities, prioritizing value-for-money utility items priced between ₹299 and ₹799. Pricing products competitively while keeping freight low ensures high sales velocity and repeat buyers."
+  },
+  {
+    q: "How does Snapdeal handle customer return courier deductions?",
+    a: "If a buyer returns an item, the seller is billed reverse courier charges unless the return was caused by a courier delivery error. Sellers can file claims through the Snapdeal Seller Portal for parcels returned with damage or missing contents."
+  }
+];
 ---
 
 <Layout
@@ -67,5 +86,9 @@ import FaqSection from '../components/FaqSection.astro';
   <FeeGuide />
 
   <!-- FAQ -->
-  <FaqSection />
+  <FaqSection
+    title="Snapdeal Seller Fee & Profit Calculator Frequently Asked Questions"
+    subtitle="Essential guidelines on Snapdeal commissions, settlement timelines, Tier 2/3 buyer preferences, and return protections."
+    faqs={snapdealFaqs}
+  />
 </Layout>

@@ -2,12 +2,24 @@
 // src/components/FaqSection.astro
 
 export interface FaqItem {
-  category: string;
+  category?: string;
   q: string;
   a: string;
 }
 
-const faqs: FaqItem[] = [
+interface Props {
+  faqs?: FaqItem[];
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  faqs: customFaqs,
+  title = "Frequently Asked Questions",
+  subtitle = "Answers on Meesho, Flipkart, and Amazon fee slabs, courier charges, and GST."
+} = Astro.props;
+
+const defaultFaqs: FaqItem[] = [
   // --- Category: Profit & Pricing Calculations ---
   {
     category: "Profit & Pricing",
@@ -77,7 +89,10 @@ const faqs: FaqItem[] = [
   }
 ];
 
-const categories = ["All", "Profit & Pricing", "RTO & Returns", "Marketplace Fees", "GST & Taxes"];
+const faqs = customFaqs && customFaqs.length > 0 ? customFaqs : defaultFaqs;
+const rawCategories = Array.from(new Set(faqs.map((f) => f.category).filter(Boolean))) as string[];
+const showFilters = rawCategories.length > 1;
+const categories = showFilters ? ["All", ...rawCategories] : [];
 ---
 
 <section id="faq" class="py-12 sm:py-16 bg-transparent border-t border-neutral-200">
@@ -85,28 +100,30 @@ const categories = ["All", "Profit & Pricing", "RTO & Returns", "Marketplace Fee
     
     <div class="text-center mb-7">
       <h2 class="text-xl sm:text-2xl font-semibold tracking-tight text-neutral-900">
-        Frequently Asked Questions
+        {title}
       </h2>
       <p class="text-xs sm:text-sm text-neutral-500 mt-1 max-w-xl mx-auto">
-        Answers on Meesho, Flipkart, and Amazon fee slabs, courier charges, and GST.
+        {subtitle}
       </p>
 
       <!-- Category Filter Pills -->
-      <div class="flex flex-wrap items-center justify-center gap-1.5 mt-4" id="faqFilterPills">
-        {categories.map((cat, idx) => (
-          <button
-            type="button"
-            data-filter={cat}
-            class={`faq-filter-btn px-3 py-1 rounded-full text-xs font-medium transition-all border cursor-pointer ${
-              idx === 0
-                ? "bg-emerald-600 text-white border-transparent shadow-xs font-semibold"
-                : "bg-white hover:bg-neutral-100 text-neutral-600 border-neutral-200"
-            }`}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
+      {showFilters && (
+        <div class="flex flex-wrap items-center justify-center gap-1.5 mt-4" id="faqFilterPills">
+          {categories.map((cat, idx) => (
+            <button
+              type="button"
+              data-filter={cat}
+              class={`faq-filter-btn px-3 py-1 rounded-full text-xs font-medium transition-all border cursor-pointer ${
+                idx === 0
+                  ? "bg-emerald-600 text-white border-transparent shadow-xs font-semibold"
+                  : "bg-white hover:bg-neutral-100 text-neutral-600 border-neutral-200"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
 
     <!-- Accordion Items -->
@@ -114,7 +131,7 @@ const categories = ["All", "Profit & Pricing", "RTO & Returns", "Marketplace Fee
       {faqs.map((faq) => (
         <details
           class="faq-card group py-4 transition-all"
-          data-category={faq.category}
+          data-category={faq.category || "General"}
         >
           <summary class="flex cursor-pointer items-center justify-between text-sm sm:text-[15px] font-medium text-neutral-900 list-none gap-4 hover:text-black">
             <span class="leading-snug">{faq.q}</span>
@@ -125,9 +142,11 @@ const categories = ["All", "Profit & Pricing", "RTO & Returns", "Marketplace Fee
           <div class="mt-2 text-xs sm:text-sm text-neutral-600 leading-relaxed pr-6">
             <p>{faq.a}</p>
             <div class="mt-2.5 flex items-center gap-2">
-              <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-neutral-100 text-neutral-600">
-                {faq.category}
-              </span>
+              {faq.category && (
+                <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-neutral-100 text-neutral-600">
+                  {faq.category}
+                </span>
+              )}
               <span class="text-[10px] font-mono text-emerald-700">
                 &bull; Verified 2026 Slabs
               </span>
@@ -149,7 +168,7 @@ const categories = ["All", "Profit & Pricing", "RTO & Returns", "Marketplace Fee
     "name": f.q,
     "acceptedAnswer": {
       "@type": "Answer",
-      "text": f.a
+      "text": `<p>${f.a}</p>`
     }
   }))
 })} />

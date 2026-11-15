@@ -5,6 +5,25 @@ import ComparisonMatrix from '../components/ComparisonMatrix.astro';
 import ReversePriceSolver from '../components/ReversePriceSolver.astro';
 import FeeGuide from '../components/FeeGuide.astro';
 import FaqSection from '../components/FaqSection.astro';
+
+const meeshoFaqs = [
+  {
+    q: "Is Meesho really 0% commission for all product categories?",
+    a: "Yes! Meesho charges 0% referral commission and ₹0 fixed closing fees across almost all product categories. Sellers receive the full product price minus courier shipping charges and applicable taxes."
+  },
+  {
+    q: "What courier and shipping fees do sellers pay on Meesho in 2026?",
+    a: "Meesho deducts courier freight charges based on dead weight and destination. Standard national shipping starts at approximately ₹49–₹65 for the first 500g, plus 18% GST on the shipping charge. If customer return occurs, Meesho charges reverse courier fees (typically ₹120–₹150)."
+  },
+  {
+    q: "What is Meesho's Return and RTO policy for sellers?",
+    a: "On undelivered COD orders (RTO), Meesho does not charge reverse shipping to the seller in most standard categories. However, for customer returns (where the buyer opens the parcel and returns it), sellers are billed reverse freight and often receive damaged packaging."
+  },
+  {
+    q: "How do successful sellers price products profitably on Meesho?",
+    a: "Because Meesho shoppers are highly price-sensitive, winning sellers optimize lightweight packaging to stay strictly within the 500g shipping bracket, price products with a 15%–20% return buffer, and utilize supplier wholesale volume discounts to maintain 20%+ net margins despite lower price points."
+  }
+];
 ---
 
 <Layout
@@ -67,5 +86,9 @@ import FaqSection from '../components/FaqSection.astro';
   <FeeGuide />
 
   <!-- FAQ -->
-  <FaqSection />
+  <FaqSection
+    title="Meesho Seller Profit Calculator Frequently Asked Questions"
+    subtitle="Common questions on Meesho 0% commission policy, weight slab shipping, and customer return buffers."
+    faqs={meeshoFaqs}
+  />
 </Layout>

@@ -5,6 +5,25 @@ import ComparisonMatrix from '../components/ComparisonMatrix.astro';
 import ReversePriceSolver from '../components/ReversePriceSolver.astro';
 import FeeGuide from '../components/FeeGuide.astro';
 import FaqSection from '../components/FaqSection.astro';
+
+const flipkartFaqs = [
+  {
+    q: "What are the primary fee components for selling on Flipkart in 2026?",
+    a: "Flipkart seller deductions include: 1) Category Referral Commission (3% to 18%), 2) Fixed Fee based on selling price slabs (₹13 to ₹52), 3) 2% Payment Collection Fee on all orders (prepaid and COD), 4) Shipping Fee based on weight and seller tier (Bronze, Silver, Gold), and 5) 18% GST on all marketplace fees."
+  },
+  {
+    q: "How does Flipkart seller tiering (Bronze, Silver, Gold) impact shipping fees?",
+    a: "Flipkart rewards top-performing sellers with discounted shipping rates. Gold sellers enjoy the lowest shipping fees and fast-track payment cycles, Silver sellers receive standard rates, and Bronze sellers pay slightly higher fulfillment fees. Upgrading your tier by reducing dispatch delays and cancellation rates improves net margin by 2% to 4%."
+  },
+  {
+    q: "What is Flipkart FBF (Fulfilled by Flipkart) vs Non-FBF?",
+    a: "With FBF, products are stored in Flipkart's automated fulfillment centers with Assured badges, priority search placement, and fast delivery, but incur pick & pack and monthly storage charges. Non-FBF (Standard) requires you to pack and dispatch orders from your own location using Flipkart eKart logistics."
+  },
+  {
+    q: "How are customer returns and cancellation fees handled on Flipkart?",
+    a: "For customer returns, Flipkart charges reverse shipping fees back to the seller. For seller-side order cancellations due to stockouts, Flipkart imposes strict monetary penalties (often equivalent to the referral fee of the cancelled product). Our calculator helps you factor these operational risks into your retail pricing."
+  }
+];
 ---
 
 <Layout
@@ -67,5 +86,9 @@ import FaqSection from '../components/FaqSection.astro';
   <FeeGuide />
 
   <!-- FAQ -->
-  <FaqSection />
+  <FaqSection
+    title="Flipkart Seller Fee & Profit Calculator Frequently Asked Questions"
+    subtitle="Understand Flipkart fixed fee slabs, 2% collection charges, tier-based shipping, and return deductions."
+    faqs={flipkartFaqs}
+  />
 </Layout>
