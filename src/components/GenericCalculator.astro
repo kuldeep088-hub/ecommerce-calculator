@@ -31,7 +31,7 @@ const { calculator } = Astro.props;
       </p>
 
       <!-- Formula Pill -->
-      <div class="mt-3.5 inline-block bg-neutral-50 border border-neutral-200 rounded-lg px-3 py-1.5 text-[11px] font-mono text-neutral-600">
+      <div class="mt-3.5 inline-block max-w-full break-words bg-neutral-50 border border-neutral-200 rounded-lg px-3 py-1.5 text-[11px] font-mono text-neutral-600 text-left sm:text-center">
         <span class="font-semibold text-neutral-800">Formula:</span> {calculator.formulaDescription}
       </div>
     </div>
@@ -60,7 +60,7 @@ const { calculator } = Astro.props;
                   <select
                     id={`field_${field.id}`}
                     name={field.id}
-                    class="calc-input w-full px-3 py-2 bg-white border border-neutral-200 rounded-xl text-xs font-mono text-neutral-900 outline-none focus:border-neutral-900 appearance-none pr-8 cursor-pointer"
+                    class="calc-input w-full px-3 py-2.5 sm:py-2 min-h-[42px] bg-white border border-neutral-200 rounded-xl text-xs sm:text-sm font-mono text-neutral-900 outline-none focus:border-neutral-900 appearance-none pr-8 cursor-pointer"
                   >
                     {field.options?.map((opt) => (
                       <option value={opt.value} selected={opt.value === field.defaultValue}>
@@ -85,7 +85,7 @@ const { calculator } = Astro.props;
                     min={field.min ?? 0}
                     max={field.max ?? 100}
                     step={field.step ?? 1}
-                    class="calc-input w-full accent-neutral-900 cursor-pointer"
+                    class="calc-input w-full accent-neutral-900 cursor-pointer h-2 py-2"
                   />
                 </div>
               ) : (
@@ -103,7 +103,7 @@ const { calculator } = Astro.props;
                     min={field.min ?? 0}
                     max={field.max}
                     step={field.step ?? 'any'}
-                    class={`calc-input w-full px-3 py-2 bg-white border border-neutral-200 rounded-xl text-xs font-mono text-neutral-900 outline-none focus:border-neutral-900 ${field.prefix ? 'pl-7' : ''} ${field.suffix ? 'pr-8' : ''}`}
+                    class={`calc-input w-full px-3 py-2.5 sm:py-2 min-h-[42px] bg-white border border-neutral-200 rounded-xl text-xs sm:text-sm font-mono text-neutral-900 outline-none focus:border-neutral-900 ${field.prefix ? 'pl-7' : ''} ${field.suffix ? 'pr-8' : ''}`}
                   />
                   {field.suffix && (
                     <span class="absolute right-3 text-xs text-neutral-400 font-mono pointer-events-none">
@@ -147,7 +147,7 @@ const { calculator } = Astro.props;
           </div>
 
           <div class="flex items-baseline gap-2">
-            <div id="heroKpiValue" class="text-3xl sm:text-4xl font-mono font-bold tracking-tight text-neutral-900">
+            <div id="heroKpiValue" class="text-2xl sm:text-3xl lg:text-4xl font-mono font-bold tracking-tight text-neutral-900 break-words">
               {calculator.heroKpi.prefix || ''}0{calculator.heroKpi.suffix || ''}
             </div>
           </div>
@@ -162,15 +162,15 @@ const { calculator } = Astro.props;
             Calculation Breakdown
           </h3>
 
-          <div class="space-y-2.5">
+          <div class="space-y-2">
             {calculator.breakdown.map((row) => (
-              <div class={`flex items-center justify-between text-xs py-1 ${row.isTotal ? 'border-t border-neutral-200 pt-2.5 font-semibold text-neutral-900 text-sm' : 'text-neutral-600'}`}>
-                <span class={row.isTotal ? 'font-semibold text-neutral-900' : ''}>
+              <div class={`flex items-center justify-between text-xs py-1.5 sm:py-1 gap-2 ${row.isTotal ? 'border-t border-neutral-200 pt-2.5 font-semibold text-neutral-900 text-sm' : 'text-neutral-600'}`}>
+                <span class={`truncate pr-1 ${row.isTotal ? 'font-semibold text-neutral-900' : ''}`} title={row.label}>
                   {row.label}
                 </span>
                 <span
                   id={`bd_${row.id}`}
-                  class={`font-mono ${row.isTotal ? 'text-emerald-700 font-bold' : row.isNegative ? 'text-neutral-500' : 'text-neutral-900'}`}
+                  class={`font-mono shrink-0 ${row.isTotal ? 'text-emerald-700 font-bold' : row.isNegative ? 'text-neutral-500' : 'text-neutral-900'}`}
                   data-prefix={row.prefix || ''}
                   data-suffix={row.suffix || ''}
                 >
@@ -182,9 +182,9 @@ const { calculator } = Astro.props;
         </div>
 
         <!-- Action / Explore More Hub Link -->
-        <div class="flex items-center justify-between px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-xs">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-0 px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-xs">
           <span class="text-neutral-600">Need another metric? Browse 60+ Indian seller tools.</span>
-          <a href="/all-calculators" class="font-semibold text-neutral-900 hover:text-emerald-700 transition">
+          <a href="/all-calculators" class="font-semibold text-neutral-900 hover:text-emerald-700 transition inline-flex items-center gap-1">
             View All Tools &rarr;
           </a>
         </div>

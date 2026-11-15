@@ -10,10 +10,10 @@ const { activePlatform = 'home' } = Astro.props;
 <header class="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-neutral-200 transition-all">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-15 flex items-center justify-between">
     <!-- Brand / Logo -->
-    <a href="/" class="flex items-center gap-2.5">
-      <img src="/logo.svg" alt="Seller Profit Calculator" class="w-7 h-7 rounded-lg shadow-xs object-contain" width="28" height="28" />
-      <div>
-        <span class="font-semibold text-sm sm:text-base tracking-tight text-neutral-900">Seller Profit Calculator</span>
+    <a href="/" class="flex items-center gap-2 sm:gap-2.5 min-w-0">
+      <img src="/logo.svg" alt="Seller Profit Calculator" class="w-7 h-7 shrink-0 rounded-lg shadow-xs object-contain" width="28" height="28" />
+      <div class="min-w-0">
+        <span class="font-semibold text-xs sm:text-base tracking-tight text-neutral-900 truncate block">Seller Profit Calculator</span>
       </div>
     </a>
 
@@ -107,18 +107,18 @@ const { activePlatform = 'home' } = Astro.props;
     </nav>
 
     <!-- Mobile Hamburger Button -->
-    <div class="md:hidden flex items-center">
+    <div class="md:hidden flex items-center shrink-0 ml-2">
       <button
         type="button"
         id="mobileMenuBtn"
-        class="inline-flex items-center justify-center w-8.5 h-8.5 rounded-lg border border-neutral-200 bg-white text-neutral-700 hover:bg-neutral-50 transition cursor-pointer"
+        class="inline-flex items-center justify-center w-10 h-10 rounded-xl border border-neutral-200 bg-white text-neutral-700 hover:bg-neutral-50 active:bg-neutral-100 transition cursor-pointer"
         aria-label="Toggle mobile menu"
         aria-expanded="false"
       >
-        <svg id="menuIconOpen" class="w-4 h-4 block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg id="menuIconOpen" class="w-5 h-5 block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
-        <svg id="menuIconClose" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg id="menuIconClose" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>
@@ -126,36 +126,36 @@ const { activePlatform = 'home' } = Astro.props;
   </div>
 
   <!-- Collapsible Mobile Navigation Drawer -->
-  <div id="mobileMenu" class="hidden md:hidden border-t border-neutral-200 bg-white px-4 py-3 space-y-3">
+  <div id="mobileMenu" class="hidden md:hidden border-t border-neutral-200 bg-white px-4 py-3.5 space-y-4 max-h-[calc(100vh-4rem)] overflow-y-auto overscroll-contain">
     <div>
-      <div class="text-[11px] font-semibold text-neutral-400 uppercase tracking-wider mb-1 px-2">Marketplaces</div>
-      <div class="space-y-0.5">
-        <a href="/meesho" class="mobile-nav-link flex items-center justify-between py-1.5 px-2 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50">Meesho (0% Commission)</a>
-        <a href="/flipkart" class="mobile-nav-link flex items-center justify-between py-1.5 px-2 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50">Flipkart (2026 Slabs)</a>
-        <a href="/amazon" class="mobile-nav-link flex items-center justify-between py-1.5 px-2 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50">Amazon India (Easy Ship)</a>
-        <a href="/myntra" class="mobile-nav-link flex items-center justify-between py-1.5 px-2 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50">Myntra (Fashion)</a>
-        <a href="/shopsy" class="mobile-nav-link flex items-center justify-between py-1.5 px-2 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50">Shopsy (Flipkart Value)</a>
-        <a href="/snapdeal" class="mobile-nav-link flex items-center justify-between py-1.5 px-2 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50">Snapdeal (Flat ₹10)</a>
+      <div class="text-[11px] font-semibold text-neutral-400 uppercase tracking-wider mb-1.5 px-2">Marketplaces</div>
+      <div class="space-y-1">
+        <a href="/meesho" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Meesho (0% Commission)</a>
+        <a href="/flipkart" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Flipkart (2026 Slabs)</a>
+        <a href="/amazon" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Amazon India (Easy Ship)</a>
+        <a href="/myntra" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Myntra (Fashion)</a>
+        <a href="/shopsy" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Shopsy (Flipkart Value)</a>
+        <a href="/snapdeal" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Snapdeal (Flat ₹10)</a>
       </div>
     </div>
 
     <div>
-      <div class="text-[11px] font-semibold text-neutral-400 uppercase tracking-wider mb-1 px-2">Quick Commerce</div>
-      <div class="space-y-0.5">
-        <a href="/blinkit" class="mobile-nav-link flex items-center justify-between py-1.5 px-2 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50">Blinkit Dark Store Calculator</a>
-        <a href="/zepto" class="mobile-nav-link flex items-center justify-between py-1.5 px-2 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50">Zepto Instant Delivery Calculator</a>
+      <div class="text-[11px] font-semibold text-neutral-400 uppercase tracking-wider mb-1.5 px-2">Quick Commerce</div>
+      <div class="space-y-1">
+        <a href="/blinkit" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Blinkit Dark Store Calculator</a>
+        <a href="/zepto" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Zepto Instant Delivery Calculator</a>
       </div>
     </div>
 
     <div>
-      <div class="text-[11px] font-semibold text-emerald-700 uppercase tracking-wider mb-1 px-2">Essential Seller Tools</div>
-      <div class="space-y-0.5">
-        <a href="/gst-calculator" class="mobile-nav-link flex items-center justify-between py-1.5 px-2 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50">GST &amp; ITC Calculator</a>
-        <a href="/rto-loss-calculator" class="mobile-nav-link flex items-center justify-between py-1.5 px-2 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50">RTO Loss Calculator</a>
-        <a href="/cod-profit-calculator" class="mobile-nav-link flex items-center justify-between py-1.5 px-2 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50">COD Profit Calculator</a>
-        <a href="/prepaid-vs-cod" class="mobile-nav-link flex items-center justify-between py-1.5 px-2 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50">Prepaid vs COD Simulator</a>
-        <a href="/all-calculators" class="mobile-nav-link flex items-center justify-between py-1.5 px-2 rounded-lg text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100">Browse All 61 Calculators &rarr;</a>
-        <a href="/#comparison" class="mobile-nav-link flex items-center justify-between py-1.5 px-2 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50">Compare All Platforms</a>
+      <div class="text-[11px] font-semibold text-emerald-700 uppercase tracking-wider mb-1.5 px-2">Essential Seller Tools</div>
+      <div class="space-y-1">
+        <a href="/gst-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">GST &amp; ITC Calculator</a>
+        <a href="/rto-loss-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">RTO Loss Calculator</a>
+        <a href="/cod-profit-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">COD Profit Calculator</a>
+        <a href="/prepaid-vs-cod" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Prepaid vs COD Simulator</a>
+        <a href="/all-calculators" class="mobile-nav-link flex items-center justify-between min-h-[44px] py-2.5 px-3 rounded-xl text-xs font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 active:bg-emerald-200 border border-emerald-200">Browse All 61 Calculators &rarr;</a>
+        <a href="/#comparison" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Compare All Platforms</a>
       </div>
     </div>
   </div>
