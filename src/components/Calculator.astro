@@ -476,17 +476,9 @@ const {
           <button
             type="button"
             id="copySummaryBtn"
-            class="px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold transition cursor-pointer shadow-xs"
+            class="px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold transition cursor-pointer shadow-xs min-h-[36px] inline-flex items-center"
           >
             Copy Summary
-          </button>
-
-          <button
-            type="button"
-            id="whatsappShareBtn"
-            class="px-3.5 py-1.5 rounded-lg border border-neutral-200 hover:bg-neutral-50 text-neutral-700 text-xs font-medium transition cursor-pointer"
-          >
-            WhatsApp
           </button>
 
           <div id="toastMessage" class="hidden text-xs font-mono px-2.5 py-1 rounded-md bg-emerald-700 text-white shadow-xs">
@@ -1016,15 +1008,6 @@ const {
         });
       });
     }
-
-    // WhatsApp Share Handlers
-    function shareViaWhatsapp() {
-      var text = encodeURIComponent(getSummaryText());
-      window.open('https://api.whatsapp.com/send?text=' + text, '_blank');
-    }
-
-    var waBtn = document.getElementById('whatsappShareBtn');
-    if (waBtn) waBtn.addEventListener('click', shareViaWhatsapp);
 
     // Initial Run for selected marketplace
     setMarketplace(currentMarketplace);
