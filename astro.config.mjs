@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://freesellerprofitcalculator.com',
+  site: 'https://freesellerprofitcalculator.in',
   vite: {
     plugins: [tailwindcss()],
   },
