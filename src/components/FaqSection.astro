@@ -77,16 +77,6 @@ const faqs: FaqItem[] = [
   }
 ];
 
-import { useTranslations } from '../i18n/utils';
-import type { SupportedLanguage } from '../i18n/ui';
-
-interface Props {
-  lang?: SupportedLanguage;
-}
-
-const { lang = 'en' } = Astro.props;
-const t = useTranslations(lang);
-
 const categories = ["All", "Profit & Pricing", "RTO & Returns", "Marketplace Fees", "GST & Taxes"];
 ---
 
