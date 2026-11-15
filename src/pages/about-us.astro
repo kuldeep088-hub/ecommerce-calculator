@@ -1,0 +1,147 @@
+---
+// src/pages/about-us.astro
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="About Us | Free Seller Profit Calculator for Indian E-commerce"
+  description="Learn about Seller Profit Calculator — a 100% free, privacy-first analytical suite built to help Indian marketplace sellers, D2C founders, and quick-commerce merchants master unit economics in 2026."
+  canonicalPath="/about-us"
+>
+  <main class="min-h-screen bg-white">
+    <!-- Hero Banner -->
+    <section class="border-b border-neutral-200 bg-neutral-50/50 py-12 sm:py-16">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+        <div class="inline-flex items-center gap-2 mb-3">
+          <span class="text-xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
+            About Seller Profit Calculator
+          </span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900">
+          Empowering Indian Online Sellers With True Unit Economics
+        </h1>
+        <p class="mt-3 text-sm sm:text-base text-neutral-600 max-w-2xl mx-auto leading-relaxed">
+          Built by e-commerce operators to help sellers, D2C founders, and marketplace brands calculate real take-home profits after hidden commissions, shipping slabs, GST, and RTO losses.
+        </p>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16 space-y-12 text-neutral-700 leading-relaxed text-sm sm:text-base">
+      
+      <!-- The Problem We Saw -->
+      <section class="space-y-4">
+        <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 tracking-tight">
+          Why We Built This Platform
+        </h2>
+        <p>
+          Selling online in India has never been more competitive. With platforms like <strong>Amazon India, Flipkart, Meesho, Myntra, Blinkit, and Zepto</strong> continuously adjusting their referral fee percentages, closing fee slabs, courier weight thresholds, and pickup charges, calculating whether a product is truly profitable has become an operational nightmare.
+        </p>
+        <p>
+          Most calculators online are dangerously outdated or oversimplified:
+        </p>
+        <ul class="list-disc pl-5 space-y-2 text-neutral-600 text-sm">
+          <li>They assume 100% of orders are delivered and completely ignore <strong>Return-to-Origin (RTO)</strong> courier burn on COD orders (typically 15%&ndash;30% in India).</li>
+          <li>They overlook customer return penalty charges (₹120&ndash;₹150 reverse courier fees billed by platforms) and packaging wastage.</li>
+          <li>They forget that <strong>18% GST on marketplace fees</strong> is deducted upfront from settlements (though claimable as ITC in GSTR-3B).</li>
+          <li>They blur the critical difference between <em>Bank Settlement Payout</em> and <em>True Net In-Hand Profit</em>.</li>
+        </ul>
+        <p>
+          We created <strong>Seller Profit Calculator</strong> to solve this: giving every Indian merchant complete mathematical clarity before they spend money on stock or ad campaigns.
+        </p>
+      </section>
+
+      <!-- Key Pillars -->
+      <section class="space-y-6">
+        <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 tracking-tight">
+          Our Core Principles
+        </h2>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <div class="p-5 rounded-2xl bg-white border border-neutral-200 shadow-xs">
+            <div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-sm mb-3">
+              1
+            </div>
+            <h3 class="text-base font-semibold text-neutral-900 mb-1.5">100% Free Forever</h3>
+            <p class="text-xs text-neutral-500 leading-relaxed">
+              No subscription tiers, no paywalls, and no mandatory sign-ups. All 61+ calculators and simulators are accessible to every entrepreneur for free.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white border border-neutral-200 shadow-xs">
+            <div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-sm mb-3">
+              2
+            </div>
+            <h3 class="text-base font-semibold text-neutral-900 mb-1.5">Strict Client-Side Privacy</h3>
+            <p class="text-xs text-neutral-500 leading-relaxed">
+              Your product costs, listing prices, and sales figures are computed entirely inside your browser. We never log, store, or sell your proprietary seller data.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white border border-neutral-200 shadow-xs">
+            <div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-sm mb-3">
+              3
+            </div>
+            <h3 class="text-base font-semibold text-neutral-900 mb-1.5">2026 Verified Slabs</h3>
+            <p class="text-xs text-neutral-500 leading-relaxed">
+              Continuously benchmarked against official rate cards from Amazon India, Flipkart Seller Hub, Meesho Supplier Central, and 3PL courier aggregators.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- What We Cover -->
+      <section class="space-y-4">
+        <h2 class="text-xl sm:text-2xl font-bold text-neutral-900 tracking-tight">
+          Comprehensive 61+ Tools Suite
+        </h2>
+        <p>
+          Our platform spans every critical dimension of Indian online commerce:
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+          <div class="p-3.5 rounded-xl border border-neutral-200 bg-neutral-50/50">
+            <strong class="text-neutral-900 block mb-1">Marketplace Profit Calculators</strong>
+            <span class="text-neutral-500">Dedicated payout solvers for Meesho (0%), Flipkart, Amazon Easy Ship/FBA/FBM, Myntra, AJIO, Shopsy, Snapdeal, JioMart, Blinkit, and Zepto.</span>
+          </div>
+          <div class="p-3.5 rounded-xl border border-neutral-200 bg-neutral-50/50">
+            <strong class="text-neutral-900 block mb-1">Cost &amp; Profit Solvers</strong>
+            <span class="text-neutral-500">Target price calculators, gross vs net margin analysis, break-even unit estimators, COGS batch aggregators, and dropshipping models.</span>
+          </div>
+          <div class="p-3.5 rounded-xl border border-neutral-200 bg-neutral-50/50">
+            <strong class="text-neutral-900 block mb-1">Shipping &amp; Return Analytics</strong>
+            <span class="text-neutral-500">Doorstep RTO loss modeling, volumetric courier weight billing (L×W×H/5000), COD fee comparisons, and reverse logistics costs.</span>
+          </div>
+          <div class="p-3.5 rounded-xl border border-neutral-200 bg-neutral-50/50">
+            <strong class="text-neutral-900 block mb-1">Tax, Advertising &amp; Operations</strong>
+            <span class="text-neutral-500">GST inclusive/exclusive reverse solvers, Input Tax Credit (ITC), 0.5% TCS, 0.1% TDS u/s 194-O, ROAS, ACOS, TACOS, and inventory reorder points.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="p-6 sm:p-8 rounded-2xl bg-neutral-50 border border-neutral-200 text-center space-y-3">
+        <h3 class="text-lg font-bold text-neutral-900">
+          Ready to Calculate Your Real Margins?
+        </h3>
+        <p class="text-xs text-neutral-500 max-w-lg mx-auto">
+          Explore all 61 tools or jump directly into the marketplace profit calculators to protect your bottom line.
+        </p>
+        <div class="pt-2 flex flex-wrap items-center justify-center gap-3">
+          <a
+            href="/"
+            class="px-5 py-2.5 rounded-xl bg-neutral-900 text-white font-medium text-xs hover:bg-neutral-800 transition"
+          >
+            Open Calculator &rarr;
+          </a>
+          <a
+            href="/all-calculators"
+            class="px-5 py-2.5 rounded-xl bg-white border border-neutral-200 text-neutral-800 font-medium text-xs hover:bg-neutral-100 transition"
+          >
+            Browse All 61 Tools
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</Layout>
