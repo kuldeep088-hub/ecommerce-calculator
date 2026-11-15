@@ -11,83 +11,55 @@ const { lang = 'en' } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<section id="comparison" class="py-12 sm:py-16 bg-transparent border-t border-black/[0.05] dark:border-white/[0.06]">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section id="comparison" class="py-12 sm:py-16 bg-transparent border-t border-neutral-200 dark:border-white/[0.08]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
     
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-7 gap-4">
-      <div>
-        <div class="inline-flex items-center gap-1.5 text-xs font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-1.5">
-          <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
-          {t("cmp.badge")}
-        </div>
-        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-neutral-900 dark:text-white">
-          {t("cmp.title")}
-        </h2>
-        <p class="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 mt-1">
-          {t("cmp.sub")}
-        </p>
-      </div>
-
-      <div class="flex items-center gap-2">
-        <span class="text-xs font-mono text-neutral-400 dark:text-neutral-500">Auto-synced with calculator</span>
-      </div>
+    <div class="mb-6">
+      <h2 class="text-xl sm:text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white">
+        Side-by-Side Platform Comparison
+      </h2>
+      <p class="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 mt-1">
+        Direct profit comparison for your exact product price and cost across platforms.
+      </p>
     </div>
 
     <!-- Comparison Table Card -->
-    <div class="card-ver bg-white dark:bg-[#0b0b0b] border border-black/[0.06] dark:border-white/[0.08] rounded-2xl overflow-hidden">
+    <div class="bg-white dark:bg-[#0b0b0b] border border-neutral-200 dark:border-white/[0.08] rounded-2xl overflow-hidden shadow-xs">
       
-      <!-- Mobile Swipe Helper Indicator -->
-      <div class="sm:hidden px-4 py-2 bg-neutral-50/70 dark:bg-neutral-900/60 border-b border-black/[0.04] dark:border-white/[0.06] flex items-center justify-between text-[11px] text-neutral-500 dark:text-neutral-400 font-mono">
-        <span class="flex items-center gap-1.5">
-          <svg class="w-3.5 h-3.5 text-blue-500 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
-          Swipe sideways to compare all platforms
-        </span>
-        <span>Scroll &rarr;</span>
-      </div>
-
       <div class="overflow-x-auto touch-scroll no-scrollbar">
-        <table class="w-full min-w-[580px] text-left text-xs sm:text-sm">
+        <table class="w-full min-w-[560px] text-left text-xs sm:text-sm">
           
           <!-- Head -->
           <thead>
-            <tr class="border-b border-black/[0.06] dark:border-white/[0.08] bg-neutral-50/70 dark:bg-neutral-900/40 font-semibold text-neutral-700 dark:text-neutral-300">
-              <th class="p-4 sm:p-5 w-1/4 sticky left-0 bg-neutral-50 dark:bg-neutral-900 z-10 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.06)]">Metric / Fee Breakdown</th>
+            <tr class="border-b border-neutral-200 dark:border-white/[0.08] bg-neutral-50/70 dark:bg-neutral-900/40 font-semibold text-neutral-700 dark:text-neutral-300">
+              <th class="p-4 w-1/4 sticky left-0 bg-neutral-50 dark:bg-neutral-900 z-10">Metric / Fee Breakdown</th>
               
               <!-- Meesho -->
-              <th class="p-4 sm:p-5 w-1/4 border-l border-black/[0.05] dark:border-white/[0.06]">
+              <th class="p-4 w-1/4 border-l border-neutral-200 dark:border-white/[0.06]">
                 <div class="flex items-center justify-between">
-                  <div class="flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded-full bg-pink-500"></span>
-                    <span class="font-bold text-neutral-900 dark:text-white">Meesho</span>
-                  </div>
-                  <span id="badgeWinnerMeesho" class="hidden text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/20 font-bold">
-                    HIGHEST PROFIT
+                  <span class="font-bold text-neutral-900 dark:text-white">Meesho</span>
+                  <span id="badgeWinnerMeesho" class="hidden text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 font-bold">
+                    WINNER
                   </span>
                 </div>
               </th>
 
               <!-- Flipkart -->
-              <th class="p-4 sm:p-5 w-1/4 border-l border-black/[0.05] dark:border-white/[0.06]">
+              <th class="p-4 w-1/4 border-l border-neutral-200 dark:border-white/[0.06]">
                 <div class="flex items-center justify-between">
-                  <div class="flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
-                    <span class="font-bold text-neutral-900 dark:text-white">Flipkart</span>
-                  </div>
-                  <span id="badgeWinnerFlipkart" class="hidden text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/20 font-bold">
-                    HIGHEST PROFIT
+                  <span class="font-bold text-neutral-900 dark:text-white">Flipkart</span>
+                  <span id="badgeWinnerFlipkart" class="hidden text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 font-bold">
+                    WINNER
                   </span>
                 </div>
               </th>
 
               <!-- Amazon -->
-              <th class="p-4 sm:p-5 w-1/4 border-l border-black/[0.05] dark:border-white/[0.06]">
+              <th class="p-4 w-1/4 border-l border-neutral-200 dark:border-white/[0.06]">
                 <div class="flex items-center justify-between">
-                  <div class="flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
-                    <span class="font-bold text-neutral-900 dark:text-white">Amazon India</span>
-                  </div>
-                  <span id="badgeWinnerAmazon" class="hidden text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/20 font-bold">
-                    HIGHEST PROFIT
+                  <span class="font-bold text-neutral-900 dark:text-white">Amazon India</span>
+                  <span id="badgeWinnerAmazon" class="hidden text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 font-bold">
+                    WINNER
                   </span>
                 </div>
               </th>

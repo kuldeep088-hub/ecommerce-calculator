@@ -4,14 +4,14 @@
 
 @layer base {
   :root {
-    --canvas: #f8fafc;
+    --canvas: #ffffff;
     --canvas-elevated: #ffffff;
-    --ink: #0f172a;
-    --body: #334155;
-    --mute: #64748b;
-    --faint: #94a3b8;
-    --hairline: #e2e8f0;
-    --hairline-soft: #f1f5f9;
+    --ink: #111827;
+    --body: #4b5563;
+    --mute: #9ca3af;
+    --faint: #d1d5db;
+    --hairline: #e5e7eb;
+    --hairline-soft: #f3f4f6;
     --brand-amazon: #f59e0b;
     --brand-flipkart: #2563eb;
     --brand-meesho: #db2777;

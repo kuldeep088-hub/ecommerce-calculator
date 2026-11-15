@@ -11,27 +11,23 @@ const { lang = 'en' } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<section id="reverse-solver" class="py-12 sm:py-16 bg-transparent border-t border-black/[0.05] dark:border-white/[0.06]">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section id="reverse-solver" class="py-12 sm:py-16 bg-transparent border-t border-neutral-200 dark:border-white/[0.08]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
     
-    <div class="max-w-3xl mb-7">
-      <div class="inline-flex items-center gap-1.5 text-xs font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-wider mb-1.5">
-        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-        {t("solver.badge")}
-      </div>
-      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-neutral-900 dark:text-white">
-        {t("solver.title")}
+    <div class="mb-6">
+      <h2 class="text-xl sm:text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white">
+        Target Price Solver
       </h2>
       <p class="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 mt-1">
-        {t("solver.sub")}
+        Enter your desired profit or margin to find the required listing price across platforms.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
       
       <!-- Inputs (5 Cols) -->
-      <div class="lg:col-span-5 card-ver p-4 sm:p-6 bg-white dark:bg-[#0b0b0b] border border-black/[0.06] dark:border-white/[0.08]">
-        <h3 class="text-xs font-semibold uppercase tracking-wider text-neutral-900 dark:text-white mb-4">Your Cost &amp; Profit Goal</h3>
+      <div class="lg:col-span-5 bg-white dark:bg-[#0b0b0b] border border-neutral-200 dark:border-white/[0.08] rounded-2xl p-5 sm:p-6 shadow-xs">
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-neutral-700 dark:text-neutral-300 mb-4">Cost &amp; Profit Goal</h3>
         
         <form id="solverForm" class="space-y-4" onsubmit="return false;">
           
