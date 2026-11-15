@@ -6,14 +6,18 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title?: string;
   description?: string;
+  canonicalPath?: string;
+  activePlatform?: 'meesho' | 'flipkart' | 'amazon' | 'snapdeal' | 'home';
 }
 
 const {
   title = "Seller Profit Calculator | Free Meesho, Flipkart & Amazon Profit & Fee Calculator",
-  description = "Calculate exact net in-hand profit, marketplace commissions, courier shipping charges, GST deductions, and expected RTO / customer return losses for Meesho, Flipkart & Amazon sellers. 100% free, updated for 2026."
+  description = "Calculate exact net in-hand profit, marketplace commissions, courier shipping charges, GST deductions, and expected RTO / customer return losses for Meesho, Flipkart & Amazon sellers. 100% free, updated for 2026.",
+  canonicalPath = "/",
+  activePlatform = "home"
 } = Astro.props;
 
-const canonicalUrl = "https://freesellerprofitcalculator.com/";
+const canonicalUrl = `https://freesellerprofitcalculator.com${canonicalPath}`;
 ---
 
 <!doctype html>
@@ -77,7 +81,7 @@ const canonicalUrl = "https://freesellerprofitcalculator.com/";
     </script>
   </head>
   <body class="min-h-screen flex flex-col bg-white text-neutral-900 antialiased selection:bg-neutral-200 selection:text-neutral-900 transition-colors duration-150 overflow-x-hidden">
-    <Header />
+    <Header activePlatform={activePlatform} />
     <main class="flex-1 pb-16 lg:pb-0">
       <slot />
     </main>

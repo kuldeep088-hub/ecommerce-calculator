@@ -1,5 +1,10 @@
 ---
 // src/components/Header.astro
+interface Props {
+  activePlatform?: 'meesho' | 'flipkart' | 'amazon' | 'snapdeal' | 'home';
+}
+
+const { activePlatform = 'home' } = Astro.props;
 ---
 
 <header class="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-neutral-200 transition-all">
@@ -14,13 +19,39 @@
       </div>
     </a>
 
-    <!-- Navigation / Quick Anchor Links -->
-    <nav class="hidden md:flex items-center gap-6 text-xs sm:text-[13px] text-neutral-600">
-      <a href="#calculator" class="hover:text-black transition-colors font-medium">Calculator</a>
-      <a href="#comparison" class="hover:text-black transition-colors font-medium">Compare</a>
-      <a href="#reverse-solver" class="hover:text-black transition-colors font-medium">Target Solver</a>
-      <a href="#fee-guide" class="hover:text-black transition-colors font-medium">Fee Rates</a>
-      <a href="#faq" class="hover:text-black transition-colors font-medium">FAQ</a>
+    <!-- Navigation / Marketplace Page Links -->
+    <nav class="hidden md:flex items-center gap-1 sm:gap-2 text-xs sm:text-[13px]">
+      <a
+        href="/meesho"
+        class={`px-3 py-1.5 rounded-lg transition font-medium ${activePlatform === 'meesho' ? 'bg-neutral-100 text-neutral-900 font-semibold' : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50'}`}
+      >
+        Meesho
+      </a>
+      <a
+        href="/flipkart"
+        class={`px-3 py-1.5 rounded-lg transition font-medium ${activePlatform === 'flipkart' ? 'bg-neutral-100 text-neutral-900 font-semibold' : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50'}`}
+      >
+        Flipkart
+      </a>
+      <a
+        href="/amazon"
+        class={`px-3 py-1.5 rounded-lg transition font-medium ${activePlatform === 'amazon' ? 'bg-neutral-100 text-neutral-900 font-semibold' : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50'}`}
+      >
+        Amazon India
+      </a>
+      <a
+        href="/snapdeal"
+        class={`px-3 py-1.5 rounded-lg transition font-medium ${activePlatform === 'snapdeal' ? 'bg-neutral-100 text-neutral-900 font-semibold' : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50'}`}
+      >
+        Snapdeal
+      </a>
+      <span class="w-px h-4 bg-neutral-200 mx-1"></span>
+      <a
+        href="/#comparison"
+        class="px-3 py-1.5 rounded-lg transition font-medium text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50"
+      >
+        Compare All
+      </a>
     </nav>
 
     <!-- Mobile Hamburger Button -->
@@ -44,20 +75,20 @@
 
   <!-- Collapsible Mobile Navigation Drawer -->
   <div id="mobileMenu" class="hidden md:hidden border-t border-neutral-200 bg-white px-4 py-3 space-y-1">
-    <a href="#calculator" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-lg text-xs sm:text-sm font-medium text-neutral-800 hover:bg-neutral-100 transition">
-      <span>Calculator</span>
+    <a href="/meesho" class={`mobile-nav-link flex items-center justify-between py-2 px-3 rounded-lg text-xs sm:text-sm font-medium transition ${activePlatform === 'meesho' ? 'bg-neutral-100 text-neutral-900 font-semibold' : 'text-neutral-800 hover:bg-neutral-100'}`}>
+      <span>Meesho Calculator</span>
     </a>
-    <a href="#comparison" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-lg text-xs sm:text-sm font-medium text-neutral-800 hover:bg-neutral-100 transition">
-      <span>Compare</span>
+    <a href="/flipkart" class={`mobile-nav-link flex items-center justify-between py-2 px-3 rounded-lg text-xs sm:text-sm font-medium transition ${activePlatform === 'flipkart' ? 'bg-neutral-100 text-neutral-900 font-semibold' : 'text-neutral-800 hover:bg-neutral-100'}`}>
+      <span>Flipkart Calculator</span>
     </a>
-    <a href="#reverse-solver" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-lg text-xs sm:text-sm font-medium text-neutral-800 hover:bg-neutral-100 transition">
-      <span>Target Solver</span>
+    <a href="/amazon" class={`mobile-nav-link flex items-center justify-between py-2 px-3 rounded-lg text-xs sm:text-sm font-medium transition ${activePlatform === 'amazon' ? 'bg-neutral-100 text-neutral-900 font-semibold' : 'text-neutral-800 hover:bg-neutral-100'}`}>
+      <span>Amazon India Calculator</span>
     </a>
-    <a href="#fee-guide" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-lg text-xs sm:text-sm font-medium text-neutral-800 hover:bg-neutral-100 transition">
-      <span>Fee Rates</span>
+    <a href="/snapdeal" class={`mobile-nav-link flex items-center justify-between py-2 px-3 rounded-lg text-xs sm:text-sm font-medium transition ${activePlatform === 'snapdeal' ? 'bg-neutral-100 text-neutral-900 font-semibold' : 'text-neutral-800 hover:bg-neutral-100'}`}>
+      <span>Snapdeal Calculator</span>
     </a>
-    <a href="#faq" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-lg text-xs sm:text-sm font-medium text-neutral-800 hover:bg-neutral-100 transition">
-      <span>FAQ</span>
+    <a href="/#comparison" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-lg text-xs sm:text-sm font-medium text-neutral-800 hover:bg-neutral-100 transition">
+      <span>Compare All Platforms</span>
     </a>
   </div>
 </header>

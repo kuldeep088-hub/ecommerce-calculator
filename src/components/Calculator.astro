@@ -1,52 +1,80 @@
 ---
 import { CATEGORIES } from '../data/categories';
 import { MARKETPLACES } from '../data/marketplaces';
+
+interface Props {
+  initialMarketplace?: 'meesho' | 'flipkart' | 'amazon' | 'snapdeal';
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  initialMarketplace = 'meesho',
+  title = "Seller Profit Calculator",
+  subtitle = "Calculate your exact in-hand profit and bank payout for Indian marketplaces."
+} = Astro.props;
 ---
 
-<section id="calculator" class="pt-6 sm:pt-10 pb-14 sm:pb-16">
+<section id="calculator" data-initial-mp={initialMarketplace} class="pt-6 sm:pt-10 pb-14 sm:pb-16">
   <div class="max-w-6xl mx-auto px-4 sm:px-6">
     
     <!-- Clean, Simple Header -->
     <div class="text-center max-w-xl mx-auto mb-6 sm:mb-8">
       <h1 class="text-2xl sm:text-3xl font-semibold tracking-tight text-neutral-900">
-        Seller Profit Calculator
+        {title}
       </h1>
       <p class="mt-1.5 text-xs sm:text-sm text-neutral-500">
-        Calculate your exact in-hand profit and bank payout for Indian marketplaces.
+        {subtitle}
       </p>
     </div>
 
-    <!-- Marketplace Tabs -->
+    <!-- Marketplace Tabs / Dedicated Page Links -->
     <div class="flex flex-col items-center justify-center mb-6 sm:mb-8">
       <div class="inline-flex p-1 rounded-xl bg-neutral-100 border border-neutral-200" id="marketplaceTabs">
-        <button
-          type="button"
+        <a
+          href="/meesho"
           data-mp="meesho"
-          class="mp-tab px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all bg-white text-neutral-900 shadow-xs"
+          class={`mp-tab px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
+            initialMarketplace === 'meesho'
+              ? 'bg-white text-neutral-900 shadow-xs font-semibold'
+              : 'text-neutral-600 hover:text-neutral-900'
+          }`}
         >
           Meesho
-        </button>
-        <button
-          type="button"
+        </a>
+        <a
+          href="/flipkart"
           data-mp="flipkart"
-          class="mp-tab px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all text-neutral-600 hover:text-neutral-900"
+          class={`mp-tab px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
+            initialMarketplace === 'flipkart'
+              ? 'bg-white text-neutral-900 shadow-xs font-semibold'
+              : 'text-neutral-600 hover:text-neutral-900'
+          }`}
         >
           Flipkart
-        </button>
-        <button
-          type="button"
+        </a>
+        <a
+          href="/amazon"
           data-mp="amazon"
-          class="mp-tab px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all text-neutral-600 hover:text-neutral-900"
+          class={`mp-tab px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
+            initialMarketplace === 'amazon'
+              ? 'bg-white text-neutral-900 shadow-xs font-semibold'
+              : 'text-neutral-600 hover:text-neutral-900'
+          }`}
         >
           Amazon India
-        </button>
-        <button
-          type="button"
+        </a>
+        <a
+          href="/snapdeal"
           data-mp="snapdeal"
-          class="mp-tab px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all text-neutral-600 hover:text-neutral-900"
+          class={`mp-tab px-4 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all ${
+            initialMarketplace === 'snapdeal'
+              ? 'bg-white text-neutral-900 shadow-xs font-semibold'
+              : 'text-neutral-600 hover:text-neutral-900'
+          }`}
         >
           Snapdeal
-        </button>
+        </a>
       </div>
       <p class="mt-2 text-xs text-neutral-500 text-center" id="calcCardSubtitle">
         Zero referral commission model with weight-slab courier rates.
@@ -473,7 +501,8 @@ import { MARKETPLACES } from '../data/marketplaces';
     custom: { meesho: 0, flipkart: 10.0, amazon: 10.0, snapdeal: 5.0, defaultGst: 18 }
   };
 
-  var currentMarketplace = 'meesho';
+  var calcSection = document.getElementById('calculator');
+  var currentMarketplace = (calcSection && calcSection.dataset.initialMp) ? calcSection.dataset.initialMp : 'meesho';
 
   // Helper functions
   function getAmazonClosingFee(price) {
@@ -894,8 +923,8 @@ import { MARKETPLACES } from '../data/marketplaces';
     var waBtn = document.getElementById('whatsappShareBtn');
     if (waBtn) waBtn.addEventListener('click', shareViaWhatsapp);
 
-    // Initial Run
-    calculate();
+    // Initial Run for selected marketplace
+    setMarketplace(currentMarketplace);
   }
 
   if (document.readyState === 'loading') {
