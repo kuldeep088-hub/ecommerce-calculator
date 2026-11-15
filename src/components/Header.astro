@@ -71,35 +71,40 @@ const { activePlatform = 'home' } = Astro.props;
           type="button"
           class="px-2.5 py-1.5 rounded-lg text-neutral-700 hover:text-neutral-900 hover:bg-neutral-50 font-semibold inline-flex items-center gap-1 cursor-pointer"
         >
-          <span class="text-emerald-700">Seller Tools</span>
+          <span class="text-emerald-700">Calculators</span>
           <svg class="w-3.5 h-3.5 text-emerald-600 group-hover:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
         </button>
-        <div class="absolute right-0 mt-1 w-60 bg-white border border-neutral-200 rounded-xl shadow-lg py-2 hidden group-hover:block z-50">
-          <a href="/gst-calculator" class="block px-3.5 py-2 text-xs text-neutral-700 hover:bg-neutral-50">
-            <span class="font-semibold text-neutral-900 block">GST Calculator</span>
+        <div class="absolute right-0 mt-1 w-64 bg-white border border-neutral-200 rounded-xl shadow-lg py-2 hidden group-hover:block z-50">
+          <div class="px-3.5 py-1 text-[10px] font-semibold uppercase text-neutral-400 font-sans">Core Seller Tools</div>
+          <a href="/gst-calculator" class="block px-3.5 py-1.5 text-xs text-neutral-700 hover:bg-neutral-50">
+            <span class="font-semibold text-neutral-900 block">GST &amp; ITC Calculator</span>
             <span class="text-[11px] text-neutral-500">Inclusive, Exclusive &amp; ITC Slabs</span>
           </a>
-          <a href="/rto-loss-calculator" class="block px-3.5 py-2 text-xs text-neutral-700 hover:bg-neutral-50">
+          <a href="/rto-loss-calculator" class="block px-3.5 py-1.5 text-xs text-neutral-700 hover:bg-neutral-50">
             <span class="font-semibold text-neutral-900 block">RTO Loss Calculator</span>
             <span class="text-[11px] text-neutral-500">Calculate doorstep return cash burn</span>
           </a>
-          <a href="/cod-profit-calculator" class="block px-3.5 py-2 text-xs text-neutral-700 hover:bg-neutral-50">
+          <a href="/cod-profit-calculator" class="block px-3.5 py-1.5 text-xs text-neutral-700 hover:bg-neutral-50">
             <span class="font-semibold text-neutral-900 block">COD Profit Calculator</span>
             <span class="text-[11px] text-neutral-500">Cash on delivery fees &amp; margins</span>
           </a>
-          <a href="/prepaid-vs-cod" class="block px-3.5 py-2 text-xs text-neutral-700 hover:bg-neutral-50">
+          <a href="/prepaid-vs-cod" class="block px-3.5 py-1.5 text-xs text-neutral-700 hover:bg-neutral-50">
             <span class="font-semibold text-neutral-900 block">Prepaid vs COD Simulator</span>
             <span class="text-[11px] text-neutral-500">Compare profit &amp; safe discount</span>
+          </a>
+          <div class="border-t border-neutral-100 my-1.5"></div>
+          <a href="/all-calculators" class="block px-3.5 py-1.5 text-xs text-emerald-700 font-semibold hover:bg-emerald-50 rounded-lg mx-1">
+            Browse All 61 Calculators &rarr;
           </a>
         </div>
       </div>
 
       <span class="w-px h-4 bg-neutral-200 mx-1"></span>
       <a
-        href="/#comparison"
-        class="px-2.5 py-1.5 rounded-lg transition font-medium text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50"
+        href="/all-calculators"
+        class="px-2.5 py-1.5 rounded-lg transition font-medium text-xs bg-neutral-900 text-white hover:bg-neutral-800"
       >
-        Compare All
+        All 61 Tools
       </a>
     </nav>
 
@@ -151,6 +156,7 @@ const { activePlatform = 'home' } = Astro.props;
         <a href="/rto-loss-calculator" class="mobile-nav-link flex items-center justify-between py-1.5 px-2 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50">RTO Loss Calculator</a>
         <a href="/cod-profit-calculator" class="mobile-nav-link flex items-center justify-between py-1.5 px-2 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50">COD Profit Calculator</a>
         <a href="/prepaid-vs-cod" class="mobile-nav-link flex items-center justify-between py-1.5 px-2 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50">Prepaid vs COD Simulator</a>
+        <a href="/all-calculators" class="mobile-nav-link flex items-center justify-between py-1.5 px-2 rounded-lg text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100">Browse All 61 Calculators &rarr;</a>
         <a href="/#comparison" class="mobile-nav-link flex items-center justify-between py-1.5 px-2 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50">Compare All Platforms</a>
       </div>
     </div>

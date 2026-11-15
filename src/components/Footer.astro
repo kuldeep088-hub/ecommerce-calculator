@@ -2,75 +2,131 @@
 // src/components/Footer.astro
 ---
 
-<footer class="bg-white border-t border-neutral-200 py-10 text-xs text-neutral-500">
+<footer class="bg-white border-t border-neutral-200 py-12 text-xs text-neutral-500">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
-      
-      <!-- Brand & Description -->
-      <div class="space-y-2">
-        <div class="flex items-center gap-2">
-          <div class="w-6 h-6 rounded-md bg-emerald-600 flex items-center justify-center text-white font-bold text-xs">
-            ₹
-          </div>
-          <span class="font-semibold text-sm text-neutral-900">Seller Profit Calculator</span>
+    <!-- Top Catalog Callout -->
+    <div class="mb-10 p-5 rounded-2xl bg-neutral-50 border border-neutral-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div>
+        <div class="flex items-center gap-2 mb-1">
+          <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+          <span class="font-semibold text-sm text-neutral-900">Explore the Full 61+ Indian Seller Tools Suite</span>
         </div>
-        <p class="text-neutral-500 leading-relaxed text-xs">
-          Comprehensive, 100% free profit &amp; fee calculation suite for Indian e-commerce, D2C, and quick commerce brands.
+        <p class="text-neutral-500 text-xs">
+          Amazon FBA, Flipkart, Meesho, AJIO, Quick Commerce, GST, Shipping, ROAS, and Operations.
         </p>
       </div>
+      <a
+        href="/all-calculators"
+        class="shrink-0 px-4 py-2 rounded-xl bg-neutral-900 text-white font-medium text-xs hover:bg-neutral-800 transition"
+      >
+        View All 61 Calculators &rarr;
+      </a>
+    </div>
 
-      <!-- Marketplace Calculators -->
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-10">
+      
+      <!-- Marketplaces -->
       <div>
-        <h4 class="font-semibold text-neutral-900 mb-2.5 uppercase tracking-wider text-[11px]">
+        <h4 class="font-semibold text-neutral-900 mb-3 uppercase tracking-wider text-[11px]">
           Marketplaces
         </h4>
         <ul class="space-y-1.5">
-          <li><a href="/meesho" class="hover:text-black transition">Meesho Profit Calculator (0%)</a></li>
-          <li><a href="/flipkart" class="hover:text-black transition">Flipkart Fee Calculator (2026)</a></li>
-          <li><a href="/amazon" class="hover:text-black transition">Amazon Easy Ship Calculator</a></li>
-          <li><a href="/myntra" class="hover:text-black transition">Myntra Fashion Calculator</a></li>
-          <li><a href="/shopsy" class="hover:text-black transition">Shopsy Value Calculator</a></li>
-          <li><a href="/snapdeal" class="hover:text-black transition">Snapdeal Fee Calculator</a></li>
+          <li><a href="/amazon" class="hover:text-black transition">Amazon Profit</a></li>
+          <li><a href="/flipkart" class="hover:text-black transition">Flipkart Fee</a></li>
+          <li><a href="/meesho" class="hover:text-black transition">Meesho Profit (0%)</a></li>
+          <li><a href="/amazon-fba-calculator" class="hover:text-black transition">Amazon FBA Profit</a></li>
+          <li><a href="/amazon-fbm-calculator" class="hover:text-black transition">Amazon FBM Self-Ship</a></li>
+          <li><a href="/myntra" class="hover:text-black transition">Myntra Fashion</a></li>
+          <li><a href="/ajio" class="hover:text-black transition">AJIO Marketplace</a></li>
+          <li><a href="/shopsy" class="hover:text-black transition">Shopsy Value</a></li>
+          <li><a href="/jiomart" class="hover:text-black transition">JioMart Seller</a></li>
+          <li><a href="/shopify-profit-calculator" class="hover:text-black transition">Shopify D2C</a></li>
+          <li><a href="/blinkit" class="hover:text-black transition">Blinkit Dark Store</a></li>
+          <li><a href="/zepto" class="hover:text-black transition">Zepto Instant</a></li>
         </ul>
       </div>
 
-      <!-- Quick Commerce -->
+      <!-- Cost & Profit -->
       <div>
-        <h4 class="font-semibold text-neutral-900 mb-2.5 uppercase tracking-wider text-[11px]">
-          Quick Commerce
+        <h4 class="font-semibold text-neutral-900 mb-3 uppercase tracking-wider text-[11px]">
+          Cost &amp; Profit
         </h4>
         <ul class="space-y-1.5">
-          <li><a href="/blinkit" class="hover:text-black transition">Blinkit Margin Calculator</a></li>
-          <li><a href="/zepto" class="hover:text-black transition">Zepto Instant Delivery Calculator</a></li>
-          <li><a href="/#comparison" class="hover:text-black transition">Multi-Platform Comparison</a></li>
-          <li><a href="/#fee-guide" class="hover:text-black transition">2026 Fee Slabs Guide</a></li>
+          <li><a href="/profit-margin-calculator" class="hover:text-black transition font-medium">Profit Margin %</a></li>
+          <li><a href="/selling-price-calculator" class="hover:text-black transition font-medium">Product Selling Price</a></li>
+          <li><a href="/product-cost-calculator" class="hover:text-black transition">Product COGS &amp; Batch</a></li>
+          <li><a href="/product-markup-calculator" class="hover:text-black transition">Product Markup</a></li>
+          <li><a href="/net-profit-calculator" class="hover:text-black transition">Net Profit Calculator</a></li>
+          <li><a href="/gross-profit-calculator" class="hover:text-black transition">Gross Profit Margin</a></li>
+          <li><a href="/break-even-calculator" class="hover:text-black transition">Break-Even Units</a></li>
+          <li><a href="/product-roi-calculator" class="hover:text-black transition">Product ROI %</a></li>
+          <li><a href="/wholesale-profit-calculator" class="hover:text-black transition">Wholesale Profit</a></li>
+          <li><a href="/dropshipping-profit-calculator" class="hover:text-black transition">Dropshipping Profit</a></li>
         </ul>
       </div>
 
-      <!-- Seller Tools -->
+      <!-- Shipping & Returns -->
       <div>
-        <h4 class="font-semibold text-emerald-800 mb-2.5 uppercase tracking-wider text-[11px]">
-          Seller Tools
+        <h4 class="font-semibold text-neutral-900 mb-3 uppercase tracking-wider text-[11px]">
+          Shipping &amp; Logistics
         </h4>
         <ul class="space-y-1.5">
-          <li><a href="/gst-calculator" class="hover:text-black transition font-medium">GST &amp; ITC Calculator</a></li>
           <li><a href="/rto-loss-calculator" class="hover:text-black transition font-medium">RTO Loss Calculator</a></li>
-          <li><a href="/cod-profit-calculator" class="hover:text-black transition font-medium">COD Profit Calculator</a></li>
+          <li><a href="/return-loss-calculator" class="hover:text-black transition">Customer Return Loss</a></li>
+          <li><a href="/shipping-cost-calculator" class="hover:text-black transition">Volumetric Weight</a></li>
+          <li><a href="/courier-charges-calculator" class="hover:text-black transition">Courier Charges (3PL)</a></li>
+          <li><a href="/cod-profit-calculator" class="hover:text-black transition font-medium">COD Profit &amp; Fee</a></li>
           <li><a href="/prepaid-vs-cod" class="hover:text-black transition font-medium">Prepaid vs COD Simulator</a></li>
-          <li><a href="/#reverse-solver" class="hover:text-black transition">Target Price Solver</a></li>
-          <li><a href="/#faq" class="hover:text-black transition">Seller FAQ</a></li>
+          <li><a href="/reverse-shipping-cost-calculator" class="hover:text-black transition">Reverse Freight</a></li>
+          <li><a href="/order-cancellation-loss-calculator" class="hover:text-black transition">Cancellation Loss</a></li>
+        </ul>
+      </div>
+
+      <!-- GST & Taxes -->
+      <div>
+        <h4 class="font-semibold text-neutral-900 mb-3 uppercase tracking-wider text-[11px]">
+          GST &amp; Taxes
+        </h4>
+        <ul class="space-y-1.5">
+          <li><a href="/gst-calculator" class="hover:text-black transition font-medium">GST &amp; ITC Slabs</a></li>
+          <li><a href="/gst-inclusive-exclusive-calculator" class="hover:text-black transition">GST Inclusive/Exclusive</a></li>
+          <li><a href="/gst-on-marketplace-fees-calculator" class="hover:text-black transition">GST on Platform Fees</a></li>
+          <li><a href="/gst-profit-calculator" class="hover:text-black transition">GST Net Liability</a></li>
+          <li><a href="/input-tax-credit-calculator" class="hover:text-black transition">Input Tax Credit (ITC)</a></li>
+          <li><a href="/tcs-calculator" class="hover:text-black transition">0.5% TCS on E-commerce</a></li>
+          <li><a href="/tds-calculator" class="hover:text-black transition">0.1% TDS (Sec 194-O)</a></li>
+        </ul>
+      </div>
+
+      <!-- Advertising & Operations -->
+      <div>
+        <h4 class="font-semibold text-neutral-900 mb-3 uppercase tracking-wider text-[11px]">
+          Ads &amp; Operations
+        </h4>
+        <ul class="space-y-1.5">
+          <li><a href="/roas-calculator" class="hover:text-black transition font-medium">ROAS Multiplier</a></li>
+          <li><a href="/acos-calculator" class="hover:text-black transition font-medium">ACOS Calculator</a></li>
+          <li><a href="/tacos-calculator" class="hover:text-black transition">TACOS Brand Health</a></li>
+          <li><a href="/break-even-roas-calculator" class="hover:text-black transition">Break-Even ROAS</a></li>
+          <li><a href="/cost-per-order-calculator" class="hover:text-black transition">Cost Per Order (CPO)</a></li>
+          <li><a href="/customer-acquisition-cost-calculator" class="hover:text-black transition">CAC &amp; LTV</a></li>
+          <li><a href="/marketplace-settlement-calculator" class="hover:text-black transition">Settlement Payout</a></li>
+          <li><a href="/inventory-reorder-calculator" class="hover:text-black transition">Inventory Reorder Point</a></li>
+          <li><a href="/minimum-selling-price-calculator" class="hover:text-black transition">Minimum Selling Price</a></li>
         </ul>
       </div>
 
     </div>
 
+    <!-- Bottom Bar -->
     <div class="border-t border-neutral-100 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-neutral-400 text-[11px]">
       <div>
-        &copy; 2026 freesellerprofitcalculator.com &bull; Free Indian marketplace seller tool.
+        &copy; 2026 freesellerprofitcalculator.com &bull; Free Indian marketplace seller tool suite.
       </div>
       <div class="flex items-center gap-4">
-        <a href="#calculator" class="hover:text-neutral-600 transition">Back to Top &uarr;</a>
+        <a href="/all-calculators" class="hover:text-neutral-600 transition">Directory</a>
+        <a href="#top" class="hover:text-neutral-600 transition">Back to Top &uarr;</a>
       </div>
     </div>
 

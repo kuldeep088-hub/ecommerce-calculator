@@ -1,0 +1,29 @@
+---
+// src/pages/[slug].astro
+import Layout from '../layouts/Layout.astro';
+import GenericCalculator from '../components/GenericCalculator.astro';
+import { CALCULATORS_CATALOG, type CalculatorDefinition } from '../data/calculatorsData';
+
+export function getStaticPaths() {
+  return CALCULATORS_CATALOG.map((calc) => ({
+    params: { slug: calc.slug },
+    props: { calculator: calc },
+  }));
+}
+
+interface Props {
+  calculator: CalculatorDefinition;
+}
+
+const { calculator } = Astro.props;
+---
+
+<Layout
+  title={calculator.metaTitle}
+  description={calculator.metaDescription}
+  canonicalPath={`/${calculator.slug}`}
+>
+  <main class="min-h-screen bg-white">
+    <GenericCalculator calculator={calculator} />
+  </main>
+</Layout>

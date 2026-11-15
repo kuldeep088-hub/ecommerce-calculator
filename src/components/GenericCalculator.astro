@@ -1,0 +1,1044 @@
+---
+// src/components/GenericCalculator.astro
+import type { CalculatorDefinition } from '../data/calculatorsData';
+
+interface Props {
+  calculator: CalculatorDefinition;
+}
+
+const { calculator } = Astro.props;
+---
+
+<section class="pt-6 sm:pt-10 pb-16">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    
+    <!-- Top Breadcrumb & Badge -->
+    <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+      <div class="inline-flex items-center gap-2 mb-2">
+        <a href="/all-calculators" class="text-xs font-mono font-medium text-neutral-500 hover:text-neutral-800 transition">
+          Tools
+        </a>
+        <span class="text-neutral-300">/</span>
+        <span class="text-xs font-mono font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
+          {calculator.badge}
+        </span>
+      </div>
+      <h1 class="text-2xl sm:text-3xl font-semibold tracking-tight text-neutral-900">
+        {calculator.title}
+      </h1>
+      <p class="mt-2 text-xs sm:text-sm text-neutral-500 max-w-xl mx-auto">
+        {calculator.subtitle}
+      </p>
+
+      <!-- Formula Pill -->
+      <div class="mt-3.5 inline-block bg-neutral-50 border border-neutral-200 rounded-lg px-3 py-1.5 text-[11px] font-mono text-neutral-600">
+        <span class="font-semibold text-neutral-800">Formula:</span> {calculator.formulaDescription}
+      </div>
+    </div>
+
+    <!-- Main Grid: Form Inputs (5 cols) & Results (7 cols) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start" id="calcContainer" data-calctype={calculator.calcType}>
+      
+      <!-- Inputs Column -->
+      <div class="lg:col-span-5 bg-white border border-neutral-200 rounded-2xl p-5 sm:p-6 shadow-xs">
+        <div class="flex items-center justify-between mb-4 pb-2 border-b border-neutral-100">
+          <h2 class="text-sm font-semibold text-neutral-900">
+            Calculator Inputs
+          </h2>
+          <span class="text-[11px] text-neutral-400 font-mono">Live Sync</span>
+        </div>
+
+        <form id="genericCalcForm" class="space-y-3.5" onsubmit="return false;">
+          {calculator.inputs.map((field) => (
+            <div>
+              <label for={`field_${field.id}`} class="block text-xs font-medium text-neutral-700 mb-1">
+                {field.label}
+              </label>
+
+              {field.type === 'select' ? (
+                <div class="relative">
+                  <select
+                    id={`field_${field.id}`}
+                    name={field.id}
+                    class="calc-input w-full px-3 py-2 bg-white border border-neutral-200 rounded-xl text-xs font-mono text-neutral-900 outline-none focus:border-neutral-900 appearance-none pr-8 cursor-pointer"
+                  >
+                    {field.options?.map((opt) => (
+                      <option value={opt.value} selected={opt.value === field.defaultValue}>
+                        {opt.label}
+                      </option>
+                    ))}
+                  </select>
+                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-neutral-400">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                  </div>
+                </div>
+              ) : field.type === 'range' ? (
+                <div>
+                  <div class="flex justify-between text-xs font-mono text-neutral-600 mb-1">
+                    <span>{field.prefix || ''}<span id={`range_val_${field.id}`}>{field.defaultValue}</span>{field.suffix || ''}</span>
+                  </div>
+                  <input
+                    type="range"
+                    id={`field_${field.id}`}
+                    name={field.id}
+                    value={field.defaultValue}
+                    min={field.min ?? 0}
+                    max={field.max ?? 100}
+                    step={field.step ?? 1}
+                    class="calc-input w-full accent-neutral-900 cursor-pointer"
+                  />
+                </div>
+              ) : (
+                <div class="relative flex items-center">
+                  {field.prefix && (
+                    <span class="absolute left-3 text-xs text-neutral-400 font-mono pointer-events-none">
+                      {field.prefix}
+                    </span>
+                  )}
+                  <input
+                    type="number"
+                    id={`field_${field.id}`}
+                    name={field.id}
+                    value={field.defaultValue}
+                    min={field.min ?? 0}
+                    max={field.max}
+                    step={field.step ?? 'any'}
+                    class={`calc-input w-full px-3 py-2 bg-white border border-neutral-200 rounded-xl text-xs font-mono text-neutral-900 outline-none focus:border-neutral-900 ${field.prefix ? 'pl-7' : ''} ${field.suffix ? 'pr-8' : ''}`}
+                  />
+                  {field.suffix && (
+                    <span class="absolute right-3 text-xs text-neutral-400 font-mono pointer-events-none">
+                      {field.suffix}
+                    </span>
+                  )}
+                </div>
+              )}
+
+              {field.hint && (
+                <p class="text-[10px] text-neutral-400 mt-1">{field.hint}</p>
+              )}
+            </div>
+          ))}
+        </form>
+
+        <!-- Quick Info Callout -->
+        <div class="mt-5 p-3.5 rounded-xl bg-neutral-50 border border-neutral-200 text-xs text-neutral-600">
+          <div class="font-semibold text-neutral-900 mb-1 flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+            {calculator.tipTitle}
+          </div>
+          <p class="text-[11px] leading-relaxed text-neutral-500">
+            {calculator.tipText}
+          </p>
+        </div>
+      </div>
+
+      <!-- Results Column -->
+      <div class="lg:col-span-7 space-y-4">
+        
+        <!-- Hero KPI Card -->
+        <div class="bg-white border border-neutral-200 rounded-2xl p-5 sm:p-6 shadow-xs">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-mono uppercase tracking-wider text-neutral-500">
+              {calculator.heroKpi.label}
+            </span>
+            <span class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-medium">
+              Verified Formula
+            </span>
+          </div>
+
+          <div class="flex items-baseline gap-2">
+            <div id="heroKpiValue" class="text-3xl sm:text-4xl font-mono font-bold tracking-tight text-neutral-900">
+              {calculator.heroKpi.prefix || ''}0{calculator.heroKpi.suffix || ''}
+            </div>
+          </div>
+          <p class="text-[11px] text-neutral-400 mt-1">
+            {calculator.heroKpi.subLabel}
+          </p>
+        </div>
+
+        <!-- Detailed Breakdown Card -->
+        <div class="bg-white border border-neutral-200 rounded-2xl p-5 sm:p-6 shadow-xs">
+          <h3 class="text-xs font-mono uppercase tracking-wider text-neutral-500 mb-3 pb-2 border-b border-neutral-100">
+            Calculation Breakdown
+          </h3>
+
+          <div class="space-y-2.5">
+            {calculator.breakdown.map((row) => (
+              <div class={`flex items-center justify-between text-xs py-1 ${row.isTotal ? 'border-t border-neutral-200 pt-2.5 font-semibold text-neutral-900 text-sm' : 'text-neutral-600'}`}>
+                <span class={row.isTotal ? 'font-semibold text-neutral-900' : ''}>
+                  {row.label}
+                </span>
+                <span
+                  id={`bd_${row.id}`}
+                  class={`font-mono ${row.isTotal ? 'text-emerald-700 font-bold' : row.isNegative ? 'text-neutral-500' : 'text-neutral-900'}`}
+                  data-prefix={row.prefix || ''}
+                  data-suffix={row.suffix || ''}
+                >
+                  --
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Action / Explore More Hub Link -->
+        <div class="flex items-center justify-between px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-xs">
+          <span class="text-neutral-600">Need another metric? Browse 60+ Indian seller tools.</span>
+          <a href="/all-calculators" class="font-semibold text-neutral-900 hover:text-emerald-700 transition">
+            View All Tools &rarr;
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- FAQs Section -->
+    {calculator.faqs && calculator.faqs.length > 0 && (
+      <div class="mt-12 max-w-3xl mx-auto">
+        <h2 class="text-base sm:text-lg font-semibold text-neutral-900 mb-4 text-center">
+          Frequently Asked Questions
+        </h2>
+        <div class="space-y-3">
+          {calculator.faqs.map((faq) => (
+            <div class="bg-white border border-neutral-200 rounded-xl p-4 shadow-xs">
+              <h3 class="text-xs sm:text-sm font-semibold text-neutral-900 mb-1">
+                {faq.q}
+              </h3>
+              <p class="text-xs text-neutral-600 leading-relaxed">
+                {faq.a}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+  </div>
+</section>
+
+<script is:inline>
+(function() {
+  const container = document.getElementById('calcContainer');
+  if (!container) return;
+  const calcType = container.getAttribute('data-calctype');
+  const form = document.getElementById('genericCalcForm');
+  if (!form) return;
+
+  function getVal(name, fallback = 0) {
+    const el = form.elements[name];
+    if (!el) return fallback;
+    const v = parseFloat(el.value);
+    return isNaN(v) ? fallback : v;
+  }
+
+  function getStr(name, fallback = '') {
+    const el = form.elements[name];
+    return el ? el.value : fallback;
+  }
+
+  function setRow(id, value, prefix = '₹', suffix = '') {
+    const el = document.getElementById('bd_' + id);
+    if (!el) return;
+    const rowPrefix = el.getAttribute('data-prefix') || prefix;
+    const rowSuffix = el.getAttribute('data-suffix') || suffix;
+    
+    if (typeof value === 'number') {
+      const formatted = Math.abs(value) >= 1000 ? value.toLocaleString('en-IN', { maximumFractionDigits: 2 }) : value.toFixed(2);
+      el.textContent = `${rowPrefix}${formatted}${rowSuffix}`;
+    } else {
+      el.textContent = `${rowPrefix}${value}${rowSuffix}`;
+    }
+  }
+
+  function setHero(value, prefix = '₹', suffix = '') {
+    const el = document.getElementById('heroKpiValue');
+    if (!el) return;
+    if (typeof value === 'number') {
+      const formatted = Math.abs(value) >= 1000 ? value.toLocaleString('en-IN', { maximumFractionDigits: 2 }) : value.toFixed(2);
+      el.textContent = `${prefix}${formatted}${suffix}`;
+    } else {
+      el.textContent = `${prefix}${value}${suffix}`;
+    }
+  }
+
+  function calculate() {
+    switch (calcType) {
+      // 1. Marketplaces
+      case 'amazon_fba': {
+        const price = getVal('price');
+        const cogs = getVal('cogs');
+        const commRate = getVal('commRate');
+        const fbaPickPack = getVal('fbaPickPack');
+        const fbaStorage = getVal('fbaStorage');
+        const referral = price * (commRate / 100);
+        const closing = price <= 250 ? 5 : price <= 500 ? 11 : price <= 1000 ? 25 : 42;
+        const gstFees = (referral + closing + fbaPickPack + fbaStorage) * 0.18;
+        const netProfit = price - referral - closing - fbaPickPack - fbaStorage - gstFees - cogs;
+        setHero(netProfit);
+        setRow('bdRevenue', price);
+        setRow('bdReferral', referral);
+        setRow('bdClosing', closing);
+        setRow('bdFbaFulfillment', fbaPickPack);
+        setRow('bdStorage', fbaStorage);
+        setRow('bdGstFees', gstFees);
+        setRow('bdCogs', cogs);
+        setRow('bdNetProfit', netProfit);
+        break;
+      }
+      case 'amazon_fbm': {
+        const price = getVal('price');
+        const cogs = getVal('cogs');
+        const commRate = getVal('commRate');
+        const shipping = getVal('shippingCost');
+        const pkg = getVal('packagingCost');
+        const referral = price * (commRate / 100);
+        const closing = price <= 250 ? 5 : price <= 500 ? 11 : price <= 1000 ? 25 : 42;
+        const gstFees = (referral + closing) * 0.18;
+        const netProfit = price - referral - closing - gstFees - shipping - pkg - cogs;
+        setHero(netProfit);
+        setRow('bdRevenue', price);
+        setRow('bdReferral', referral);
+        setRow('bdClosing', closing);
+        setRow('bdCourier', shipping);
+        setRow('bdPkg', pkg);
+        setRow('bdCogs', cogs);
+        setRow('bdNetProfit', netProfit);
+        break;
+      }
+      case 'ajio': {
+        const price = getVal('price');
+        const cogs = getVal('cogs');
+        const commRate = getVal('commRate');
+        const shipping = getVal('shippingCost');
+        const returnRate = getVal('returnRate');
+        const comm = price * (commRate / 100);
+        const gstFees = comm * 0.18;
+        const returnBuffer = price * (returnRate / 100) * 0.25;
+        const netProfit = price - comm - gstFees - shipping - returnBuffer - cogs;
+        setHero(netProfit);
+        setRow('bdRevenue', price);
+        setRow('bdCommission', comm);
+        setRow('bdShipping', shipping);
+        setRow('bdGstFees', gstFees);
+        setRow('bdCogs', cogs);
+        setRow('bdReturnBuffer', returnBuffer);
+        setRow('bdNetProfit', netProfit);
+        break;
+      }
+      case 'jiomart': {
+        const price = getVal('price');
+        const cogs = getVal('cogs');
+        const commRate = getVal('commRate');
+        const shipping = getVal('shippingCost');
+        const comm = price * (commRate / 100);
+        const gstFees = (comm + shipping) * 0.18;
+        const netProfit = price - comm - gstFees - shipping - cogs;
+        setHero(netProfit);
+        setRow('bdRevenue', price);
+        setRow('bdCommission', comm);
+        setRow('bdShipping', shipping);
+        setRow('bdGstFees', gstFees);
+        setRow('bdCogs', cogs);
+        setRow('bdNetProfit', netProfit);
+        break;
+      }
+      case 'shopify': {
+        const price = getVal('price');
+        const cogs = getVal('cogs');
+        const adSpend = getVal('adSpend');
+        const shipping = getVal('shippingCost');
+        const pgFeeRate = getVal('pgFeeRate');
+        const pkg = getVal('packagingCost');
+        const pgFee = price * (pgFeeRate / 100) * 1.18;
+        const netProfit = price - cogs - adSpend - shipping - pgFee - pkg;
+        setHero(netProfit);
+        setRow('bdRevenue', price);
+        setRow('bdAdSpend', adSpend);
+        setRow('bdCourier', shipping);
+        setRow('bdPgFee', pgFee);
+        setRow('bdPkg', pkg);
+        setRow('bdCogs', cogs);
+        setRow('bdNetProfit', netProfit);
+        break;
+      }
+
+      // 2. Profit & Margins
+      case 'profit_margin': {
+        const price = getVal('price');
+        const cogs = getVal('cogs');
+        const other = getVal('otherCost');
+        const netProfit = price - cogs - other;
+        const marginPct = price > 0 ? (netProfit / price) * 100 : 0;
+        const markupPct = cogs > 0 ? ((price - cogs) / cogs) * 100 : 0;
+        setHero(`${marginPct.toFixed(1)}%`, '', '');
+        setRow('bdRevenue', price);
+        setRow('bdCogs', cogs);
+        setRow('bdOther', other);
+        setRow('bdNetProfit', netProfit);
+        setRow('bdMarkup', `${markupPct.toFixed(1)}%`, '', '');
+        break;
+      }
+      case 'selling_price': {
+        const cogs = getVal('cogs');
+        const expenses = getVal('expenses');
+        const targetMargin = getVal('targetMargin');
+        const totalCost = cogs + expenses;
+        const marginDecimal = Math.min(0.95, targetMargin / 100);
+        const sellingPrice = totalCost / (1 - marginDecimal);
+        const targetProfit = sellingPrice - totalCost;
+        setHero(sellingPrice);
+        setRow('bdTotalCost', totalCost);
+        setRow('bdTargetProfit', targetProfit);
+        setRow('bdSellingPrice', sellingPrice);
+        break;
+      }
+      case 'product_cost': {
+        const material = getVal('materialCost');
+        const labor = getVal('laborCost');
+        const freight = getVal('freightCost');
+        const pkg = getVal('packagingCost');
+        const units = Math.max(1, getVal('unitsProduced', 1));
+        const unitCost = material + labor + freight + pkg;
+        const totalBatch = unitCost * units;
+        setHero(unitCost);
+        setRow('bdTotalBatchCost', totalBatch);
+        setRow('bdUnits', `${units} units`, '', '');
+        setRow('bdUnitCost', unitCost);
+        break;
+      }
+      case 'markup': {
+        const cost = getVal('cost');
+        const markupRate = getVal('markupRate');
+        const markupAmt = cost * (markupRate / 100);
+        const price = cost + markupAmt;
+        const marginRate = price > 0 ? (markupAmt / price) * 100 : 0;
+        setHero(price);
+        setRow('bdCost', cost);
+        setRow('bdMarkupAmount', markupAmt);
+        setRow('bdPrice', price);
+        setRow('bdMarginRate', `${marginRate.toFixed(1)}%`, '', '');
+        break;
+      }
+      case 'net_profit': {
+        const revenue = getVal('revenue');
+        const cogs = getVal('cogs');
+        const fees = getVal('fees');
+        const adSpend = getVal('adSpend');
+        const overheads = getVal('overheads');
+        const totalExp = cogs + fees + adSpend + overheads;
+        const netProfit = revenue - totalExp;
+        const netMargin = revenue > 0 ? (netProfit / revenue) * 100 : 0;
+        setHero(netProfit);
+        setRow('bdRevenue', revenue);
+        setRow('bdTotalExpense', totalExp);
+        setRow('bdNetProfit', netProfit);
+        setRow('bdNetMargin', `${netMargin.toFixed(1)}%`, '', '');
+        break;
+      }
+      case 'gross_profit': {
+        const revenue = getVal('revenue');
+        const cogs = getVal('cogs');
+        const gp = revenue - cogs;
+        const gm = revenue > 0 ? (gp / revenue) * 100 : 0;
+        setHero(gp);
+        setRow('bdRevenue', revenue);
+        setRow('bdCogs', cogs);
+        setRow('bdGrossProfit', gp);
+        setRow('bdGrossMargin', `${gm.toFixed(1)}%`, '', '');
+        break;
+      }
+      case 'break_even': {
+        const fixedCosts = getVal('fixedCosts');
+        const price = getVal('price');
+        const variableCost = getVal('variableCost');
+        const contrib = Math.max(1, price - variableCost);
+        const beUnits = Math.ceil(fixedCosts / contrib);
+        const beRev = beUnits * price;
+        setHero(`${beUnits} units`, '', '');
+        setRow('bdContribution', contrib);
+        setRow('bdBreakEvenUnits', `${beUnits} units`, '', '');
+        setRow('bdBreakEvenRevenue', beRev);
+        break;
+      }
+      case 'roi': {
+        const investment = getVal('investment');
+        const totalReturn = getVal('totalReturn');
+        const net = totalReturn - investment;
+        const roiPct = investment > 0 ? (net / investment) * 100 : 0;
+        setHero(`${roiPct.toFixed(1)}%`, '', '');
+        setRow('bdInvestment', investment);
+        setRow('bdReturn', totalReturn);
+        setRow('bdNetProfit', net);
+        setRow('bdRoi', `${roiPct.toFixed(1)}%`, '', '');
+        break;
+      }
+      case 'wholesale': {
+        const unitCost = getVal('unitCost');
+        const wholesalePrice = getVal('wholesalePrice');
+        const retailMrp = getVal('retailMrp');
+        const qty = getVal('quantity');
+        const rev = wholesalePrice * qty;
+        const prod = unitCost * qty;
+        const profit = rev - prod;
+        const wsMargin = rev > 0 ? (profit / rev) * 100 : 0;
+        const retMargin = retailMrp > 0 ? ((retailMrp - wholesalePrice) / retailMrp) * 100 : 0;
+        setHero(profit);
+        setRow('bdWholesaleRevenue', rev);
+        setRow('bdProductionCost', prod);
+        setRow('bdWholesaleProfit', profit);
+        setRow('bdWholesaleMargin', `${wsMargin.toFixed(1)}%`, '', '');
+        setRow('bdRetailerMargin', `${retMargin.toFixed(1)}%`, '', '');
+        break;
+      }
+      case 'dropshipping': {
+        const price = getVal('price');
+        const supplier = getVal('supplierCost');
+        const cpa = getVal('adCpa');
+        const rtoRate = getVal('rtoRate');
+        const rtoBuffer = (supplier + 90) * (rtoRate / 100);
+        const netProfit = price - supplier - cpa - rtoBuffer;
+        setHero(netProfit);
+        setRow('bdRevenue', price);
+        setRow('bdSupplier', supplier);
+        setRow('bdAds', cpa);
+        setRow('bdRtoBuffer', rtoBuffer);
+        setRow('bdNetProfit', netProfit);
+        break;
+      }
+
+      // 3. Shipping & Returns
+      case 'return_loss': {
+        const returns = getVal('monthlyReturns');
+        const revCourier = getVal('reverseCourierFee');
+        const pkgLoss = getVal('packagingLoss');
+        const cogs = getVal('unitCogs');
+        const damageRate = getVal('damageRate');
+        const revFreight = returns * revCourier;
+        const totalPkg = returns * pkgLoss;
+        const damaged = returns * (damageRate / 100) * cogs;
+        const totalLoss = revFreight + totalPkg + damaged;
+        const lossPerReturn = returns > 0 ? totalLoss / returns : 0;
+        setHero(totalLoss);
+        setRow('bdReverseFreight', revFreight);
+        setRow('bdPackagingLoss', totalPkg);
+        setRow('bdDamagedGoods', damaged);
+        setRow('bdTotalLoss', totalLoss);
+        setRow('bdLossPerReturn', lossPerReturn);
+        break;
+      }
+      case 'shipping_cost': {
+        const deadWeight = getVal('deadWeight');
+        const lengthCm = getVal('lengthCm');
+        const widthCm = getVal('widthCm');
+        const heightCm = getVal('heightCm');
+        const zone = getStr('zone', 'regional');
+        const volWeight = (lengthCm * widthCm * heightCm) / 5000;
+        const chargeable = Math.max(deadWeight, volWeight);
+        const base = zone === 'regional' ? 65 : zone === 'national' ? 90 : 45;
+        const addlSteps = Math.max(0, Math.ceil((chargeable - 0.5) / 0.5));
+        const addlRate = zone === 'national' ? 35 : 25;
+        const freight = base + (addlSteps * addlRate);
+        const gst = freight * 0.18;
+        const total = freight + gst;
+        setHero(total);
+        setRow('bdDeadWeight', `${deadWeight.toFixed(2)} kg`, '', '');
+        setRow('bdVolumetricWeight', `${volWeight.toFixed(2)} kg`, '', '');
+        setRow('bdChargeableWeight', `${chargeable.toFixed(2)} kg`, '', '');
+        setRow('bdBaseShipping', freight);
+        setRow('bdGst', gst);
+        setRow('bdTotalFreight', total);
+        break;
+      }
+      case 'courier_charges': {
+        const weight = getVal('weightGrams');
+        const base = getVal('baseRate');
+        const addl = getVal('addlRate');
+        const fuelPct = getVal('fuelSurcharge');
+        const isCod = getStr('isCod') === 'yes';
+        const addlSteps = Math.max(0, Math.ceil((weight - 500) / 500));
+        const baseCharge = base + (addlSteps * addl);
+        const fuel = baseCharge * (fuelPct / 100);
+        const codFee = isCod ? 40 : 0;
+        const sub = baseCharge + fuel + codFee;
+        const gst = sub * 0.18;
+        const total = sub + gst;
+        setHero(total);
+        setRow('bdBaseCharge', baseCharge);
+        setRow('bdFuel', fuel);
+        setRow('bdCodFee', codFee);
+        setRow('bdGst', gst);
+        setRow('bdTotalCourier', total);
+        break;
+      }
+      case 'reverse_shipping': {
+        const freight = getVal('reverseFreight');
+        const qc = getVal('qcInspection');
+        const repack = getVal('repackaging');
+        const sub = freight + qc + repack;
+        const gst = sub * 0.18;
+        const total = sub + gst;
+        setHero(total);
+        setRow('bdFreight', freight);
+        setRow('bdQc', qc);
+        setRow('bdRepack', repack);
+        setRow('bdGst', gst);
+        setRow('bdTotalReverse', total);
+        break;
+      }
+      case 'cancellation_loss': {
+        const orders = getVal('monthlyCancellations');
+        const courier = getVal('courierCost');
+        const packing = getVal('packingCost');
+        const lossPerUnit = courier + packing;
+        const totalLoss = orders * lossPerUnit;
+        setHero(totalLoss);
+        setRow('bdOrders', `${orders} orders`, '', '');
+        setRow('bdLossPerUnit', lossPerUnit);
+        setRow('bdTotalCancellationLoss', totalLoss);
+        break;
+      }
+
+      // 4. GST & Taxes
+      case 'gst_inc_exc': {
+        const amount = getVal('amount');
+        const rate = getVal('rate');
+        const mode = getStr('mode', 'exclusive');
+        let base, tax, total;
+        if (mode === 'inclusive') {
+          base = amount / (1 + rate / 100);
+          tax = amount - base;
+          total = amount;
+        } else {
+          base = amount;
+          tax = amount * (rate / 100);
+          total = amount + tax;
+        }
+        setHero(tax);
+        setRow('bdBase', base);
+        setRow('bdTax', tax);
+        setRow('bdTotal', total);
+        break;
+      }
+      case 'gst_on_fees': {
+        const comm = getVal('commission');
+        const fixed = getVal('fixedFee');
+        const ship = getVal('shippingFee');
+        const sub = comm + fixed + ship;
+        const gst = sub * 0.18;
+        const total = sub + gst;
+        setHero(gst);
+        setRow('bdFeesSubtotal', sub);
+        setRow('bdGstAmount', gst);
+        setRow('bdTotalDeduction', total);
+        break;
+      }
+      case 'gst_profit': {
+        const output = getVal('outputGst');
+        const purchaseItc = getVal('purchaseItc');
+        const feeItc = getVal('feeItc');
+        const totalItc = purchaseItc + feeItc;
+        const payable = Math.max(0, output - totalItc);
+        setHero(payable);
+        setRow('bdOutput', output);
+        setRow('bdTotalItc', totalItc);
+        setRow('bdNetPayable', payable);
+        break;
+      }
+      case 'itc': {
+        const goods = getVal('goodsGst');
+        const courier = getVal('courierGst');
+        const platform = getVal('platformGst');
+        const services = courier + platform;
+        const totalItc = goods + services;
+        setHero(totalItc);
+        setRow('bdGoodsItc', goods);
+        setRow('bdServicesItc', services);
+        setRow('bdTotalItc', totalItc);
+        break;
+      }
+      case 'tcs': {
+        const gross = getVal('grossSales');
+        const ret = getVal('returnsValue');
+        const netSupply = Math.max(0, gross - ret);
+        const tcs = netSupply * 0.005; // 0.5% e-commerce TCS
+        setHero(tcs);
+        setRow('bdNetSupply', netSupply);
+        setRow('bdTcsAmount', tcs);
+        break;
+      }
+      case 'tds': {
+        const gross = getVal('grossValue');
+        const tds = gross * 0.001; // 0.1% 194-O
+        setHero(tds);
+        setRow('bdGross', gross);
+        setRow('bdTdsAmount', tds);
+        break;
+      }
+
+      // 5. Marketplace Fees
+      case 'amz_fees': {
+        const price = getVal('price');
+        const rate = getVal('commRate');
+        const weight = getVal('weightGrams');
+        const referral = price * (rate / 100);
+        const closing = price <= 250 ? 5 : price <= 500 ? 11 : price <= 1000 ? 25 : 42;
+        const addlSteps = Math.max(0, Math.ceil((weight - 500) / 500));
+        const shipping = 45 + (addlSteps * 25);
+        const sub = referral + closing + shipping;
+        const gst = sub * 0.18;
+        const total = sub + gst;
+        setHero(total);
+        setRow('bdReferral', referral);
+        setRow('bdClosing', closing);
+        setRow('bdShipping', shipping);
+        setRow('bdGst', gst);
+        setRow('bdTotalFees', total);
+        break;
+      }
+      case 'fk_fees': {
+        const price = getVal('price');
+        const rate = getVal('commRate');
+        const ship = getVal('shippingCost');
+        const comm = price * (rate / 100);
+        const fixed = price <= 300 ? 15 : price <= 500 ? 20 : price <= 1000 ? 30 : 45;
+        const coll = price * 0.02;
+        const sub = comm + fixed + coll + ship;
+        const gst = sub * 0.18;
+        const total = sub + gst;
+        setHero(total);
+        setRow('bdComm', comm);
+        setRow('bdFixed', fixed);
+        setRow('bdColl', coll);
+        setRow('bdShip', ship);
+        setRow('bdGst', gst);
+        setRow('bdTotalFees', total);
+        break;
+      }
+      case 'meesho_comm': {
+        const price = getVal('price');
+        const weight = getVal('weightGrams');
+        const comm = 0;
+        const fixed = 0;
+        const addlSteps = Math.max(0, Math.ceil((weight - 500) / 500));
+        const shipping = 49 + (addlSteps * 25);
+        const gst = shipping * 0.18;
+        const total = shipping + gst;
+        setHero(total);
+        setRow('bdComm', comm);
+        setRow('bdFixed', fixed);
+        setRow('bdShipping', shipping);
+        setRow('bdGst', gst);
+        setRow('bdTotal', total);
+        break;
+      }
+      case 'amz_referral': {
+        const price = getVal('price');
+        const rate = getVal('rate');
+        const referral = price * (rate / 100);
+        const gst = referral * 0.18;
+        setHero(referral);
+        setRow('bdTaxable', price);
+        setRow('bdRate', `${rate}%`, '', '');
+        setRow('bdReferralFee', referral);
+        setRow('bdGstOnFee', gst);
+        break;
+      }
+      case 'amz_closing': {
+        const price = getVal('price');
+        const closing = price <= 250 ? 5 : price <= 500 ? 11 : price <= 1000 ? 25 : 42;
+        const gst = closing * 0.18;
+        const total = closing + gst;
+        setHero(closing);
+        setRow('bdPrice', price);
+        setRow('bdClosingFee', closing);
+        setRow('bdGstOnFee', gst);
+        setRow('bdTotalFee', total);
+        break;
+      }
+      case 'amz_shipping': {
+        const weight = getVal('weightGrams');
+        const zone = getStr('zone', 'regional');
+        const base = zone === 'regional' ? 55 : zone === 'national' ? 75 : 40;
+        const addlSteps = Math.max(0, Math.ceil((weight - 500) / 500));
+        const addlRate = zone === 'national' ? 30 : 20;
+        const addl = addlSteps * addlRate;
+        const sub = base + addl;
+        const gst = sub * 0.18;
+        const total = sub + gst;
+        setHero(total);
+        setRow('bdBase', base);
+        setRow('bdAddl', addl);
+        setRow('bdSubtotal', sub);
+        setRow('bdGst', gst);
+        setRow('bdTotalShipping', total);
+        break;
+      }
+      case 'fk_commission': {
+        const price = getVal('price');
+        const rate = getVal('commRate');
+        const fee = price * (rate / 100);
+        const gst = fee * 0.18;
+        setHero(fee);
+        setRow('bdTaxable', price);
+        setRow('bdRate', `${rate}%`, '', '');
+        setRow('bdCommissionFee', fee);
+        setRow('bdGstOnFee', gst);
+        break;
+      }
+      case 'multi_comm': {
+        const price = getVal('price');
+        const rate = getVal('categoryRate');
+        const meesho = 0;
+        const fk = price * (rate / 100);
+        const amz = price * (rate / 100);
+        const myntra = price * ((rate + 5) / 100);
+        const snap = price * (rate / 100);
+        setHero(amz);
+        setRow('bdMeesho', meesho);
+        setRow('bdFlipkart', fk);
+        setRow('bdAmazon', amz);
+        setRow('bdMyntra', myntra);
+        setRow('bdSnapdeal', snap);
+        break;
+      }
+
+      // 6. Advertising
+      case 'roas': {
+        const spend = getVal('adSpend');
+        const rev = getVal('adRevenue');
+        const profit = rev - spend;
+        const roasMult = spend > 0 ? (rev / spend) : 0;
+        const roasPct = roasMult * 100;
+        setHero(`${roasMult.toFixed(2)}x`, '', '');
+        setRow('bdSpend', spend);
+        setRow('bdRevenue', rev);
+        setRow('bdProfit', profit);
+        setRow('bdRoasMultiplier', `${roasMult.toFixed(2)}x`, '', '');
+        setRow('bdRoasPercentage', `${roasPct.toFixed(0)}%`, '', '');
+        break;
+      }
+      case 'acos': {
+        const spend = getVal('adSpend');
+        const sales = getVal('adSales');
+        const acos = sales > 0 ? (spend / sales) * 100 : 0;
+        const roas = spend > 0 ? (sales / spend) : 0;
+        setHero(`${acos.toFixed(1)}%`, '', '');
+        setRow('bdSpend', spend);
+        setRow('bdSales', sales);
+        setRow('bdAcos', `${acos.toFixed(1)}%`, '', '');
+        setRow('bdRoas', `${roas.toFixed(2)}x`, '', '');
+        break;
+      }
+      case 'tacos': {
+        const spend = getVal('adSpend');
+        const totalRev = getVal('totalRevenue');
+        const tacos = totalRev > 0 ? (spend / totalRev) * 100 : 0;
+        setHero(`${tacos.toFixed(1)}%`, '', '');
+        setRow('bdSpend', spend);
+        setRow('bdTotalRev', totalRev);
+        setRow('bdTacos', `${tacos.toFixed(1)}%`, '', '');
+        break;
+      }
+      case 'be_roas': {
+        const price = getVal('price');
+        const cogs = getVal('cogs');
+        const fees = getVal('feesAndShipping');
+        const marginAmt = price - cogs - fees;
+        const marginPct = price > 0 ? (marginAmt / price) * 100 : 0;
+        const beRoas = marginPct > 0 ? (100 / marginPct) : 0;
+        setHero(`${beRoas.toFixed(2)}x`, '', '');
+        setRow('bdMarginAmt', marginAmt);
+        setRow('bdMarginRate', `${marginPct.toFixed(1)}%`, '', '');
+        setRow('bdBreakEvenRoas', `${beRoas.toFixed(2)}x`, '', '');
+        setRow('bdMaxAcos', `${marginPct.toFixed(1)}%`, '', '');
+        break;
+      }
+      case 'cpo': {
+        const spend = getVal('adSpend');
+        const orders = getVal('orders');
+        const cpo = orders > 0 ? spend / orders : 0;
+        setHero(cpo);
+        setRow('bdSpend', spend);
+        setRow('bdOrders', `${orders} orders`, '', '');
+        setRow('bdCpo', cpo);
+        break;
+      }
+      case 'cac': {
+        const spend = getVal('adSpend');
+        const overhead = getVal('marketingOverhead');
+        const cust = getVal('newCustomers');
+        const ltv = getVal('customerLtv');
+        const totalCost = spend + overhead;
+        const cac = cust > 0 ? totalCost / cust : 0;
+        const ratio = cac > 0 ? ltv / cac : 0;
+        setHero(cac);
+        setRow('bdTotalCost', totalCost);
+        setRow('bdCustomers', `${cust} customers`, '', '');
+        setRow('bdCac', cac);
+        setRow('bdLtvCacRatio', `${ratio.toFixed(2)}x`, '', '');
+        break;
+      }
+      case 'ad_profit': {
+        const rev = getVal('adRevenue');
+        const spend = getVal('adSpend');
+        const cogsRate = getVal('cogsRate');
+        const fulfillRate = getVal('fulfillmentRate');
+        const cogs = rev * (cogsRate / 100);
+        const fulfill = rev * (fulfillRate / 100);
+        const netProfit = rev - spend - cogs - fulfill;
+        const marginPct = rev > 0 ? (netProfit / rev) * 100 : 0;
+        setHero(netProfit);
+        setRow('bdRevenue', rev);
+        setRow('bdAdSpend', spend);
+        setRow('bdCogs', cogs);
+        setRow('bdFulfillment', fulfill);
+        setRow('bdNetProfit', netProfit);
+        setRow('bdNetMargin', `${marginPct.toFixed(1)}%`, '', '');
+        break;
+      }
+
+      // 7. Operations
+      case 'settlement': {
+        const price = getVal('price');
+        const comm = getVal('commission');
+        const fixed = getVal('fixedFee');
+        const ship = getVal('shippingFee');
+        const fees = comm + fixed + ship;
+        const gst = fees * 0.18;
+        const tcsTds = price * 0.006;
+        const settlement = price - fees - gst - tcsTds;
+        setHero(settlement);
+        setRow('bdOrderPrice', price);
+        setRow('bdFees', fees);
+        setRow('bdGst', gst);
+        setRow('bdTcsTds', tcsTds);
+        setRow('bdSettlement', settlement);
+        break;
+      }
+      case 'payout': {
+        const gross = getVal('grossOrderValue');
+        const dedRate = getVal('platformDeductionRate');
+        const retRate = getVal('returnsReserveRate');
+        const ded = gross * (dedRate / 100);
+        const retRes = gross * (retRate / 100);
+        const payout = gross - ded - retRes;
+        setHero(payout);
+        setRow('bdGross', gross);
+        setRow('bdDeductions', ded);
+        setRow('bdReturnsReserve', retRes);
+        setRow('bdNetPayout', payout);
+        break;
+      }
+      case 'reconciliation': {
+        const expected = getVal('expectedSettlement');
+        const actual = getVal('actualPayout');
+        const diff = expected - actual;
+        setHero(diff);
+        setRow('bdExpected', expected);
+        setRow('bdActual', actual);
+        setRow('bdDiscrepancy', diff);
+        break;
+      }
+      case 'monthly_profit': {
+        const rev = getVal('monthlyRevenue');
+        const cogs = getVal('totalCogs');
+        const fees = getVal('marketplaceFees');
+        const ads = getVal('adSpend');
+        const overhead = getVal('warehouseOverhead');
+        const netProfit = rev - cogs - fees - ads - overhead;
+        const marginPct = rev > 0 ? (netProfit / rev) * 100 : 0;
+        setHero(netProfit);
+        setRow('bdRevenue', rev);
+        setRow('bdCogs', cogs);
+        setRow('bdFees', fees);
+        setRow('bdAds', ads);
+        setRow('bdOverhead', overhead);
+        setRow('bdNetProfit', netProfit);
+        setRow('bdNetMargin', `${marginPct.toFixed(1)}%`, '', '');
+        break;
+      }
+      case 'bulk_order': {
+        const base = getVal('basePrice');
+        const unitCost = getVal('unitCost');
+        const discount = getVal('discountRate');
+        const units = getVal('orderUnits');
+        const freight = getVal('bulkFreight');
+        const unitPrice = base * (1 - discount / 100);
+        const gross = unitPrice * units;
+        const totalCogs = unitCost * units;
+        const netProfit = gross - totalCogs - freight;
+        setHero(netProfit);
+        setRow('bdUnitPrice', unitPrice);
+        setRow('bdGrossRevenue', gross);
+        setRow('bdTotalCogs', totalCogs);
+        setRow('bdFreight', freight);
+        setRow('bdNetProfit', netProfit);
+        break;
+      }
+      case 'inventory_profit': {
+        const units = getVal('stockUnits');
+        const cost = getVal('costPerUnit');
+        const price = getVal('sellingPrice');
+        const stockVal = units * price;
+        const invested = units * cost;
+        const profit = stockVal - invested;
+        const marginPct = stockVal > 0 ? (profit / stockVal) * 100 : 0;
+        setHero(profit);
+        setRow('bdStockValue', stockVal);
+        setRow('bdCostInvested', invested);
+        setRow('bdUnrealizedProfit', profit);
+        setRow('bdMarginRate', `${marginPct.toFixed(1)}%`, '', '');
+        break;
+      }
+      case 'inventory_reorder': {
+        const sales = getVal('dailySales');
+        const lead = getVal('leadTimeDays');
+        const safety = getVal('safetyDays');
+        const leadDemand = sales * lead;
+        const safetyStock = sales * safety;
+        const rop = leadDemand + safetyStock;
+        setHero(`${rop} units`, '', '');
+        setRow('bdLeadTimeDemand', `${leadDemand} units`, '', '');
+        setRow('bdSafetyStock', `${safetyStock} units`, '', '');
+        setRow('bdReorderPoint', `${rop} units`, '', '');
+        break;
+      }
+      case 'min_price': {
+        const cogs = getVal('cogs');
+        const shipping = getVal('shipping');
+        const pkg = getVal('packaging');
+        const feeRate = getVal('platformFeeRate');
+        const returnBuffer = getVal('returnBuffer');
+        const direct = cogs + shipping + pkg;
+        const feeDecimal = Math.min(0.90, feeRate / 100);
+        const minPrice = (direct + returnBuffer) / (1 - feeDecimal);
+        setHero(minPrice);
+        setRow('bdDirectCost', direct);
+        setRow('bdReturnBuffer', returnBuffer);
+        setRow('bdFloorPrice', minPrice);
+        break;
+      }
+      default:
+        console.warn('Unknown calcType:', calcType);
+    }
+  }
+
+  // Bind input listeners
+  const inputs = form.querySelectorAll('.calc-input');
+  inputs.forEach(input => {
+    input.addEventListener('input', () => {
+      // Sync range display if applicable
+      if (input.type === 'range') {
+        const span = document.getElementById('range_val_' + input.name);
+        if (span) span.textContent = input.value;
+      }
+      calculate();
+    });
+    input.addEventListener('change', calculate);
+  });
+
+  // Initial calculation on page load
+  calculate();
+})();
+</script>
