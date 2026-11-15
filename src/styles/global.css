@@ -2,6 +2,7 @@
 
 @layer base {
   :root {
+    color-scheme: light !important;
     --canvas: #ffffff;
     --canvas-elevated: #ffffff;
     --ink: #111827;
@@ -15,9 +16,10 @@
     --brand-meesho: #db2777;
   }
 
-  body {
-    background-color: var(--canvas);
-    color: var(--ink);
+  html, body {
+    color-scheme: light !important;
+    background-color: #ffffff !important;
+    color: #111827 !important;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -28,6 +30,15 @@
   /* Smooth scroll and modern scrollbar */
   html {
     scroll-behavior: smooth;
+  }
+
+  /* Force light theme even under OS dark mode */
+  @media (prefers-color-scheme: dark) {
+    :root, html, body {
+      color-scheme: light !important;
+      background-color: #ffffff !important;
+      color: #111827 !important;
+    }
   }
 
   /* Prevent iOS Safari auto-zoom on inputs */
@@ -53,7 +64,7 @@ input[type="range"]::-webkit-slider-thumb {
   width: 20px;
   height: 20px;
   border-radius: 9999px;
-  background: #111827;
+  background: #059669;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
@@ -61,7 +72,7 @@ input[type="range"]::-moz-range-thumb {
   width: 20px;
   height: 20px;
   border-radius: 9999px;
-  background: #111827;
+  background: #059669;
   border: none;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   cursor: pointer;

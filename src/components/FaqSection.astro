@@ -109,7 +109,7 @@ const categories = ["All", "Profit & Pricing", "RTO & Returns", "Marketplace Fee
             data-filter={cat}
             class={`faq-filter-btn px-3 py-1 rounded-full text-xs font-medium transition-all border cursor-pointer ${
               idx === 0
-                ? "bg-neutral-900 text-white border-transparent shadow-xs"
+                ? "bg-emerald-600 text-white border-transparent shadow-xs font-semibold"
                 : "bg-white hover:bg-neutral-100 text-neutral-600 border-neutral-200"
             }`}
           >
@@ -179,7 +179,7 @@ const categories = ["All", "Profit & Pricing", "RTO & Returns", "Marketplace Fee
         buttons.forEach(function(b) {
           b.className = 'faq-filter-btn px-3 py-1 rounded-full text-xs font-medium transition-all border bg-white hover:bg-neutral-100 text-neutral-600 border-neutral-200 cursor-pointer';
         });
-        btn.className = 'faq-filter-btn px-3 py-1 rounded-full text-xs font-medium transition-all border bg-neutral-900 text-white border-transparent shadow-xs cursor-pointer';
+        btn.className = 'faq-filter-btn px-3 py-1 rounded-full text-xs font-medium transition-all border bg-emerald-600 text-white border-transparent shadow-xs font-semibold cursor-pointer';
 
         // Filter cards
         items.forEach(function(card) {

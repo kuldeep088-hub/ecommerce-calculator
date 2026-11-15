@@ -23,10 +23,12 @@ const hreflangs = getHreflangList(domain);
 ---
 
 <!doctype html>
-<html lang={lang} class="scroll-smooth">
+<html lang={lang} class="scroll-smooth bg-white text-neutral-900" style="color-scheme: light;" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="color-scheme" content="light" />
+    <meta name="supported-color-schemes" content="light" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
@@ -75,15 +77,17 @@ const hreflangs = getHreflangList(domain);
       "description": description
     })} />
 
-    <!-- Force White/Light Theme (No Night Theme) -->
+    <!-- Force Pure Light / White Theme (Remove Night Theme) -->
     <script is:inline>
       try {
-        localStorage.removeItem('theme');
+        localStorage.clear();
         document.documentElement.classList.remove('dark');
+        document.documentElement.style.colorScheme = 'light';
+        document.documentElement.setAttribute('data-theme', 'light');
       } catch (_) {}
     </script>
   </head>
-  <body class="min-h-screen flex flex-col bg-white text-neutral-900 antialiased selection:bg-neutral-900 selection:text-white transition-colors duration-150 overflow-x-hidden">
+  <body class="min-h-screen flex flex-col bg-white text-neutral-900 antialiased selection:bg-neutral-200 selection:text-neutral-900 transition-colors duration-150 overflow-x-hidden">
     <Header lang={lang} />
     <main class="flex-1 pb-16 lg:pb-0">
       <slot />
