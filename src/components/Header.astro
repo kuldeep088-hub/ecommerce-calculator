@@ -38,30 +38,11 @@ const { activePlatform = 'home' } = Astro.props;
         Amazon
       </a>
       <a
-        href="/myntra-profit-calculator"
-        class={`px-2.5 py-1.5 rounded-lg transition font-medium ${activePlatform === 'myntra' ? 'bg-neutral-100 text-neutral-900 font-semibold' : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50'}`}
+        href="/amazon-fba-calculator"
+        class={`px-2.5 py-1.5 rounded-lg transition font-medium ${activePlatform === 'fba' ? 'bg-neutral-100 text-neutral-900 font-semibold' : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50'}`}
       >
-        Myntra
+        Amazon FBA
       </a>
-
-      <!-- Dropdown: More Platforms -->
-      <div class="relative group">
-        <button
-          type="button"
-          class="px-2.5 py-1.5 rounded-lg text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50 font-medium inline-flex items-center gap-1 cursor-pointer"
-        >
-          <span>More Marketplaces</span>
-          <svg class="w-3.5 h-3.5 text-neutral-400 group-hover:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </button>
-        <div class="absolute left-0 mt-1 w-48 bg-white border border-neutral-200 rounded-xl shadow-lg py-1.5 hidden group-hover:block z-50">
-          <a href="/shopsy-profit-calculator" class="block px-3 py-1.5 text-xs text-neutral-700 hover:bg-neutral-50 font-medium">Shopsy (Flipkart)</a>
-          <a href="/snapdeal-profit-calculator" class="block px-3 py-1.5 text-xs text-neutral-700 hover:bg-neutral-50 font-medium">Snapdeal</a>
-          <div class="border-t border-neutral-100 my-1"></div>
-          <div class="px-3 py-1 text-[10px] font-semibold uppercase text-neutral-400 font-sans">Quick Commerce</div>
-          <a href="/blinkit-profit-calculator" class="block px-3 py-1.5 text-xs text-neutral-700 hover:bg-neutral-50 font-medium">Blinkit (10-min)</a>
-          <a href="/zepto-profit-calculator" class="block px-3 py-1.5 text-xs text-neutral-700 hover:bg-neutral-50 font-medium">Zepto (Instant)</a>
-        </div>
-      </div>
 
       <!-- Dropdown: Seller Tools -->
       <div class="relative group">
@@ -78,32 +59,28 @@ const { activePlatform = 'home' } = Astro.props;
             <span class="font-semibold text-neutral-900 block">GST &amp; ITC Calculator</span>
             <span class="text-[11px] text-neutral-500">Inclusive, Exclusive &amp; ITC Slabs</span>
           </a>
-          <a href="/rto-loss-calculator" class="block px-3.5 py-1.5 text-xs text-neutral-700 hover:bg-neutral-50">
-            <span class="font-semibold text-neutral-900 block">RTO Loss Calculator</span>
-            <span class="text-[11px] text-neutral-500">Calculate doorstep return cash burn</span>
+          <a href="/profit-margin-calculator" class="block px-3.5 py-1.5 text-xs text-neutral-700 hover:bg-neutral-50">
+            <span class="font-semibold text-neutral-900 block">Profit Margin Calculator</span>
+            <span class="text-[11px] text-neutral-500">Net profit margin % &amp; cost markup</span>
           </a>
-          <a href="/cod-profit-calculator" class="block px-3.5 py-1.5 text-xs text-neutral-700 hover:bg-neutral-50">
-            <span class="font-semibold text-neutral-900 block">COD Profit Calculator</span>
-            <span class="text-[11px] text-neutral-500">Cash on delivery fees &amp; margins</span>
+          <a href="/selling-price-calculator" class="block px-3.5 py-1.5 text-xs text-neutral-700 hover:bg-neutral-50">
+            <span class="font-semibold text-neutral-900 block">Target Selling Price</span>
+            <span class="text-[11px] text-neutral-500">Required price for target margin</span>
           </a>
-          <a href="/prepaid-vs-cod" class="block px-3.5 py-1.5 text-xs text-neutral-700 hover:bg-neutral-50">
-            <span class="font-semibold text-neutral-900 block">Prepaid vs COD Simulator</span>
-            <span class="text-[11px] text-neutral-500">Compare profit &amp; safe discount</span>
+          <a href="/net-profit-calculator" class="block px-3.5 py-1.5 text-xs text-neutral-700 hover:bg-neutral-50">
+            <span class="font-semibold text-neutral-900 block">Net Profit Calculator</span>
+            <span class="text-[11px] text-neutral-500">Take-home earnings after deductions</span>
           </a>
-          <div class="border-t border-neutral-100 my-1.5"></div>
-          <a href="/all-calculators" class="block px-3.5 py-1.5 text-xs text-emerald-700 font-semibold hover:bg-emerald-50 rounded-lg mx-1">
-            Browse All 61 Calculators &rarr;
+          <a href="/roas-calculator" class="block px-3.5 py-1.5 text-xs text-neutral-700 hover:bg-neutral-50">
+            <span class="font-semibold text-neutral-900 block">ROAS Calculator</span>
+            <span class="text-[11px] text-neutral-500">Model ad spend revenue return</span>
+          </a>
+          <a href="/shipping-cost-calculator" class="block px-3.5 py-1.5 text-xs text-neutral-700 hover:bg-neutral-50">
+            <span class="font-semibold text-neutral-900 block">Shipping Cost Calculator</span>
+            <span class="text-[11px] text-neutral-500">Volumetric vs actual dead weight</span>
           </a>
         </div>
       </div>
-
-      <span class="w-px h-4 bg-neutral-200 mx-1"></span>
-      <a
-        href="/all-calculators"
-        class="px-2.5 py-1.5 rounded-lg transition font-medium text-xs bg-neutral-900 text-white hover:bg-neutral-800"
-      >
-        All 61 Tools
-      </a>
     </nav>
 
     <!-- Mobile Hamburger Button -->
@@ -133,17 +110,7 @@ const { activePlatform = 'home' } = Astro.props;
         <a href="/meesho-profit-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Meesho (0% Commission)</a>
         <a href="/flipkart-profit-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Flipkart (2026 Slabs)</a>
         <a href="/amazon-profit-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Amazon India (Easy Ship)</a>
-        <a href="/myntra-profit-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Myntra (Fashion)</a>
-        <a href="/shopsy-profit-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Shopsy (Flipkart Value)</a>
-        <a href="/snapdeal-profit-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Snapdeal (Flat ₹10)</a>
-      </div>
-    </div>
-
-    <div>
-      <div class="text-[11px] font-semibold text-neutral-400 uppercase tracking-wider mb-1.5 px-2">Quick Commerce</div>
-      <div class="space-y-1">
-        <a href="/blinkit-profit-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Blinkit Dark Store Calculator</a>
-        <a href="/zepto-profit-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Zepto Instant Delivery Calculator</a>
+        <a href="/amazon-fba-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Amazon FBA Calculator</a>
       </div>
     </div>
 
@@ -151,10 +118,11 @@ const { activePlatform = 'home' } = Astro.props;
       <div class="text-[11px] font-semibold text-emerald-700 uppercase tracking-wider mb-1.5 px-2">Essential Seller Tools</div>
       <div class="space-y-1">
         <a href="/gst-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">GST &amp; ITC Calculator</a>
-        <a href="/rto-loss-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">RTO Loss Calculator</a>
-        <a href="/cod-profit-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">COD Profit Calculator</a>
-        <a href="/prepaid-vs-cod" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Prepaid vs COD Simulator</a>
-        <a href="/all-calculators" class="mobile-nav-link flex items-center justify-between min-h-[44px] py-2.5 px-3 rounded-xl text-xs font-bold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 active:bg-emerald-200 border border-emerald-200">Browse All 61 Calculators &rarr;</a>
+        <a href="/profit-margin-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Profit Margin Calculator</a>
+        <a href="/selling-price-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Target Selling Price</a>
+        <a href="/net-profit-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Net Profit Calculator</a>
+        <a href="/roas-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">ROAS Calculator</a>
+        <a href="/shipping-cost-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Shipping Cost Calculator</a>
         <a href="/#comparison" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Compare All Platforms</a>
       </div>
     </div>

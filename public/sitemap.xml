@@ -1,16 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://freesellerprofitcalculator.com/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://freesellerprofitcalculator.com/all-calculators</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://freesellerprofitcalculator.com/about-us</loc>
@@ -31,22 +25,10 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freesellerprofitcalculator.com/ajio-profit-calculator</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://freesellerprofitcalculator.com/amazon-profit-calculator</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://freesellerprofitcalculator.com/amazon-closing-fee-calculator</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://freesellerprofitcalculator.com/amazon-fba-calculator</loc>
@@ -55,58 +37,10 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://freesellerprofitcalculator.com/amazon-fbm-calculator</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://freesellerprofitcalculator.com/amazon-referral-fee-calculator</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://freesellerprofitcalculator.com/amazon-seller-fee-calculator</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://freesellerprofitcalculator.com/amazon-shipping-fee-calculator</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://freesellerprofitcalculator.com/blinkit-profit-calculator</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://freesellerprofitcalculator.com/break-even-calculator</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://freesellerprofitcalculator.com/break-even-roas-calculator</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://freesellerprofitcalculator.com/bulk-order-profit-calculator</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://freesellerprofitcalculator.com/cod-profit-calculator</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://freesellerprofitcalculator.com/contact-us</loc>
@@ -145,18 +79,6 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://freesellerprofitcalculator.com/flipkart-commission-calculator</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://freesellerprofitcalculator.com/flipkart-seller-fee-calculator</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://freesellerprofitcalculator.com/gross-profit-calculator</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -170,18 +92,6 @@
   </url>
   <url>
     <loc>https://freesellerprofitcalculator.com/gst-inclusive-exclusive-calculator</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://freesellerprofitcalculator.com/gst-on-marketplace-fees-calculator</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://freesellerprofitcalculator.com/gst-profit-calculator</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -205,25 +115,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freesellerprofitcalculator.com/jiomart-profit-calculator</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://freesellerprofitcalculator.com/marketplace-commission-calculator</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://freesellerprofitcalculator.com/marketplace-reconciliation-calculator</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://freesellerprofitcalculator.com/marketplace-settlement-calculator</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -233,12 +125,6 @@
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://freesellerprofitcalculator.com/meesho-commission-calculator</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://freesellerprofitcalculator.com/minimum-selling-price-calculator</loc>
@@ -253,46 +139,16 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freesellerprofitcalculator.com/myntra-profit-calculator</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
     <loc>https://freesellerprofitcalculator.com/net-profit-calculator</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freesellerprofitcalculator.com/order-cancellation-loss-calculator</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://freesellerprofitcalculator.com/prepaid-vs-cod</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
     <loc>https://freesellerprofitcalculator.com/privacy-policy</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://freesellerprofitcalculator.com/product-cost-calculator</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://freesellerprofitcalculator.com/product-markup-calculator</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://freesellerprofitcalculator.com/product-roi-calculator</loc>
@@ -307,25 +163,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://freesellerprofitcalculator.com/return-loss-calculator</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://freesellerprofitcalculator.com/reverse-shipping-cost-calculator</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://freesellerprofitcalculator.com/roas-calculator</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://freesellerprofitcalculator.com/rto-loss-calculator</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -347,24 +185,6 @@
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://freesellerprofitcalculator.com/shopify-profit-calculator</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://freesellerprofitcalculator.com/shopsy-profit-calculator</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://freesellerprofitcalculator.com/snapdeal-profit-calculator</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://freesellerprofitcalculator.com/tacos-calculator</loc>
@@ -396,10 +216,4 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://freesellerprofitcalculator.com/zepto-profit-calculator</loc>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-</urlset>
+  </urlset>
