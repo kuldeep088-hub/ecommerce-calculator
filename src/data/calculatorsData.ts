@@ -127,7 +127,7 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     calcType: 'amazon_fbm'
   },
   {
-    slug: 'ajio',
+    slug: 'ajio-profit-calculator',
     category: 'marketplaces',
     categoryLabel: 'Marketplaces',
     title: 'AJIO Seller Profit Calculator',
@@ -163,7 +163,7 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     calcType: 'ajio'
   },
   {
-    slug: 'jiomart',
+    slug: 'jiomart-profit-calculator',
     category: 'marketplaces',
     categoryLabel: 'Marketplaces',
     title: 'JioMart Seller Profit Calculator',

@@ -20,25 +20,25 @@ const { activePlatform = 'home' } = Astro.props;
     <!-- Navigation / Marketplace & Tools Links -->
     <nav class="hidden md:flex items-center gap-1 sm:gap-1.5 text-xs sm:text-[13px]">
       <a
-        href="/meesho"
+        href="/meesho-profit-calculator"
         class={`px-2.5 py-1.5 rounded-lg transition font-medium ${activePlatform === 'meesho' ? 'bg-neutral-100 text-neutral-900 font-semibold' : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50'}`}
       >
         Meesho
       </a>
       <a
-        href="/flipkart"
+        href="/flipkart-profit-calculator"
         class={`px-2.5 py-1.5 rounded-lg transition font-medium ${activePlatform === 'flipkart' ? 'bg-neutral-100 text-neutral-900 font-semibold' : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50'}`}
       >
         Flipkart
       </a>
       <a
-        href="/amazon"
+        href="/amazon-profit-calculator"
         class={`px-2.5 py-1.5 rounded-lg transition font-medium ${activePlatform === 'amazon' ? 'bg-neutral-100 text-neutral-900 font-semibold' : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50'}`}
       >
         Amazon
       </a>
       <a
-        href="/myntra"
+        href="/myntra-profit-calculator"
         class={`px-2.5 py-1.5 rounded-lg transition font-medium ${activePlatform === 'myntra' ? 'bg-neutral-100 text-neutral-900 font-semibold' : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50'}`}
       >
         Myntra
@@ -54,12 +54,12 @@ const { activePlatform = 'home' } = Astro.props;
           <svg class="w-3.5 h-3.5 text-neutral-400 group-hover:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
         </button>
         <div class="absolute left-0 mt-1 w-48 bg-white border border-neutral-200 rounded-xl shadow-lg py-1.5 hidden group-hover:block z-50">
-          <a href="/shopsy" class="block px-3 py-1.5 text-xs text-neutral-700 hover:bg-neutral-50 font-medium">Shopsy (Flipkart)</a>
-          <a href="/snapdeal" class="block px-3 py-1.5 text-xs text-neutral-700 hover:bg-neutral-50 font-medium">Snapdeal</a>
+          <a href="/shopsy-profit-calculator" class="block px-3 py-1.5 text-xs text-neutral-700 hover:bg-neutral-50 font-medium">Shopsy (Flipkart)</a>
+          <a href="/snapdeal-profit-calculator" class="block px-3 py-1.5 text-xs text-neutral-700 hover:bg-neutral-50 font-medium">Snapdeal</a>
           <div class="border-t border-neutral-100 my-1"></div>
           <div class="px-3 py-1 text-[10px] font-semibold uppercase text-neutral-400 font-sans">Quick Commerce</div>
-          <a href="/blinkit" class="block px-3 py-1.5 text-xs text-neutral-700 hover:bg-neutral-50 font-medium">Blinkit (10-min)</a>
-          <a href="/zepto" class="block px-3 py-1.5 text-xs text-neutral-700 hover:bg-neutral-50 font-medium">Zepto (Instant)</a>
+          <a href="/blinkit-profit-calculator" class="block px-3 py-1.5 text-xs text-neutral-700 hover:bg-neutral-50 font-medium">Blinkit (10-min)</a>
+          <a href="/zepto-profit-calculator" class="block px-3 py-1.5 text-xs text-neutral-700 hover:bg-neutral-50 font-medium">Zepto (Instant)</a>
         </div>
       </div>
 
@@ -130,20 +130,20 @@ const { activePlatform = 'home' } = Astro.props;
     <div>
       <div class="text-[11px] font-semibold text-neutral-400 uppercase tracking-wider mb-1.5 px-2">Marketplaces</div>
       <div class="space-y-1">
-        <a href="/meesho" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Meesho (0% Commission)</a>
-        <a href="/flipkart" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Flipkart (2026 Slabs)</a>
-        <a href="/amazon" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Amazon India (Easy Ship)</a>
-        <a href="/myntra" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Myntra (Fashion)</a>
-        <a href="/shopsy" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Shopsy (Flipkart Value)</a>
-        <a href="/snapdeal" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Snapdeal (Flat ₹10)</a>
+        <a href="/meesho-profit-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Meesho (0% Commission)</a>
+        <a href="/flipkart-profit-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Flipkart (2026 Slabs)</a>
+        <a href="/amazon-profit-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Amazon India (Easy Ship)</a>
+        <a href="/myntra-profit-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Myntra (Fashion)</a>
+        <a href="/shopsy-profit-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Shopsy (Flipkart Value)</a>
+        <a href="/snapdeal-profit-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Snapdeal (Flat ₹10)</a>
       </div>
     </div>
 
     <div>
       <div class="text-[11px] font-semibold text-neutral-400 uppercase tracking-wider mb-1.5 px-2">Quick Commerce</div>
       <div class="space-y-1">
-        <a href="/blinkit" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Blinkit Dark Store Calculator</a>
-        <a href="/zepto" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Zepto Instant Delivery Calculator</a>
+        <a href="/blinkit-profit-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Blinkit Dark Store Calculator</a>
+        <a href="/zepto-profit-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Zepto Instant Delivery Calculator</a>
       </div>
     </div>
 
