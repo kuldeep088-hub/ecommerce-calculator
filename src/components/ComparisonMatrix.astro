@@ -233,7 +233,7 @@
       var ship = getShip(p, weight, zone);
       var feesExGst = comm + fixed + coll + ship;
       var gstOnFees = feesExGst * 0.18;
-      var tcsTds = taxable * 0.011;
+      var tcsTds = taxable * 0.006;
       var totalDeduct = feesExGst + gstOnFees + tcsTds;
       var bank = Math.max(0, sp - totalDeduct);
 

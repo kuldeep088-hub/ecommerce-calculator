@@ -429,8 +429,8 @@ const {
               </div>
 
               <div class="px-4 py-2 flex items-center justify-between">
-                <span class="text-neutral-600">TCS (1%) + TDS (0.1%)</span>
-                <span id="dtTcsTds" class="font-mono text-neutral-600">₹5.88</span>
+                <span class="text-neutral-600">TCS (0.5%) + TDS (0.1%)</span>
+                <span id="dtTcsTds" class="font-mono text-neutral-600">₹3.21</span>
               </div>
 
               <div class="px-4 py-2 flex items-center justify-between bg-neutral-50/50 font-medium">
@@ -575,12 +575,12 @@ const {
     return 55 + Math.ceil(Math.max(0, weightGrams - 500) / 500) * 35;
   }
 
-  // Parse cleaned numeric float
+  // Parse cleaned numeric float with validation against negative values
   function parseVal(el) {
     if (!el) return 0;
     var raw = el.value.toString().replace(/[₹,\s]/g, '');
     var val = parseFloat(raw);
-    return isNaN(val) ? 0 : val;
+    return isNaN(val) ? 0 : Math.max(0, val);
   }
 
   function formatCurrency(val) {
@@ -601,13 +601,48 @@ const {
     var returnRate = parseVal(document.getElementById('inputCustomerReturnRate')) || 0;
     var returnReverseCost = parseVal(document.getElementById('inputReturnReverseCost')) || 130;
 
+    // Zero-price clean empty/reset state
+    if (sp <= 0) {
+      var bpValEl = document.getElementById('blendedProfitValue');
+      if (bpValEl) {
+        bpValEl.textContent = '₹0.00';
+        bpValEl.className = 'text-3xl sm:text-4xl font-mono font-bold tracking-tight text-neutral-400';
+      }
+      var bpMarginEl = document.getElementById('blendedMarginBadge');
+      if (bpMarginEl) {
+        bpMarginEl.textContent = '0.0% margin';
+        bpMarginEl.className = 'text-xs font-mono font-bold px-2 py-0.5 rounded-md bg-neutral-100 text-neutral-600 border border-neutral-200';
+      }
+      var bankEl = document.getElementById('bankSettlementValue');
+      if (bankEl) bankEl.textContent = '₹0.00';
+      var delivValEl = document.getElementById('deliveredProfitValue');
+      if (delivValEl) delivValEl.textContent = '₹0.00';
+      var sumPays = document.getElementById('summaryCustomerPays');
+      if (sumPays) sumPays.textContent = '₹0.00';
+      var sumFees = document.getElementById('summaryFees');
+      if (sumFees) sumFees.textContent = '₹0.00';
+      var sumCogs = document.getElementById('summaryCogs');
+      if (sumCogs) sumCogs.textContent = '₹0.00';
+      var sumReturn = document.getElementById('summaryReturn');
+      if (sumReturn) sumReturn.textContent = '₹0.00';
+      var sumProfit = document.getElementById('summaryProfit');
+      if (sumProfit) {
+        sumProfit.textContent = '₹0.00';
+        sumProfit.className = 'font-mono text-base text-neutral-500 font-bold';
+      }
+      if (window.updateComparisonMatrix) {
+        window.updateComparisonMatrix({ sellingPrice: 0, costOfGoods: cogs });
+      }
+      return;
+    }
+
     // Overrides
     var customComm = document.getElementById('customCommInput').value;
     var customFixed = document.getElementById('customFixedFeeInput').value;
     var customShip = document.getElementById('customShippingInput').value;
 
     // 1. Taxable Value & Product GST
-    var taxable = sp > 0 ? sp / (1 + gstRate / 100) : 0;
+    var taxable = sp / (1 + gstRate / 100);
     var productGst = sp - taxable;
 
     // 2. Commission
@@ -639,8 +674,8 @@ const {
     var feesExGst = commAmount + fixedFee + collectionFee + shippingFee;
     var gstOnFees = feesExGst * 0.18;
 
-    // 7. TCS & TDS (1% + 0.1% = 1.1% on taxable)
-    var tcsTds = taxable * 0.011;
+    // 7. TCS & TDS (0.5% TCS + 0.1% TDS = 0.6% on taxable supplies under 2026 rules)
+    var tcsTds = taxable * 0.006;
 
     // 8. Total Marketplace Deduction & Bank Settlement
     var totalDeductions = feesExGst + gstOnFees + tcsTds;

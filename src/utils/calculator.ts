@@ -38,7 +38,7 @@ export interface CalculationBreakdown {
   shippingFee: number;
   totalMarketplaceFeesExGst: number;
   gstOnFees: number;
-  tcsTdsDeductions: number; // 1% TCS + 0.1% TDS
+  tcsTdsDeductions: number; // 0.5% TCS + 0.1% TDS
   totalMarketplaceDeduction: number;
   // Delivered order economics
   bankSettlement: number;
@@ -135,8 +135,8 @@ export function calculateProfit(inputs: CalculatorInputs): CalculationBreakdown 
     commissionAmount + fixedFee + collectionFee + shippingFee;
   const gstOnFees = totalMarketplaceFeesExGst * (gstOnFeesRate / 100);
 
-  // 7. TCS (1%) & TDS u/s 194-O (0.1%)
-  const tcsTdsDeductions = taxableValue * 0.011; // 1.1% of taxable value
+  // 7. TCS (0.5%) & TDS u/s 194-O (0.1%)
+  const tcsTdsDeductions = taxableValue * 0.006; // 0.6% of taxable value under 2026 rules
 
   // 8. Total Marketplace Deduction
   const totalMarketplaceDeduction =

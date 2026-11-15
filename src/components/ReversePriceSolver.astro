@@ -250,7 +250,7 @@ import { CATEGORIES } from '../data/categories';
       var coll = (mp === 'flipkart' || mp === 'amazon') ? (mid * 0.02) : 0;
       var feesExGst = comm + fixed + coll + shipFee;
       var gstOnFees = feesExGst * 0.18;
-      var tcsTds = taxable * 0.011;
+      var tcsTds = taxable * 0.006;
       var totalDeduct = feesExGst + gstOnFees + tcsTds;
 
       var deliveredProfit = taxable - cogs - feesExGst - pkg;
@@ -298,9 +298,13 @@ import { CATEGORIES } from '../data/categories';
     document.getElementById('solvCommFlipkart').textContent = rates.flipkart + '%';
     document.getElementById('solvCommAmazon').textContent = rates.amazon + '%';
 
-    document.getElementById('solvBufferMeesho').textContent = '₹' + Math.round(meeshoPrice - cogs - target);
-    document.getElementById('solvBufferFlipkart').textContent = '₹' + Math.round(flipkartPrice - cogs - target);
-    document.getElementById('solvBufferAmazon').textContent = '₹' + Math.round(amazonPrice - cogs - target);
+    var meeshoProfitGoal = mode === 'fixed' ? target : (meeshoPrice * target / 100);
+    var flipkartProfitGoal = mode === 'fixed' ? target : (flipkartPrice * target / 100);
+    var amazonProfitGoal = mode === 'fixed' ? target : (amazonPrice * target / 100);
+
+    document.getElementById('solvBufferMeesho').textContent = '₹' + Math.max(0, Math.round(meeshoPrice - cogs - meeshoProfitGoal));
+    document.getElementById('solvBufferFlipkart').textContent = '₹' + Math.max(0, Math.round(flipkartPrice - cogs - flipkartProfitGoal));
+    document.getElementById('solvBufferAmazon').textContent = '₹' + Math.max(0, Math.round(amazonPrice - cogs - amazonProfitGoal));
   }
 
   function initSolver() {

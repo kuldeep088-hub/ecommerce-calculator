@@ -459,19 +459,19 @@ export const CALCULATORS_CATALOG: CalculatorDefinition[] = [
     category: 'gst',
     categoryLabel: 'GST & Taxes',
     title: 'TCS Calculator for E-Commerce Sellers',
-    metaTitle: 'TCS Calculator for E-Commerce (1%) | Tax Collected at Source',
-    metaDescription: 'Calculate the 1% Tax Collected at Source (TCS) deducted by marketplaces under GST law, and learn how to claim it back.',
-    badge: '1% GST TCS',
-    subtitle: 'Calculate 1% Tax Collected at Source deducted by Amazon, Flipkart, and Meesho on net taxable supplies.',
-    formulaDescription: 'TCS = 1% * Net Taxable Value (Sales - Returns)',
+    metaTitle: 'TCS Calculator for E-Commerce (0.5%) | Tax Collected at Source',
+    metaDescription: 'Calculate the 0.5% Tax Collected at Source (TCS) deducted by marketplaces under GST law, and learn how to claim it back.',
+    badge: '0.5% GST TCS',
+    subtitle: 'Calculate 0.5% Tax Collected at Source deducted by Amazon, Flipkart, and Meesho on net taxable supplies.',
+    formulaDescription: 'TCS = 0.5% * Net Taxable Value (Sales - Returns)',
     inputs: [
       { id: 'grossSales', label: 'Monthly Gross Sales Value', type: 'number', defaultValue: 300000, prefix: '₹' },
       { id: 'returnsValue', label: 'Monthly Returns / Cancellations', type: 'number', defaultValue: 50000, prefix: '₹' }
     ],
-    heroKpi: { label: '1% TCS Deducted by Platform', subLabel: 'refundable against monthly GST liabilities', prefix: '₹' },
+    heroKpi: { label: '0.5% TCS Deducted by Platform', subLabel: 'refundable against monthly GST liabilities', prefix: '₹' },
     breakdown: [
       { id: 'bdNetSupply', label: 'Net Taxable Supplies (Sales - Returns)', prefix: '₹' },
-      { id: 'bdTcsAmount', label: '1% TCS Deducted (0.5% CGST + 0.5% SGST)', prefix: '₹', isTotal: true }
+      { id: 'bdTcsAmount', label: '0.5% TCS Deducted (0.25% CGST + 0.25% SGST)', prefix: '₹', isTotal: true }
     ],
     tipTitle: 'Claiming TCS Cash:',
     tipText: 'TCS is not an expense. You can accept the TCS return on the GST portal monthly, and the money gets credited directly into your Electronic Cash Ledger.',
