@@ -85,13 +85,16 @@ const {
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
       
       <!-- LEFT COLUMN: Inputs (5 Cols) -->
-      <div class="lg:col-span-5 bg-white border border-neutral-200 rounded-2xl p-5 sm:p-6 shadow-xs">
+      <div class="lg:col-span-5 bg-white border border-neutral-200 rounded-2xl p-4 sm:p-6 shadow-xs">
         
         <div class="flex items-center justify-between border-b border-neutral-100 pb-3 mb-4">
-          <h2 class="text-sm font-semibold text-neutral-900" id="calcCardTitle">
-            Product Details
-          </h2>
-          <button type="button" id="resetBtn" class="text-xs text-neutral-400 hover:text-neutral-700 transition">
+          <div>
+            <h2 class="text-sm sm:text-base font-semibold text-neutral-900" id="calcCardTitle">
+              Product Details
+            </h2>
+            <p class="text-[11px] text-neutral-400">Enter your selling price &amp; product cost</p>
+          </div>
+          <button type="button" id="resetBtn" class="text-xs font-medium text-neutral-500 hover:text-neutral-900 px-2 py-1 rounded-md hover:bg-neutral-100 transition min-h-[32px] inline-flex items-center">
             Reset
           </button>
         </div>
@@ -100,11 +103,14 @@ const {
           
           <!-- 1. Selling Price -->
           <div>
-            <label for="inputSellingPrice" class="block text-xs font-medium text-neutral-700 mb-1">
-              Selling Price (MRP)
-            </label>
-            <div class="relative rounded-xl border border-neutral-200 bg-neutral-50/50 focus-within:border-neutral-900 focus-within:bg-white transition-all">
-              <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-neutral-400 font-semibold">
+            <div class="flex items-center justify-between mb-1">
+              <label for="inputSellingPrice" class="block text-xs sm:text-sm font-medium text-neutral-800">
+                Selling Price (Customer MRP)
+              </label>
+              <span class="text-[11px] text-neutral-400 font-mono">Listed Price</span>
+            </div>
+            <div class="relative rounded-xl border border-neutral-300 bg-neutral-50/40 focus-within:border-neutral-900 focus-within:bg-white transition-all shadow-2xs">
+              <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-neutral-500 font-bold text-base">
                 ₹
               </span>
               <input
@@ -113,19 +119,22 @@ const {
                 inputmode="decimal"
                 value="599"
                 placeholder="599"
-                class="w-full pl-8 pr-4 py-2.5 bg-transparent rounded-xl text-base sm:text-lg font-mono font-semibold text-neutral-900 outline-none"
+                class="w-full pl-8 pr-4 py-3 bg-transparent rounded-xl text-base sm:text-lg font-mono font-semibold text-neutral-900 outline-none min-h-[46px]"
               />
             </div>
-            <span class="text-[11px] text-neutral-400 mt-1 block">Listed price customer pays on app.</span>
+            <span class="text-[11px] text-neutral-500 mt-1 block">The price listed on the app that buyers pay.</span>
           </div>
 
           <!-- 2. Cost of Goods Sold -->
           <div>
-            <label for="inputCogs" class="block text-xs font-medium text-neutral-700 mb-1">
-              Product Purchase / Manufacturing Cost
-            </label>
-            <div class="relative rounded-xl border border-neutral-200 bg-white focus-within:border-neutral-900 transition-all">
-              <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-neutral-400 font-semibold">
+            <div class="flex items-center justify-between mb-1">
+              <label for="inputCogs" class="block text-xs sm:text-sm font-medium text-neutral-800">
+                Product Cost (Purchase / Making)
+              </label>
+              <span class="text-[11px] text-neutral-400 font-mono">COGS</span>
+            </div>
+            <div class="relative rounded-xl border border-neutral-300 bg-white focus-within:border-neutral-900 transition-all shadow-2xs">
+              <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-neutral-500 font-bold text-base">
                 ₹
               </span>
               <input
@@ -134,25 +143,30 @@ const {
                 inputmode="decimal"
                 value="220"
                 placeholder="220"
-                class="w-full pl-8 pr-4 py-2.5 bg-transparent rounded-xl text-sm font-mono font-medium text-neutral-900 outline-none"
+                class="w-full pl-8 pr-4 py-3 bg-transparent rounded-xl text-base sm:text-lg font-mono font-semibold text-neutral-900 outline-none min-h-[46px]"
               />
             </div>
-            <span class="text-[11px] text-neutral-400 mt-1 block">What you paid to make or buy the product.</span>
+            <span class="text-[11px] text-neutral-500 mt-1 block">What you paid to buy or manufacture this item.</span>
           </div>
 
           <!-- 3. Category -->
           <div>
-            <label for="selectCategory" class="block text-xs font-medium text-neutral-700 mb-1">
-              Category
+            <label for="selectCategory" class="block text-xs sm:text-sm font-medium text-neutral-800 mb-1">
+              Product Category
             </label>
-            <select
-              id="selectCategory"
-              class="w-full px-3 py-2.5 bg-white border border-neutral-200 focus:border-neutral-900 rounded-xl text-xs sm:text-sm text-neutral-800 outline-none cursor-pointer"
-            >
-              {CATEGORIES.map((cat) => (
-                <option value={cat.id}>{cat.name}</option>
-              ))}
-            </select>
+            <div class="relative">
+              <select
+                id="selectCategory"
+                class="w-full px-3.5 py-3 bg-white border border-neutral-300 focus:border-neutral-900 rounded-xl text-base sm:text-sm text-neutral-800 outline-none cursor-pointer min-h-[46px] appearance-none pr-8"
+              >
+                {CATEGORIES.map((cat) => (
+                  <option value={cat.id}>{cat.name}</option>
+                ))}
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-neutral-500">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </div>
+            </div>
           </div>
 
           <!-- Collapsible: Advanced Settings -->
@@ -160,20 +174,23 @@ const {
             <button
               type="button"
               id="advancedSettingsToggleBtn"
-              class="w-full px-3.5 py-2.5 flex items-center justify-between text-left text-xs font-medium text-neutral-600 hover:bg-neutral-50 transition cursor-pointer"
+              class="w-full px-4 py-3 flex items-center justify-between text-left text-xs sm:text-sm font-medium text-neutral-700 hover:bg-neutral-50 transition cursor-pointer min-h-[44px]"
             >
-              <span>Advanced Options (Weight, GST, Returns)</span>
-              <span id="advancedArrowText" class="text-[11px] text-neutral-400 font-mono">+ Expand</span>
+              <span class="flex items-center gap-1.5">
+                <span>Additional Options</span>
+                <span class="text-[11px] text-neutral-400 font-normal">(Weight, GST, Returns)</span>
+              </span>
+              <span id="advancedArrowText" class="text-xs text-neutral-500 font-mono font-medium">+ Expand</span>
             </button>
 
-            <div id="advancedSettingsPanel" class="p-3.5 border-t border-neutral-200 bg-neutral-50/40 space-y-3 hidden">
+            <div id="advancedSettingsPanel" class="p-3.5 sm:p-4 border-t border-neutral-200 bg-neutral-50/50 space-y-3.5 hidden">
               
               <!-- Weight & Zone -->
               <div class="grid grid-cols-2 gap-2.5">
                 <div>
-                  <div class="flex justify-between text-[11px] text-neutral-600 mb-1">
+                  <div class="flex justify-between text-xs text-neutral-600 mb-1">
                     <span>Weight</span>
-                    <span id="weightDisplay" class="font-mono">500g</span>
+                    <span id="weightDisplay" class="font-mono font-semibold">500g</span>
                   </div>
                   <input
                     type="number"
@@ -181,15 +198,15 @@ const {
                     value="500"
                     min="50"
                     step="50"
-                    class="w-full px-2.5 py-1.5 bg-white border border-neutral-200 rounded-lg text-xs font-mono text-neutral-900"
+                    class="w-full px-3 py-2 bg-white border border-neutral-300 rounded-lg text-base sm:text-xs font-mono text-neutral-900 min-h-[40px] outline-none focus:border-neutral-900"
                   />
                 </div>
 
                 <div>
-                  <label for="selectShippingZone" class="block text-[11px] text-neutral-600 mb-1">Distance</label>
+                  <label for="selectShippingZone" class="block text-xs text-neutral-600 mb-1">Distance</label>
                   <select
                     id="selectShippingZone"
-                    class="w-full px-2.5 py-1.5 bg-white border border-neutral-200 rounded-lg text-xs text-neutral-800"
+                    class="w-full px-3 py-2 bg-white border border-neutral-300 rounded-lg text-base sm:text-xs text-neutral-800 min-h-[40px] outline-none focus:border-neutral-900"
                   >
                     <option value="local">Local</option>
                     <option value="regional">Regional</option>
@@ -201,10 +218,10 @@ const {
               <!-- GST Rate & Packaging -->
               <div class="grid grid-cols-2 gap-2.5">
                 <div>
-                  <label for="inputProductGst" class="block text-[11px] text-neutral-600 mb-1">Product GST</label>
+                  <label for="inputProductGst" class="block text-xs text-neutral-600 mb-1">Product GST</label>
                   <select
                     id="inputProductGst"
-                    class="w-full px-2.5 py-1.5 bg-white border border-neutral-200 rounded-lg text-xs font-mono text-neutral-800"
+                    class="w-full px-3 py-2 bg-white border border-neutral-300 rounded-lg text-base sm:text-xs font-mono text-neutral-800 min-h-[40px] outline-none focus:border-neutral-900"
                   >
                     <option value="0">0%</option>
                     <option value="3">3%</option>
@@ -216,37 +233,37 @@ const {
                 </div>
 
                 <div>
-                  <label for="inputPackagingCost" class="block text-[11px] text-neutral-600 mb-1">Packaging (₹)</label>
+                  <label for="inputPackagingCost" class="block text-xs text-neutral-600 mb-1">Packaging (₹)</label>
                   <input
                     type="number"
                     id="inputPackagingCost"
                     value="15"
                     min="0"
-                    class="w-full px-2.5 py-1.5 bg-white border border-neutral-200 rounded-lg text-xs font-mono text-neutral-900"
+                    class="w-full px-3 py-2 bg-white border border-neutral-300 rounded-lg text-base sm:text-xs font-mono text-neutral-900 min-h-[40px] outline-none focus:border-neutral-900"
                   />
                 </div>
               </div>
 
               <!-- Ad Spend -->
               <div>
-                <label for="inputAdSpend" class="block text-[11px] text-neutral-600 mb-1">Ad Spend Per Unit (₹)</label>
+                <label for="inputAdSpend" class="block text-xs text-neutral-600 mb-1">Ad Spend Per Unit (₹, optional)</label>
                 <input
                   type="number"
                   id="inputAdSpend"
                   value="0"
                   min="0"
-                  class="w-full px-2.5 py-1.5 bg-white border border-neutral-200 rounded-lg text-xs font-mono text-neutral-900"
+                  class="w-full px-3 py-2 bg-white border border-neutral-300 rounded-lg text-base sm:text-xs font-mono text-neutral-900 min-h-[40px] outline-none focus:border-neutral-900"
                 />
               </div>
 
               <!-- Returns -->
-              <div class="pt-2 border-t border-neutral-200/60 space-y-2">
-                <span class="text-[11px] font-semibold text-neutral-700 block">Returns &amp; RTO</span>
+              <div class="pt-2 border-t border-neutral-200 space-y-2">
+                <span class="text-xs font-semibold text-neutral-700 block">Returns &amp; RTO Rates</span>
                 <div class="grid grid-cols-2 gap-2.5">
                   <div>
-                    <div class="flex justify-between text-[10px] text-neutral-500 mb-1">
+                    <div class="flex justify-between text-[11px] text-neutral-500 mb-1">
                       <span>RTO %</span>
-                      <span id="rtoRateDisplay" class="font-mono">18%</span>
+                      <span id="rtoRateDisplay" class="font-mono font-medium">18%</span>
                     </div>
                     <input
                       type="range"
@@ -254,13 +271,13 @@ const {
                       min="0"
                       max="50"
                       value="18"
-                      class="w-full accent-neutral-900 cursor-pointer h-1.5 bg-neutral-200 rounded-lg appearance-none"
+                      class="w-full accent-neutral-900 cursor-pointer h-2 bg-neutral-200 rounded-lg appearance-none py-1"
                     />
                   </div>
                   <div>
-                    <div class="flex justify-between text-[10px] text-neutral-500 mb-1">
-                      <span>Cust. Return %</span>
-                      <span id="customerReturnRateDisplay" class="font-mono">10%</span>
+                    <div class="flex justify-between text-[11px] text-neutral-500 mb-1">
+                      <span>Customer Return %</span>
+                      <span id="customerReturnRateDisplay" class="font-mono font-medium">10%</span>
                     </div>
                     <input
                       type="range"
@@ -268,29 +285,29 @@ const {
                       min="0"
                       max="40"
                       value="10"
-                      class="w-full accent-neutral-900 cursor-pointer h-1.5 bg-neutral-200 rounded-lg appearance-none"
+                      class="w-full accent-neutral-900 cursor-pointer h-2 bg-neutral-200 rounded-lg appearance-none py-1"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label for="inputReturnReverseCost" class="block text-[10px] text-neutral-500 mb-1">Reverse Courier Penalty (₹)</label>
+                  <label for="inputReturnReverseCost" class="block text-[11px] text-neutral-500 mb-1">Reverse Courier Charge per Return (₹)</label>
                   <input
                     type="number"
                     id="inputReturnReverseCost"
                     value="130"
-                    class="w-full px-2 py-1 bg-white border border-neutral-200 rounded-lg text-xs font-mono text-neutral-900"
+                    class="w-full px-3 py-2 bg-white border border-neutral-300 rounded-lg text-base sm:text-xs font-mono text-neutral-900 min-h-[40px] outline-none focus:border-neutral-900"
                   />
                 </div>
               </div>
 
               <!-- Overrides -->
-              <div class="pt-2 border-t border-neutral-200/60">
-                <span class="text-[11px] font-semibold text-neutral-700 block mb-1.5">Custom Overrides (Optional)</span>
+              <div class="pt-2 border-t border-neutral-200">
+                <span class="text-xs font-semibold text-neutral-700 block mb-1.5">Custom Fee Overrides (Optional)</span>
                 <div class="grid grid-cols-3 gap-1.5">
-                  <input type="number" id="customCommInput" placeholder="Comm %" class="w-full px-2 py-1 bg-white border border-neutral-200 text-xs font-mono rounded" />
-                  <input type="number" id="customFixedFeeInput" placeholder="Fixed ₹" class="w-full px-2 py-1 bg-white border border-neutral-200 text-xs font-mono rounded" />
-                  <input type="number" id="customShippingInput" placeholder="Ship ₹" class="w-full px-2 py-1 bg-white border border-neutral-200 text-xs font-mono rounded" />
+                  <input type="number" id="customCommInput" placeholder="Comm %" class="w-full px-2.5 py-2 bg-white border border-neutral-300 text-base sm:text-xs font-mono rounded-lg min-h-[38px] outline-none focus:border-neutral-900" />
+                  <input type="number" id="customFixedFeeInput" placeholder="Fixed ₹" class="w-full px-2.5 py-2 bg-white border border-neutral-300 text-base sm:text-xs font-mono rounded-lg min-h-[38px] outline-none focus:border-neutral-900" />
+                  <input type="number" id="customShippingInput" placeholder="Ship ₹" class="w-full px-2.5 py-2 bg-white border border-neutral-300 text-base sm:text-xs font-mono rounded-lg min-h-[38px] outline-none focus:border-neutral-900" />
                 </div>
               </div>
 

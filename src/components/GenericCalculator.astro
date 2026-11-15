@@ -60,7 +60,7 @@ const { calculator } = Astro.props;
                   <select
                     id={`field_${field.id}`}
                     name={field.id}
-                    class="calc-input w-full px-3 py-2.5 sm:py-2 min-h-[42px] bg-white border border-neutral-200 rounded-xl text-xs sm:text-sm font-mono text-neutral-900 outline-none focus:border-neutral-900 appearance-none pr-8 cursor-pointer"
+                    class="calc-input w-full px-3.5 py-3 min-h-[46px] bg-white border border-neutral-300 rounded-xl text-base sm:text-sm font-mono text-neutral-900 outline-none focus:border-neutral-900 appearance-none pr-8 cursor-pointer shadow-2xs"
                   >
                     {field.options?.map((opt) => (
                       <option value={opt.value} selected={opt.value === field.defaultValue}>
@@ -68,8 +68,8 @@ const { calculator } = Astro.props;
                       </option>
                     ))}
                   </select>
-                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-neutral-400">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-neutral-400">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                   </div>
                 </div>
               ) : field.type === 'range' ? (
@@ -91,7 +91,7 @@ const { calculator } = Astro.props;
               ) : (
                 <div class="relative flex items-center">
                   {field.prefix && (
-                    <span class="absolute left-3 text-xs text-neutral-400 font-mono pointer-events-none">
+                    <span class="absolute left-3.5 text-sm text-neutral-500 font-mono pointer-events-none font-semibold">
                       {field.prefix}
                     </span>
                   )}
@@ -103,10 +103,10 @@ const { calculator } = Astro.props;
                     min={field.min ?? 0}
                     max={field.max}
                     step={field.step ?? 'any'}
-                    class={`calc-input w-full px-3 py-2.5 sm:py-2 min-h-[42px] bg-white border border-neutral-200 rounded-xl text-xs sm:text-sm font-mono text-neutral-900 outline-none focus:border-neutral-900 ${field.prefix ? 'pl-7' : ''} ${field.suffix ? 'pr-8' : ''}`}
+                    class={`calc-input w-full px-3.5 py-3 min-h-[46px] bg-white border border-neutral-300 rounded-xl text-base sm:text-sm font-mono text-neutral-900 outline-none focus:border-neutral-900 shadow-2xs ${field.prefix ? 'pl-8' : ''} ${field.suffix ? 'pr-9' : ''}`}
                   />
                   {field.suffix && (
-                    <span class="absolute right-3 text-xs text-neutral-400 font-mono pointer-events-none">
+                    <span class="absolute right-3.5 text-xs text-neutral-500 font-mono pointer-events-none">
                       {field.suffix}
                     </span>
                   )}
@@ -206,7 +206,7 @@ const { calculator } = Astro.props;
         </div>
         <div class="space-y-3">
           {calculator.faqs.map((faq) => (
-            <details class="group bg-white border border-neutral-200 rounded-xl p-4 shadow-xs transition-all cursor-pointer" open>
+            <details class="group bg-white border border-neutral-200 rounded-xl p-4 shadow-xs transition-all cursor-pointer">
               <summary class="flex cursor-pointer items-center justify-between text-xs sm:text-sm font-semibold text-neutral-900 list-none gap-3 hover:text-black">
                 <span class="leading-snug">{faq.q}</span>
                 <span class="ml-2 flex h-4 w-4 shrink-0 items-center justify-center text-neutral-400 group-open:rotate-180 transition-transform">

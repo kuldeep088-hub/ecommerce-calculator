@@ -303,12 +303,12 @@ const filterCategories = [
       </p>
 
       <!-- Category Filter Tabs -->
-      <div class="flex flex-wrap items-center justify-center gap-1.5 mt-5" id="homeCatalogFilters">
+      <div class="flex items-center sm:justify-center gap-1.5 mt-5 overflow-x-auto touch-scroll no-scrollbar pb-1 sm:flex-wrap" id="homeCatalogFilters">
         {filterCategories.map((cat, idx) => (
           <button
             type="button"
             data-filter={cat}
-            class={`catalog-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all border cursor-pointer ${
+            class={`catalog-filter-btn shrink-0 whitespace-nowrap px-3.5 py-2 rounded-full text-xs font-medium transition-all border cursor-pointer min-h-[38px] inline-flex items-center ${
               idx === 0
                 ? 'bg-neutral-900 text-white border-transparent shadow-xs font-semibold'
                 : 'bg-white hover:bg-neutral-100 text-neutral-600 border-neutral-200'
@@ -384,9 +384,9 @@ const filterCategories = [
 
         // Update button styles
         buttons.forEach(function(b) {
-          b.className = 'catalog-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all border bg-white hover:bg-neutral-100 text-neutral-600 border-neutral-200 cursor-pointer';
+          b.className = 'catalog-filter-btn shrink-0 whitespace-nowrap px-3.5 py-2 rounded-full text-xs font-medium transition-all border bg-white hover:bg-neutral-100 text-neutral-600 border-neutral-200 cursor-pointer min-h-[38px] inline-flex items-center';
         });
-        btn.className = 'catalog-filter-btn px-3 py-1.5 rounded-full text-xs font-medium transition-all border bg-neutral-900 text-white border-transparent shadow-xs font-semibold cursor-pointer';
+        btn.className = 'catalog-filter-btn shrink-0 whitespace-nowrap px-3.5 py-2 rounded-full text-xs font-medium transition-all border bg-neutral-900 text-white border-transparent shadow-xs font-semibold cursor-pointer min-h-[38px] inline-flex items-center';
 
         // Filter cards and section visibility
         groups.forEach(function(group) {

@@ -103,37 +103,61 @@ const { activePlatform = 'home' } = Astro.props;
   </div>
 
   <!-- Collapsible Mobile Navigation Drawer -->
-  <div id="mobileMenu" class="hidden md:hidden border-t border-neutral-200 bg-white px-4 py-3.5 space-y-4 max-h-[calc(100vh-4rem)] overflow-y-auto overscroll-contain">
+  <div id="mobileMenu" class="hidden md:hidden border-t border-neutral-200 bg-white px-4 py-4 space-y-4 max-h-[calc(100vh-4rem)] overflow-y-auto overscroll-contain shadow-md">
     <div>
-      <div class="text-[11px] font-semibold text-neutral-400 uppercase tracking-wider mb-1.5 px-2">Marketplaces</div>
+      <div class="text-[11px] font-semibold text-neutral-400 uppercase tracking-wider mb-2 px-2">Marketplaces</div>
       <div class="space-y-1">
-        <a href="/meesho-profit-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Meesho (0% Commission)</a>
-        <a href="/flipkart-profit-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Flipkart (2026 Slabs)</a>
-        <a href="/amazon-profit-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Amazon India (Easy Ship)</a>
-        <a href="/amazon-fba-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Amazon FBA Calculator</a>
+        <a href="/meesho-profit-calculator" class="mobile-nav-link flex items-center justify-between min-h-[44px] py-2.5 px-3 rounded-xl text-sm font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">
+          <span>Meesho (0% Commission)</span>
+          <span class="text-xs font-mono text-emerald-600">Free</span>
+        </a>
+        <a href="/flipkart-profit-calculator" class="mobile-nav-link flex items-center justify-between min-h-[44px] py-2.5 px-3 rounded-xl text-sm font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">
+          <span>Flipkart (2026 Slabs)</span>
+          <span class="text-xs font-mono text-neutral-400">&rarr;</span>
+        </a>
+        <a href="/amazon-profit-calculator" class="mobile-nav-link flex items-center justify-between min-h-[44px] py-2.5 px-3 rounded-xl text-sm font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">
+          <span>Amazon India (Easy Ship)</span>
+          <span class="text-xs font-mono text-neutral-400">&rarr;</span>
+        </a>
+        <a href="/amazon-fba-calculator" class="mobile-nav-link flex items-center justify-between min-h-[44px] py-2.5 px-3 rounded-xl text-sm font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">
+          <span>Amazon FBA Calculator</span>
+          <span class="text-xs font-mono text-neutral-400">&rarr;</span>
+        </a>
       </div>
     </div>
 
     <div>
-      <div class="text-[11px] font-semibold text-emerald-700 uppercase tracking-wider mb-1.5 px-2">Essential Seller Tools</div>
+      <div class="text-[11px] font-semibold text-emerald-700 uppercase tracking-wider mb-2 px-2">Popular Tools</div>
       <div class="space-y-1">
-        <a href="/gst-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">GST &amp; ITC Calculator</a>
-        <a href="/profit-margin-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Profit Margin Calculator</a>
-        <a href="/selling-price-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Target Selling Price</a>
-        <a href="/net-profit-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Net Profit Calculator</a>
-        <a href="/roas-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">ROAS Calculator</a>
-        <a href="/shipping-cost-calculator" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Shipping Cost Calculator</a>
-        <a href="/#comparison" class="mobile-nav-link flex items-center justify-between min-h-[40px] py-2 px-2.5 rounded-lg text-xs font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">Compare All Platforms</a>
+        <a href="/gst-calculator" class="mobile-nav-link flex items-center justify-between min-h-[44px] py-2.5 px-3 rounded-xl text-sm font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">
+          <span>GST &amp; ITC Calculator</span>
+          <span class="text-xs text-neutral-400">&rarr;</span>
+        </a>
+        <a href="/profit-margin-calculator" class="mobile-nav-link flex items-center justify-between min-h-[44px] py-2.5 px-3 rounded-xl text-sm font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">
+          <span>Profit Margin % Calculator</span>
+          <span class="text-xs text-neutral-400">&rarr;</span>
+        </a>
+        <a href="/selling-price-calculator" class="mobile-nav-link flex items-center justify-between min-h-[44px] py-2.5 px-3 rounded-xl text-sm font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">
+          <span>Target Selling Price</span>
+          <span class="text-xs text-neutral-400">&rarr;</span>
+        </a>
+        <a href="/net-profit-calculator" class="mobile-nav-link flex items-center justify-between min-h-[44px] py-2.5 px-3 rounded-xl text-sm font-medium text-neutral-800 hover:bg-neutral-50 active:bg-neutral-100">
+          <span>Net Profit Calculator</span>
+          <span class="text-xs text-neutral-400">&rarr;</span>
+        </a>
+        <a href="/#tools-catalog" class="mobile-nav-link flex items-center justify-between min-h-[44px] py-2.5 px-3 rounded-xl text-sm font-semibold text-emerald-700 bg-emerald-50/50 hover:bg-emerald-50 active:bg-emerald-100">
+          <span>View All 31 Tools &rarr;</span>
+        </a>
       </div>
     </div>
 
-    <div class="border-t border-neutral-100 pt-2">
-      <div class="text-[11px] font-semibold text-neutral-400 uppercase tracking-wider mb-1.5 px-2">Company &amp; Legal</div>
-      <div class="grid grid-cols-2 gap-1 text-xs text-neutral-600">
-        <a href="/about-us" class="mobile-nav-link py-1.5 px-2 rounded-lg hover:bg-neutral-50">About Us</a>
-        <a href="/contact-us" class="mobile-nav-link py-1.5 px-2 rounded-lg hover:bg-neutral-50">Contact Us</a>
-        <a href="/privacy-policy" class="mobile-nav-link py-1.5 px-2 rounded-lg hover:bg-neutral-50">Privacy Policy</a>
-        <a href="/terms-and-conditions" class="mobile-nav-link py-1.5 px-2 rounded-lg hover:bg-neutral-50">Terms of Use</a>
+    <div class="border-t border-neutral-100 pt-3">
+      <div class="text-[11px] font-semibold text-neutral-400 uppercase tracking-wider mb-2 px-2">Company &amp; Legal</div>
+      <div class="grid grid-cols-2 gap-2 text-xs text-neutral-600">
+        <a href="/about-us" class="mobile-nav-link py-2 px-2.5 rounded-lg hover:bg-neutral-50 min-h-[40px] flex items-center">About Us</a>
+        <a href="/contact-us" class="mobile-nav-link py-2 px-2.5 rounded-lg hover:bg-neutral-50 min-h-[40px] flex items-center">Contact Us</a>
+        <a href="/privacy-policy" class="mobile-nav-link py-2 px-2.5 rounded-lg hover:bg-neutral-50 min-h-[40px] flex items-center">Privacy Policy</a>
+        <a href="/terms-and-conditions" class="mobile-nav-link py-2 px-2.5 rounded-lg hover:bg-neutral-50 min-h-[40px] flex items-center">Terms of Use</a>
       </div>
     </div>
   </div>

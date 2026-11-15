@@ -39,30 +39,30 @@
               <button
                 type="button"
                 id="gstModeInclusive"
-                class="gst-mode-btn py-2 px-3 rounded-lg text-xs font-semibold bg-white text-neutral-900 shadow-xs transition"
+                class="gst-mode-btn py-2.5 px-3 rounded-lg text-xs sm:text-sm font-semibold bg-white text-neutral-900 shadow-xs transition min-h-[40px] cursor-pointer"
               >
                 GST Inclusive (MRP)
               </button>
               <button
                 type="button"
                 id="gstModeExclusive"
-                class="gst-mode-btn py-2 px-3 rounded-lg text-xs font-medium text-neutral-600 hover:text-neutral-900 transition"
+                class="gst-mode-btn py-2.5 px-3 rounded-lg text-xs sm:text-sm font-medium text-neutral-600 hover:text-neutral-900 transition min-h-[40px] cursor-pointer"
               >
                 GST Exclusive (+ Tax)
               </button>
             </div>
-            <span class="text-[11px] text-neutral-400 mt-1 block" id="gstModeHint">
+            <span class="text-[11px] text-neutral-500 mt-1 block" id="gstModeHint">
               Extract base price &amp; GST from customer listed price.
             </span>
           </div>
 
           <!-- Amount Input -->
           <div>
-            <label for="gstAmountInput" class="block text-xs font-medium text-neutral-700 mb-1" id="gstAmountLabel">
+            <label for="gstAmountInput" class="block text-xs sm:text-sm font-medium text-neutral-800 mb-1" id="gstAmountLabel">
               Listed Selling Price / MRP
             </label>
-            <div class="relative rounded-xl border border-neutral-200 bg-white focus-within:border-neutral-900 transition-all">
-              <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-neutral-400 font-semibold">
+            <div class="relative rounded-xl border border-neutral-300 bg-white focus-within:border-neutral-900 transition-all shadow-2xs">
+              <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-neutral-500 font-bold text-base">
                 ₹
               </span>
               <input
@@ -71,42 +71,47 @@
                 value="999"
                 min="0"
                 step="any"
-                class="w-full pl-8 pr-4 py-2.5 bg-transparent rounded-xl text-base sm:text-lg font-mono font-semibold text-neutral-900 outline-none"
+                class="w-full pl-8 pr-4 py-3 bg-transparent rounded-xl text-base sm:text-lg font-mono font-semibold text-neutral-900 outline-none min-h-[46px]"
               />
             </div>
           </div>
 
           <!-- GST Rate Slabs -->
           <div>
-            <label class="block text-xs font-medium text-neutral-700 mb-1.5">GST Rate Slab</label>
+            <label class="block text-xs sm:text-sm font-medium text-neutral-800 mb-1.5">GST Rate Slab</label>
             <div class="grid grid-cols-3 gap-1.5" id="gstRateButtons">
-              <button type="button" data-rate="0" class="gst-rate-btn py-1.5 rounded-lg border border-neutral-200 text-xs font-mono font-medium hover:bg-neutral-50 transition">0%</button>
-              <button type="button" data-rate="3" class="gst-rate-btn py-1.5 rounded-lg border border-neutral-200 text-xs font-mono font-medium hover:bg-neutral-50 transition">3%</button>
-              <button type="button" data-rate="5" class="gst-rate-btn py-1.5 rounded-lg border border-neutral-200 text-xs font-mono font-medium hover:bg-neutral-50 transition">5%</button>
-              <button type="button" data-rate="12" class="gst-rate-btn py-1.5 rounded-lg border border-neutral-200 text-xs font-mono font-medium hover:bg-neutral-50 transition">12%</button>
-              <button type="button" data-rate="18" class="gst-rate-btn py-1.5 rounded-lg border border-emerald-500 bg-emerald-50 text-emerald-800 font-mono font-bold transition shadow-xs">18%</button>
-              <button type="button" data-rate="28" class="gst-rate-btn py-1.5 rounded-lg border border-neutral-200 text-xs font-mono font-medium hover:bg-neutral-50 transition">28%</button>
+              <button type="button" data-rate="0" class="gst-rate-btn py-2.5 rounded-lg border border-neutral-200 text-xs sm:text-sm font-mono font-medium hover:bg-neutral-50 transition min-h-[42px] cursor-pointer">0%</button>
+              <button type="button" data-rate="3" class="gst-rate-btn py-2.5 rounded-lg border border-neutral-200 text-xs sm:text-sm font-mono font-medium hover:bg-neutral-50 transition min-h-[42px] cursor-pointer">3%</button>
+              <button type="button" data-rate="5" class="gst-rate-btn py-2.5 rounded-lg border border-neutral-200 text-xs sm:text-sm font-mono font-medium hover:bg-neutral-50 transition min-h-[42px] cursor-pointer">5%</button>
+              <button type="button" data-rate="12" class="gst-rate-btn py-2.5 rounded-lg border border-neutral-200 text-xs sm:text-sm font-mono font-medium hover:bg-neutral-50 transition min-h-[42px] cursor-pointer">12%</button>
+              <button type="button" data-rate="18" class="gst-rate-btn py-2.5 rounded-lg border border-emerald-500 bg-emerald-50 text-emerald-800 font-mono font-bold transition shadow-xs min-h-[42px] cursor-pointer">18%</button>
+              <button type="button" data-rate="28" class="gst-rate-btn py-2.5 rounded-lg border border-neutral-200 text-xs sm:text-sm font-mono font-medium hover:bg-neutral-50 transition min-h-[42px] cursor-pointer">28%</button>
             </div>
             <div class="mt-2">
               <input
                 type="number"
                 id="gstCustomRate"
                 placeholder="Or custom GST % (e.g. 18)"
-                class="w-full px-3 py-1.5 bg-white border border-neutral-200 rounded-lg text-xs font-mono text-neutral-900 outline-none focus:border-neutral-900"
+                class="w-full px-3 py-2.5 bg-white border border-neutral-300 rounded-lg text-base sm:text-xs font-mono text-neutral-900 outline-none focus:border-neutral-900 min-h-[42px]"
               />
             </div>
           </div>
 
           <!-- Transaction Type: Inter-State vs Intra-State -->
           <div>
-            <label class="block text-xs font-medium text-neutral-700 mb-1.5">Supply Type</label>
-            <select
-              id="gstSupplyType"
-              class="w-full px-3 py-2 bg-white border border-neutral-200 rounded-xl text-xs sm:text-sm text-neutral-800 outline-none cursor-pointer"
-            >
-              <option value="inter">Inter-State (IGST - Different State)</option>
-              <option value="intra">Intra-State (CGST + SGST - Same State)</option>
-            </select>
+            <label class="block text-xs sm:text-sm font-medium text-neutral-800 mb-1.5">Supply Type</label>
+            <div class="relative">
+              <select
+                id="gstSupplyType"
+                class="w-full px-3.5 py-3 bg-white border border-neutral-300 rounded-xl text-base sm:text-sm text-neutral-800 outline-none cursor-pointer min-h-[46px] appearance-none pr-8"
+              >
+                <option value="inter">Inter-State (IGST - Different State)</option>
+                <option value="intra">Intra-State (CGST + SGST - Same State)</option>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-neutral-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </div>
+            </div>
           </div>
 
         </form>
