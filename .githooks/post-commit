@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Auto-push every commit to GitHub
+branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "main")
+if [ -n "$branch" ] && [ "$branch" != "HEAD" ]; then
+  echo "🚀 [Git Hook] Automatically pushing commit to origin/$branch..."
+  git push origin "$branch" || echo "⚠️ [Git Hook] Auto-push failed. Check network or remote status."
+fi

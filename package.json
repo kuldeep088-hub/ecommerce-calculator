@@ -8,7 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "astro build && wrangler pages deploy dist --project-name freesellerprofitcalculator --branch main --commit-dirty=true"
+    "deploy": "astro build && wrangler pages deploy dist --project-name freesellerprofitcalculator --branch main --commit-dirty=true",
+    "prepare": "git config core.hooksPath .githooks 2>/dev/null || true"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
