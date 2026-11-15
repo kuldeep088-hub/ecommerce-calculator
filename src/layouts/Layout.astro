@@ -75,23 +75,17 @@ const hreflangs = getHreflangList(domain);
       "description": description
     })} />
 
-    <!-- Theme Init Script (Default: Light theme) -->
+    <!-- Force White/Light Theme (No Night Theme) -->
     <script is:inline>
-      (function() {
-        try {
-          const storedTheme = localStorage.getItem('theme');
-          if (storedTheme === 'dark') {
-            document.documentElement.classList.add('dark');
-          } else {
-            document.documentElement.classList.remove('dark');
-          }
-        } catch (_) {}
-      })();
+      try {
+        localStorage.removeItem('theme');
+        document.documentElement.classList.remove('dark');
+      } catch (_) {}
     </script>
   </head>
-  <body class="min-h-screen flex flex-col bg-white dark:bg-[#000000] text-neutral-900 dark:text-[#ededed] antialiased selection:bg-neutral-900 selection:text-white dark:selection:bg-neutral-100 dark:selection:text-black transition-colors duration-150 overflow-x-hidden">
+  <body class="min-h-screen flex flex-col bg-white text-neutral-900 antialiased selection:bg-neutral-900 selection:text-white transition-colors duration-150 overflow-x-hidden">
     <Header lang={lang} />
-    <main class="flex-1 pb-20 lg:pb-0">
+    <main class="flex-1 pb-16 lg:pb-0">
       <slot />
     </main>
     <Footer lang={lang} />

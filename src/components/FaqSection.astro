@@ -90,14 +90,14 @@ const t = useTranslations(lang);
 const categories = ["All", "Profit & Pricing", "RTO & Returns", "Marketplace Fees", "GST & Taxes"];
 ---
 
-<section id="faq" class="py-12 sm:py-16 bg-transparent border-t border-neutral-200 dark:border-white/[0.08]">
+<section id="faq" class="py-12 sm:py-16 bg-transparent border-t border-neutral-200">
   <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <div class="text-center mb-7">
-      <h2 class="text-xl sm:text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white">
+      <h2 class="text-xl sm:text-2xl font-semibold tracking-tight text-neutral-900">
         Frequently Asked Questions
       </h2>
-      <p class="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 mt-1 max-w-xl mx-auto">
+      <p class="text-xs sm:text-sm text-neutral-500 mt-1 max-w-xl mx-auto">
         Answers on Meesho, Flipkart, and Amazon fee slabs, courier charges, and GST.
       </p>
 
@@ -109,8 +109,8 @@ const categories = ["All", "Profit & Pricing", "RTO & Returns", "Marketplace Fee
             data-filter={cat}
             class={`faq-filter-btn px-3 py-1 rounded-full text-xs font-medium transition-all border cursor-pointer ${
               idx === 0
-                ? "bg-neutral-900 dark:bg-white text-white dark:text-black border-transparent shadow-2xs"
-                : "bg-white/60 dark:bg-neutral-900/50 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border-black/[0.06] dark:border-white/[0.08]"
+                ? "bg-neutral-900 text-white border-transparent shadow-xs"
+                : "bg-white hover:bg-neutral-100 text-neutral-600 border-neutral-200"
             }`}
           >
             {cat}
@@ -120,25 +120,25 @@ const categories = ["All", "Profit & Pricing", "RTO & Returns", "Marketplace Fee
     </div>
 
     <!-- Accordion Items -->
-    <div class="divide-y divide-black/[0.06] dark:divide-white/[0.08]" id="faqAccordionContainer">
+    <div class="divide-y divide-neutral-200" id="faqAccordionContainer">
       {faqs.map((faq) => (
         <details
           class="faq-card group py-4 transition-all"
           data-category={faq.category}
         >
-          <summary class="flex cursor-pointer items-center justify-between text-sm sm:text-[15px] font-medium text-neutral-900 dark:text-white list-none gap-4 hover:text-black dark:hover:text-white">
+          <summary class="flex cursor-pointer items-center justify-between text-sm sm:text-[15px] font-medium text-neutral-900 list-none gap-4 hover:text-black">
             <span class="leading-snug">{faq.q}</span>
-            <span class="ml-2 flex h-5 w-5 shrink-0 items-center justify-center text-neutral-400 dark:text-neutral-500 group-open:rotate-180 transition-transform">
+            <span class="ml-2 flex h-5 w-5 shrink-0 items-center justify-center text-neutral-400 group-open:rotate-180 transition-transform">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </span>
           </summary>
-          <div class="mt-2 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed pr-6">
+          <div class="mt-2 text-xs sm:text-sm text-neutral-600 leading-relaxed pr-6">
             <p>{faq.a}</p>
             <div class="mt-2.5 flex items-center gap-2">
-              <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-850 text-neutral-500 dark:text-neutral-400">
+              <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-neutral-100 text-neutral-600">
                 {faq.category}
               </span>
-              <span class="text-[10px] font-mono text-emerald-600 dark:text-emerald-400">
+              <span class="text-[10px] font-mono text-emerald-700">
                 &bull; Verified 2026 Slabs
               </span>
             </div>
@@ -177,9 +177,9 @@ const categories = ["All", "Profit & Pricing", "RTO & Returns", "Marketplace Fee
 
         // Update active button state
         buttons.forEach(function(b) {
-          b.className = 'faq-filter-btn px-3 py-1 rounded-full text-xs font-medium transition-all border bg-white/60 dark:bg-neutral-900/50 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border-black/[0.06] dark:border-white/[0.08] cursor-pointer';
+          b.className = 'faq-filter-btn px-3 py-1 rounded-full text-xs font-medium transition-all border bg-white hover:bg-neutral-100 text-neutral-600 border-neutral-200 cursor-pointer';
         });
-        btn.className = 'faq-filter-btn px-3 py-1 rounded-full text-xs font-medium transition-all border bg-neutral-900 dark:bg-white text-white dark:text-black border-transparent shadow-2xs cursor-pointer';
+        btn.className = 'faq-filter-btn px-3 py-1 rounded-full text-xs font-medium transition-all border bg-neutral-900 text-white border-transparent shadow-xs cursor-pointer';
 
         // Filter cards
         items.forEach(function(card) {

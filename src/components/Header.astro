@@ -1,48 +1,40 @@
 ---
 // src/components/Header.astro
-import ThemeToggle from './ThemeToggle.astro';
-import { useTranslations } from '../i18n/utils';
-import type { SupportedLanguage } from '../i18n/ui';
-
 interface Props {
-  lang?: SupportedLanguage;
+  lang?: string;
 }
 
 const { lang = 'en' } = Astro.props;
-const t = useTranslations(lang);
 const homeHref = lang === 'en' ? '/' : `/${lang}/`;
 ---
 
-<header class="sticky top-0 z-50 w-full bg-white/90 dark:bg-black/90 backdrop-blur-md border-b border-neutral-200 dark:border-white/[0.08] transition-all">
+<header class="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-neutral-200 transition-all">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-15 flex items-center justify-between">
     <!-- Brand / Logo -->
     <a href={homeHref} class="flex items-center gap-2.5">
-      <div class="w-7 h-7 rounded-lg bg-neutral-900 dark:bg-white flex items-center justify-center text-white dark:text-black font-bold text-xs shadow-xs">
+      <div class="w-7 h-7 rounded-lg bg-neutral-900 flex items-center justify-center text-white font-bold text-xs shadow-xs">
         ₹
       </div>
       <div>
-        <span class="font-semibold text-sm sm:text-base tracking-tight text-neutral-900 dark:text-white">Seller Profit Calculator</span>
+        <span class="font-semibold text-sm sm:text-base tracking-tight text-neutral-900">Seller Profit Calculator</span>
       </div>
     </a>
 
     <!-- Navigation / Quick Anchor Links -->
-    <nav class="hidden md:flex items-center gap-6 text-xs sm:text-[13px] text-neutral-600 dark:text-neutral-400">
-      <a href="#calculator" class="hover:text-black dark:hover:text-white transition-colors font-medium">Calculator</a>
-      <a href="#comparison" class="hover:text-black dark:hover:text-white transition-colors font-medium">Compare</a>
-      <a href="#reverse-solver" class="hover:text-black dark:hover:text-white transition-colors font-medium">Target Solver</a>
-      <a href="#fee-guide" class="hover:text-black dark:hover:text-white transition-colors font-medium">Fee Rates</a>
-      <a href="#faq" class="hover:text-black dark:hover:text-white transition-colors font-medium">FAQ</a>
+    <nav class="hidden md:flex items-center gap-6 text-xs sm:text-[13px] text-neutral-600">
+      <a href="#calculator" class="hover:text-black transition-colors font-medium">Calculator</a>
+      <a href="#comparison" class="hover:text-black transition-colors font-medium">Compare</a>
+      <a href="#reverse-solver" class="hover:text-black transition-colors font-medium">Target Solver</a>
+      <a href="#fee-guide" class="hover:text-black transition-colors font-medium">Fee Rates</a>
+      <a href="#faq" class="hover:text-black transition-colors font-medium">FAQ</a>
     </nav>
 
-    <!-- Right Controls -->
-    <div class="flex items-center gap-2">
-      <ThemeToggle />
-
-      <!-- Mobile Hamburger Button -->
+    <!-- Mobile Hamburger Button -->
+    <div class="md:hidden flex items-center">
       <button
         type="button"
         id="mobileMenuBtn"
-        class="md:hidden inline-flex items-center justify-center w-8.5 h-8.5 rounded-lg border border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition cursor-pointer"
+        class="inline-flex items-center justify-center w-8.5 h-8.5 rounded-lg border border-neutral-200 bg-white text-neutral-700 hover:bg-neutral-50 transition cursor-pointer"
         aria-label="Toggle mobile menu"
         aria-expanded="false"
       >
@@ -57,20 +49,20 @@ const homeHref = lang === 'en' ? '/' : `/${lang}/`;
   </div>
 
   <!-- Collapsible Mobile Navigation Drawer -->
-  <div id="mobileMenu" class="hidden md:hidden border-t border-neutral-200 dark:border-white/[0.08] bg-white/95 dark:bg-black/95 backdrop-blur-md px-4 py-3 space-y-1">
-    <a href="#calculator" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-lg text-xs sm:text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition">
+  <div id="mobileMenu" class="hidden md:hidden border-t border-neutral-200 bg-white px-4 py-3 space-y-1">
+    <a href="#calculator" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-lg text-xs sm:text-sm font-medium text-neutral-800 hover:bg-neutral-100 transition">
       <span>Calculator</span>
     </a>
-    <a href="#comparison" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-lg text-xs sm:text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition">
+    <a href="#comparison" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-lg text-xs sm:text-sm font-medium text-neutral-800 hover:bg-neutral-100 transition">
       <span>Compare</span>
     </a>
-    <a href="#reverse-solver" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-lg text-xs sm:text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition">
+    <a href="#reverse-solver" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-lg text-xs sm:text-sm font-medium text-neutral-800 hover:bg-neutral-100 transition">
       <span>Target Solver</span>
     </a>
-    <a href="#fee-guide" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-lg text-xs sm:text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition">
+    <a href="#fee-guide" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-lg text-xs sm:text-sm font-medium text-neutral-800 hover:bg-neutral-100 transition">
       <span>Fee Rates</span>
     </a>
-    <a href="#faq" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-lg text-xs sm:text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition">
+    <a href="#faq" class="mobile-nav-link flex items-center justify-between py-2 px-3 rounded-lg text-xs sm:text-sm font-medium text-neutral-800 hover:bg-neutral-100 transition">
       <span>FAQ</span>
     </a>
   </div>

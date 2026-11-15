@@ -1,24 +1,19 @@
 ---
 import { CATEGORIES } from '../data/categories';
-import { useTranslations } from '../i18n/utils';
-import type { SupportedLanguage } from '../i18n/ui';
 
 interface Props {
-  lang?: SupportedLanguage;
+  lang?: string;
 }
-
-const { lang = 'en' } = Astro.props;
-const t = useTranslations(lang);
 ---
 
-<section id="reverse-solver" class="py-12 sm:py-16 bg-transparent border-t border-neutral-200 dark:border-white/[0.08]">
+<section id="reverse-solver" class="py-12 sm:py-16 bg-transparent border-t border-neutral-200">
   <div class="max-w-6xl mx-auto px-4 sm:px-6">
     
     <div class="mb-6">
-      <h2 class="text-xl sm:text-2xl font-semibold tracking-tight text-neutral-900 dark:text-white">
+      <h2 class="text-xl sm:text-2xl font-semibold tracking-tight text-neutral-900">
         Target Price Solver
       </h2>
-      <p class="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 mt-1">
+      <p class="text-xs sm:text-sm text-neutral-500 mt-1">
         Enter your desired profit or margin to find the required listing price across platforms.
       </p>
     </div>
@@ -26,52 +21,52 @@ const t = useTranslations(lang);
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
       
       <!-- Inputs (5 Cols) -->
-      <div class="lg:col-span-5 bg-white dark:bg-[#0b0b0b] border border-neutral-200 dark:border-white/[0.08] rounded-2xl p-5 sm:p-6 shadow-xs">
-        <h3 class="text-xs font-semibold uppercase tracking-wider text-neutral-700 dark:text-neutral-300 mb-4">Cost &amp; Profit Goal</h3>
+      <div class="lg:col-span-5 bg-white border border-neutral-200 rounded-2xl p-5 sm:p-6 shadow-xs">
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-neutral-700 mb-4">Cost &amp; Profit Goal</h3>
         
         <form id="solverForm" class="space-y-4" onsubmit="return false;">
           
           <div>
-            <label for="solvCogs" class="block text-[11px] font-medium uppercase tracking-wider text-neutral-600 dark:text-neutral-400 mb-1">
+            <label for="solvCogs" class="block text-xs font-medium text-neutral-700 mb-1">
               Product Cost (COGS)
             </label>
-            <div class="relative rounded-xl border border-black/[0.07] dark:border-white/[0.08] bg-white dark:bg-neutral-900/50 focus-within:border-black dark:focus-within:border-white focus-within:ring-1 focus-within:ring-black/5 dark:focus-within:ring-white/10 transition-all">
-              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-neutral-400 dark:text-neutral-500 font-medium text-sm">₹</div>
+            <div class="relative rounded-xl border border-neutral-200 bg-white focus-within:border-neutral-900 transition-all">
+              <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-neutral-400 font-semibold text-sm">₹</div>
               <input
                 type="number"
                 id="solvCogs"
                 value="250"
                 min="0"
-                class="w-full pl-8 pr-4 py-2.5 bg-transparent rounded-xl text-sm font-mono text-neutral-900 dark:text-white outline-none min-h-[42px]"
+                class="w-full pl-8 pr-4 py-2.5 bg-transparent rounded-xl text-sm font-mono text-neutral-900 outline-none min-h-[42px]"
               />
             </div>
           </div>
 
           <div class="grid grid-cols-2 gap-3">
             <div>
-              <label for="solvTargetMode" class="block text-[11px] font-medium uppercase tracking-wider text-neutral-600 dark:text-neutral-400 mb-1">
+              <label for="solvTargetMode" class="block text-xs font-medium text-neutral-700 mb-1">
                 Goal Type
               </label>
               <select
                 id="solvTargetMode"
-                class="w-full px-3 py-2.5 bg-white dark:bg-neutral-900/50 border border-black/[0.07] dark:border-white/[0.08] focus:border-black dark:focus:border-white focus:ring-1 focus:ring-black/5 dark:focus:ring-white/10 rounded-xl text-xs sm:text-sm text-neutral-800 dark:text-neutral-200 outline-none cursor-pointer min-h-[42px]"
+                class="w-full px-3 py-2.5 bg-white border border-neutral-200 focus:border-neutral-900 rounded-xl text-xs sm:text-sm text-neutral-800 outline-none cursor-pointer min-h-[42px]"
               >
-                <option value="fixed" class="bg-white dark:bg-[#141414] text-neutral-900 dark:text-neutral-100">Fixed ₹ Profit</option>
-                <option value="margin" class="bg-white dark:bg-[#141414] text-neutral-900 dark:text-neutral-100">Margin % of Price</option>
+                <option value="fixed">Fixed ₹ Profit</option>
+                <option value="margin">Margin % of Price</option>
               </select>
             </div>
 
             <div>
-              <label for="solvTargetVal" class="block text-[11px] font-medium uppercase tracking-wider text-neutral-600 dark:text-neutral-400 mb-1" id="solvTargetValLabel">
+              <label for="solvTargetVal" class="block text-xs font-medium text-neutral-700 mb-1" id="solvTargetValLabel">
                 Desired Profit (₹)
               </label>
-              <div class="rounded-xl border border-black/[0.07] dark:border-white/[0.08] bg-white dark:bg-neutral-900/50 focus-within:border-black dark:focus-within:border-white focus-within:ring-1 focus-within:ring-black/5 dark:focus-within:ring-white/10 transition-all">
+              <div class="rounded-xl border border-neutral-200 bg-white focus-within:border-neutral-900 transition-all">
                 <input
                   type="number"
                   id="solvTargetVal"
                   value="100"
                   min="1"
-                  class="w-full px-3 py-2.5 bg-transparent rounded-xl text-sm font-mono text-neutral-900 dark:text-white outline-none min-h-[42px]"
+                  class="w-full px-3 py-2.5 bg-transparent rounded-xl text-sm font-mono text-neutral-900 outline-none min-h-[42px]"
                 />
               </div>
             </div>
@@ -79,30 +74,30 @@ const t = useTranslations(lang);
 
           <div class="grid grid-cols-2 gap-3">
             <div>
-              <label for="solvCategory" class="block text-[11px] font-medium uppercase tracking-wider text-neutral-600 dark:text-neutral-400 mb-1">
+              <label for="solvCategory" class="block text-xs font-medium text-neutral-700 mb-1">
                 Category
               </label>
               <select
                 id="solvCategory"
-                class="w-full px-3 py-2.5 bg-white dark:bg-neutral-900/50 border border-black/[0.07] dark:border-white/[0.08] focus:border-black dark:focus:border-white focus:ring-1 focus:ring-black/5 dark:focus:ring-white/10 rounded-xl text-xs sm:text-sm text-neutral-800 dark:text-neutral-200 outline-none cursor-pointer min-h-[42px]"
+                class="w-full px-3 py-2.5 bg-white border border-neutral-200 focus:border-neutral-900 rounded-xl text-xs sm:text-sm text-neutral-800 outline-none cursor-pointer min-h-[42px]"
               >
                 {CATEGORIES.map((c) => (
-                  <option value={c.id} class="bg-white dark:bg-[#141414] text-neutral-900 dark:text-neutral-100">{c.name}</option>
+                  <option value={c.id}>{c.name}</option>
                 ))}
               </select>
             </div>
 
             <div>
-              <label for="solvWeight" class="block text-[11px] font-medium uppercase tracking-wider text-neutral-600 dark:text-neutral-400 mb-1">
+              <label for="solvWeight" class="block text-xs font-medium text-neutral-700 mb-1">
                 Weight (g)
               </label>
-              <div class="rounded-xl border border-black/[0.07] dark:border-white/[0.08] bg-white dark:bg-neutral-900/50 focus-within:border-black dark:focus-within:border-white focus-within:ring-1 focus-within:ring-black/5 dark:focus-within:ring-white/10 transition-all">
+              <div class="rounded-xl border border-neutral-200 bg-white focus-within:border-neutral-900 transition-all">
                 <input
                   type="number"
                   id="solvWeight"
                   value="500"
                   step="50"
-                  class="w-full px-3 py-2.5 bg-transparent rounded-xl text-xs sm:text-sm font-mono text-neutral-900 dark:text-white outline-none min-h-[42px]"
+                  class="w-full px-3 py-2.5 bg-transparent rounded-xl text-xs sm:text-sm font-mono text-neutral-900 outline-none min-h-[42px]"
                 />
               </div>
             </div>
@@ -112,10 +107,9 @@ const t = useTranslations(lang);
             <button
               type="button"
               id="solvCalculateBtn"
-              class="w-full py-3 bg-neutral-900 hover:bg-neutral-800 dark:bg-white dark:hover:bg-neutral-100 text-white dark:text-black rounded-xl text-xs sm:text-sm font-semibold transition active:scale-98 shadow-xs flex items-center justify-center gap-2 cursor-pointer min-h-[44px]"
+              class="w-full py-2.5 bg-neutral-900 hover:bg-neutral-800 text-white rounded-xl text-xs sm:text-sm font-medium transition cursor-pointer"
             >
-              <span>Solve Minimum Selling Prices</span>
-              <span>&rarr;</span>
+              Solve Minimum Selling Prices
             </button>
           </div>
 
@@ -126,73 +120,64 @@ const t = useTranslations(lang);
       <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-3.5">
         
         <!-- Meesho Target Price -->
-        <div class="card-ver p-4 sm:p-5 bg-white dark:bg-[#0b0b0b] border border-black/[0.06] dark:border-white/[0.08] flex flex-col justify-between">
+        <div class="bg-white border border-neutral-200 rounded-2xl p-4 sm:p-5 shadow-xs flex flex-col justify-between">
           <div>
-            <div class="flex items-center gap-2 mb-2">
-              <span class="w-2 h-2 rounded-full bg-pink-500"></span>
-              <span class="font-semibold text-sm text-neutral-900 dark:text-white">Meesho</span>
-            </div>
-            <span class="text-xs text-neutral-500 dark:text-neutral-400">Required Selling Price</span>
-            <div class="text-2xl sm:text-3xl font-mono font-bold text-neutral-900 dark:text-white mt-1.5" id="solvPriceMeesho">
+            <span class="font-semibold text-sm text-neutral-900 block mb-1">Meesho</span>
+            <span class="text-xs text-neutral-500">Required Selling Price</span>
+            <div class="text-2xl sm:text-3xl font-mono font-bold text-neutral-900 mt-1" id="solvPriceMeesho">
               ₹449
             </div>
           </div>
-          <div class="mt-4 pt-3 border-t border-black/[0.05] dark:border-white/[0.06] text-xs text-neutral-500 dark:text-neutral-400 space-y-1">
+          <div class="mt-4 pt-3 border-t border-neutral-100 text-xs text-neutral-500 space-y-1">
             <div class="flex justify-between">
               <span>Commission:</span>
-              <strong class="font-mono text-emerald-600 dark:text-emerald-400 font-semibold">0%</strong>
+              <strong class="font-mono text-emerald-600 font-semibold">0%</strong>
             </div>
             <div class="flex justify-between">
-              <span>Courier &amp; RTO buffer:</span>
-              <span class="font-mono text-neutral-700 dark:text-neutral-300" id="solvBufferMeesho">₹89</span>
+              <span>Courier &amp; RTO:</span>
+              <span class="font-mono text-neutral-700" id="solvBufferMeesho">₹89</span>
             </div>
           </div>
         </div>
 
         <!-- Flipkart Target Price -->
-        <div class="card-ver p-4 sm:p-5 bg-white dark:bg-[#0b0b0b] border border-black/[0.06] dark:border-white/[0.08] flex flex-col justify-between">
+        <div class="bg-white border border-neutral-200 rounded-2xl p-4 sm:p-5 shadow-xs flex flex-col justify-between">
           <div>
-            <div class="flex items-center gap-2 mb-2">
-              <span class="w-2 h-2 rounded-full bg-blue-600"></span>
-              <span class="font-semibold text-sm text-neutral-900 dark:text-white">Flipkart</span>
-            </div>
-            <span class="text-xs text-neutral-500 dark:text-neutral-400">Required Selling Price</span>
-            <div class="text-2xl sm:text-3xl font-mono font-bold text-neutral-900 dark:text-white mt-1.5" id="solvPriceFlipkart">
+            <span class="font-semibold text-sm text-neutral-900 block mb-1">Flipkart</span>
+            <span class="text-xs text-neutral-500">Required Selling Price</span>
+            <div class="text-2xl sm:text-3xl font-mono font-bold text-neutral-900 mt-1" id="solvPriceFlipkart">
               ₹589
             </div>
           </div>
-          <div class="mt-4 pt-3 border-t border-black/[0.05] dark:border-white/[0.06] text-xs text-neutral-500 dark:text-neutral-400 space-y-1">
+          <div class="mt-4 pt-3 border-t border-neutral-100 text-xs text-neutral-500 space-y-1">
             <div class="flex justify-between">
               <span>Commission:</span>
-              <span class="font-mono text-neutral-700 dark:text-neutral-300" id="solvCommFlipkart">15.0%</span>
+              <span class="font-mono text-neutral-700" id="solvCommFlipkart">15.0%</span>
             </div>
             <div class="flex justify-between">
-              <span>Total Fees &amp; GST:</span>
-              <span class="font-mono text-neutral-700 dark:text-neutral-300" id="solvBufferFlipkart">₹219</span>
+              <span>Fees &amp; GST:</span>
+              <span class="font-mono text-neutral-700" id="solvBufferFlipkart">₹219</span>
             </div>
           </div>
         </div>
 
         <!-- Amazon Target Price -->
-        <div class="card-ver p-4 sm:p-5 bg-white dark:bg-[#0b0b0b] border border-black/[0.06] dark:border-white/[0.08] flex flex-col justify-between">
+        <div class="bg-white border border-neutral-200 rounded-2xl p-4 sm:p-5 shadow-xs flex flex-col justify-between">
           <div>
-            <div class="flex items-center gap-2 mb-2">
-              <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-              <span class="font-semibold text-sm text-neutral-900 dark:text-white">Amazon</span>
-            </div>
-            <span class="text-xs text-neutral-500 dark:text-neutral-400">Required Selling Price</span>
-            <div class="text-2xl sm:text-3xl font-mono font-bold text-neutral-900 dark:text-white mt-1.5" id="solvPriceAmazon">
+            <span class="font-semibold text-sm text-neutral-900 block mb-1">Amazon India</span>
+            <span class="text-xs text-neutral-500">Required Selling Price</span>
+            <div class="text-2xl sm:text-3xl font-mono font-bold text-neutral-900 mt-1" id="solvPriceAmazon">
               ₹599
             </div>
           </div>
-          <div class="mt-4 pt-3 border-t border-black/[0.05] dark:border-white/[0.06] text-xs text-neutral-500 dark:text-neutral-400 space-y-1">
+          <div class="mt-4 pt-3 border-t border-neutral-100 text-xs text-neutral-500 space-y-1">
             <div class="flex justify-between">
               <span>Commission:</span>
-              <span class="font-mono text-neutral-700 dark:text-neutral-300" id="solvCommAmazon">13.5%</span>
+              <span class="font-mono text-neutral-700" id="solvCommAmazon">13.5%</span>
             </div>
             <div class="flex justify-between">
-              <span>Total Fees &amp; GST:</span>
-              <span class="font-mono text-neutral-700 dark:text-neutral-300" id="solvBufferAmazon">₹225</span>
+              <span>Fees &amp; GST:</span>
+              <span class="font-mono text-neutral-700" id="solvBufferAmazon">₹225</span>
             </div>
           </div>
         </div>
@@ -204,9 +189,10 @@ const t = useTranslations(lang);
   </div>
 </section>
 
+<!-- CLIENT SCRIPT TO RUN REVERSE SOLVER -->
 <script is:inline>
 (function() {
-  var CATS = {
+  var CAT_COMMISSIONS = {
     fashion: { meesho: 0, flipkart: 15.0, amazon: 13.5 },
     footwear: { meesho: 0, flipkart: 14.0, amazon: 12.0 },
     electronics_accessories: { meesho: 0, flipkart: 12.5, amazon: 14.0 },
@@ -219,125 +205,126 @@ const t = useTranslations(lang);
     custom: { meesho: 0, flipkart: 10.0, amazon: 10.0 }
   };
 
-  function getShipRate(mp, weight) {
-    if (mp === 'meesho') {
-      if (weight <= 500) return 49;
-      if (weight <= 1000) return 85;
-      if (weight <= 1500) return 125;
-      return 125 + Math.ceil((weight - 1500) / 500) * 40;
-    }
-    if (mp === 'flipkart') {
-      return weight <= 500 ? 69 : 69 + Math.ceil((weight - 500) / 500) * 32;
-    }
-    if (mp === 'amazon') {
-      return weight <= 500 ? 74 : 74 + Math.ceil((weight - 500) / 500) * 36;
-    }
-    return 60;
+  function getAmzClose(p) {
+    if (p <= 250) return 5;
+    if (p <= 500) return 10;
+    if (p <= 1000) return 25;
+    if (p <= 2000) return 35;
+    return 50;
   }
 
-  function solveForMp(mp, cogs, targetVal, targetMode, cat, weight) {
-    var catInfo = CATS[cat] || CATS['fashion'];
-    var commRate = catInfo[mp] !== undefined ? catInfo[mp] : 10;
-    var ship = getShipRate(mp, weight);
+  function getFkFixed(p) {
+    if (p <= 300) return 13;
+    if (p <= 500) return 17;
+    if (p <= 1000) return 30;
+    return 52;
+  }
+
+  function getShip(mp, w) {
+    if (mp === 'meesho') return w <= 500 ? 49 : 85;
+    if (mp === 'amazon') return w <= 500 ? 74 : 110;
+    if (mp === 'flipkart') return w <= 500 ? 69 : 101;
+    return 55;
+  }
+
+  function solvePrice(mp, cogs, targetType, targetVal, category, weight) {
+    var commRate = (CAT_COMMISSIONS[category] && CAT_COMMISSIONS[category][mp]) || 0;
+    var shipFee = getShip(mp, weight);
+    var pkg = 15;
 
     var low = Math.max(1, cogs);
-    var high = low * 8 + 1500;
-    var best = high;
-    var bestTotalFees = 0;
+    var high = low * 12 + 2500;
+    var best = low;
 
     for (var i = 0; i < 35; i++) {
       var mid = (low + high) / 2;
-      var taxable = mid / 1.12; // 12% standard
+      var taxable = mid / 1.12; // 12% standard GST
       var comm = taxable * (commRate / 100);
-      var fixed = 0;
-      if (mp === 'amazon') {
-        fixed = mid <= 250 ? 5 : mid <= 500 ? 10 : mid <= 1000 ? 25 : mid <= 2000 ? 35 : 50;
-      } else if (mp === 'flipkart') {
-        fixed = mid <= 300 ? 13 : mid <= 500 ? 17 : mid <= 1000 ? 30 : 52;
-      }
-      var collect = (mp === 'flipkart' || mp === 'amazon') ? (mid * 0.02) : 0;
-      var feesExGst = comm + fixed + collect + ship;
+      var fixed = mp === 'amazon' ? getAmzClose(mid) : mp === 'flipkart' ? getFkFixed(mid) : 0;
+      var coll = (mp === 'flipkart' || mp === 'amazon') ? (mid * 0.02) : 0;
+      var feesExGst = comm + fixed + coll + shipFee;
       var gstOnFees = feesExGst * 0.18;
       var tcsTds = taxable * 0.011;
-      var delivProfit = taxable - cogs - feesExGst - 15;
-      
-      // Estimated blended profit with 20% return buffer
-      var blendedProfit = (delivProfit * 0.8) - 40;
-      var currentMetric = targetMode === 'fixed' ? blendedProfit : (mid > 0 ? (blendedProfit / mid) * 100 : 0);
+      var totalDeduct = feesExGst + gstOnFees + tcsTds;
 
-      bestTotalFees = feesExGst + gstOnFees + tcsTds;
+      var deliveredProfit = taxable - cogs - feesExGst - pkg;
+      var rtoLoss = (mp === 'meesho' ? 0 : shipFee) + pkg + 10;
+      var custRetLoss = 130 + pkg + 15 + cogs * 0.05;
 
-      if (Math.abs(currentMetric - targetVal) < 0.5) {
-        return { price: Math.round(mid), commRate: commRate, totalFees: Math.round(bestTotalFees) };
+      var rtoRate = 0.15;
+      var retRate = 0.08;
+      var delivRate = 1 - rtoRate - retRate;
+      var retBuffer = (rtoLoss * rtoRate) + (custRetLoss * retRate);
+
+      var blendedProfit = (deliveredProfit * delivRate) - retBuffer;
+      var metric = targetType === 'fixed' ? blendedProfit : (blendedProfit / mid) * 100;
+
+      if (Math.abs(metric - targetVal) < 0.25) {
+        return Math.round(mid);
       }
 
-      if (currentMetric < targetVal) {
+      if (metric < targetVal) {
         low = mid;
       } else {
         high = mid;
         best = mid;
       }
     }
-    return { price: Math.round(best), commRate: commRate, totalFees: Math.round(bestTotalFees) };
+    return Math.round(best);
   }
 
   function runSolver() {
     var cogs = parseFloat(document.getElementById('solvCogs').value) || 250;
-    var targetMode = document.getElementById('solvTargetMode').value;
-    var targetVal = parseFloat(document.getElementById('solvTargetVal').value) || 100;
+    var mode = document.getElementById('solvTargetMode').value;
+    var target = parseFloat(document.getElementById('solvTargetVal').value) || 100;
     var cat = document.getElementById('solvCategory').value;
     var weight = parseFloat(document.getElementById('solvWeight').value) || 500;
 
-    var resMeesho = solveForMp('meesho', cogs, targetVal, targetMode, cat, weight);
-    var resFlipkart = solveForMp('flipkart', cogs, targetVal, targetMode, cat, weight);
-    var resAmazon = solveForMp('amazon', cogs, targetVal, targetMode, cat, weight);
+    var meeshoPrice = solvePrice('meesho', cogs, mode, target, cat, weight);
+    var flipkartPrice = solvePrice('flipkart', cogs, mode, target, cat, weight);
+    var amazonPrice = solvePrice('amazon', cogs, mode, target, cat, weight);
 
-    document.getElementById('solvPriceMeesho').textContent = '₹' + resMeesho.price;
-    document.getElementById('solvPriceFlipkart').textContent = '₹' + resFlipkart.price;
-    document.getElementById('solvPriceAmazon').textContent = '₹' + resAmazon.price;
+    document.getElementById('solvPriceMeesho').textContent = '₹' + meeshoPrice.toLocaleString('en-IN');
+    document.getElementById('solvPriceFlipkart').textContent = '₹' + flipkartPrice.toLocaleString('en-IN');
+    document.getElementById('solvPriceAmazon').textContent = '₹' + amazonPrice.toLocaleString('en-IN');
 
-    var commFkEl = document.getElementById('solvCommFlipkart');
-    if (commFkEl) commFkEl.textContent = resFlipkart.commRate.toFixed(1) + '%';
-    var bufFkEl = document.getElementById('solvBufferFlipkart');
-    if (bufFkEl) bufFkEl.textContent = '₹' + resFlipkart.totalFees;
+    var rates = CAT_COMMISSIONS[cat] || CAT_COMMISSIONS['fashion'];
+    document.getElementById('solvCommFlipkart').textContent = rates.flipkart + '%';
+    document.getElementById('solvCommAmazon').textContent = rates.amazon + '%';
 
-    var commAzEl = document.getElementById('solvCommAmazon');
-    if (commAzEl) commAzEl.textContent = resAmazon.commRate.toFixed(1) + '%';
-    var bufAzEl = document.getElementById('solvBufferAmazon');
-    if (bufAzEl) bufAzEl.textContent = '₹' + resAmazon.totalFees;
-
-    var bufMsEl = document.getElementById('solvBufferMeesho');
-    if (bufMsEl) bufMsEl.textContent = '₹' + resMeesho.totalFees;
+    document.getElementById('solvBufferMeesho').textContent = '₹' + Math.round(meeshoPrice - cogs - target);
+    document.getElementById('solvBufferFlipkart').textContent = '₹' + Math.round(flipkartPrice - cogs - target);
+    document.getElementById('solvBufferAmazon').textContent = '₹' + Math.round(amazonPrice - cogs - target);
   }
 
   function initSolver() {
-    var btn = document.getElementById('solvCalculateBtn');
-    if (btn) btn.addEventListener('click', runSolver);
-
     var modeSelect = document.getElementById('solvTargetMode');
+    var valLabel = document.getElementById('solvTargetValLabel');
+    var valInput = document.getElementById('solvTargetVal');
+
     if (modeSelect) {
       modeSelect.addEventListener('change', function() {
-        var label = document.getElementById('solvTargetValLabel');
-        var input = document.getElementById('solvTargetVal');
         if (modeSelect.value === 'fixed') {
-          label.textContent = 'Desired Profit (₹)';
-          input.value = '100';
+          valLabel.textContent = 'Desired Profit (₹)';
+          valInput.value = '100';
         } else {
-          label.textContent = 'Desired Margin (%)';
-          input.value = '25';
+          valLabel.textContent = 'Desired Margin (%)';
+          valInput.value = '20';
         }
         runSolver();
       });
     }
 
-    var solverInputs = ['solvCogs', 'solvTargetVal', 'solvCategory', 'solvWeight'];
-    solverInputs.forEach(function(id) {
+    ['solvCogs', 'solvTargetVal', 'solvCategory', 'solvWeight'].forEach(function(id) {
       var el = document.getElementById(id);
       if (el) {
         el.addEventListener('input', runSolver);
         el.addEventListener('change', runSolver);
       }
     });
+
+    var calcBtn = document.getElementById('solvCalculateBtn');
+    if (calcBtn) calcBtn.addEventListener('click', runSolver);
 
     runSolver();
   }
