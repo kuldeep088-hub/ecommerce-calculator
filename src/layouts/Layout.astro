@@ -7,17 +7,25 @@ interface Props {
   title?: string;
   description?: string;
   canonicalPath?: string;
-  activePlatform?: 'meesho' | 'flipkart' | 'amazon' | 'snapdeal' | 'home';
+  activePlatform?: 'meesho' | 'flipkart' | 'amazon' | 'snapdeal' | 'home' | 'tools';
+  keywords?: string;
+  ogImage?: string;
+  ogType?: string;
 }
 
 const {
   title = "Seller Profit Calculator | Free Meesho, Flipkart & Amazon Profit & Fee Calculator",
   description = "Calculate exact net in-hand profit, marketplace commissions, courier shipping charges, GST deductions, and expected RTO / customer return losses for Meesho, Flipkart & Amazon sellers. 100% free, updated for 2026.",
   canonicalPath = "/",
-  activePlatform = "home"
+  activePlatform = "home",
+  keywords = "seller calculator, amazon seller calculator, seller commission calculator, amazon calculator, flipkart profit calculator, meesho seller calculator, gst calculator",
+  ogImage = "/og-image.png",
+  ogType = "website"
 } = Astro.props;
 
 const canonicalUrl = `https://freesellerprofitcalculator.in${canonicalPath}`;
+const fullOgImageUrl = ogImage.startsWith('http') ? ogImage : `https://freesellerprofitcalculator.in${ogImage}`;
+const isHome = canonicalPath === '/' || canonicalPath === '';
 ---
 
 <!doctype html>
@@ -29,19 +37,33 @@ const canonicalUrl = `https://freesellerprofitcalculator.in${canonicalPath}`;
     <meta name="supported-color-schemes" content="light" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="author" content="Seller Profit Calculator" />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="sitemap" href="/sitemap.xml" />
 
-    <!-- Open Graph / Social -->
-    <meta property="og:type" content="website" />
+    <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content="Seller Profit Calculator" />
     <meta property="og:locale" content="en_IN" />
+    <meta property="og:image" content={fullOgImageUrl} />
+    <meta property="og:image:secure_url" content={fullOgImageUrl} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={title} />
+
+    <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={fullOgImageUrl} />
+    <meta name="twitter:image:alt" content={title} />
 
     <!-- Google Fonts: Geist Sans & Geist Mono (Vercel Typography) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -71,6 +93,26 @@ const canonicalUrl = `https://freesellerprofitcalculator.in${canonicalPath}`;
         "priceCurrency": "INR"
       },
       "description": description
+    })} />
+
+    <!-- BreadcrumbList JSON-LD Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://freesellerprofitcalculator.in"
+        },
+        ...(!isHome ? [{
+          "@type": "ListItem",
+          "position": 2,
+          "name": title.split('|')[0].trim(),
+          "item": canonicalUrl
+        }] : [])
+      ]
     })} />
 
     <!-- Force Pure Light / White Theme (Remove Night Theme) -->

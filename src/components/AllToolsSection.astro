@@ -174,7 +174,7 @@ const CATEGORIES: CategoryGroup[] = [
   {
     id: 'advertising',
     title: 'Advertising & Marketing Calculators',
-    subtitle: 'Measure ROAS, ACOS, TACOS, Cost Per Order, and Customer Acquisition Cost efficiency.',
+    subtitle: 'Measure ROAS, ACOS, and net campaign profitability across Meta, Google, and Amazon Ads.',
     tools: [
       {
         title: 'ROAS Calculator',
@@ -191,88 +191,11 @@ const CATEGORIES: CategoryGroup[] = [
         category: 'Advertising'
       },
       {
-        title: 'TACOS Calculator',
-        url: '/tacos-calculator',
-        badge: 'TACOS %',
-        desc: 'Measure Total Advertising Cost of Sale relative to overall store revenue to assess organic lift.',
-        category: 'Advertising'
-      },
-      {
-        title: 'Cost Per Order (CPO) Calculator',
-        url: '/cost-per-order-calculator',
-        badge: 'Cost Per Order',
-        desc: 'Find out how much ad budget is required to generate each successful customer order.',
-        category: 'Advertising'
-      },
-      {
-        title: 'Customer Acquisition Cost (CAC)',
-        url: '/customer-acquisition-cost-calculator',
-        badge: 'CAC & LTV',
-        desc: 'Calculate total marketing and sales costs divided by the number of new customers acquired.',
-        category: 'Advertising'
-      },
-      {
         title: 'Ad Profit Calculator',
         url: '/ad-profit-calculator',
         badge: 'Net Ad Profit',
         desc: 'Determine true net profit after deducting product cost, marketplace fees, and direct ad spend.',
         category: 'Advertising'
-      }
-    ]
-  },
-  {
-    id: 'operations',
-    title: 'Operations & Inventory Calculators',
-    subtitle: 'Seller bank payouts, monthly P&L forecasts, minimum selling price, and reorder points.',
-    tools: [
-      {
-        title: 'Marketplace Commission Calculator',
-        url: '/marketplace-commission-calculator',
-        badge: 'Rate Comparison',
-        desc: 'Compare commission rates and closing fees side-by-side across Amazon, Flipkart, and Meesho.',
-        category: 'Operations'
-      },
-      {
-        title: 'Seller Payout Calculator',
-        url: '/seller-payout-calculator',
-        badge: 'Bank Settlement',
-        desc: 'Calculate gross sales minus platform commission, fixed closing fees, courier delivery, and GST.',
-        category: 'Operations'
-      },
-      {
-        title: 'Monthly Seller Profit Calculator',
-        url: '/monthly-seller-profit-calculator',
-        badge: 'Monthly P&L',
-        desc: 'Aggregate monthly revenue, fixed overheads, and variable seller fees into a complete profit & loss sheet.',
-        category: 'Operations'
-      },
-      {
-        title: 'Bulk Order Profit Calculator',
-        url: '/bulk-order-profit-calculator',
-        badge: 'Volume Tiers',
-        desc: 'Model quantity tiered pricing, wholesale discounts, and total net profit on large volume orders.',
-        category: 'Operations'
-      },
-      {
-        title: 'Inventory Profit Calculator',
-        url: '/inventory-profit-calculator',
-        badge: 'Stock Valuation',
-        desc: 'Calculate total potential profit locked in existing warehouse stock based on retail selling price.',
-        category: 'Operations'
-      },
-      {
-        title: 'Inventory Reorder Point Calculator',
-        url: '/inventory-reorder-calculator',
-        badge: 'Safety Stock',
-        desc: 'Calculate minimum inventory threshold to trigger restock orders based on daily sales and lead times.',
-        category: 'Operations'
-      },
-      {
-        title: 'Minimum Selling Price Calculator',
-        url: '/minimum-selling-price-calculator',
-        badge: 'Floor Price',
-        desc: 'Determine the absolute lowest price you can charge without losing money on fees and logistics.',
-        category: 'Operations'
       }
     ]
   }
@@ -285,8 +208,7 @@ const filterCategories = [
   'GST & Tax',
   'Shipping',
   'Cost & Profit',
-  'Advertising',
-  'Operations'
+  'Advertising'
 ];
 ---
 
@@ -308,7 +230,7 @@ const filterCategories = [
           <button
             type="button"
             data-filter={cat}
-            class={`catalog-filter-btn shrink-0 whitespace-nowrap px-3.5 py-2 rounded-full text-xs font-medium transition-all border cursor-pointer min-h-[38px] inline-flex items-center ${
+            class={`catalog-filter-btn shrink-0 whitespace-nowrap px-3.5 py-2 rounded-full text-xs font-medium transition-all border cursor-pointer min-h-[42px] inline-flex items-center ${
               idx === 0
                 ? 'bg-neutral-900 text-white border-transparent shadow-xs font-semibold'
                 : 'bg-white hover:bg-neutral-100 text-neutral-600 border-neutral-200'
@@ -384,9 +306,9 @@ const filterCategories = [
 
         // Update button styles
         buttons.forEach(function(b) {
-          b.className = 'catalog-filter-btn shrink-0 whitespace-nowrap px-3.5 py-2 rounded-full text-xs font-medium transition-all border bg-white hover:bg-neutral-100 text-neutral-600 border-neutral-200 cursor-pointer min-h-[38px] inline-flex items-center';
+          b.className = 'catalog-filter-btn shrink-0 whitespace-nowrap px-3.5 py-2 rounded-full text-xs font-medium transition-all border bg-white hover:bg-neutral-100 text-neutral-600 border-neutral-200 cursor-pointer min-h-[42px] inline-flex items-center';
         });
-        btn.className = 'catalog-filter-btn shrink-0 whitespace-nowrap px-3.5 py-2 rounded-full text-xs font-medium transition-all border bg-neutral-900 text-white border-transparent shadow-xs font-semibold cursor-pointer min-h-[38px] inline-flex items-center';
+        btn.className = 'catalog-filter-btn shrink-0 whitespace-nowrap px-3.5 py-2 rounded-full text-xs font-medium transition-all border bg-neutral-900 text-white border-transparent shadow-xs font-semibold cursor-pointer min-h-[42px] inline-flex items-center';
 
         // Filter cards and section visibility
         groups.forEach(function(group) {

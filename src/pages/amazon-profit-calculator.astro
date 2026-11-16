@@ -4,6 +4,7 @@ import Calculator from '../components/Calculator.astro';
 import ComparisonMatrix from '../components/ComparisonMatrix.astro';
 import ReversePriceSolver from '../components/ReversePriceSolver.astro';
 import FeeGuide from '../components/FeeGuide.astro';
+import AmazonSeoArticle from '../components/AmazonSeoArticle.astro';
 import FaqSection from '../components/FaqSection.astro';
 
 const amazonFaqs = [
@@ -17,7 +18,7 @@ const amazonFaqs = [
   },
   {
     q: "How does Amazon calculate dynamic Closing Fee slabs?",
-    a: "Under Amazon India's 2026 fee structure for Easy Ship Standard: orders up to ₹250 incur ₹5; ₹251 to ₹500 incur ₹10; ₹501 to ₹1,000 incur ₹25; ₹1,001 to ₹2,000 incur ₹35; and orders above ₹2,000 incur ₹50 closing fee (+18% GST)."
+    a: "Under Amazon India's 2026 fee structure for Easy Ship Standard: orders up to ₹250 incur ₹5; ₹251 to ₹500 incur ₹11; ₹501 to ₹1,000 incur ₹25; ₹1,001 to ₹2,000 incur ₹35; and orders above ₹2,000 incur ₹42 to ₹50 closing fee (+18% GST)."
   },
   {
     q: "How can sellers recover 18% GST deducted by Amazon on selling fees?",
@@ -27,10 +28,11 @@ const amazonFaqs = [
 ---
 
 <Layout
-  title="Amazon India Seller Profit Calculator (2026) | Easy Ship & FBA Fee Calculator"
-  description="Calculate exact Amazon India seller payout, category referral fees (5%-15%), dynamic closing fees (₹5-₹50), Easy Ship weight handling courier charges, and 18% GST ITC for 2026."
+  title="Amazon Profit Calculator India (2026) | Amazon Revenue & Seller Price Calculator"
+  description="Free Amazon profit calculator and Amazon revenue calculator India. Calculate Amazon seller commission, Easy Ship fees, closing fee tiers, and net revenue."
   canonicalPath="/amazon-profit-calculator"
   activePlatform="amazon"
+  keywords="amazon profit calculator, amazon revenue calculator, amazon revenue calculator india, amazon seller calculator, amazon calculator, amazon price calculator"
 >
   <!-- Interactive Calculator Preloaded with Amazon -->
   <Calculator
@@ -47,6 +49,9 @@ const amazonFaqs = [
 
   <!-- Fee Guide -->
   <FeeGuide />
+
+  <!-- In-depth SEO Article -->
+  <AmazonSeoArticle />
 
   <!-- FAQ -->
   <FaqSection

@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import GstCalculator from '../components/GstCalculator.astro';
+import GstSeoArticle from '../components/GstSeoArticle.astro';
 import FaqSection from '../components/FaqSection.astro';
 
 const gstFaqs = [
@@ -24,12 +25,14 @@ const gstFaqs = [
 ---
 
 <Layout
-  title="GST Calculator for E-Commerce Sellers (2026) | Inclusive & Exclusive Tax Calculator"
-  description="Free online GST calculator for Indian marketplace sellers. Extract base price from MRP, calculate CGST/SGST/IGST breakdown, and check 18% GST Input Tax Credit (ITC)."
+  title="GST Calculator Online India | Calculate GST Amount & Tax Inclusive/Exclusive"
+  description="Easy GST calculator online for India. Calculate GST amount, CGST, SGST, IGST, and apply the exact GST calculation formula for 5%, 12%, 18%, and 28% slabs."
   canonicalPath="/gst-calculator"
   activePlatform="tools"
+  keywords="gst calculator, gst calculator online, calculate gst amount, easy gst calculator, gst tax calculator, gst inclusive calculator, gst calculator india, gst calculation formula"
 >
   <GstCalculator />
+  <GstSeoArticle />
   <FaqSection
     title="GST Calculator Frequently Asked Questions"
     subtitle="Expert answers on GST slabs, inclusive vs exclusive formulas, ITC claims, and marketplace tax compliance."

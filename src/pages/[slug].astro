@@ -22,6 +22,8 @@ const { calculator } = Astro.props;
   title={calculator.metaTitle}
   description={calculator.metaDescription}
   canonicalPath={`/${calculator.slug}`}
+  keywords={calculator.keywords}
+  activePlatform="tools"
 >
   <main class="min-h-screen bg-white">
     <GenericCalculator calculator={calculator} />

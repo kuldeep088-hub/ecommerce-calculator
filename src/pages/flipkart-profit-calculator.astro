@@ -4,6 +4,7 @@ import Calculator from '../components/Calculator.astro';
 import ComparisonMatrix from '../components/ComparisonMatrix.astro';
 import ReversePriceSolver from '../components/ReversePriceSolver.astro';
 import FeeGuide from '../components/FeeGuide.astro';
+import FlipkartSeoArticle from '../components/FlipkartSeoArticle.astro';
 import FaqSection from '../components/FaqSection.astro';
 
 const flipkartFaqs = [
@@ -27,10 +28,11 @@ const flipkartFaqs = [
 ---
 
 <Layout
-  title="Flipkart Seller Fee & Profit Calculator (2026) | Settlement & Commission Calculator"
-  description="Calculate exact Flipkart seller bank payout, category referral fees (4%-16%), price-slab fixed fees (₹13-₹52), 2% payment collection fee, tier shipping, and net profit for 2026."
+  title="Flipkart Profit Calculator (2026) | Flipkart Seller Price & Fee Calculator"
+  description="Free Flipkart profit calculator and Flipkart seller calculator. Calculate Flipkart commission fees, collection fee, shipping slabs, and exact net profit."
   canonicalPath="/flipkart-profit-calculator"
   activePlatform="flipkart"
+  keywords="flipkart profit calculator, flipkart price calculator, flipkart seller calculator, flipkart calculator, flipkart seller fee calculator"
 >
   <!-- Interactive Calculator Preloaded with Flipkart -->
   <Calculator
@@ -47,6 +49,9 @@ const flipkartFaqs = [
 
   <!-- Fee Guide -->
   <FeeGuide />
+
+  <!-- In-depth SEO Article -->
+  <FlipkartSeoArticle />
 
   <!-- FAQ -->
   <FaqSection

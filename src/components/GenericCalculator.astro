@@ -1,12 +1,14 @@
 ---
 // src/components/GenericCalculator.astro
 import type { CalculatorDefinition } from '../data/calculatorsData';
+import { CALCULATORS_SEO_CONTENT } from '../data/calculatorsSeoContent';
 
 interface Props {
   calculator: CalculatorDefinition;
 }
 
 const { calculator } = Astro.props;
+const seoArticle = CALCULATORS_SEO_CONTENT[calculator.slug];
 ---
 
 <section class="pt-6 sm:pt-10 pb-16">
@@ -192,6 +194,36 @@ const { calculator } = Astro.props;
       </div>
 
     </div>
+
+    <!-- In-Depth On-Page SEO Guide Article (800 - 1200 Words) -->
+    {seoArticle && (
+      <article class="mt-14 pt-10 border-t border-neutral-200 prose prose-neutral max-w-none text-neutral-700 leading-relaxed text-sm sm:text-base space-y-6">
+        <div class="border-b border-neutral-200 pb-5 mb-6">
+          <span class="text-xs font-mono font-semibold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+            {seoArticle.badge}
+          </span>
+          <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-neutral-900 mt-2.5">
+            {seoArticle.title}
+          </h2>
+          <p class="text-xs sm:text-sm text-neutral-500 mt-1 font-mono">
+            Comprehensive Industry Guide &bull; 2026 E-Commerce Edition
+          </p>
+        </div>
+
+        <p class="lead font-medium text-neutral-800 text-base leading-relaxed" set:html={seoArticle.leadParagraph} />
+
+        {seoArticle.sections.map((section) => (
+          <div class="space-y-3 pt-3">
+            <h3 class="text-base sm:text-lg font-bold text-neutral-900 border-t border-neutral-100 pt-3">
+              {section.heading}
+            </h3>
+            {section.content.map((item) => (
+              <div set:html={item} />
+            ))}
+          </div>
+        ))}
+      </article>
+    )}
 
     <!-- FAQs Section & JSON-LD FAQPage Schema for Google Rich Snippets -->
     {calculator.faqs && calculator.faqs.length > 0 && (
@@ -807,24 +839,8 @@ const { calculator } = Astro.props;
         setRow('bdGstOnFee', gst);
         break;
       }
-      case 'multi_comm': {
-        const price = getVal('price');
-        const rate = getVal('categoryRate');
-        const meesho = 0;
-        const fk = price * (rate / 100);
-        const amz = price * (rate / 100);
-        const myntra = price * ((rate + 5) / 100);
-        const snap = price * (rate / 100);
-        setHero(amz);
-        setRow('bdMeesho', meesho);
-        setRow('bdFlipkart', fk);
-        setRow('bdAmazon', amz);
-        setRow('bdMyntra', myntra);
-        setRow('bdSnapdeal', snap);
-        break;
-      }
 
-      // 6. Advertising
+      // 5. Advertising
       case 'roas': {
         const spend = getVal('adSpend');
         const rev = getVal('adRevenue');
@@ -851,55 +867,6 @@ const { calculator } = Astro.props;
         setRow('bdRoas', `${roas.toFixed(2)}x`, '', '');
         break;
       }
-      case 'tacos': {
-        const spend = getVal('adSpend');
-        const totalRev = getVal('totalRevenue');
-        const tacos = totalRev > 0 ? (spend / totalRev) * 100 : 0;
-        setHero(`${tacos.toFixed(1)}%`, '', '');
-        setRow('bdSpend', spend);
-        setRow('bdTotalRev', totalRev);
-        setRow('bdTacos', `${tacos.toFixed(1)}%`, '', '');
-        break;
-      }
-      case 'be_roas': {
-        const price = getVal('price');
-        const cogs = getVal('cogs');
-        const fees = getVal('feesAndShipping');
-        const marginAmt = price - cogs - fees;
-        const marginPct = price > 0 ? (marginAmt / price) * 100 : 0;
-        const beRoas = marginPct > 0 ? (100 / marginPct) : 0;
-        setHero(`${beRoas.toFixed(2)}x`, '', '');
-        setRow('bdMarginAmt', marginAmt);
-        setRow('bdMarginRate', `${marginPct.toFixed(1)}%`, '', '');
-        setRow('bdBreakEvenRoas', `${beRoas.toFixed(2)}x`, '', '');
-        setRow('bdMaxAcos', `${marginPct.toFixed(1)}%`, '', '');
-        break;
-      }
-      case 'cpo': {
-        const spend = getVal('adSpend');
-        const orders = getVal('orders');
-        const cpo = orders > 0 ? spend / orders : 0;
-        setHero(cpo);
-        setRow('bdSpend', spend);
-        setRow('bdOrders', `${orders} orders`, '', '');
-        setRow('bdCpo', cpo);
-        break;
-      }
-      case 'cac': {
-        const spend = getVal('adSpend');
-        const overhead = getVal('marketingOverhead');
-        const cust = getVal('newCustomers');
-        const ltv = getVal('customerLtv');
-        const totalCost = spend + overhead;
-        const cac = cust > 0 ? totalCost / cust : 0;
-        const ratio = cac > 0 ? ltv / cac : 0;
-        setHero(cac);
-        setRow('bdTotalCost', totalCost);
-        setRow('bdCustomers', `${cust} customers`, '', '');
-        setRow('bdCac', cac);
-        setRow('bdLtvCacRatio', `${ratio.toFixed(2)}x`, '', '');
-        break;
-      }
       case 'ad_profit': {
         const rev = getVal('adRevenue');
         const spend = getVal('adSpend');
@@ -916,128 +883,6 @@ const { calculator } = Astro.props;
         setRow('bdFulfillment', fulfill);
         setRow('bdNetProfit', netProfit);
         setRow('bdNetMargin', `${marginPct.toFixed(1)}%`, '', '');
-        break;
-      }
-
-      // 7. Operations
-      case 'settlement': {
-        const price = getVal('price');
-        const comm = getVal('commission');
-        const fixed = getVal('fixedFee');
-        const ship = getVal('shippingFee');
-        const fees = comm + fixed + ship;
-        const gst = fees * 0.18;
-        const tcsTds = price * 0.006;
-        const settlement = price - fees - gst - tcsTds;
-        setHero(settlement);
-        setRow('bdOrderPrice', price);
-        setRow('bdFees', fees);
-        setRow('bdGst', gst);
-        setRow('bdTcsTds', tcsTds);
-        setRow('bdSettlement', settlement);
-        break;
-      }
-      case 'payout': {
-        const gross = getVal('grossOrderValue');
-        const dedRate = getVal('platformDeductionRate');
-        const retRate = getVal('returnsReserveRate');
-        const ded = gross * (dedRate / 100);
-        const retRes = gross * (retRate / 100);
-        const payout = gross - ded - retRes;
-        setHero(payout);
-        setRow('bdGross', gross);
-        setRow('bdDeductions', ded);
-        setRow('bdReturnsReserve', retRes);
-        setRow('bdNetPayout', payout);
-        break;
-      }
-      case 'reconciliation': {
-        const expected = getVal('expectedSettlement');
-        const actual = getVal('actualPayout');
-        const diff = expected - actual;
-        setHero(diff);
-        setRow('bdExpected', expected);
-        setRow('bdActual', actual);
-        setRow('bdDiscrepancy', diff);
-        break;
-      }
-      case 'monthly_profit': {
-        const rev = getVal('monthlyRevenue');
-        const cogs = getVal('totalCogs');
-        const fees = getVal('marketplaceFees');
-        const ads = getVal('adSpend');
-        const overhead = getVal('warehouseOverhead');
-        const netProfit = rev - cogs - fees - ads - overhead;
-        const marginPct = rev > 0 ? (netProfit / rev) * 100 : 0;
-        setHero(netProfit);
-        setRow('bdRevenue', rev);
-        setRow('bdCogs', cogs);
-        setRow('bdFees', fees);
-        setRow('bdAds', ads);
-        setRow('bdOverhead', overhead);
-        setRow('bdNetProfit', netProfit);
-        setRow('bdNetMargin', `${marginPct.toFixed(1)}%`, '', '');
-        break;
-      }
-      case 'bulk_order': {
-        const base = getVal('basePrice');
-        const unitCost = getVal('unitCost');
-        const discount = getVal('discountRate');
-        const units = getVal('orderUnits');
-        const freight = getVal('bulkFreight');
-        const unitPrice = base * (1 - discount / 100);
-        const gross = unitPrice * units;
-        const totalCogs = unitCost * units;
-        const netProfit = gross - totalCogs - freight;
-        setHero(netProfit);
-        setRow('bdUnitPrice', unitPrice);
-        setRow('bdGrossRevenue', gross);
-        setRow('bdTotalCogs', totalCogs);
-        setRow('bdFreight', freight);
-        setRow('bdNetProfit', netProfit);
-        break;
-      }
-      case 'inventory_profit': {
-        const units = getVal('stockUnits');
-        const cost = getVal('costPerUnit');
-        const price = getVal('sellingPrice');
-        const stockVal = units * price;
-        const invested = units * cost;
-        const profit = stockVal - invested;
-        const marginPct = stockVal > 0 ? (profit / stockVal) * 100 : 0;
-        setHero(profit);
-        setRow('bdStockValue', stockVal);
-        setRow('bdCostInvested', invested);
-        setRow('bdUnrealizedProfit', profit);
-        setRow('bdMarginRate', `${marginPct.toFixed(1)}%`, '', '');
-        break;
-      }
-      case 'inventory_reorder': {
-        const sales = getVal('dailySales');
-        const lead = getVal('leadTimeDays');
-        const safety = getVal('safetyDays');
-        const leadDemand = sales * lead;
-        const safetyStock = sales * safety;
-        const rop = leadDemand + safetyStock;
-        setHero(`${rop} units`, '', '');
-        setRow('bdLeadTimeDemand', `${leadDemand} units`, '', '');
-        setRow('bdSafetyStock', `${safetyStock} units`, '', '');
-        setRow('bdReorderPoint', `${rop} units`, '', '');
-        break;
-      }
-      case 'min_price': {
-        const cogs = getVal('cogs');
-        const shipping = getVal('shipping');
-        const pkg = getVal('packaging');
-        const feeRate = getVal('platformFeeRate');
-        const returnBuffer = getVal('returnBuffer');
-        const direct = cogs + shipping + pkg;
-        const feeDecimal = Math.min(0.90, feeRate / 100);
-        const minPrice = (direct + returnBuffer) / (1 - feeDecimal);
-        setHero(minPrice);
-        setRow('bdDirectCost', direct);
-        setRow('bdReturnBuffer', returnBuffer);
-        setRow('bdFloorPrice', minPrice);
         break;
       }
       default:
