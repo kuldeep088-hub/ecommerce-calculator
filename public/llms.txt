@@ -1,0 +1,45 @@
+# Seller Profit Calculator
+
+> Free Indian e-commerce marketplace profit, seller fee, GST, and courier logistics calculators for Amazon India, Flipkart, Meesho, and D2C brands. Updated with official 2026 fee cards, commission slabs, closing fees, and RTO return loss models.
+
+## Overview
+Seller Profit Calculator (https://freesellerprofitcalculator.in/) is a privacy-first, 100% free web-based suite of mathematical calculation tools for Indian online sellers. All calculations run client-side in the user's browser with zero data retention.
+
+## Core Marketplace Profit Calculators
+- [Amazon Profit Calculator](https://freesellerprofitcalculator.in/amazon-profit-calculator/): Calculates Amazon India Easy Ship category referral fees (3%–15%), dynamic closing fees (₹5–₹50), courier freight, and net bank payout.
+- [Flipkart Profit Calculator](https://freesellerprofitcalculator.in/flipkart-profit-calculator/): Models Flipkart tier-based fixed fees (₹13–₹52), 2% payment collection fees, category commission slabs, and net settlement.
+- [Meesho Profit Calculator](https://freesellerprofitcalculator.in/meesho-profit-calculator/): Calculates Meesho 0% commission payouts, weight slab courier shipping costs, customer return buffers, and true take-home profits.
+- [Amazon FBA Profit Calculator](https://freesellerprofitcalculator.in/amazon-fba-calculator/): Models Fulfillment by Amazon (FBA) pick and pack handling, monthly cubic-foot storage fees, weight handling slabs, and GST ITC recovery.
+
+## GST & Tax Calculators
+- [GST Calculator for Sellers](https://freesellerprofitcalculator.in/gst-calculator/): Calculates GST-inclusive product base prices, GST amounts, CGST/SGST/IGST splits, and Input Tax Credit (ITC).
+- [GST Inclusive / Exclusive Calculator](https://freesellerprofitcalculator.in/gst-inclusive-exclusive-calculator/): Instantly adds GST on top of net cost, or extracts taxable value from GST-inclusive retail selling prices.
+- [Input Tax Credit (ITC) Calculator](https://freesellerprofitcalculator.in/input-tax-credit-calculator/): Computes claimable 18% GST on marketplace commissions, shipping fees, and inventory procurement for GSTR-3B filings.
+- [TCS Calculator for E-Commerce](https://freesellerprofitcalculator.in/tcs-calculator/): Calculates 0.5% Tax Collected at Source deducted by e-commerce operators under Section 52 of the CGST Act.
+- [TDS Calculator (Section 194-O)](https://freesellerprofitcalculator.in/tds-calculator/): Models 0.1% withholding income tax deducted on gross e-commerce sales and tracked in Form 26AS / AIS.
+
+## Cost & Profitability Solvers
+- [Profit Margin Calculator](https://freesellerprofitcalculator.in/profit-margin-calculator/): Computes gross and net profit margin percentages, cost markups, and operating profit margins.
+- [Product Selling Price Calculator](https://freesellerprofitcalculator.in/selling-price-calculator/): Solves required customer retail price based on product acquisition cost and target profit margin.
+- [Net Profit Calculator](https://freesellerprofitcalculator.in/net-profit-calculator/): Determines true in-hand cash profit after subtracting COGS, marketplace commissions, logistics, and tax deductions.
+- [Gross Profit Calculator](https://freesellerprofitcalculator.in/gross-profit-calculator/): Evaluates core production efficiency and manufacturing margin before operating expenses.
+- [Product ROI Calculator](https://freesellerprofitcalculator.in/product-roi-calculator/): Calculates percentage return on investment generated on inventory working capital and ad campaigns.
+- [Wholesale Profit Calculator](https://freesellerprofitcalculator.in/wholesale-profit-calculator/): Models bulk B2B manufacturing costs, distributor wholesale pricing tiers, and retail partner margins.
+- [Dropshipping Profit Calculator](https://freesellerprofitcalculator.in/dropshipping-profit-calculator/): Models D2C supplier item costs, Meta/Google ad customer acquisition costs (CAC), and payment gateway fees.
+
+## Shipping & Logistics Calculators
+- [Shipping Cost Calculator](https://freesellerprofitcalculator.in/shipping-cost-calculator/): Compares dead weight vs volumetric dimensional weight (L × W × H ÷ 5000) for courier freight billing.
+- [Courier Charges Calculator](https://freesellerprofitcalculator.in/courier-charges-calculator/): Estimates logistics freight across 3PL aggregators including Shiprocket, Delhivery, Blue Dart, and Ecom Express.
+
+## Advertising & Marketing Calculators
+- [ROAS Calculator](https://freesellerprofitcalculator.in/roas-calculator/): Calculates Return on Ad Spend multipliers to evaluate advertising efficiency across Amazon Ads, Meta Ads, and Google Shopping.
+- [ACOS Calculator](https://freesellerprofitcalculator.in/acos-calculator/): Determines Advertising Cost of Sale percentage (Total Ad Spend ÷ Direct Ad Revenue) for Amazon PPC campaigns.
+- [Ad Profit Calculator](https://freesellerprofitcalculator.in/ad-profit-calculator/): Calculates net cash campaign earnings after subtracting product manufacturing cost, courier freight, marketplace fees, and direct ad spend.
+
+## Company & Resources
+- [Home Page & Interactive Solvers](https://freesellerprofitcalculator.in/): Multi-platform comparison matrix and target price reverse solver.
+- [About Us](https://freesellerprofitcalculator.in/about-us/): Mission, methodology, and verified 2026 e-commerce fee standards.
+- [Contact Us](https://freesellerprofitcalculator.in/contact-us/): Direct support, feedback, and marketplace rate-card update submissions.
+- [Privacy Policy](https://freesellerprofitcalculator.in/privacy-policy/): DPDP Act 2023 compliance and client-side zero-retention data privacy guarantees.
+- [Terms & Conditions](https://freesellerprofitcalculator.in/terms-and-conditions/): Service terms, financial disclaimers, and intellectual property notice.
+- [XML Sitemap](https://freesellerprofitcalculator.in/sitemap.xml): Machine-readable index of all canonical URLs.
