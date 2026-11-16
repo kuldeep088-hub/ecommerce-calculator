@@ -7,6 +7,7 @@ import Layout from '../layouts/Layout.astro';
   title="Server Error (500) | Seller Profit Calculator"
   description="An unexpected error occurred while loading this page. Please try refreshing or return to the calculator home."
   canonicalPath="/500"
+  isNoIndex={true}
 >
   <main class="min-h-[75vh] flex items-center justify-center bg-white px-4 py-16 sm:py-24">
     <div class="max-w-xl w-full text-center">
@@ -50,25 +51,25 @@ import Layout from '../layouts/Layout.astro';
         </span>
         <div class="flex flex-wrap items-center justify-center gap-2 text-xs">
           <a
-            href="/meesho-profit-calculator"
+            href="/meesho-profit-calculator/"
             class="px-3 py-1.5 rounded-lg bg-neutral-50 border border-neutral-200 text-neutral-700 hover:text-neutral-900 hover:border-neutral-900 transition"
           >
             Meesho (0%)
           </a>
           <a
-            href="/flipkart-profit-calculator"
+            href="/flipkart-profit-calculator/"
             class="px-3 py-1.5 rounded-lg bg-neutral-50 border border-neutral-200 text-neutral-700 hover:text-neutral-900 hover:border-neutral-900 transition"
           >
             Flipkart (2026)
           </a>
           <a
-            href="/amazon-profit-calculator"
+            href="/amazon-profit-calculator/"
             class="px-3 py-1.5 rounded-lg bg-neutral-50 border border-neutral-200 text-neutral-700 hover:text-neutral-900 hover:border-neutral-900 transition"
           >
             Amazon Easy Ship
           </a>
           <a
-            href="/gst-calculator"
+            href="/gst-calculator/"
             class="px-3 py-1.5 rounded-lg bg-neutral-50 border border-neutral-200 text-neutral-700 hover:text-neutral-900 hover:border-neutral-900 transition"
           >
             GST &amp; ITC
@@ -78,7 +79,7 @@ import Layout from '../layouts/Layout.astro';
 
       <!-- Support Inquiry Link -->
       <p class="mt-8 text-xs text-neutral-400">
-        If the issue persists, please <a href="/contact-us" class="underline hover:text-neutral-600 transition">contact our support team</a>.
+        If the issue persists, please <a href="/contact-us/" class="underline hover:text-neutral-600 transition">contact our support team</a>.
       </p>
 
     </div>

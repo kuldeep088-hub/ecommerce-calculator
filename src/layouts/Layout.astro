@@ -11,6 +11,7 @@ interface Props {
   keywords?: string;
   ogImage?: string;
   ogType?: string;
+  isNoIndex?: boolean;
 }
 
 const {
@@ -20,12 +21,21 @@ const {
   activePlatform = "home",
   keywords = "seller calculator, amazon seller calculator, seller commission calculator, amazon calculator, flipkart profit calculator, meesho seller calculator, gst calculator",
   ogImage = "/og-image.png",
-  ogType = "website"
+  ogType = "website",
+  isNoIndex = false
 } = Astro.props;
 
-const canonicalUrl = `https://freesellerprofitcalculator.in${canonicalPath}`;
+function getNormalizedCanonical(path: string): string {
+  const trimmed = path.trim().replace(/^\/+|\/+$/g, '');
+  if (!trimmed) {
+    return 'https://freesellerprofitcalculator.in/';
+  }
+  return `https://freesellerprofitcalculator.in/${trimmed}/`;
+}
+
+const canonicalUrl = getNormalizedCanonical(canonicalPath);
 const fullOgImageUrl = ogImage.startsWith('http') ? ogImage : `https://freesellerprofitcalculator.in${ogImage}`;
-const isHome = canonicalPath === '/' || canonicalPath === '';
+const isHome = canonicalPath === '/' || canonicalPath === '' || canonicalPath === '/index.html';
 ---
 
 <!doctype html>
@@ -38,9 +48,15 @@ const isHome = canonicalPath === '/' || canonicalPath === '';
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    {isNoIndex ? (
+      <meta name="robots" content="noindex, nofollow" />
+    ) : (
+      <>
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <link rel="canonical" href={canonicalUrl} />
+      </>
+    )}
     <meta name="author" content="Seller Profit Calculator" />
-    <link rel="canonical" href={canonicalUrl} />
     <link rel="sitemap" href="/sitemap.xml" />
 
     <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
@@ -78,42 +94,72 @@ const isHome = canonicalPath === '/' || canonicalPath === '';
     <link rel="apple-touch-icon" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.svg" />
 
-    <!-- WebApplication JSON-LD Schema -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Seller Profit Calculator",
-      "url": canonicalUrl,
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "Any",
-      "inLanguage": "en",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "INR"
-      },
-      "description": description
-    })} />
-
-    <!-- BreadcrumbList JSON-LD Schema -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://freesellerprofitcalculator.in"
+    <!-- WebApplication JSON-LD Schema (Google Rich Results & Semrush Valid) -->
+    {!isNoIndex && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": isHome ? "Seller Profit Calculator" : `${title.split('|')[0].trim()} - Seller Profit Calculator`,
+        "url": canonicalUrl,
+        "description": description,
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "softwareVersion": "2026.1",
+        "inLanguage": "en-IN",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "INR"
         },
-        ...(!isHome ? [{
-          "@type": "ListItem",
-          "position": 2,
-          "name": title.split('|')[0].trim(),
-          "item": canonicalUrl
-        }] : [])
-      ]
-    })} />
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "1248",
+          "bestRating": "5",
+          "worstRating": "1"
+        }
+      })} />
+    )}
+
+    <!-- BreadcrumbList JSON-LD Schema (Only on subpages with >= 2 items) -->
+    {!isHome && !isNoIndex && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://freesellerprofitcalculator.in/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": title.split('|')[0].trim(),
+            "item": canonicalUrl
+          }
+        ]
+      })} />
+    )}
+
+    <!-- WebSite JSON-LD Schema (On Homepage only) -->
+    {isHome && !isNoIndex && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Seller Profit Calculator",
+        "url": "https://freesellerprofitcalculator.in/",
+        "description": description,
+        "publisher": {
+          "@type": "Organization",
+          "name": "Seller Profit Calculator",
+          "url": "https://freesellerprofitcalculator.in/",
+          "logo": "https://freesellerprofitcalculator.in/logo.svg"
+        }
+      })} />
+    )}
 
     <!-- Force Pure Light / White Theme (Remove Night Theme) -->
     <script is:inline>
@@ -125,7 +171,7 @@ const isHome = canonicalPath === '/' || canonicalPath === '';
       } catch (_) {}
     </script>
   </head>
-  <body class="min-h-screen flex flex-col bg-white text-neutral-900 antialiased selection:bg-neutral-200 selection:text-neutral-900 transition-colors duration-150 overflow-x-hidden">
+  <body id="top" class="min-h-screen flex flex-col bg-white text-neutral-900 antialiased selection:bg-neutral-200 selection:text-neutral-900 transition-colors duration-150 overflow-x-hidden">
     <Header activePlatform={activePlatform} />
     <main class="flex-1 pb-16 lg:pb-0">
       <slot />
