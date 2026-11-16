@@ -4,6 +4,7 @@ Disallow: /404
 Disallow: /500
 Disallow: /404.html
 Disallow: /500.html
+Disallow: /cdn-cgi/
 
 # Host & Sitemap specification
 Sitemap: https://freesellerprofitcalculator.in/sitemap.xml
